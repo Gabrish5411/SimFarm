@@ -7,6 +7,7 @@ namespace ConsoleApp
         
         private Terrain[] cells = new Terrain[100];
         private Tile[,] map = new Tile[100, 100];
+        private Random randNum = new Random(); //para poner el argumento del random para Tile
         public Map()
         {
             for (int i = 0; i < 100; i++)
@@ -15,10 +16,17 @@ namespace ConsoleApp
             }
             Console.WriteLine("Mapa generado con exito.");
 
-            //Aqui deberia ir el codigo para crear la matriz de 100x100 casillas (Tiles)
+            for (int i = 0; i < 100; i++)
+            {
+                for (int j = 0; j < 100; j++)
+                {
+                    map[i,j] = new Tile(randNum);
+                }
+            }
+            //Aqui deberia ir el codigo para crear la matriz de 100x100 casillas (Tiles) REVISAR
 
-            
-            
+
+
         }
         public void ShowMap1()
         {

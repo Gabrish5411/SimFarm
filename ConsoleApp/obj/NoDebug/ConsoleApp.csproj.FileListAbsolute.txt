@@ -3,3 +3,8 @@ C:\Users\amaca\OrientadaObjetos\ConsoleApp\ConsoleApp\bin\NoDebug\ConsoleApp.exe
 C:\Users\amaca\OrientadaObjetos\ConsoleApp\ConsoleApp\obj\NoDebug\ConsoleApp.csprojAssemblyReference.cache
 C:\Users\amaca\OrientadaObjetos\ConsoleApp\ConsoleApp\obj\NoDebug\ConsoleApp.csproj.CoreCompileInputs.cache
 C:\Users\amaca\OrientadaObjetos\ConsoleApp\ConsoleApp\obj\NoDebug\ConsoleApp.exe
+C:\Users\matia\Desktop\UANDES\2020\Semestre2\poo\Entrega1\ProyectoSimFarm\SimFarm\ConsoleApp\bin\NoDebug\ConsoleApp.exe.config
+C:\Users\matia\Desktop\UANDES\2020\Semestre2\poo\Entrega1\ProyectoSimFarm\SimFarm\ConsoleApp\bin\NoDebug\ConsoleApp.exe
+C:\Users\matia\Desktop\UANDES\2020\Semestre2\poo\Entrega1\ProyectoSimFarm\SimFarm\ConsoleApp\obj\NoDebug\ConsoleApp.csprojAssemblyReference.cache
+C:\Users\matia\Desktop\UANDES\2020\Semestre2\poo\Entrega1\ProyectoSimFarm\SimFarm\ConsoleApp\obj\NoDebug\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\matia\Desktop\UANDES\2020\Semestre2\poo\Entrega1\ProyectoSimFarm\SimFarm\ConsoleApp\obj\NoDebug\ConsoleApp.exe
