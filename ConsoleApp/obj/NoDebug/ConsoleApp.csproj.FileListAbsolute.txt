@@ -8,3 +8,8 @@ C:\Users\matia\Desktop\UANDES\2020\Semestre2\poo\Entrega1\ProyectoSimFarm\SimFar
 C:\Users\matia\Desktop\UANDES\2020\Semestre2\poo\Entrega1\ProyectoSimFarm\SimFarm\ConsoleApp\obj\NoDebug\ConsoleApp.csprojAssemblyReference.cache
 C:\Users\matia\Desktop\UANDES\2020\Semestre2\poo\Entrega1\ProyectoSimFarm\SimFarm\ConsoleApp\obj\NoDebug\ConsoleApp.csproj.CoreCompileInputs.cache
 C:\Users\matia\Desktop\UANDES\2020\Semestre2\poo\Entrega1\ProyectoSimFarm\SimFarm\ConsoleApp\obj\NoDebug\ConsoleApp.exe
+C:\Users\gabri\Desktop\C# Projects\proyecto-entrega-1-grupo-1\ConsoleApp\obj\NoDebug\ConsoleApp.csprojAssemblyReference.cache
+C:\Users\gabri\Desktop\C# Projects\proyecto-entrega-1-grupo-1\ConsoleApp\obj\NoDebug\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\gabri\Desktop\C# Projects\proyecto-entrega-1-grupo-1\ConsoleApp\obj\NoDebug\ConsoleApp.exe
+C:\Users\gabri\Desktop\C# Projects\proyecto-entrega-1-grupo-1\ConsoleApp\bin\NoDebug\ConsoleApp.exe.config
+C:\Users\gabri\Desktop\C# Projects\proyecto-entrega-1-grupo-1\ConsoleApp\bin\NoDebug\ConsoleApp.exe
