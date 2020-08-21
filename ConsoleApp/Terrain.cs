@@ -14,10 +14,10 @@ namespace ConsoleApp
                 {
                     cell[i, j] = new Tile(randNum);
                 }
-                
+
             }
-            
+
         }
-        
+
     }
 }

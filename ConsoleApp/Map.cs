@@ -4,13 +4,31 @@ namespace ConsoleApp
 {
     class Map
     {
-        
+
         private Terrain[] cells = new Terrain[100];
         private Tile[,] map = new Tile[100, 100];
         private Random randNum = new Random(); //para poner el argumento del random para Tile
-        
+
         public Map()
         {
+
+            for (int i = 0; i < 100; i++)
+            {
+                cells[i] = new Terrain();
+            }
+            Console.WriteLine("Mapa generado con exito.");
+
+            for (int i = 0; i < 100; i++)
+            {
+                for (int j = 0; j < 100; j++)
+                {
+                    map[i, j] = new Tile(randNum);
+                }
+            }
+
+
+
+
             int water_input = Convert.ToInt32(Console.ReadLine());      //usuario elige
             switch (water_input)
             {
@@ -27,6 +45,7 @@ namespace ConsoleApp
                             for (int j = 0; j < 100; j++)
                             {
                                 map[i, j].tileName = "R";             //Corregido la sintaxis asociando map a esta clase
+                                map[i, j].quality = 0;
                             }
                         }
                     }
@@ -38,6 +57,7 @@ namespace ConsoleApp
                             for (int i = 0; i < 100; i++)
                             {
                                 map[i, j].tileName = "R";             //Corregido la sintaxis asociando map a esta clase
+                                map[i, j].quality = 0;
                             }
                         }
                     }
@@ -50,50 +70,55 @@ namespace ConsoleApp
                     {
                         for (int j = column1; j < column1 + 15; j++)
                         {
-                            int bordes = randNum.Next(0, 1);  //"los bloques en su perímetro pueden ser agua o tierra de manera aleatoria(así se evita que sea un bloque cuadrado)"
+                            int bordes = randNum.Next(0, 2);  //"los bloques en su perímetro pueden ser agua o tierra de manera aleatoria(así se evita que sea un bloque cuadrado)"
                             map[i, j].tileName = "L";                //Corregido la sintaxis asociando map a esta clase
+                            map[i, j].quality = 0;
                             if (i == row1)
                             {
                                 if (bordes == 0)
                                 {
-                                    break;
+                                    continue;
                                 }
                                 else if (bordes == 1)
                                 {
                                     map[i - 1, j].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
+                                    map[i - 1, j].quality = 0;
                                 }
                             }
                             else if (row1 < i & i < row1 + 14 & j == column1)
                             {
                                 if (bordes == 0)
                                 {
-                                    break;
+                                    continue;
                                 }
                                 else if (bordes == 1)
                                 {
                                     map[i, j - 1].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
+                                    map[i, j - 1].quality = 0;
                                 }
                             }
                             else if (row1 < i & i < row1 + 14 & j == column1 + 14)
                             {
                                 if (bordes == 0)
                                 {
-                                    break;
+                                    continue;
                                 }
                                 else if (bordes == 1)
                                 {
                                     map[i, j + 1].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
+                                    map[i, j + j].quality = 0;
                                 }
                             }
                             else if (i == row1 + 14)
                             {
                                 if (bordes == 0)
                                 {
-                                    break;
+                                    continue;
                                 }
                                 else if (bordes == 1)
                                 {
                                     map[i + 1, j].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
+                                    map[i + 1, j].quality = 0;
                                 }
                             }
                         }
@@ -110,6 +135,7 @@ namespace ConsoleApp
                             for (int j = 0; j < 100; j++)
                             {
                                 map[i, j].tileName = "R";             //Corregido la sintaxis asociando map a esta clase
+                                map[i, j].quality = 0;
                             }
                         }
                     }
@@ -121,6 +147,7 @@ namespace ConsoleApp
                             for (int i = 0; i < 100; i++)
                             {
                                 map[i, j].tileName = "R";             //Corregido la sintaxis asociando map a esta clase
+                                map[i, j].quality = 0;
                             }
                         }
                     }                                       //fin rio
@@ -130,50 +157,55 @@ namespace ConsoleApp
                     {
                         for (int j = column2; j < column2 + 15; j++)
                         {
-                            int bordes = randNum.Next(0, 1);  //"los bloques en su perímetro pueden ser agua o tierra de manera aleatoria(así se evita que sea un bloque cuadrado)"
+                            int bordes = randNum.Next(0, 2);  //"los bloques en su perímetro pueden ser agua o tierra de manera aleatoria(así se evita que sea un bloque cuadrado)"
                             map[i, j].tileName = "L";                //Corregido la sintaxis asociando map a esta clase
+                            map[i, j].quality = 0;
                             if (i == row2)
                             {
                                 if (bordes == 0)
                                 {
-                                    break;
+                                    continue;
                                 }
                                 else if (bordes == 1)
                                 {
                                     map[i - 1, j].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
+                                    map[i - 1, j].quality = 0;
                                 }
                             }
                             else if (row2 < i & i < row2 + 14 & j == column2)
                             {
                                 if (bordes == 0)
                                 {
-                                    break;
+                                    continue;
                                 }
                                 else if (bordes == 1)
                                 {
                                     map[i, j - 1].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
+                                    map[i, j - 1].quality = 0;
                                 }
                             }
                             else if (row2 < i & i < row2 + 14 & j == column2 + 14)
                             {
                                 if (bordes == 0)
                                 {
-                                    break;
+                                    continue;
                                 }
                                 else if (bordes == 1)
                                 {
                                     map[i, j + 1].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
+                                    map[i, j + 1].quality = 0;
                                 }
                             }
                             else if (i == row2 + 14)
                             {
                                 if (bordes == 0)
                                 {
-                                    break;
+                                    continue;
                                 }
                                 else if (bordes == 1)
                                 {
                                     map[i + 1, j].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
+                                    map[i + 1, j].quality = 0;
                                 }
                             }
                         }
@@ -182,44 +214,40 @@ namespace ConsoleApp
 
                     break;
             }
-            for (int i = 0; i < 100; i++)
-            {
-                cells[i] = new Terrain();
-            }
-            Console.WriteLine("Mapa generado con exito.");
 
-            for (int i = 0; i < 100; i++)
-            {
-                for (int j = 0; j < 100; j++)
-                {
-                    map[i,j] = new Tile(randNum);
-                }
-            }
-            
+
 
 
 
         }
         public void ShowMap1()
         {
-            for(int F = 0; F < 100; F += 10)
+            //for(int F = 0; F < 100; F += 10)
+            //{
+            //for (int z = 0; z < 10; z++)
+            //{
+            //for (int i = 0; i < 10; i++)
+            //{
+            //for (int j = 0; j < 10; j++)
+            //{
+            //Console.Write(cells[i+F].cell[z, j].tileName);
+            //}
+            //}
+            //Console.Write("\n");
+            //}
+            //}
+            for (int k = 0; k < 100; k++)
             {
-                for (int z = 0; z < 10; z++)
+                for (int l = 0; l < 100; l++)
                 {
-                    for (int i = 0; i < 10; i++)
-                    {
-                        for (int j = 0; j < 10; j++)
-                        {
-                            Console.Write(cells[i+F].cell[z, j].tileName);
-                        }
-                    }
-                    Console.Write("\n");
+                    Console.Write(map[k, l].tileName);
+                    //Console.Write(map[k, l].quality);
                 }
+                Console.Write("\n");
             }
-            
-            
-            
-            
+
+
+
         }
     }
 }

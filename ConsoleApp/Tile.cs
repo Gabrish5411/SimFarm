@@ -8,8 +8,8 @@ namespace ConsoleApp
 {
     class Tile
     {
-        
-        public readonly int quality;
+
+        public int quality;
         public string tileName;
 
         public Tile(Random randNum)
