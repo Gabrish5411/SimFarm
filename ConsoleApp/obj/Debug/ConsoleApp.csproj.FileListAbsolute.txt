@@ -12,3 +12,10 @@ C:\Users\amaca\Desktop\POO\proyecto-entrega-1-grupo-1\ConsoleApp\obj\Debug\Conso
 C:\Users\amaca\Desktop\POO\proyecto-entrega-1-grupo-1\ConsoleApp\obj\Debug\ConsoleApp.csproj.CoreCompileInputs.cache
 C:\Users\amaca\Desktop\POO\proyecto-entrega-1-grupo-1\ConsoleApp\obj\Debug\ConsoleApp.exe
 C:\Users\amaca\Desktop\POO\proyecto-entrega-1-grupo-1\ConsoleApp\obj\Debug\ConsoleApp.pdb
+C:\Users\gabri\Desktop\C# Projects\proyecto-entrega-1-grupo-1\ConsoleApp\bin\Debug\ConsoleApp.exe.config
+C:\Users\gabri\Desktop\C# Projects\proyecto-entrega-1-grupo-1\ConsoleApp\bin\Debug\ConsoleApp.exe
+C:\Users\gabri\Desktop\C# Projects\proyecto-entrega-1-grupo-1\ConsoleApp\bin\Debug\ConsoleApp.pdb
+C:\Users\gabri\Desktop\C# Projects\proyecto-entrega-1-grupo-1\ConsoleApp\obj\Debug\ConsoleApp.csprojAssemblyReference.cache
+C:\Users\gabri\Desktop\C# Projects\proyecto-entrega-1-grupo-1\ConsoleApp\obj\Debug\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\gabri\Desktop\C# Projects\proyecto-entrega-1-grupo-1\ConsoleApp\obj\Debug\ConsoleApp.exe
+C:\Users\gabri\Desktop\C# Projects\proyecto-entrega-1-grupo-1\ConsoleApp\obj\Debug\ConsoleApp.pdb

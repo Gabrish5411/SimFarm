@@ -51,7 +51,7 @@ namespace ConsoleApp
                         {
                             for (int j = 0; j < 100; j++)
                             {
-                                map[i, j].tileName = "R";             //Corregido la sintaxis asociando map a esta clase
+                                map[i, j].tileName = "R";             
                                 map[i, j].quality = 0;
                             }
                         }
@@ -63,7 +63,7 @@ namespace ConsoleApp
                         {
                             for (int i = 0; i < 100; i++)
                             {
-                                map[i, j].tileName = "R";             //Corregido la sintaxis asociando map a esta clase
+                                map[i, j].tileName = "R";             
                                 map[i, j].quality = 0;
                             }
                         }
@@ -78,7 +78,7 @@ namespace ConsoleApp
                         for (int j = column1; j < column1 + 15; j++)
                         {
                             int bordes = randNum.Next(0, 2);  //"los bloques en su perímetro pueden ser agua o tierra de manera aleatoria(así se evita que sea un bloque cuadrado)"
-                            map[i, j].tileName = "L";                //Corregido la sintaxis asociando map a esta clase
+                            map[i, j].tileName = "L";                
                             map[i, j].quality = 0;
                             if (i == row1)
                             {
@@ -88,7 +88,7 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i - 1, j].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
+                                    map[i - 1, j].tileName = "L";    
                                     map[i - 1, j].quality = 0;
                                 }
                             }
@@ -100,7 +100,7 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i, j - 1].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
+                                    map[i, j - 1].tileName = "L";    
                                     map[i, j - 1].quality = 0;
                                 }
                             }
@@ -112,7 +112,7 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i, j + 1].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
+                                    map[i, j + 1].tileName = "L";    
                                     map[i, j + j].quality = 0;
                                 }
                             }
@@ -124,7 +124,7 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i + 1, j].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
+                                    map[i + 1, j].tileName = "L";    
                                     map[i + 1, j].quality = 0;
                                 }
                             }
@@ -141,7 +141,7 @@ namespace ConsoleApp
                         {
                             for (int j = 0; j < 100; j++)
                             {
-                                map[i, j].tileName = "R";             //Corregido la sintaxis asociando map a esta clase
+                                map[i, j].tileName = "R";             
                                 map[i, j].quality = 0;
                             }
                         }
@@ -153,7 +153,7 @@ namespace ConsoleApp
                         {
                             for (int i = 0; i < 100; i++)
                             {
-                                map[i, j].tileName = "R";             //Corregido la sintaxis asociando map a esta clase
+                                map[i, j].tileName = "R";             
                                 map[i, j].quality = 0;
                             }
                         }
@@ -165,7 +165,7 @@ namespace ConsoleApp
                         for (int j = column2; j < column2 + 15; j++)
                         {
                             int bordes = randNum.Next(0, 2);  //"los bloques en su perímetro pueden ser agua o tierra de manera aleatoria(así se evita que sea un bloque cuadrado)"
-                            map[i, j].tileName = "L";                //Corregido la sintaxis asociando map a esta clase
+                            map[i, j].tileName = "L";                
                             map[i, j].quality = 0;
                             if (i == row2)
                             {
@@ -175,7 +175,7 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i - 1, j].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
+                                    map[i - 1, j].tileName = "L";    
                                     map[i - 1, j].quality = 0;
                                 }
                             }
@@ -221,6 +221,34 @@ namespace ConsoleApp
                     break;
 
             }
+
+            // aca comienza la creacion de la granja de dimensiones 3x2
+
+            int row_1 = randNum.Next(1, 101);
+            int column_1 = randNum.Next(1, 101); // en caso de que la granja se enuentre fuera de limites, no se podra continuar.
+            for (int i = row_1; i < row_1 + 29; i++)
+            {
+                for (int j = column_1; j < column_1 + 20; j++)
+                {
+                    int bordes = randNum.Next(0, 1);
+                    map[i, j].tileName = "G";
+                    if (i == row_1)
+                    {
+                        if (bordes != 0)
+                        {
+                            break;
+                        }
+                        else if (bordes != 1)
+                        {
+                            map[i - 1, j].tileName = "G";
+                        }
+                    }
+
+                }
+
+
+            }
+            // finaliza creacion de granja
 
 
 
