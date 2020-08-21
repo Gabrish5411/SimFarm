@@ -11,6 +11,7 @@ namespace ConsoleApp
 
         public int quality;
         public string tileName;
+        public string terrainNumber;
 
         public Tile(Random randNum)
         {

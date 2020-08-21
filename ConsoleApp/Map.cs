@@ -5,8 +5,8 @@ namespace ConsoleApp
     class Map
     {
 
-        private Terrain[] cells = new Terrain[100];
-        private Tile[,] map = new Tile[100, 100];
+        private Terrain[] terrains = new Terrain[100];
+        public Tile[,] map = new Tile[100, 100];
         private Random randNum = new Random(); //para poner el argumento del random para Tile
 
         public Map()
@@ -14,10 +14,8 @@ namespace ConsoleApp
 
             for (int i = 0; i < 100; i++)
             {
-                cells[i] = new Terrain();
+                terrains[i] = new Terrain(Convert.ToString(i));
             }
-            Console.WriteLine("Mapa generado con exito.");
-
             for (int i = 0; i < 100; i++)
             {
                 for (int j = 0; j < 100; j++)
@@ -25,14 +23,23 @@ namespace ConsoleApp
                     map[i, j] = new Tile(randNum);
                 }
             }
+            Console.WriteLine("Mapa generado con exito.");
+            
+            for (int i = 0; i < 100; i++)
+            {
+                for (int j = 0; j < 100; j++)
+                {
+                    map[i, j].terrainNumber = Convert.ToString(((i/10)+1 * (j /10)+1) + (i/10)*9 );
+                }
+            }
 
-
+            Console.Write("Ingrese 1 para agregar rios, 2 para lagos, 3 para ambos y 0 para ninguno:  ");
 
 
             int water_input = Convert.ToInt32(Console.ReadLine());      //usuario elige
             switch (water_input)
             {
-                case 0:                                     //cuando el usuario no quiere ni rio ni lago
+                default:                                     //cuando el usuario no quiere ni rio ni lago
                     break;
 
                 case 1:                                     //cuando el usuario quiere solo rio
@@ -211,8 +218,8 @@ namespace ConsoleApp
                         }
                     }
 
-
                     break;
+
             }
 
 
