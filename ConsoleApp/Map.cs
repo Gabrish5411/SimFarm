@@ -8,6 +8,7 @@ namespace ConsoleApp
         private Terrain[] cells = new Terrain[100];
         private Tile[,] map = new Tile[100, 100];
         private Random randNum = new Random(); //para poner el argumento del random para Tile
+        public Water tileName = new Water(map) // revisar porque no acepta el map
         public Map()
         {
             for (int i = 0; i < 100; i++)
@@ -23,7 +24,7 @@ namespace ConsoleApp
                     map[i,j] = new Tile(randNum);
                 }
             }
-            //Aqui deberia ir el codigo para crear la matriz de 100x100 casillas (Tiles) REVISAR
+            
 
 
 

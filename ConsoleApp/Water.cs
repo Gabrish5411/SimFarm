@@ -29,7 +29,7 @@ namespace ConsoleApp
                         {
                             for (int j = 0; j < 100; j++)
                             {
-                                map[i, j].tileName = "R";             //CORREGIR arreglar sintaxis, asociar el mapa con esta clase
+                                map[i, j].tileName = "R";             //Corregido la sintaxis asociando map a esta clase
                             }
                         }
                     }
@@ -40,7 +40,7 @@ namespace ConsoleApp
                         {
                             for (int i = 0; i < 100; i++)
                             {
-                                map[i, j].tileName = "R";             //CORREGIR arreglar sintaxis, asociar el mapa con esta clase
+                                map[i, j].tileName = "R";             //Corregido la sintaxis asociando map a esta clase
                             }
                         }
                     }
@@ -54,7 +54,7 @@ namespace ConsoleApp
                         for (int j = column1; j < column1 +15; j++)
                         {
                             int bordes = randNum.Next(0, 1);  //"los bloques en su perímetro pueden ser agua o tierra de manera aleatoria(así se evita que sea un bloque cuadrado)"
-                            map[i, j].tileName = "L";                //CORREGIR arreglar sintaxis, asociar el mapa con esta clase
+                            map[i, j].tileName = "L";                //Corregido la sintaxis asociando map a esta clase
                             if (i == row1)
                             {
                                 if (bordes == 0)
@@ -63,7 +63,7 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i - 1, j].tileName = "L";    //CORREGIR
+                                    map[i - 1, j].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
                                 }                            
                             }
                             else if (row1 < i & i < row1 + 14 & j == column1)   
@@ -74,7 +74,7 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i, j-1].tileName = "L";    //CORREGIR
+                                    map[i, j-1].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
                                 }
                             }
                             else if (row1 < i & i < row1 + 14 & j == column1 + 14)
@@ -85,7 +85,7 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i, j + 1].tileName = "L";    //CORREGIR
+                                    map[i, j + 1].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
                                 }
                             }
                             else if (i == row1 + 14)
@@ -96,7 +96,7 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i + 1, j].tileName = "L";    //CORREGIR
+                                    map[i + 1, j].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
                                 }
                             }
                         }
@@ -112,7 +112,7 @@ namespace ConsoleApp
                         {
                             for (int j = 0; j < 100; j++)
                             {
-                                map[i, j].tileName = "R";             //CORREGIR arreglar sintaxis, asociar el mapa con esta clase
+                                map[i, j].tileName = "R";             //Corregido la sintaxis asociando map a esta clase
                             }
                         }
                     }
@@ -123,7 +123,7 @@ namespace ConsoleApp
                         {
                             for (int i = 0; i < 100; i++)
                             {
-                                map[i, j].tileName = "R";             //CORREGIR arreglar sintaxis, asociar el mapa con esta clase
+                                map[i, j].tileName = "R";             //Corregido la sintaxis asociando map a esta clase
                             }
                         }
                     }                                       //fin rio
@@ -134,7 +134,7 @@ namespace ConsoleApp
                         for (int j = column2; j < column2 + 15; j++)
                         {
                             int bordes = randNum.Next(0, 1);  //"los bloques en su perímetro pueden ser agua o tierra de manera aleatoria(así se evita que sea un bloque cuadrado)"
-                            map[i, j].tileName = "L";                //CORREGIR arreglar sintaxis, asociar el mapa con esta clase
+                            map[i, j].tileName = "L";                //Corregido la sintaxis asociando map a esta clase
                             if (i == row2)
                             {
                                 if (bordes == 0)
@@ -143,7 +143,7 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i - 1, j].tileName = "L";    //CORREGIR
+                                    map[i - 1, j].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
                                 }
                             }
                             else if (row2 < i & i < row2 + 14 & j == column2)
@@ -154,7 +154,7 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i, j - 1].tileName = "L";    //CORREGIR
+                                    map[i, j - 1].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
                                 }
                             }
                             else if (row2 < i & i < row2 + 14 & j == column2 + 14)
@@ -165,7 +165,7 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i, j + 1].tileName = "L";    //CORREGIR
+                                    map[i, j + 1].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
                                 }
                             }
                             else if (i == row2 + 14)
@@ -176,7 +176,7 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i + 1, j].tileName = "L";    //CORREGIR
+                                    map[i + 1, j].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
                                 }
                             }
                         }
