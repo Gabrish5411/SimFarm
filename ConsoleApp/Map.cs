@@ -2,7 +2,7 @@
 
 namespace ConsoleApp
 {
-    class Map
+    class Map : MapAdmin
     {
 
         private Terrain[] terrains = new Terrain[100];
@@ -257,34 +257,6 @@ namespace ConsoleApp
 
 
         }
-        public void ShowMap1()
-        {
-            //for(int F = 0; F < 100; F += 10)
-            //{
-            //for (int z = 0; z < 10; z++)
-            //{
-            //for (int i = 0; i < 10; i++)
-            //{
-            //for (int j = 0; j < 10; j++)
-            //{
-            //Console.Write(cells[i+F].cell[z, j].tileName);
-            //}
-            //}
-            //Console.Write("\n");
-            //}
-            //}
-            for (int k = 0; k < 100; k++)
-            {
-                for (int l = 0; l < 100; l++)
-                {
-                    Console.Write(map[k, l].tileName);
-                    //Console.Write(map[k, l].quality);
-                }
-                Console.Write("\n");
-            }
-
-
-
-        }
+        
     }
 }
