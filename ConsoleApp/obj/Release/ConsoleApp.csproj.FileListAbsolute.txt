@@ -1,7 +1,0 @@
-C:\Users\amaca\OrientadaObjetos\ConsoleApp\ConsoleApp\bin\Release\ConsoleApp.exe.config
-C:\Users\amaca\OrientadaObjetos\ConsoleApp\ConsoleApp\bin\Release\ConsoleApp.exe
-C:\Users\amaca\OrientadaObjetos\ConsoleApp\ConsoleApp\bin\Release\ConsoleApp.pdb
-C:\Users\amaca\OrientadaObjetos\ConsoleApp\ConsoleApp\obj\Release\ConsoleApp.csprojAssemblyReference.cache
-C:\Users\amaca\OrientadaObjetos\ConsoleApp\ConsoleApp\obj\Release\ConsoleApp.csproj.CoreCompileInputs.cache
-C:\Users\amaca\OrientadaObjetos\ConsoleApp\ConsoleApp\obj\Release\ConsoleApp.exe
-C:\Users\amaca\OrientadaObjetos\ConsoleApp\ConsoleApp\obj\Release\ConsoleApp.pdb
