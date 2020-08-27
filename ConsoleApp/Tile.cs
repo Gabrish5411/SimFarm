@@ -10,9 +10,9 @@ namespace ConsoleApp
     {
 
         private int quality;
-        public bool farmable;
+        private bool farmable;
         private string tileName;
-        public string terrainNumber;
+        private int terrainNumber;
 
 
         public string Get_tileName()
@@ -23,6 +23,8 @@ namespace ConsoleApp
         {
             tileName = name;
         }
+
+
         public int Get_quality()
         {
             return quality;
@@ -31,5 +33,26 @@ namespace ConsoleApp
         {
             this.quality = quality;
         }
+
+        
+        public bool Get_farmable()
+        {
+            return farmable;
+        }
+        public void Set_farmable(bool value)
+        {
+            this.farmable = value;
+        }
+
+
+        public int Get_terrainNumber()
+        {
+            return this.terrainNumber;
+        }
+        public void Set_terrainNumber(int value)
+        {
+            this.terrainNumber = value;
+        }
+
     }
 }

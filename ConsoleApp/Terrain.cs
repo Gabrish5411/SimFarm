@@ -4,12 +4,21 @@ namespace ConsoleApp
 {
     class Terrain
     {
-        public string tNumber;
-        public string bought;
+        private string tNumber;
+        private bool bought;
         public Terrain(string i)
         {
-            bought = "N";
+            bought = false;
             this.tNumber = i;
+        }
+
+        public void Set_bought(bool value)
+        {
+            bought = value;
+        }
+        public bool Get_bought()
+        {
+            return bought;
         }
     }
 }

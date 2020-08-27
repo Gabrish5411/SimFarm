@@ -10,7 +10,7 @@ namespace ConsoleApp
     {
         public Water()
         {
-            farmable = false;
+            Set_farmable(false);
         }
     }
 }

@@ -10,6 +10,9 @@ namespace ConsoleApp
 {
     public class MapAdmin
     {
+        //Para cambiar colores:
+        private ConsoleColor colorAgua = ConsoleColor.Blue;
+        private ConsoleColor colorTierra = ConsoleColor.DarkGreen;
         public void Show(Tile[,] map)
         {
             for (int k = 0; k < 100; k++)
@@ -18,39 +21,34 @@ namespace ConsoleApp
                 {
                     if (map[k, l].Get_tileName() == "T")
                     {
-                        Console.BackgroundColor = ConsoleColor.DarkGreen;
+                        Console.BackgroundColor = colorTierra;
                         Console.Write(" ");
-                        Console.BackgroundColor = ConsoleColor.Black;
                     }
                     else if (map[k, l].Get_tileName() == "G")
                     {
-                        if (map[k, l].farmable)
+                        if (map[k, l].Get_farmable())
                         {
-                            Console.BackgroundColor = ConsoleColor.DarkGreen;
+                            Console.BackgroundColor = colorTierra;
                             Console.Write("G");
-                            Console.BackgroundColor = ConsoleColor.Black;
                         }
                         else
                         {
-                            Console.BackgroundColor = ConsoleColor.Blue;
+                            Console.BackgroundColor = colorAgua;
                             Console.Write("G");
-                            Console.BackgroundColor = ConsoleColor.Black;
                         }
                         
                     }
                     else if (map[k, l].Get_tileName() == "L" | map[k, l].Get_tileName() == "R")
                     {
-                        Console.BackgroundColor = ConsoleColor.Blue;
+                        Console.BackgroundColor = colorAgua;
                         Console.Write(" ");
-                        Console.BackgroundColor = ConsoleColor.Black;
+                        
                     }
                     //Console.Write(map[k, l].quality);
                 }
                 Console.Write("\n");
             }
-
-
-
+            Console.BackgroundColor = ConsoleColor.Black;
         }
     }
 }

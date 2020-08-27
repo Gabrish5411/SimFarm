@@ -10,7 +10,7 @@ namespace ConsoleApp
     {
         public Earth(Random randNum)
         {
-            farmable = true;
+            Set_farmable(true);
             Set_quality(randNum.Next(1, 100));
             Set_tile_Name("T");
         }

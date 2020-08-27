@@ -11,9 +11,7 @@ namespace ConsoleApp
             printer.Show(m1.map);
 
             //Con terrain number podemos acceder a que terreno corresponde cada casilla Tile
-            // Console.WriteLine(m1.map[9, 9].terrainNumber);
-
-            
+            //Console.WriteLine(m1.map[99, 99].Get_terrainNumber());
 
             Console.ReadLine();
         }

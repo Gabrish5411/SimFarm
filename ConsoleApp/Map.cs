@@ -29,7 +29,8 @@ namespace ConsoleApp
             {
                 for (int j = 0; j < 100; j++)
                 {
-                    map[i, j].terrainNumber = Convert.ToString(((i/10)+1 * (j /10)+1) + (i/10)*9 );
+                    map[i, j].Set_terrainNumber(((i / 10) + 1 * (j / 10) + 1) + (i / 10) * 9);
+                    //map[i, j].terrainNumber = Convert.ToString(((i/10)+1 * (j /10)+1) + (i/10)*9 );
                 }
             }
 
