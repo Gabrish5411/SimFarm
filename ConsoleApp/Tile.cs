@@ -9,14 +9,27 @@ namespace ConsoleApp
     public class Tile
     {
 
-        public int quality;
-        public string tileName;
+        private int quality;
+        public bool farmable;
+        private string tileName;
         public string terrainNumber;
 
-        public Tile(Random randNum)
+
+        public string Get_tileName()
         {
-            quality = randNum.Next(25, 100);
-            tileName = "T";
+            return tileName;
+        }
+        public void Set_tile_Name(string name)
+        {
+            tileName = name;
+        }
+        public int Get_quality()
+        {
+            return quality;
+        }
+        public void Set_quality(int quality)
+        {
+            this.quality = quality;
         }
     }
 }

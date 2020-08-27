@@ -2,7 +2,7 @@
 
 namespace ConsoleApp
 {
-    class Map : MapAdmin
+    class Map 
     {
 
         private Terrain[] terrains = new Terrain[100];
@@ -20,7 +20,7 @@ namespace ConsoleApp
             {
                 for (int j = 0; j < 100; j++)
                 {
-                    map[i, j] = new Tile(randNum);
+                    map[i, j] = new Earth(randNum);
                 }
             }
             Console.WriteLine("Mapa generado con exito.");
@@ -51,8 +51,9 @@ namespace ConsoleApp
                         {
                             for (int j = 0; j < 100; j++)
                             {
-                                map[i, j].tileName = "R";             
-                                map[i, j].quality = 0;
+                                map[i, j] = new Water();
+                                map[i, j].Set_tile_Name("R");             
+                                
                             }
                         }
                     }
@@ -63,8 +64,9 @@ namespace ConsoleApp
                         {
                             for (int i = 0; i < 100; i++)
                             {
-                                map[i, j].tileName = "R";             
-                                map[i, j].quality = 0;
+                                map[i, j] = new Water();
+                                map[i, j].Set_tile_Name("R");             
+                                
                             }
                         }
                     }
@@ -78,8 +80,9 @@ namespace ConsoleApp
                         for (int j = column1; j < column1 + 15; j++)
                         {
                             int bordes = randNum.Next(0, 2);  //"los bloques en su perímetro pueden ser agua o tierra de manera aleatoria(así se evita que sea un bloque cuadrado)"
-                            map[i, j].tileName = "L";                
-                            map[i, j].quality = 0;
+                            map[i, j] = new Water();
+                            map[i, j].Set_tile_Name("L");              
+                            
                             if (i == row1)
                             {
                                 if (bordes == 0)
@@ -88,8 +91,9 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i - 1, j].tileName = "L";    
-                                    map[i - 1, j].quality = 0;
+                                    map[i - 1, j] = new Water();
+                                    map[i - 1, j].Set_tile_Name("L");
+                                    
                                 }
                             }
                             else if (row1 < i & i < row1 + 14 & j == column1)
@@ -100,8 +104,9 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i, j - 1].tileName = "L";    
-                                    map[i, j - 1].quality = 0;
+                                    map[i, j - 1] = new Water();
+                                    map[i, j - 1].Set_tile_Name("L");
+                                    
                                 }
                             }
                             else if (row1 < i & i < row1 + 14 & j == column1 + 14)
@@ -112,8 +117,8 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i, j + 1].tileName = "L";    
-                                    map[i, j + j].quality = 0;
+                                    map[i, j + 1] = new Water();
+                                    map[i, j + 1].Set_tile_Name("L");
                                 }
                             }
                             else if (i == row1 + 14)
@@ -124,8 +129,8 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i + 1, j].tileName = "L";    
-                                    map[i + 1, j].quality = 0;
+                                    map[i + 1, j] = new Water();
+                                    map[i + 1, j].Set_tile_Name("L");
                                 }
                             }
                         }
@@ -141,8 +146,8 @@ namespace ConsoleApp
                         {
                             for (int j = 0; j < 100; j++)
                             {
-                                map[i, j].tileName = "R";             
-                                map[i, j].quality = 0;
+                                map[i, j] = new Water();
+                                map[i, j].Set_tile_Name("R");
                             }
                         }
                     }
@@ -153,8 +158,8 @@ namespace ConsoleApp
                         {
                             for (int i = 0; i < 100; i++)
                             {
-                                map[i, j].tileName = "R";             
-                                map[i, j].quality = 0;
+                                map[i, j] = new Water();
+                                map[i, j].Set_tile_Name("R");
                             }
                         }
                     }                                       //fin rio
@@ -165,8 +170,8 @@ namespace ConsoleApp
                         for (int j = column2; j < column2 + 15; j++)
                         {
                             int bordes = randNum.Next(0, 2);  //"los bloques en su perímetro pueden ser agua o tierra de manera aleatoria(así se evita que sea un bloque cuadrado)"
-                            map[i, j].tileName = "L";                
-                            map[i, j].quality = 0;
+                            map[i, j] = new Water();
+                            map[i, j].Set_tile_Name("L");
                             if (i == row2)
                             {
                                 if (bordes == 0)
@@ -175,8 +180,8 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i - 1, j].tileName = "L";    
-                                    map[i - 1, j].quality = 0;
+                                    map[i - 1, j] = new Water();
+                                    map[i - 1, j].Set_tile_Name("L");
                                 }
                             }
                             else if (row2 < i & i < row2 + 14 & j == column2)
@@ -187,8 +192,9 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i, j - 1].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
-                                    map[i, j - 1].quality = 0;
+                                    map[i, j - 1] = new Water();
+                                    map[i, j - 1].Set_tile_Name("L");    //Corregido la sintaxis asociando map a esta clase
+
                                 }
                             }
                             else if (row2 < i & i < row2 + 14 & j == column2 + 14)
@@ -199,8 +205,9 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i, j + 1].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
-                                    map[i, j + 1].quality = 0;
+                                    map[i, j + 1] = new Water();
+                                    map[i, j + 1].Set_tile_Name("L");    //Corregido la sintaxis asociando map a esta clase
+                                    
                                 }
                             }
                             else if (i == row2 + 14)
@@ -211,8 +218,8 @@ namespace ConsoleApp
                                 }
                                 else if (bordes == 1)
                                 {
-                                    map[i + 1, j].tileName = "L";    //Corregido la sintaxis asociando map a esta clase
-                                    map[i + 1, j].quality = 0;
+                                    map[i + 1, j] = new Water();
+                                    map[i + 1, j].Set_tile_Name("L");    //Corregido la sintaxis asociando map a esta clase
                                 }
                             }
                         }
@@ -233,7 +240,7 @@ namespace ConsoleApp
                 for (int j = column_1; j < column_1 + 20; j++)
                 {
                     int bordes = randNum.Next(0, 1);
-                    map[i, j].tileName = "G";
+                    map[i, j].Set_tile_Name("G");
                     if (i == row_1)
                     {
                         if (bordes != 0)
@@ -242,7 +249,7 @@ namespace ConsoleApp
                         }
                         else if (bordes != 1)
                         {
-                            map[i - 1, j].tileName = "G";
+                            map[i - 1, j].Set_tile_Name("G");
                         }
                     }
 
