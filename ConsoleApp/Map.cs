@@ -4,8 +4,7 @@ namespace ConsoleApp
 {
     class Map 
     {
-
-        private Terrain[] terrains = new Terrain[100];
+        public Terrain[] terrains = new Terrain[100];
         public Tile[,] map = new Tile[100, 100];
         private Random randNum = new Random(); //para poner el argumento del random para Tile
 
@@ -14,7 +13,7 @@ namespace ConsoleApp
 
             for (int i = 0; i < 100; i++)
             {
-                terrains[i] = new Terrain(Convert.ToString(i));
+                terrains[i] = new Terrain();
             }
             for (int i = 0; i < 100; i++)
             {
@@ -25,14 +24,7 @@ namespace ConsoleApp
             }
             Console.WriteLine("Mapa generado con exito.");
             
-            for (int i = 0; i < 100; i++)
-            {
-                for (int j = 0; j < 100; j++)
-                {
-                    map[i, j].Set_terrainNumber(((i / 10) + 1 * (j / 10) + 1) + (i / 10) * 9);
-                    //map[i, j].terrainNumber = Convert.ToString(((i/10)+1 * (j /10)+1) + (i/10)*9 );
-                }
-            }
+            
 
             Console.Write("Ingrese 1 para agregar rios, 2 para lagos, 3 para ambos y 0 para ninguno:  ");
 
@@ -261,6 +253,25 @@ namespace ConsoleApp
             // finaliza creacion de granja
 
 
+            //Loop para asignar a que terreno corresponden las casillas
+            for (int i = 0; i < 100; i++)
+            {
+                for (int j = 0; j < 100; j++)
+                {
+                    map[i, j].Set_terrainNumber(((i / 10) + 1 * (j / 10) + 1) + (i / 10) * 9);
+                    //map[i, j].terrainNumber = Convert.ToString(((i/10)+1 * (j /10)+1) + (i/10)*9 );
+                }
+            }
+
+            //Loop para contar el numero de tierras en un terreno
+            foreach (Tile casilla in map)
+            {
+                if (!casilla.Get_farmable())
+                {
+                    terrains[casilla.Get_terrainNumber()].earthNumber -= 1;
+                }
+                
+            }
 
 
 

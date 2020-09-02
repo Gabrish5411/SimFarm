@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
-    class Products
+    public class Products
     {
         protected string productName;
         protected int buyPrice;

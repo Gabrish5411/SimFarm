@@ -2,14 +2,16 @@
 using System.Collections;
 namespace ConsoleApp
 {
-    class Terrain
+    public class Terrain
     {
-        private string tNumber;
         private bool bought;
-        public Terrain(string i)
+        public int earthNumber;
+
+        public Terrain()
         {
+            earthNumber = 100;
             bought = false;
-            this.tNumber = i;
+            
         }
 
         public void Set_bought(bool value)
