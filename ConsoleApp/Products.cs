@@ -176,8 +176,39 @@ namespace ConsoleApp
 
     }
 
-    class FinishedProduct //falta determinar el tipo de relacion con la clase Products
+    class FinishedProduct : Products
     {
+
+        public int productQuality;
+
+        public int Get_product_quality()
+        {
+            return productQuality;
+
+        }
+
+        public void Set_product_quality(int value)
+        {
+
+            productQuality = value;
+        
+        }
+        
+        public FinishedProduct(string name)
+        {
+            Set_productName(name);
+
+        }
+
+        
+
+        
+
+
+
+
+        
+            
 
 
     }
