@@ -50,23 +50,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Consumables.cs" />
+    <Compile Include="Consumables\Consumable.cs" />
+    <Compile Include="Consumables\AnimalFood.cs" />
+    <Compile Include="Consumables\AnimalWater.cs" />
+    <Compile Include="Consumables\Fertilizer.cs" />
+    <Compile Include="Consumables\Fungicide.cs" />
+    <Compile Include="Consumables\Herbicide.cs" />
+    <Compile Include="Consumables\Irrigation.cs" />
+    <Compile Include="Consumables\Pesticide.cs" />
+    <Compile Include="Consumables\Vaccine.cs" />
     <Compile Include="FinishedProduct.cs" />
     <Compile Include="Products\Animal.cs" />
-    <Compile Include="Building.cs" />
+    <Compile Include="Buildings\Building.cs" />
     <Compile Include="Buildings\Cattle.cs" />
     <Compile Include="Buildings\Storage.cs" />
-    <Compile Include="Earth.cs" />
+    <Compile Include="Tiles\Earth.cs" />
     <Compile Include="Buildings\Field.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MapAdmin.cs" />
-    <Compile Include="Products.cs" />
+    <Compile Include="Products\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Products\Seed.cs" />
     <Compile Include="Terrain.cs" />
-    <Compile Include="Tile.cs" />
-    <Compile Include="Water.cs" />
+    <Compile Include="Tiles\Tile.cs" />
+    <Compile Include="Tiles\Water.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
