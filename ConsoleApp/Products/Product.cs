@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp
+namespace ConsoleApp.Products
 {
-    public class Products
+    public class Product
     {
         protected string productName;
         protected int buyPrice;

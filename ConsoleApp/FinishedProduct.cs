@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
-    class FinishedProduct : Products
+    class FinishedProduct : Product
     {
         public int productQuality;
 
@@ -26,7 +26,6 @@ namespace ConsoleApp
         public FinishedProduct(string name)
         {
             Set_productName(name);
-
         }
     }
 }

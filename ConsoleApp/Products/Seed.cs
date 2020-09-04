@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp
+namespace ConsoleApp.Products
 {
-    class Seed : Products
+    class Seed : Product
     {
         private int priceVariation;
         private float wormProbability;

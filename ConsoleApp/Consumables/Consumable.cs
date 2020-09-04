@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApp.Buildings;
 
-namespace ConsoleApp
+namespace ConsoleApp.Consumables
 {
-    public class Building
+    class Consumable
     {
-        protected string name;
-        protected int tNumber;
+        protected int Uses;
         protected int buyPrice;
-        protected int sellPrice;
-        protected Products item;
-
         
     }
+    
 }

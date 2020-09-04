@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp
+namespace ConsoleApp.Products
 {
-    class Animal : Products
+    class Animal : Product
     {
         private int animalUnits;
         private float escapeProbability;
