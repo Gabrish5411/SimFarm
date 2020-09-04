@@ -37,7 +37,7 @@ namespace ConsoleApp
                     break;
 
                 case 1:                                     //cuando el usuario quiere solo rio
-                    int direction = randNum.Next(0, 1);     //define si rio es horizontal o vertical 0=h 1=v
+                    int direction = randNum.Next(0, 2);     //define si rio es horizontal o vertical 0=h 1=v
                     if (direction == 0)
                     {
                         int row = randNum.Next(0, 95);
@@ -132,7 +132,7 @@ namespace ConsoleApp
                     break;
 
                 case 3:                                     //cuando el usuario quiere rio y lago
-                    int direction1 = randNum.Next(0, 1);     //define si rio es horizontal o vertical 0=h 1=v
+                    int direction1 = randNum.Next(0, 2);     //define si rio es horizontal o vertical 0=h 1=v
                     if (direction1 == 0)
                     {
                         int row = randNum.Next(0, 95);
