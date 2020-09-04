@@ -20,7 +20,7 @@ namespace ConsoleApp.Buildings
         public Cattle(Terrain[] terrains)
         {
             this.productivity = terrains[tNumber].earthNumber;
-            currentHP = 100;
+            currentHP = 100;   
             availableFood = 100;
             availableWater = 100;
             ill = false;
