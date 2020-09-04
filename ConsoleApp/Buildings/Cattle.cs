@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.Buildings
 {
-    class Cattle : Building
+     class Cattle : Building
     {
         protected int productivity;
         public int currentHP;
-        protected int availableFood;
+        public int availableFood;
         protected int availableWater;
         protected int ripeness;
         protected float maxRipeness;
