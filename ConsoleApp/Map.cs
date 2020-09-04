@@ -156,8 +156,8 @@ namespace ConsoleApp
                             }
                         }
                     }                                       //fin rio
-                    int row2 = randNum.Next(1, 84);
-                    int column2 = randNum.Next(1, 84);
+                    int row2 = randNum.Next(1, 83);
+                    int column2 = randNum.Next(1, 83);
                     for (int i = row2; i < row2 + 15; i++)
                     {
                         for (int j = column2; j < column2 + 15; j++)

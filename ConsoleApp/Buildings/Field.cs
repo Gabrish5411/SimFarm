@@ -35,5 +35,14 @@ namespace ConsoleApp.Buildings
         {
             maxRipeness = item.Get_productionTime(); //Ejemplo
         }
+
+        public void GiveFood(int food)
+        {
+            this.availableFood += food;
+        }
+        public void GiveWater(int water)
+        {
+            this.availableWater += water;
+        }
     }
 }

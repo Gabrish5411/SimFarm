@@ -3,69 +3,102 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApp.Buildings;
 
 namespace ConsoleApp
 {
-    class Consumables : Products
+    class Consumables
     {
-        protected int availableFood;
         protected int Uses;
-
-        public int Fertilizer()   //AVAILABLE FOOD DE FIELD
+        protected int buyPrice;
+        
+    }
+    class Fertilizer : Consumables
+    {
+        public void Use(Field field)   //AVAILABLE FOOD DE FIELD
         {
-            Field.availableFood = availableFood + 20; //Supuesto de que aumenta el alimento en 20
+            field.GiveFood(20); //Supuesto de que aumenta el alimento en 20
             Uses = 5;   //ejemplo de los usos restantes del fertilizante (tiene 5 unidades de fertilizante con 1 uso c/u)
             buyPrice = 5000; //ejemplo coste
-            return availableFood;
+
         }
-        public int AnimalFood()   //AVAILABLE FOOD DE CATTLE
+    }
+    class AnimalFood : Consumables
+    {
+        AnimalFood()
         {
-            Cattle.availableFood = availableFood + 20; 
-            Uses = 5;   
-            buyPrice = 5000; 
-            return availableFood;
+            buyPrice = 5000;
+            Uses = 5;
         }
-        public int Irrigation() //AVAILABLE WATER DE FIELD
+        public void Use(Cattle cattle)   //AVAILABLE FOOD DE CATTLE
         {
-            Field.availableWater = availableWater + 20; 
-            Uses = 5;   
-            buyPrice = 5000; 
-            return availableWater;
+            cattle.GiveFood(20);
         }
-        public int AnimalWater()  //AVAILABLE WATER DE CATTLE
-        {
-            Cattle.availableWater = availableWater + 20; 
-            Uses = 5;   
-            buyPrice = 5000; 
-            return availableWater;
-        }
-        public bool Pesticide(bool worms)
+    }
+    class Irrigation : Consumables
+    {
+        Irrigation()
         {
             Uses = 5;
             buyPrice = 5000;
-
+        }
+        public void Use(Field field) //AVAILABLE WATER DE FIELD
+        {
+            field.GiveWater(20);
+        }
+    }
+    class AnimalWater : Consumables
+    {
+        AnimalWater()  //AVAILABLE WATER DE CATTLE
+        {
+            Uses = 5;
+            buyPrice = 5000;
+        }
+        public void Use(Cattle cattle)
+        {
+            cattle.GiveWater(20);
+        }
+    }
+    class Pesticide : Consumables
+    {
+        int successProbability;
+        Pesticide()
+        {
+            Uses = 5;
+            buyPrice = 5000;
             Random random = new Random();
-            int successProbability = random.Next(0, 11);      
-            if (successProbability >= 5){
-                Uses -= 1;
-                return worms =  false;
+        }
 
+        public bool Use(bool worms, Random random)
+        {
+            this.successProbability = random.Next(0, 11);
+            if (this.successProbability >= 5)
+            {
+                Uses -= 1;
+                return worms = false;
             }
-            else 
+            else
             {
                 Uses -= 1;
                 return worms = true;
             }
-                        
+
         }
-        public bool Herbicide(bool undergrowth)
+    }
+    class Herbicide : Consumables
+    {
+        int successProbability;
+        Herbicide()
         {
             Uses = 5;
             buyPrice = 5000;
-
             Random random = new Random();
-            int successProbability = random.Next(0, 11);
-            if (successProbability >= 5)
+
+        }
+        public bool Use(bool undergrowth, Random random)
+        {
+            this.successProbability = random.Next(0, 11);
+            if (this.successProbability >= 5)
             {
                 Uses -= 1;
                 return undergrowth = false;
@@ -76,12 +109,17 @@ namespace ConsoleApp
                 return undergrowth = true;
             }
         }
-        public bool Fungicide(bool ill)    //ILL DE FIELD
+    }
+    class Fungicide : Consumables
+    {
+        Fungicide()
         {
             Uses = 5;
             buyPrice = 5000;
-
             Random random = new Random();
+        }
+        public bool Use(bool ill, Random random)    //ILL DE FIELD
+        {
             int successProbability = random.Next(0, 11);
             if (successProbability >= 5)
             {
@@ -95,12 +133,17 @@ namespace ConsoleApp
                 return ill = true;
             }
         }
-        public bool Vaccine(bool ill)      //ILL DE CATTLE
+    }
+    class Vaccine : Consumables
+    {
+        Vaccine()
         {
             Uses = 5;
             buyPrice = 5000;
-
             Random random = new Random();
+        }
+        public bool Use(bool ill, Random random)      //ILL DE CATTLE
+        {
             int successProbability = random.Next(0, 11);
             if (successProbability >= 5)
             {
