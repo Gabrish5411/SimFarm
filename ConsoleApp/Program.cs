@@ -27,7 +27,7 @@ namespace ConsoleApp
             }
             else
             {
-                Console.WriteLine("Exiting...");
+                Console.WriteLine("Loading not yet implemented, exiting...");
             }
             //Console.WriteLine("");
             
