@@ -23,11 +23,12 @@ namespace ConsoleApp
                     map[i, j] = new Earth(randNum);
                 }
             }
-            Console.WriteLine("Mapa generado con exito.");
+            //Console.WriteLine("Mapa generado con exito.");
             
             
 
             Console.Write("Ingrese 1 para agregar rios, 2 para lagos, 3 para ambos y 0 para ninguno:  ");
+            
 
 
             int water_input = Convert.ToInt32(Console.ReadLine());      //usuario elige

@@ -8,11 +8,29 @@ namespace ConsoleApp
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
-            Map m1 = new Map();
             MapAdmin printer = new MapAdmin();
-            printer.Show(m1.map);
+            //MenuManager menuAd = new MenuManager();
+
+            List<string> main_options = new List<string>(new string[] { "New Game","Load Game" });
+            int selected;
+
+            Console.WriteLine("SimFarm Menu");
+            selected = MenuManager.PrintMenu(main_options);
+
+            if (selected == 0)
+            {
+                Map m1 = new Map();
+                printer.Show(m1.map);
+            }
+            else
+            {
+                Console.WriteLine("Exiting...");
+            }
+            //Console.WriteLine("");
+            
             
             //Con terrain number podemos acceder a que terreno corresponde cada casilla Tile
             //Console.WriteLine(m1.map[99, 99].Get_terrainNumber());
