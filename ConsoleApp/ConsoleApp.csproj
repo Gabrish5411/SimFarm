@@ -60,6 +60,8 @@
     <Compile Include="Consumables\Pesticide.cs" />
     <Compile Include="Consumables\Vaccine.cs" />
     <Compile Include="FinishedProduct.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="MenuManager.cs" />
     <Compile Include="Products\Animal.cs" />
     <Compile Include="Buildings\Building.cs" />
     <Compile Include="Buildings\Cattle.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using ConsoleApp.Tiles;
+using System.Collections.Generic;
 
 namespace ConsoleApp
 {
@@ -23,14 +24,19 @@ namespace ConsoleApp
                     map[i, j] = new Earth(randNum);
                 }
             }
-            Console.WriteLine("Mapa generado con exito.");
+            //Console.WriteLine("Mapa generado con exito.");
+
+
+
+            //Console.Write("Ingrese 1 para agregar rios, 2 para lagos, 3 para ambos y 0 para ninguno:  ");
+            //int water_input = Convert.ToInt32(Console.ReadLine());      //usuario elige
+
+            Console.Write("Select a type of map: \n");
+            List<string> map_options = new List<string>(new string[] { "Normal", "River", "Lake", "Both" });
+            int water_input;
+            water_input = MenuManager.PrintMenu(map_options);
             
-            
 
-            Console.Write("Ingrese 1 para agregar rios, 2 para lagos, 3 para ambos y 0 para ninguno:  ");
-
-
-            int water_input = Convert.ToInt32(Console.ReadLine());      //usuario elige
             switch (water_input)
             {
                 default:                                     //cuando el usuario no quiere ni rio ni lago
