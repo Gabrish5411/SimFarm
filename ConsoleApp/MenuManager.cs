@@ -27,6 +27,7 @@ namespace ConsoleApp
             }
             else
             {
+                number = -1;
                 //Mientras no se acepte el numero (Loop infinito):
                 while (!Enumerable.Range(0, i).Contains(number)) 
                 {
@@ -45,7 +46,7 @@ namespace ConsoleApp
                     }
                 }
             }
-            Console.Clear();
+            //Console.Clear();
 
             i = 0;
             return number;
