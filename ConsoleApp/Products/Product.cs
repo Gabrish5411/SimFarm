@@ -10,7 +10,7 @@ namespace ConsoleApp.Products
     {
         protected string productName;
         protected int buyPrice;
-        protected int sellPrice;
+        public int sellPrice;
         protected int foodConsumption;
         protected int waterConsumption;
         protected int minFood;
