@@ -44,7 +44,7 @@ namespace ConsoleApp
                 }
                 thirtyList.Add(product.sellPrice);
             }
-            while (current_turn > 30)
+            while (current_turn >= 30)
             {
                 if (startingPrice * 0.5 < product.sellPrice && product.sellPrice < startingPrice * 1.5)
                 {
