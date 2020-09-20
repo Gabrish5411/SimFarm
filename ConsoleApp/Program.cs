@@ -62,7 +62,51 @@ namespace ConsoleApp
                     case 0: //No es necesario para esta entrega
                         break;
                     case 1: //Mercado
-                        break;
+                        List<string> shop_options = new List<string>(new string[] { "Building Shop", "Consumable Shop", "Property Shop", "Price History" });
+                        int selected_shop;
+                        bool finished_1 = false;
+                        while (!finished_1)
+                        {
+                            selected_shop = MenuManager.PrintMenu(shop_options);
+                            if (selected_shop == 0)
+                            {
+                                List<string> building_shop_options = new List<string>(new string[] { "Buy Field", "Buy Cattle", "Buy Storage", "Sell/Destroy Building" });
+                                int selected_building_shop;
+                                bool finished_1_0 = false;
+                                while (!finished_1_0)
+                                {
+                                    selected_building_shop = MenuManager.PrintMenu(building_shop_options);
+                                }
+                            }
+                            if (selected_shop == 1)
+                            {
+                                bool finished_1_1 = false;
+                                while (!finished_1_1)
+                                {
+                                    Console.WriteLine("You can buy the following consumables:");
+                                    Console.ReadLine();
+                                }
+                            }
+                            if (selected_shop == 2)
+                            {
+                                bool finished_1_2 = false;
+                                while (!finished_1_2)
+                                {
+                                    Console.WriteLine("You can buy the following properties:");
+                                    Console.ReadLine();
+                                }
+                            }
+                            if (selected_shop == 3)
+                            {
+                                bool finished_1_3 = false;
+                                while (!finished_1_3)
+                                {
+                                    Console.WriteLine("You can sell/destroy the following buildings:");
+                                    Console.ReadLine();
+                                }
+                            }
+                        }
+                            break;
                     case 2:
                         Console.WriteLine("Turno pasado...");
                         Console.ReadKey();
