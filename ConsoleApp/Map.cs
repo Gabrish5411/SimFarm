@@ -46,7 +46,8 @@ namespace ConsoleApp
                     int direction = randNum.Next(0, 2);     //define si rio es horizontal o vertical 0=h 1=v
                     if (direction == 0)
                     {
-                        int row = randNum.Next(0, 95);
+                        int row = randNum.Next(0, 85);
+                        //int row = 85;
                         for (int i = row; i < row + 5; i++)
                         {
                             for (int j = 0; j < 100; j++)
@@ -59,7 +60,8 @@ namespace ConsoleApp
                     }
                     else if (direction == 1)
                     {
-                        int column = randNum.Next(0, 95);
+                        int column = randNum.Next(0, 85);
+                        //int column = 85;
                         for (int j = column; j < column + 5; j++)
                         {
                             for (int i = 0; i < 100; i++)
@@ -141,7 +143,7 @@ namespace ConsoleApp
                     int direction1 = randNum.Next(0, 2);     //define si rio es horizontal o vertical 0=h 1=v
                     if (direction1 == 0)
                     {
-                        int row = randNum.Next(0, 95);
+                        int row = randNum.Next(0, 85);
                         for (int i = row; i < row + 5; i++)
                         {
                             for (int j = 0; j < 100; j++)
@@ -153,7 +155,7 @@ namespace ConsoleApp
                     }
                     else if (direction1 == 1)
                     {
-                        int column = randNum.Next(0, 95);
+                        int column = randNum.Next(0, 85);
                         for (int j = column; j < column + 5; j++)
                         {
                             for (int i = 0; i < 100; i++)
