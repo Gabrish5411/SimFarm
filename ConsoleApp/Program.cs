@@ -76,6 +76,47 @@ namespace ConsoleApp
                                 while (!finished_1_0)
                                 {
                                     selected_building_shop = MenuManager.PrintMenu(building_shop_options);
+                                    if (selected_building_shop == 0)
+                                    {
+                                        List<string> buying_field_options = new List<string>(new string[] { "Tomato", "Potato", "Rice" });
+                                        int selected_field;
+                                        bool finished_1_0_0 = false;
+                                        while (!finished_1_0_0)
+                                        {
+                                            selected_field = MenuManager.PrintMenu(buying_field_options);
+                                        }
+
+
+
+                                    }
+                                    if (selected_building_shop == 1)
+                                    {
+                                        List<string> buying_cattle_options = new List<string>(new string[] { "Cow", "Sheep", "Pig" });
+                                        int selected_cattle;
+                                        bool finished_1_0_1 = false;
+                                        while (!finished_1_0_1)
+                                        {
+                                            selected_cattle = MenuManager.PrintMenu(buying_cattle_options);
+                                        }
+
+                                    }
+                                    if (selected_building_shop == 2)
+                                    {
+                                        List<string> buying_storage_options = new List<string>(new string[] { "Cattle Storage", "Seeds Storage" });
+                                        int selected_storage;
+                                        bool finished_1_0_2 = false;
+                                        while (!finished_1_0_2)
+                                        {
+                                            selected_storage = MenuManager.PrintMenu(buying_storage_options);
+                                        }
+
+                                    }
+                                    if (selected_building_shop == 3)
+                                    {
+                                        Console.WriteLine("You can sell/destroy the following buildings:");
+                                        Console.ReadLine();
+                                    }
+
                                 }
                             }
                             if (selected_shop == 1)
@@ -101,7 +142,7 @@ namespace ConsoleApp
                                 bool finished_1_3 = false;
                                 while (!finished_1_3)
                                 {
-                                    Console.WriteLine("You can sell/destroy the following buildings:");
+                                    Console.WriteLine("The price history is the following:");
                                     Console.ReadLine();
                                 }
                             }
