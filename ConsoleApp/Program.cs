@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp.Products;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -84,6 +85,15 @@ namespace ConsoleApp
                                         while (!finished_1_0_0)
                                         {
                                             selected_field = MenuManager.PrintMenu(buying_field_options);
+                                            if (selected_field == 0)
+                                            {
+                                                Product selected_seed = new Product();
+                                                selected_seed.Set_productName("Tomato");
+                                                Game productPrice = new Game();
+                                                Console.WriteLine(selected_seed.Get_productName());
+                                                Console.WriteLine("The price for your selected item is: " + productPrice.Price());
+                                                
+                                            }
                                         }
 
 
@@ -134,7 +144,7 @@ namespace ConsoleApp
                                 while (!finished_1_2)
                                 {
                                     Console.WriteLine("You can buy the following properties:");
-                                    Console.ReadLine();
+                                    
                                 }
                             }
                             if (selected_shop == 3)

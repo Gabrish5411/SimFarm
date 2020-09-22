@@ -13,6 +13,6 @@ namespace ConsoleApp.Products
         private float suddendeathProbability;
         private int unitsdeadRange;
 
-        Animal vaca = new Animal(); // vaca solo como referencia,  aca faltaria crear una forma de nombrar el animal de manera que el usuario lo elija 
+        Animal chosen_animal = new Animal(); 
     }
 }

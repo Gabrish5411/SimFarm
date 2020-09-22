@@ -11,12 +11,26 @@ namespace ConsoleApp
     {
         private int current_turn;
         private int current_money;
-        private Random randNum = new Random();
+        public Random randNum = new Random();
 
         public Game()
         {
             current_turn = 1;
             current_money = 50000;
+            
+        }
+        
+
+
+        public int Price()//Aca la idea es que se establezcan los precios y que vaya cambiando segun el codigo de abajo
+        {
+
+            
+           
+            Product product = new Product();
+            product.Set_sellPrice(randNum.Next(1000,4000)); // puse 3000 como ejemplo, hay que definir como vamos a establecer los precios de los productos
+            return product.Get_sellPrice();
+
         }
 
         public void UpdateGame() //Aqui actualizamos los precios y el current_money
@@ -24,6 +38,11 @@ namespace ConsoleApp
             List<int> thirtyList = new List<int>();
             Product product = new Product();
             double startingPrice = product.sellPrice;
+            product.Set_sellPrice(3000);
+            thirtyList.Add(product.Get_sellPrice());
+            
+            
+            
             while (current_turn < 30)
             {
                 if (startingPrice * 0.5 < product.sellPrice && product.sellPrice < startingPrice * 1.5)
