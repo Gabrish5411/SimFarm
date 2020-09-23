@@ -254,23 +254,29 @@ namespace ConsoleApp
                             map[i - 1, j].Set_tile_Name("G");
                         }
                     }
-
                 }
-
-
             }
             // finaliza creacion de granja
 
-
+            /*
             //Loop para asignar a que terreno corresponden las casillas
             for (int i = 0; i < 100; i++)
             {
                 for (int j = 0; j < 100; j++)
                 {
-                    map[i, j].Set_terrainNumber(((i / 10) + 1 * (j / 10) + 1) + (i / 10) * 9);
+                    map[i, j].Set_terrainNumber(((j / 10) + 1 * (i / 10) + 1) + (j / 10) * 9);
                     //map[i, j].terrainNumber = Convert.ToString(((i/10)+1 * (j /10)+1) + (i/10)*9 );
                 }
             }
+
+            foreach(Tile casilla in map)
+            {
+                if (casilla.Get_tileName() == "G")
+                {
+                    terrains[casilla.Get_terrainNumber()].Set_bought(true);
+                }
+            }
+            */
 
             //Loop para contar el numero de tierras en un terreno
             foreach (Tile casilla in map)

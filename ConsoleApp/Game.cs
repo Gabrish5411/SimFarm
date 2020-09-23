@@ -20,13 +20,8 @@ namespace ConsoleApp
             
         }
         
-
-
         public int Price()//Aca la idea es que se establezcan los precios y que vaya cambiando segun el codigo de abajo
         {
-
-            
-           
             Product product = new Product();
             product.Set_sellPrice(randNum.Next(1000,4000)); // puse 3000 como ejemplo, hay que definir como vamos a establecer los precios de los productos
             return product.Get_sellPrice();

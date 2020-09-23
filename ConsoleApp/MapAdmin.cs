@@ -13,41 +13,48 @@ namespace ConsoleApp
         //Para cambiar colores:
         private ConsoleColor colorAgua = ConsoleColor.Blue;
         private ConsoleColor colorTierra = ConsoleColor.DarkGreen;
+        
         public void Show(Tile[,] map)
         {
-            for (int k = 0; k < 100; k++)
+            int i = 0;
+            foreach (Tile casilla in map)
             {
-                for (int l = 0; l < 100; l++)
+                if (i == 100)
                 {
-                    if (map[k, l].Get_tileName() == "T")
+                    Console.WriteLine("");
+                    i = 0;
+                }
+                if (casilla.Get_tileName() == "T")
+                {
+                    Console.BackgroundColor = colorTierra;
+                    Console.Write(" ");
+                }
+                else if (casilla.Get_tileName() == "G")
+                {
+                    
+                    if (casilla.Get_farmable())
                     {
                         Console.BackgroundColor = colorTierra;
-                        Console.Write(" ");
+                        Console.Write("G");
                     }
-                    else if (map[k, l].Get_tileName() == "G")
-                    {
-                        if (map[k, l].Get_farmable())
-                        {
-                            Console.BackgroundColor = colorTierra;
-                            Console.Write("G");
-                        }
-                        else
-                        {
-                            Console.BackgroundColor = colorAgua;
-                            Console.Write("G");
-                        }
-                        
-                    }
-                    else if (map[k, l].Get_tileName() == "L" | map[k, l].Get_tileName() == "R")
+                    else
                     {
                         Console.BackgroundColor = colorAgua;
-                        Console.Write(" ");
-                        
+                        Console.Write("G");
                     }
-                    //Console.Write(map[k, l].quality);
+
                 }
-                Console.Write("\n");
+                else if (casilla.Get_tileName() == "L" | casilla.Get_tileName() == "R")
+                {
+                    Console.BackgroundColor = colorAgua;
+                    Console.Write(" ");
+
+                }
+                i++;
+                //Console.Write(map[k, l].quality);
             }
+            Console.WriteLine("");
+            
             Console.BackgroundColor = ConsoleColor.Black;
         }
     }

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections;
+using ConsoleApp.Buildings;
 namespace ConsoleApp
 {
     public class Terrain
     {
         private bool bought;
         public int earthNumber;
+        private Building building;
 
         public Terrain()
         {
@@ -21,6 +23,15 @@ namespace ConsoleApp
         public bool Get_bought()
         {
             return bought;
+        }
+        public void Set_Building(Building item)
+        {
+            building = item;
+        }
+
+        public Building Get_Building()
+        {
+            return building;
         }
     }
 }

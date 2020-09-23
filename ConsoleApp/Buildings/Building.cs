@@ -16,5 +16,10 @@ namespace ConsoleApp.Buildings
         protected Product item;
 
         
+        public Product Get_product()
+        {
+            return item;
+        }
+        
     }
 }

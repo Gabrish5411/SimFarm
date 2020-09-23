@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApp.Products;
 
 namespace ConsoleApp.Buildings
 {
@@ -17,8 +18,9 @@ namespace ConsoleApp.Buildings
         protected bool ill;
         protected int finalUnits;
 
-        public Cattle(Terrain[] terrains)
+        public Cattle(Terrain[] terrains, Animal animal)
         {
+            this.item = animal;
             this.productivity = terrains[tNumber].earthNumber;
             currentHP = 100;   
             availableFood = 100;
