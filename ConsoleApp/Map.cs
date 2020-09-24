@@ -233,8 +233,8 @@ namespace ConsoleApp
 
             // aca comienza la creacion de la granja de dimensiones 3x2
 
-            int row_1 = 10 * randNum.Next(1, 7);
-            int column_1 = 10 * randNum.Next(1, 8); // en caso de que la granja se enuentre fuera de limites, no se podra continuar.
+            int row_1 = 1 + 10 * randNum.Next(1, 7);
+            int column_1 =10 * randNum.Next(1, 8); // en caso de que la granja se enuentre fuera de limites, no se podra continuar.
 
             
             for (int i = row_1; i < row_1 + 29; i++)
