@@ -9,7 +9,7 @@ namespace ConsoleApp.Consumables
 {
     class AnimalWater : Consumable
     {
-        AnimalWater()  //AVAILABLE WATER DE CATTLE
+        public AnimalWater()  //AVAILABLE WATER DE CATTLE
         {
             Uses = 5;
             buyPrice = 5000;

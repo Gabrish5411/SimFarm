@@ -10,7 +10,7 @@ namespace ConsoleApp.Consumables
     class Herbicide : Consumable
     {
         int successProbability;
-        Herbicide()
+        public Herbicide()
         {
             Uses = 5;
             buyPrice = 5000;

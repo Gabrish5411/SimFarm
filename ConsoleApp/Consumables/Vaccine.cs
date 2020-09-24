@@ -8,7 +8,7 @@ namespace ConsoleApp.Consumables
 {
     class Vaccine : Consumable
     {
-        Vaccine()
+        public Vaccine()
         {
             Uses = 5;
             buyPrice = 5000;

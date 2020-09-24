@@ -9,7 +9,7 @@ namespace ConsoleApp.Consumables
 {
     class Irrigation : Consumable
     {
-        Irrigation()
+        public Irrigation()
         {
             Uses = 5;
             buyPrice = 5000;

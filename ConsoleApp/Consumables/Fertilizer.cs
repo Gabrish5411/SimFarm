@@ -9,7 +9,7 @@ namespace ConsoleApp.Consumables
 {
     class Fertilizer : Consumable
     {
-        Fertilizer()
+        public Fertilizer()
         {
             Uses = 5;   //ejemplo de los usos restantes del fertilizante (tiene 5 unidades de fertilizante con 1 uso c/u)
             buyPrice = 5000; //ejemplo coste

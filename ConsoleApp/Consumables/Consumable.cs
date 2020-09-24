@@ -10,8 +10,13 @@ namespace ConsoleApp.Consumables
     class Consumable
     {
         protected int Uses;
-        protected int buyPrice;
+        protected int buyPrice;   
         
+        public int Uses1
+        {
+            get { return Uses; }
+            set { Uses = value; }
+        }
     }
     
 }

@@ -8,7 +8,7 @@ namespace ConsoleApp.Consumables
 {
     class Fungicide : Consumable
     {
-        Fungicide()
+        public Fungicide()
         {
             Uses = 5;
             buyPrice = 5000;

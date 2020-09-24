@@ -5,14 +5,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApp.Consumables;
 
 namespace ConsoleApp
 {
     class Program
     {
 
+
         static void Main(string[] args)
         {
+            Game game1 = new Game();
+            Fertilizer fertilizer = new Fertilizer();
+            Irrigation irrigation = new Irrigation();
+            AnimalFood animalFood = new AnimalFood();
+            AnimalWater animalWater = new AnimalWater();
+            Fungicide fungicide = new Fungicide();
+            Herbicide herbicide = new Herbicide();
+            Pesticide pesticide = new Pesticide();
+            Vaccine vaccine = new Vaccine();
             MapAdmin printer = new MapAdmin();
             Game game;
             Map m1;
@@ -62,6 +73,7 @@ namespace ConsoleApp
                 }
             }
             */
+
             List<string> turn_options = new List<string>(new string[] { "Manage Farm", "Go to Market", "Pass turn", "Save Game" });
             int selected_turn;
             bool finished = false;
@@ -93,7 +105,7 @@ namespace ConsoleApp
                                     }
                                     else if (selected_building_shop == 0)
                                     {
-                                        List<string> buying_field_options = new List<string>(new string[] { "Tomato", "Potato", "Rice", "Previous Menu"});
+                                        List<string> buying_field_options = new List<string>(new string[] { "Tomato", "Potato", "Rice", "Previous Menu" });
                                         int selected_field;
                                         bool finished_1_0_0 = false;
                                         while (!finished_1_0_0)
@@ -105,15 +117,16 @@ namespace ConsoleApp
                                             }
                                             else if (selected_field == 0)
                                             {
-                                                
+
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
 
 
+
                                                 if (m1.terrains[sel_terrain].Get_bought())
                                                 {
-                                                    
+
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
                                                     Seed selected_seed = new Seed();
                                                     selected_seed.Set_productName("Tomato");
@@ -125,11 +138,11 @@ namespace ConsoleApp
                                                 {
                                                     Console.WriteLine("The selected terrain is invalid.");
                                                 }
-                                                
+
                                                 //Game productPrice = new Game();
                                                 //Console.WriteLine(selected_seed.Get_productName());
                                                 //Console.WriteLine("The price for your selected item is: " + productPrice.Price());
-                                                
+
                                             }
                                         }
                                     }
@@ -160,17 +173,172 @@ namespace ConsoleApp
                                         Console.WriteLine("You can sell/destroy the following buildings:");
                                         Console.ReadLine();
                                     }
-                                    
+
 
                                 }
                             }
-                            else if (selected_shop == 1)
+                            else if (selected_shop == 1)  //CONSUMABLES
                             {
-                                bool finished_1_1 = false;
-                                while (!finished_1_1)
+                                Console.WriteLine("You can buy the following consumables:");
+                                List<string> buying_consumable_options = new List<string>(new string[] { "Food", "Medication", "Previous Menu" });
+                                int selected_consumable;
+                                bool finished_1_1_0 = false;
+                                while (!finished_1_1_0)
                                 {
-                                    Console.WriteLine("You can buy the following consumables:");
-                                    Console.ReadLine();
+                                    selected_consumable = MenuManager.PrintMenu(buying_consumable_options);
+                                    if (selected_consumable == 2) //Menu Anterior
+                                    {
+                                        break;
+                                    }
+                                    else if (selected_consumable == 0)
+                                    {
+
+                                        List<string> buying_food_options = new List<string>(new string[] { "Fertilizer", "Irrigation", "Animal Food", "Animal Water", "Previous Menu" });
+                                        int selected_food;
+                                        bool finished_1_1_1 = false;
+                                        while (!finished_1_1_1)
+                                        {
+                                            selected_food = MenuManager.PrintMenu(buying_food_options);
+                                            if (selected_food == 4) //Menu Anterior
+                                            {
+                                                break;
+                                            }
+                                            else if (selected_food == 0)
+                                            {
+                                                if (game1.Current_money >= 5000)
+                                                {
+                                                    fertilizer.Uses1 += 1;
+                                                    game1.Current_money -= 5000;
+                                                    Console.WriteLine("Thanks for buying a Fertilizer! Fertilizer uses +1");
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine("You don't have enough money to buy a Fertilizer");
+                                                    break;
+                                                }
+                                            }
+                                            else if (selected_food == 1)
+                                            {
+                                                if (game1.Current_money >= 5000)
+                                                {
+                                                    irrigation.Uses1 += 1;
+                                                    game1.Current_money -= 5000;
+                                                    Console.WriteLine("Thanks for buying Irrigation! Irrigation uses +1");
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine("You don't have enough money to buy Irrigation");
+                                                    break;
+                                                }
+                                            }
+                                            else if (selected_food == 2)
+                                            {
+                                                if (game1.Current_money >= 5000)
+                                                {
+                                                    animalFood.Uses1 += 1;
+                                                    game1.Current_money -= 5000;
+                                                    Console.WriteLine("Thanks for buying Animal Food! Animal Food uses +1");
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine("You don't have enough money to buy Animal Food");
+                                                    break;
+                                                }
+                                            }
+                                            else if (selected_food == 3)
+                                            {
+                                                if (game1.Current_money >= 5000)
+                                                {
+                                                    animalWater.Uses1 += 1;
+                                                    game1.Current_money -= 5000;
+                                                    Console.WriteLine("Thanks for buying Animal Water! Animal Water uses +1");
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine("You don't have enough money to buy Animal Water");
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else if (selected_consumable == 1)
+                                    {
+                                        List<string> buying_medication_options = new List<string>(new string[] { "Fungicide", "Herbicide", "Pesticide", "Vaccine", "Previous Menu" });
+                                        int selected_medication;
+                                        bool finished_1_1_2 = false;
+                                        while (!finished_1_1_2)
+                                        {
+                                            selected_medication = MenuManager.PrintMenu(buying_medication_options);
+                                            if (selected_medication == 4) //Menu Anterior
+                                            {
+                                                break;
+                                            }
+                                            else if (selected_medication == 0)
+                                            {
+                                                if (game1.Current_money >= 5000)
+                                                {
+                                                    fungicide.Uses1 += 1;
+                                                    game1.Current_money -= 5000;
+                                                    Console.WriteLine("Thanks for buying Fungicide! Fungicide uses +1");
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine("You don't have enough money to buy Fungicide");
+                                                    break;
+                                                }
+                                            }
+                                            else if (selected_medication == 1)
+                                            {
+                                                if (game1.Current_money >= 5000)
+                                                {
+                                                    herbicide.Uses1 += 1;
+                                                    game1.Current_money -= 5000;
+                                                    Console.WriteLine("Thanks for buying Herbicide! Herbicide uses +1");
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine("You don't have enough money to buy Herbicide");
+                                                    break;
+                                                }
+                                            }
+                                            else if (selected_medication == 2)
+                                            {
+                                                if (game1.Current_money >= 5000)
+                                                {
+                                                    pesticide.Uses1 += 1;
+                                                    game1.Current_money -= 5000;
+                                                    Console.WriteLine("Thanks for buying Pesticide! Pesticide uses +1");
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine("You don't have enough money to buy Pesticide");
+                                                    break;
+                                                }
+                                            }
+                                            else if (selected_medication == 3)
+                                            {
+                                                if (game1.Current_money >= 5000)
+                                                {
+                                                    vaccine.Uses1 += 1;
+                                                    game1.Current_money -= 5000;
+                                                    Console.WriteLine("Thanks for buying a Vaccine! Vaccine uses +1");
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine("You don't have enough money to buy a Vaccine");
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                             else if (selected_shop == 2)
@@ -179,21 +347,38 @@ namespace ConsoleApp
                                 while (!finished_1_2)
                                 {
                                     Console.WriteLine("You can buy the following properties:");
-                                    
+                                    break;
                                 }
                             }
                             else if (selected_shop == 3)
                             {
+                                List<string> price_history = new List<string>(new string[] { "Tomato Prices", "Potato Prices", "Rice Prices", "Previous Menu" });
+                                int selected_seed_price;
                                 bool finished_1_3 = false;
                                 while (!finished_1_3)
                                 {
-                                    Console.WriteLine("The price history is the following:");
-                                    Console.ReadLine();
+
+                                    selected_seed_price = MenuManager.PrintMenu(price_history);
+                                    if (selected_seed_price == 3)
+                                    {
+                                        break;
+                                    }
+                                    else if (selected_seed_price == 0) //thirtyList_tomato
+                                    {
+
+                                        Console.WriteLine("The Tomato price history is the following:");
+                                    }
+                                    else if (selected_seed_price == 1) //thirtyList_potato
+                                    {
+
+                                        Console.WriteLine("The Potato price history is the following:");
+                                    }
+                                    else if (selected_seed_price == 2) //thirtyList_rice
+                                    {
+
+                                        Console.WriteLine("The Rice price history is the following:");
+                                    }
                                 }
-                            }
-                            else if (selected_shop == 4) //Menu Anterior
-                            {
-                                break;
                             }
                         }
                         break;

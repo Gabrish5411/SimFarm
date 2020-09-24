@@ -9,7 +9,7 @@ namespace ConsoleApp.Consumables
 {
     class AnimalFood : Consumable
     {
-        AnimalFood()
+        public AnimalFood()
         {
             buyPrice = 5000;
             Uses = 5;
