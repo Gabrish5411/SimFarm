@@ -6,13 +6,23 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.Buildings
 {
-    class Storage
+    class Storage : Building
     {
         protected int capacity;
-
-        Storage()
+        public Storage(Terrain[] terrains, FinishedProduct finishedProduct)
         {
+            this.item = finishedProduct;
+            Game game = new Game();
+            FinishedProduct finished_product = new FinishedProduct();
             capacity = 10;
+
+            if (capacity != 10)
+            {
+                finished_product.productQuality -= 1;
+
+            }
+
+
         }
     }
 

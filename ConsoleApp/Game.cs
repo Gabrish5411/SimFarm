@@ -10,7 +10,7 @@ namespace ConsoleApp
 {
     class Game
     {
-        private int current_turn;
+        public int current_turn;
         private int current_money;
         public Random randNum = new Random();
         public List<int> thirtyList_tomato;

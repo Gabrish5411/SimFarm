@@ -9,10 +9,10 @@ namespace ConsoleApp.Buildings
 {
     public class Building
     {
-        protected string name;
+        public string name;
         protected int tNumber;
-        protected int buyPrice;
-        protected int sellPrice;
+        public int buyPrice;
+        public int sellPrice;
         protected Product item;
 
         

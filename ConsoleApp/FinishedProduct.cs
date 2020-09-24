@@ -24,9 +24,6 @@ namespace ConsoleApp
 
         }
 
-        public FinishedProduct(string name)
-        {
-            Set_productName(name);
-        }
+        
     }
 }
