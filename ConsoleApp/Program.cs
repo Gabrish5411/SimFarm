@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp.Consumables;
+using ConsoleApp.Tiles;
 
 namespace ConsoleApp
 {
@@ -141,7 +142,7 @@ namespace ConsoleApp
                                                 
 
 
-                                                if (m1.terrains[sel_terrain].Get_bought())
+                                                if (m1.terrains[sel_terrain - 1].Get_bought())
                                                 {
                                                     
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
@@ -189,7 +190,7 @@ namespace ConsoleApp
 
 
 
-                                                if (m1.terrains[sel_terrain].Get_bought())
+                                                if (m1.terrains[sel_terrain - 1].Get_bought())
                                                 {
 
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
@@ -235,7 +236,7 @@ namespace ConsoleApp
 
 
 
-                                                if (m1.terrains[sel_terrain].Get_bought())
+                                                if (m1.terrains[sel_terrain - 1].Get_bought())
                                                 {
 
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
@@ -298,7 +299,7 @@ namespace ConsoleApp
 
 
 
-                                                if (m1.terrains[sel_terrain].Get_bought())
+                                                if (m1.terrains[sel_terrain - 1].Get_bought())
                                                 {
 
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
@@ -344,7 +345,7 @@ namespace ConsoleApp
 
 
 
-                                                if (m1.terrains[sel_terrain].Get_bought())
+                                                if (m1.terrains[sel_terrain - 1].Get_bought())
                                                 {
 
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
@@ -390,7 +391,7 @@ namespace ConsoleApp
 
 
 
-                                                if (m1.terrains[sel_terrain].Get_bought())
+                                                if (m1.terrains[sel_terrain - 1].Get_bought())
                                                 {
 
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
@@ -454,7 +455,7 @@ namespace ConsoleApp
 
 
 
-                                                if (m1.terrains[sel_terrain].Get_bought())
+                                                if (m1.terrains[sel_terrain - 1].Get_bought())
                                                 {
 
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
@@ -500,7 +501,7 @@ namespace ConsoleApp
 
 
 
-                                                if (m1.terrains[sel_terrain].Get_bought())
+                                                if (m1.terrains[sel_terrain - 1].Get_bought())
                                                 {
 
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
@@ -704,16 +705,27 @@ namespace ConsoleApp
                                     }
                                 }
                             }
-                            else if (selected_shop == 2)
+                            else if (selected_shop == 2) //Comprar terrenos
                             {
-                                bool finished_1_2 = false;
-                                while (!finished_1_2)
+                                Console.WriteLine("You can buy a NOT owned property");
+                                m1.Print_Farm();
+                                Console.WriteLine("Select a terrain not in the list above(1-100): ");
+                                string terrain_of_choice = Console.ReadLine();
+                                int terrain_choice = Convert.ToInt32(terrain_of_choice);
+                                if (!m1.terrains[terrain_choice - 1].Get_bought())
                                 {
-                                    Console.WriteLine("You can buy the following properties:");
-                                    break;
+                                    m1.terrains[terrain_choice].Set_bought(true);
+                                    Console.WriteLine("Terrain n° "+ terrain_of_choice +" has been bought.");
+                                    foreach (Tile casilla in m1.map)
+                                    {
+                                        if (casilla.Get_terrainNumber() == terrain_choice)
+                                        {
+                                            casilla.Set_tile_Name("G");
+                                        }
+                                    }
                                 }
                             }
-                            else if (selected_shop == 3)
+                            else if (selected_shop == 3)  //Lista de precios
                             {
                                 List<string> price_history = new List<string>(new string[] { "Tomato Prices", "Potato Prices", "Rice Prices", "Previous Menu" });
                                 int selected_seed_price;

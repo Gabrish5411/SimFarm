@@ -24,7 +24,6 @@ namespace ConsoleApp.Tiles
             tileName = name;
         }
 
-
         public int Get_quality()
         {
             return quality;

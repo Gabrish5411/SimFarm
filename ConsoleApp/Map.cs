@@ -295,12 +295,12 @@ namespace ConsoleApp
 
         public void Print_Farm()
         {
-            Console.WriteLine("Avalable terrains: ");
+            Console.WriteLine("Owned terrains: ");
             for (int i = 0; i < 100; i++)
             {
                 if (terrains[i].Get_bought())
                 {
-                    Console.WriteLine(i);
+                    Console.WriteLine(i + 1);
                 }
             }
         }
