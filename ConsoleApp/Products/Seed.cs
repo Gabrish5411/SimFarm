@@ -14,9 +14,6 @@ namespace ConsoleApp.Products
         private float undergrowthProbability;
         private int undergowthPenalty;
 
-
-
-
-        Seed chosen_seed = new Seed(); 
+        
     }
 }

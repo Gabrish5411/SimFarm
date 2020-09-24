@@ -100,11 +100,8 @@ namespace ConsoleApp
                                 while (!finished_1_0)
                                 {
                                     selected_building_shop = MenuManager.PrintMenu(building_shop_options);
-                                    if (selected_building_shop == 4) //Menu Anterior
-                                    {
-                                        break;
-                                    }
-                                    else if (selected_building_shop == 0)
+                                    
+                                    if (selected_building_shop == 0)
                                     {
                                         
                                         List<string> buying_field_options = new List<string>(new string[] { "Tomato", "Potato", "Rice", "Previous Menu" });
@@ -123,6 +120,7 @@ namespace ConsoleApp
                                                 
                                                 building.name = "Tomato Field";
                                                 Console.WriteLine("The price of a " + building.name + " is " + building.buyPrice);
+                                                m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
@@ -140,16 +138,19 @@ namespace ConsoleApp
                                                     break;
                                                 }
 
+                                                
 
 
                                                 if (m1.terrains[sel_terrain].Get_bought())
                                                 {
-
+                                                    
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
                                                     Seed selected_seed = new Seed();
                                                     selected_seed.Set_productName("Tomato");
+
                                                     m1.terrains[sel_terrain].Set_Building(new Field(m1.terrains, selected_seed));
-                                                    Console.WriteLine(m1.terrains[sel_terrain].Get_Building().Get_product().Get_productName());
+
+                                                    //Console.WriteLine(m1.terrains[sel_terrain].Get_Building().Get_product().Get_productName());
                                                     //m1.terrains[Convert.ToInt32(selected_terrain)].Get_Building().Get_product().Get_productName();
                                                     Console.WriteLine("Thanks for buying a " + building.name);
                                                 }
@@ -168,6 +169,7 @@ namespace ConsoleApp
 
                                                 building.name = "Potato Field";
                                                 Console.WriteLine("The price of a " + building.name + " is " + building.buyPrice);
+                                                m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
@@ -214,6 +216,7 @@ namespace ConsoleApp
 
                                                 building.name = "Rice Field";
                                                 Console.WriteLine("The price of a " + building.name + " is " + building.buyPrice);
+                                                m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
@@ -275,6 +278,7 @@ namespace ConsoleApp
 
                                                 building.name = "Cow Cattle";
                                                 Console.WriteLine("The price of a " + building.name + " is " + building.buyPrice);
+                                                m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
@@ -320,6 +324,7 @@ namespace ConsoleApp
 
                                                 building.name = "Sheep Cattle";
                                                 Console.WriteLine("The price of a " + building.name + " is " + building.buyPrice);
+                                                m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
@@ -366,6 +371,7 @@ namespace ConsoleApp
 
                                                 building.name = "Pig Cattle";
                                                 Console.WriteLine("The price of " + building.name + " is " + building.buyPrice);
+                                                m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
@@ -428,6 +434,7 @@ namespace ConsoleApp
 
                                                 building.name = "Cattle Storage";
                                                 Console.WriteLine("The price of " + building.name + " is " + building.buyPrice);
+                                                m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
@@ -473,6 +480,7 @@ namespace ConsoleApp
 
                                                 building.name = "Seeds Storage";
                                                 Console.WriteLine("The price of " + building.name + " is " + building.buyPrice);
+                                                m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
@@ -522,6 +530,11 @@ namespace ConsoleApp
                                     {
                                         Console.WriteLine("You can sell/destroy the following buildings:");
                                         Console.ReadLine();
+                                    }
+                                    else if (selected_building_shop == 4) //Menu Anterior
+                                    {
+                                        
+                                        break;
                                     }
 
 
@@ -729,6 +742,10 @@ namespace ConsoleApp
                                         Console.WriteLine("The Rice price history is the following:");
                                     }
                                 }
+                            }
+                            else if (selected_shop == 4) //Menu Anterior
+                            {
+                                break;
                             }
                         }
                         break;

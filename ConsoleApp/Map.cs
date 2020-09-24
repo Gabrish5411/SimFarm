@@ -258,7 +258,7 @@ namespace ConsoleApp
             }
             // finaliza creacion de granja
 
-            /*
+            
             //Loop para asignar a que terreno corresponden las casillas
             for (int i = 0; i < 100; i++)
             {
@@ -268,15 +268,16 @@ namespace ConsoleApp
                     //map[i, j].terrainNumber = Convert.ToString(((i/10)+1 * (j /10)+1) + (i/10)*9 );
                 }
             }
+            
 
-            foreach(Tile casilla in map)
+            foreach (Tile casilla in map)
             {
                 if (casilla.Get_tileName() == "G")
                 {
                     terrains[casilla.Get_terrainNumber()].Set_bought(true);
                 }
             }
-            */
+            
 
             //Loop para contar el numero de tierras en un terreno
             foreach (Tile casilla in map)
@@ -290,6 +291,18 @@ namespace ConsoleApp
 
 
 
+        }
+
+        public void Print_Farm()
+        {
+            Console.WriteLine("Avalable terrains: ");
+            for (int i = 0; i < 100; i++)
+            {
+                if (terrains[i].Get_bought())
+                {
+                    Console.WriteLine(i);
+                }
+            }
         }
         
     }
