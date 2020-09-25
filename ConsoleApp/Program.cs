@@ -9,6 +9,7 @@ using ConsoleApp.Consumables;
 using ConsoleApp.Tiles;
 using ConsoleApp.Products.Seeds;
 using ConsoleApp.Products.Animals;
+using System.Net.Http.Headers;
 
 namespace ConsoleApp
 {
@@ -663,8 +664,11 @@ namespace ConsoleApp
                                 Console.WriteLine("Select a terrain not in the list above(1-100): ");
                                 string terrain_of_choice = Console.ReadLine();
                                 int terrain_choice = Convert.ToInt32(terrain_of_choice);
-                                if (!m1.terrains[terrain_choice - 1].Get_bought())
+                                int price = m1.terrains[terrain_choice].Get_terrain_price();
+                                Console.WriteLine("The terrain price is " + price);
+                                if (!m1.terrains[terrain_choice - 1].Get_bought() && game.Current_money > price) //Es comprable y hay dinero
                                 {
+                                    game.Current_money -= price;
                                     m1.terrains[terrain_choice].Set_bought(true);
                                     Console.WriteLine("Terrain n° "+ terrain_of_choice +" has been bought.");
                                     foreach (Tile casilla in m1.map)
@@ -674,6 +678,14 @@ namespace ConsoleApp
                                             casilla.Set_tile_Name("G");
                                         }
                                     }
+                                }
+                                else if (!m1.terrains[terrain_choice - 1].Get_bought()) //Es comprable pero no hay dinero
+                                {
+                                    Console.WriteLine("Not enough money to buy the property.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("You already own the terrain.");
                                 }
                             }
                             else if (selected_shop == 3)  //Lista de precios

@@ -9,7 +9,7 @@ namespace ConsoleApp.Buildings
 {
     class Field : Building
     {
-        protected int productivity;
+        protected double productivity;
         public int currentHP;
         protected int availableFood;
         protected int availableWater;
@@ -23,7 +23,7 @@ namespace ConsoleApp.Buildings
         {
             this.buyPrice = 20000;
             this.item = seed;
-            this.productivity = terrains[tNumber].earthNumber;
+            this.productivity = terrains[tNumber].earthNumber / 100;
             currentHP = 100;
             availableFood = 100;
             availableWater = 100;

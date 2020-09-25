@@ -6,11 +6,15 @@ namespace ConsoleApp
     public class Terrain
     {
         private bool bought;
-        public int earthNumber;
+        private double basePrice;
+        public double terrainQuality;
+        public double earthNumber;
         private Building building;
 
         public Terrain()
         {
+            basePrice = 48000;
+            terrainQuality = 0;
             earthNumber = 100;
             bought = false;
             
@@ -32,6 +36,10 @@ namespace ConsoleApp
         public Building Get_Building()
         {
             return building;
+        }
+        public int Get_terrain_price()
+        {
+            return Convert.ToInt32(basePrice * terrainQuality * (earthNumber / 100));
         }
     }
 }

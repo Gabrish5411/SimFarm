@@ -274,7 +274,7 @@ namespace ConsoleApp
             {
                 if (casilla.Get_tileName() == "G")
                 {
-                    terrains[casilla.Get_terrainNumber()].Set_bought(true);
+                    terrains[casilla.Get_terrainNumber() - 1].Set_bought(true);
                 }
             }
             
@@ -282,11 +282,17 @@ namespace ConsoleApp
             //Loop para contar el numero de tierras en un terreno
             foreach (Tile casilla in map)
             {
+                terrains[casilla.Get_terrainNumber() - 1].terrainQuality += casilla.Get_quality();
                 if (!casilla.Get_farmable())
                 {
                     terrains[casilla.Get_terrainNumber()].earthNumber -= 1;
                 }
                 
+            }
+            //Loop para dividir la calidad de un terreno en 100, obteniendo el promedio de la calidad de las tierras
+            foreach(Terrain terrain in terrains)
+            {
+                terrain.terrainQuality = terrain.terrainQuality / 100;
             }
 
 

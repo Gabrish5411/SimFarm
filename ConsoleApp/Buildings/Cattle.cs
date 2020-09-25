@@ -9,7 +9,7 @@ namespace ConsoleApp.Buildings
 {
      class Cattle : Building
     {
-        protected int productivity;
+        protected double productivity;
         public int currentHP;
         public int availableFood;
         protected int availableWater;
@@ -22,7 +22,7 @@ namespace ConsoleApp.Buildings
         {
             this.buyPrice = 15000;
             this.item = animal;
-            this.productivity = terrains[tNumber].earthNumber;
+            this.productivity = terrains[tNumber].earthNumber / 100;
             currentHP = 100;   
             availableFood = 100;
             availableWater = 100;
