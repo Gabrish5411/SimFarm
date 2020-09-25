@@ -11,6 +11,7 @@ namespace ConsoleApp.Products.Seeds
     {
         public Tomato()
         {
+            this.currentPrice = this.sellPrice;
             this.Set_productName("Tomato");
             this.Set_buyPrice(1000);
             this.Set_sellPrice(500);

@@ -10,6 +10,7 @@ namespace ConsoleApp.Products.Seeds
     {
         public Rice()
         {
+            this.currentPrice = this.sellPrice;
             this.Set_productName("Rice");
             this.Set_buyPrice(1000);
             this.Set_sellPrice(500);

@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApp.Products.Seeds;
 
 namespace ConsoleApp
 {
@@ -25,9 +26,9 @@ namespace ConsoleApp
         {
             current_turn = 1;
             current_money = 50000;
-            tomato = new Seed();
-            potato = new Seed();
-            rice = new Seed();
+            tomato = new Tomato();
+            potato = new Potato();
+            rice = new Rice();
 
         }
         //******************************************
