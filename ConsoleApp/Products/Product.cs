@@ -10,7 +10,9 @@ namespace ConsoleApp.Products
     {
         protected string productName;
         protected int buyPrice;
-        public int sellPrice;
+        protected int sellPrice;
+        protected int currentPrice;
+        protected int priceVariation;
         protected int foodConsumption;
         protected int waterConsumption;
         protected int minFood;
@@ -21,6 +23,11 @@ namespace ConsoleApp.Products
         protected float diseaseProbability;
         protected int diseasePenalty;
         private Random randNum = new Random(); //creado para generar probabilidad de enfermedad de manera aleatoria
+
+        public Product()
+        {
+            currentPrice = buyPrice;
+        }
 
         public string Get_productName()
         {
@@ -142,6 +149,24 @@ namespace ConsoleApp.Products
         {
             diseasePenalty = value;
         }
+
+        public int Get_price()
+        {
+            return currentPrice;
+        }
+        public void Change_Price(int price)
+        {
+            currentPrice += price;
+        }
+        public void Set_variation(int vari)
+        {
+            priceVariation = vari;
+        }
+        public int Get_variation()
+        {
+            return priceVariation;
+        }
+        
 
     }
 }

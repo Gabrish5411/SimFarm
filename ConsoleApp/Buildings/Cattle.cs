@@ -20,6 +20,7 @@ namespace ConsoleApp.Buildings
 
         public Cattle(Terrain[] terrains, Animal animal)
         {
+            this.buyPrice = 15000;
             this.item = animal;
             this.productivity = terrains[tNumber].earthNumber;
             currentHP = 100;   

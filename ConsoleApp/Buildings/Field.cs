@@ -21,6 +21,7 @@ namespace ConsoleApp.Buildings
 
         public Field(Terrain[] terrains, Seed seed)
         {
+            this.buyPrice = 20000;
             this.item = seed;
             this.productivity = terrains[tNumber].earthNumber;
             currentHP = 100;

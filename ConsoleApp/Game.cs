@@ -1,5 +1,6 @@
 ﻿using ConsoleApp.Products;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -13,15 +14,21 @@ namespace ConsoleApp
         public int current_turn;
         private int current_money;
         public Random randNum = new Random();
-        public List<int> thirtyList_tomato;
-        public List<int> thirtyList_potato;
-        public List<int> thirtyList_rice;
+        public Queue thirtyList_tomato;
+        public Queue thirtyList_potato;
+        public Queue thirtyList_rice;
+        public Seed tomato;
+        public Seed potato;
+        public Seed rice;
 
         public Game()
         {
             current_turn = 1;
             current_money = 50000;
-            
+            tomato = new Seed();
+            potato = new Seed();
+            rice = new Seed();
+
         }
         //******************************************
         public int Current_money
@@ -30,6 +37,7 @@ namespace ConsoleApp
             set { current_money = value; }
         }
         //******************************************
+        /*
         public int Price()//Aca la idea es que se establezcan los precios y que vaya cambiando segun el codigo de abajo
         {
             Product product = new Product();
@@ -37,66 +45,51 @@ namespace ConsoleApp
             return product.Get_sellPrice();
 
         }
+        */
 
-        public void UpdateGame(List<int> seed_list) //Aqui actualizamos los precios y el current_money
+        public void UpdateGame() //Aqui actualizamos las listas de precios.
         {
-            Product product = new Product();
-            double startingPrice = product.sellPrice;
-            product.Set_sellPrice(3000);
-            seed_list.Add(product.Get_sellPrice());
-            Seed seed = new Seed();
-            int price_var = seed.priceVariation;
+            Update_Seed(thirtyList_tomato, tomato);
+            Update_Seed(thirtyList_potato, potato);
+            Update_Seed(thirtyList_rice, rice);
 
+            current_turn += 1;
+        }
 
-            if (current_turn == 1)
+        private void Update_Seed(Queue seed_list, Seed seed)
+        {
+            if (seed_list.Count > 30)
             {
-                while (seed_list.Count < 30)
+                Add_Element(seed_list, seed);
+            }
+            else
+            {
+                seed_list.Dequeue();
+                Add_Element(seed_list, seed);
+            }
+        }
+        private void Add_Element(Queue seed_list, Seed seed)
+        {
+            if (seed.Get_sellPrice() * 0.5 < seed.Get_price() && seed.Get_price() < seed.Get_sellPrice() * 1.5)
+            {
+                int random = randNum.Next(0, 2);
+                if (random == 0) //decrece el precio de venta
                 {
-                    if (startingPrice * 0.5 < product.sellPrice && product.sellPrice < startingPrice * 1.5)
-                    {
-                        int random = randNum.Next(0, 2);
-                        if (random == 0) //decrece el precio de venta
-                        {
-                            product.sellPrice -= price_var;
-                        }
-                        else if (random == 1) //aumenta el precio de venta
-                        {
-                            product.sellPrice += price_var;
-                        }
-                    }
-                    else
-                    {
-                        break;
-                    }
-                    seed_list.Add(product.sellPrice);
+                    seed.Change_Price(seed.Get_variation() * -1);
+                    seed_list.Enqueue(seed.Get_sellPrice() + seed.Get_variation() * current_turn);
+                }
+                else if (random == 1) //aumenta el precio de venta
+                {
+                    seed.Change_Price(seed.Get_variation());
+                    seed_list.Enqueue(seed.Get_sellPrice() + seed.Get_variation() * current_turn);
                 }
             }
             else
             {
-                while (seed_list.Count == 30)
-                {
-                    if (startingPrice * 0.5 < product.sellPrice && product.sellPrice < startingPrice * 1.5)
-                    {
-                        int random = randNum.Next(0, 2);
-                        if (random == 0) //decrece el precio de venta
-                        {
-                            product.sellPrice -= price_var;
-                        }
-                        else if (random == 1) //aumenta el precio de venta
-                        {
-                            product.sellPrice += price_var;
-                        }
-                        seed_list.Add(product.sellPrice);
-                        seed_list.RemoveAt(0);
-                        break;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
+                seed.Change_Price(seed.Get_sellPrice());
+                seed_list.Enqueue(seed.Get_sellPrice() + seed.Get_variation() * current_turn);
             }
-            current_turn += 1;
+
         }
     }
 }

@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp.Consumables;
 using ConsoleApp.Tiles;
+using ConsoleApp.Products.Seeds;
+using ConsoleApp.Products.Animals;
 
 namespace ConsoleApp
 {
@@ -17,7 +19,8 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
             Game game1 = new Game();
-            Building building = new Building();
+            Building building;
+            string building_name;
             Fertilizer fertilizer = new Fertilizer();
             Irrigation irrigation = new Irrigation();
             AnimalFood animalFood = new AnimalFood();
@@ -108,7 +111,7 @@ namespace ConsoleApp
                                         List<string> buying_field_options = new List<string>(new string[] { "Tomato", "Potato", "Rice", "Previous Menu" });
                                         int selected_field;
                                         bool finished_1_0_0 = false;
-                                        building.buyPrice = 20000;
+                                        //building.buyPrice = 20000;
                                         while (!finished_1_0_0)
                                         {
                                             selected_field = MenuManager.PrintMenu(buying_field_options);
@@ -119,23 +122,22 @@ namespace ConsoleApp
                                             else if (selected_field == 0)
                                             {
                                                 
-                                                building.name = "Tomato Field";
-                                                Console.WriteLine("The price of a " + building.name + " is " + building.buyPrice);
+                                                building_name = "Tomato Field";
+                                                Tomato tomato = new Tomato();
+                                                building = new Field(m1.terrains, tomato);
+                                                Console.WriteLine("The price of a " + building_name + " is " + building.buyPrice + tomato.Get_buyPrice());
                                                 m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
 
-                                                if (game1.Current_money >= 20000)
+                                                if (game1.Current_money >= building.buyPrice + tomato.Get_buyPrice())
                                                 {
-                                                   
-                                                    game1.Current_money -= 20000;
-                                                    
-                                                    
+                                                    game1.Current_money -= building.buyPrice + tomato.Get_buyPrice();
                                                 }
                                                 else
                                                 {
-                                                    Console.WriteLine("You don't have enough money to buy a " + building.name );
+                                                    Console.WriteLine("You don't have enough money to buy a " + building_name );
                                                     break;
                                                 }
 
@@ -144,47 +146,39 @@ namespace ConsoleApp
 
                                                 if (m1.terrains[sel_terrain - 1].Get_bought())
                                                 {
-                                                    
+
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
-                                                    Seed selected_seed = new Seed();
-                                                    selected_seed.Set_productName("Tomato");
-
-                                                    m1.terrains[sel_terrain].Set_Building(new Field(m1.terrains, selected_seed));
-
-                                                    //Console.WriteLine(m1.terrains[sel_terrain].Get_Building().Get_product().Get_productName());
-                                                    //m1.terrains[Convert.ToInt32(selected_terrain)].Get_Building().Get_product().Get_productName();
-                                                    Console.WriteLine("Thanks for buying a " + building.name);
+                                                    m1.terrains[sel_terrain].Set_Building(building);
+                                                    Console.WriteLine("Thanks for buying a " + building_name);
                                                 }
                                                 else
                                                 {
                                                     Console.WriteLine("The selected terrain is invalid.");
                                                 }
 
-                                                //Game productPrice = new Game();
-                                                //Console.WriteLine(selected_seed.Get_productName());
-                                                //Console.WriteLine("The price for your selected item is: " + productPrice.Price());
-
                                             }
                                             else if (selected_field == 1)
                                             {
 
-                                                building.name = "Potato Field";
-                                                Console.WriteLine("The price of a " + building.name + " is " + building.buyPrice);
+                                                building_name = "Potato Field";
+                                                Potato potato = new Potato();
+                                                building = new Field(m1.terrains, potato);
+                                                Console.WriteLine("The price of a " + building_name + " is " + building.buyPrice + potato.Get_buyPrice());
                                                 m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
 
-                                                if (game1.Current_money >= 20000)
+                                                if (game1.Current_money >= building.buyPrice + potato.Get_buyPrice())
                                                 {
                                                    
-                                                    game1.Current_money -= 20000;
+                                                    game1.Current_money -= building.buyPrice + potato.Get_buyPrice();
 
 
                                                 }
                                                 else
                                                 {
-                                                    Console.WriteLine("You don't have enough money to buy a" + building.name);
+                                                    Console.WriteLine("You don't have enough money to buy a" + building_name);
                                                     break;
                                                 }
 
@@ -194,43 +188,37 @@ namespace ConsoleApp
                                                 {
 
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
-                                                    Seed selected_seed = new Seed();
-                                                    selected_seed.Set_productName("Potato");
-                                                    m1.terrains[sel_terrain].Set_Building(new Field(m1.terrains, selected_seed));
-                                                    Console.WriteLine(m1.terrains[sel_terrain].Get_Building().Get_product().Get_productName());
-                                                    //m1.terrains[Convert.ToInt32(selected_terrain)].Get_Building().Get_product().Get_productName();
-                                                    Console.WriteLine("Thanks for buying a " + building.name);
+                                                    m1.terrains[sel_terrain].Set_Building(building);
+                                                    Console.WriteLine("Thanks for buying a " + building_name);
                                                 }
                                                 else
                                                 {
                                                     Console.WriteLine("The selected terrain is invalid.");
                                                 }
-
-                                                //Game productPrice = new Game();
-                                                //Console.WriteLine(selected_seed.Get_productName());
-                                                //Console.WriteLine("The price for your selected item is: " + productPrice.Price());
 
                                             }
 
                                             else if (selected_field == 2)
                                             {
 
-                                                building.name = "Rice Field";
-                                                Console.WriteLine("The price of a " + building.name + " is " + building.buyPrice);
+                                                building_name = "Rice Field";
+                                                Rice rice = new Rice();
+                                                building = new Field(m1.terrains, rice);
+                                                Console.WriteLine("The price of a " + building_name + " is " + building.buyPrice + rice.Get_buyPrice());
                                                 m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
 
-                                                if (game1.Current_money >= 20000)
+                                                if (game1.Current_money >= building.buyPrice + rice.Get_buyPrice())
                                                 {
                                                     
-                                                    game1.Current_money -= 20000;
+                                                    game1.Current_money -= building.buyPrice + rice.Get_buyPrice();
 
                                                 }
                                                 else
                                                 {
-                                                    Console.WriteLine("You don't have enough money to buy a" + building.name);
+                                                    Console.WriteLine("You don't have enough money to buy a" + building_name);
                                                     break;
                                                 }
 
@@ -240,21 +228,14 @@ namespace ConsoleApp
                                                 {
 
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
-                                                    Seed selected_seed = new Seed();
-                                                    selected_seed.Set_productName("Rice");
-                                                    m1.terrains[sel_terrain].Set_Building(new Field(m1.terrains, selected_seed));
-                                                    Console.WriteLine(m1.terrains[sel_terrain].Get_Building().Get_product().Get_productName());
-                                                    //m1.terrains[Convert.ToInt32(selected_terrain)].Get_Building().Get_product().Get_productName();
-                                                    Console.WriteLine("Thanks for buying a " + building.name);
+                                                    m1.terrains[sel_terrain].Set_Building(building);
+                                                    Console.WriteLine("Thanks for buying a " + building_name);
                                                 }
                                                 else
                                                 {
                                                     Console.WriteLine("The selected terrain is invalid.");
                                                 }
 
-                                                //Game productPrice = new Game();
-                                                //Console.WriteLine(selected_seed.Get_productName());
-                                                //Console.WriteLine("The price for your selected item is: " + productPrice.Price());
 
                                             }
 
@@ -266,7 +247,6 @@ namespace ConsoleApp
                                         List<string> buying_cattle_options = new List<string>(new string[] { "Cow", "Sheep", "Pig", "Previos Menu" });
                                         int selected_cattle;
                                         bool finished_1_0_1 = false;
-                                        building.buyPrice = 22000;
                                         while (!finished_1_0_1)
                                         {
                                             selected_cattle = MenuManager.PrintMenu(buying_cattle_options);
@@ -277,23 +257,25 @@ namespace ConsoleApp
                                             else if (selected_cattle == 0)
                                             {
 
-                                                building.name = "Cow Cattle";
-                                                Console.WriteLine("The price of a " + building.name + " is " + building.buyPrice);
+                                                building_name = "Cow Cattle";
+                                                Cow cow = new Cow();
+                                                building = new Cattle(m1.terrains, cow);
+                                                Console.WriteLine("The price of a " + building_name + " is " + building.buyPrice + cow.Get_buyPrice());
                                                 m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
 
-                                                if (game1.Current_money >= 22000)
+                                                if (game1.Current_money >= building.buyPrice + cow.Get_buyPrice())
                                                 {
 
-                                                    game1.Current_money -= 22000;
+                                                    game1.Current_money -= building.buyPrice + cow.Get_buyPrice();
 
 
                                                 }
                                                 else
                                                 {
-                                                    Console.WriteLine("You don't have enough money to buy " + building.name);
+                                                    Console.WriteLine("You don't have enough money to buy " + building_name);
                                                     break;
                                                 }
 
@@ -303,43 +285,38 @@ namespace ConsoleApp
                                                 {
 
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
-                                                    Animal selected_animal = new Animal();
-                                                    selected_animal.Set_productName("Cow");
-                                                    m1.terrains[sel_terrain].Set_Building(new Cattle(m1.terrains, selected_animal));
-                                                    Console.WriteLine(m1.terrains[sel_terrain].Get_Building().Get_product().Get_productName());
-                                                    //m1.terrains[Convert.ToInt32(selected_terrain)].Get_Building().Get_product().Get_productName();
-                                                    Console.WriteLine("Thanks for buying " + building.name);
+                                                    m1.terrains[sel_terrain].Set_Building(building);
+                                                    Console.WriteLine("Thanks for buying " + building_name);
                                                 }
                                                 else
                                                 {
                                                     Console.WriteLine("The selected terrain is invalid.");
                                                 }
 
-                                                //Game productPrice = new Game();
-                                                //Console.WriteLine(selected_seed.Get_productName());
-                                                //Console.WriteLine("The price for your selected item is: " + productPrice.Price());
 
                                             }
                                             else if (selected_cattle == 1)
                                             {
 
-                                                building.name = "Sheep Cattle";
-                                                Console.WriteLine("The price of a " + building.name + " is " + building.buyPrice);
+                                                building_name = "Sheep Cattle";
+                                                Sheep sheep = new Sheep();
+                                                building = new Cattle(m1.terrains, sheep);
+                                                Console.WriteLine("The price of a " + building_name + " is " + building.buyPrice + sheep.Get_buyPrice());
                                                 m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
 
-                                                if (game1.Current_money >= 22000)
+                                                if (game1.Current_money >= building.buyPrice + sheep.Get_buyPrice())
                                                 {
 
-                                                    game1.Current_money -= 22000;
+                                                    game1.Current_money -= building.buyPrice + sheep.Get_buyPrice();
 
 
                                                 }
                                                 else
                                                 {
-                                                    Console.WriteLine("You don't have enough money to buy " + building.name);
+                                                    Console.WriteLine("You don't have enough money to buy " + building_name);
                                                     break;
                                                 }
 
@@ -349,43 +326,38 @@ namespace ConsoleApp
                                                 {
 
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
-                                                    Animal selected_animal = new Animal();
-                                                    selected_animal.Set_productName("Sheep");
-                                                    m1.terrains[sel_terrain].Set_Building(new Cattle(m1.terrains, selected_animal));
-                                                    Console.WriteLine(m1.terrains[sel_terrain].Get_Building().Get_product().Get_productName());
-                                                    //m1.terrains[Convert.ToInt32(selected_terrain)].Get_Building().Get_product().Get_productName();
-                                                    Console.WriteLine("Thanks for buying  " + building.name);
+                                                    m1.terrains[sel_terrain].Set_Building(building);
+                                                    Console.WriteLine("Thanks for buying  " + building_name);
                                                 }
                                                 else
                                                 {
                                                     Console.WriteLine("The selected terrain is invalid.");
                                                 }
 
-                                                //Game productPrice = new Game();
-                                                //Console.WriteLine(selected_seed.Get_productName());
-                                                //Console.WriteLine("The price for your selected item is: " + productPrice.Price());
 
                                             }
 
                                             else if (selected_cattle == 2)
                                             {
 
-                                                building.name = "Pig Cattle";
-                                                Console.WriteLine("The price of " + building.name + " is " + building.buyPrice);
+                                                building_name = "Pig Cattle";
+                                                Pig pig = new Pig();
+                                                building = new Cattle(m1.terrains, pig);
+                                                Console.WriteLine("The price of " + building_name + " is " + building.buyPrice + pig.Get_buyPrice());
                                                 m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
 
-                                                if (game1.Current_money >= 22000)
+                                                if (game1.Current_money >= building.buyPrice + pig.Get_buyPrice())
                                                 {
 
-                                                    game1.Current_money -= 22000;
+                                                    game1.Current_money -= building.buyPrice + pig.Get_buyPrice();
 
                                                 }
                                                 else
                                                 {
-                                                    Console.WriteLine("You don't have enough money to buy " + building.name);
+                                                    Console.WriteLine("You don't have enough money to buy " + building_name);
                                                     break;
                                                 }
 
@@ -395,21 +367,15 @@ namespace ConsoleApp
                                                 {
 
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
-                                                    Animal selected_animal = new Animal();
-                                                    selected_animal.Set_productName("Pig");
-                                                    m1.terrains[sel_terrain].Set_Building(new Cattle(m1.terrains, selected_animal));
+                                                    
+                                                    m1.terrains[sel_terrain].Set_Building(building);
                                                     Console.WriteLine(m1.terrains[sel_terrain].Get_Building().Get_product().Get_productName());
-                                                    //m1.terrains[Convert.ToInt32(selected_terrain)].Get_Building().Get_product().Get_productName();
-                                                    Console.WriteLine("Thanks for buying a " + building.name);
+                                                    Console.WriteLine("Thanks for buying a " + building_name);
                                                 }
                                                 else
                                                 {
                                                     Console.WriteLine("The selected terrain is invalid.");
                                                 }
-
-                                                //Game productPrice = new Game();
-                                                //Console.WriteLine(selected_seed.Get_productName());
-                                                //Console.WriteLine("The price for your selected item is: " + productPrice.Price());
 
                                             }
 
@@ -417,12 +383,12 @@ namespace ConsoleApp
                                         }
 
                                     }
-                                    else if (selected_building_shop == 2)
+                                    else if (selected_building_shop == 2)  //Comprar Almacen
                                     {
                                         List<string> buying_storage_options = new List<string>(new string[] { "Cattle Storage", "Seeds Storage", "Previous Menu" });
                                         int selected_storage;
                                         bool finished_1_0_2 = false;
-                                        building.buyPrice = 10000;
+                                        
                                         while (!finished_1_0_2)
                                         {
                                             selected_storage = MenuManager.PrintMenu(buying_storage_options);
@@ -433,8 +399,9 @@ namespace ConsoleApp
                                             else if (selected_storage == 0)
                                             {
 
-                                                building.name = "Cattle Storage";
-                                                Console.WriteLine("The price of " + building.name + " is " + building.buyPrice);
+                                                building_name = "Cattle Storage";
+                                                building = new Storage(m1.terrains);
+                                                Console.WriteLine("The price of " + building_name + " is " + building.buyPrice);
                                                 m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
@@ -449,7 +416,7 @@ namespace ConsoleApp
                                                 }
                                                 else
                                                 {
-                                                    Console.WriteLine("You don't have enough money to buy " + building.name);
+                                                    Console.WriteLine("You don't have enough money to buy " + building_name);
                                                     break;
                                                 }
 
@@ -457,45 +424,37 @@ namespace ConsoleApp
 
                                                 if (m1.terrains[sel_terrain - 1].Get_bought())
                                                 {
-
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
-                                                    FinishedProduct selected_finished = new FinishedProduct();
-                                                    selected_finished.Set_productName("Cattle Storage");
-                                                    //m1.terrains[sel_terrain].Set_Building(new FinishedProduct(m1.terrains, selected_finished));
-                                                    Console.WriteLine(m1.terrains[sel_terrain].Get_Building().Get_product().Get_productName());
-                                                    //m1.terrains[Convert.ToInt32(selected_terrain)].Get_Building().Get_product().Get_productName();
-                                                    Console.WriteLine("Thanks for buying " + building.name);
+                                                    m1.terrains[sel_terrain].Set_Building(building);
+                                                    Console.WriteLine("Thanks for buying " + building_name);
                                                 }
                                                 else
                                                 {
                                                     Console.WriteLine("The selected terrain is invalid.");
                                                 }
-
-                                                //Game productPrice = new Game();
-                                                //Console.WriteLine(selected_seed.Get_productName());
-                                                //Console.WriteLine("The price for your selected item is: " + productPrice.Price());
 
                                             }
                                             else if (selected_storage == 1)
                                             {
 
-                                                building.name = "Seeds Storage";
-                                                Console.WriteLine("The price of " + building.name + " is " + building.buyPrice);
+                                                building_name = "Seeds Storage";
+                                                building = new Storage(m1.terrains);
+                                                Console.WriteLine("The price of " + building_name + " is " + building.buyPrice);
                                                 m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
 
-                                                if (game1.Current_money >= 10000)
+                                                if (game1.Current_money >= building.buyPrice)
                                                 {
 
-                                                    game1.Current_money -= 10000;
+                                                    game1.Current_money -= building.buyPrice;
 
 
                                                 }
                                                 else
                                                 {
-                                                    Console.WriteLine("You don't have enough money to buy " + building.name);
+                                                    Console.WriteLine("You don't have enough money to buy " + building_name);
                                                     break;
                                                 }
 
@@ -505,21 +464,13 @@ namespace ConsoleApp
                                                 {
 
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
-                                                    FinishedProduct selected_finished = new FinishedProduct();
-                                                    selected_finished.Set_productName("Seeds Storage");
-                                                    //m1.terrains[sel_terrain].Set_Building(new FinishedProduct(m1.terrains, selected_finished));
-                                                    Console.WriteLine(m1.terrains[sel_terrain].Get_Building().Get_product().Get_productName());
-                                                    //m1.terrains[Convert.ToInt32(selected_terrain)].Get_Building().Get_product().Get_productName();
-                                                    Console.WriteLine("Thanks for buying  " + building.name);
+                                                    m1.terrains[sel_terrain].Set_Building(building);
+                                                    Console.WriteLine("Thanks for buying  " + building_name);
                                                 }
                                                 else
                                                 {
                                                     Console.WriteLine("The selected terrain is invalid.");
                                                 }
-
-                                                //Game productPrice = new Game();
-                                                //Console.WriteLine(selected_seed.Get_productName());
-                                                //Console.WriteLine("The price for your selected item is: " + productPrice.Price());
 
                                             }
 

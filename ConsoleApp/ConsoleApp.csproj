@@ -66,6 +66,12 @@
     <Compile Include="Buildings\Building.cs" />
     <Compile Include="Buildings\Cattle.cs" />
     <Compile Include="Buildings\Storage.cs" />
+    <Compile Include="Products\Animals\Cow.cs" />
+    <Compile Include="Products\Animals\Pig.cs" />
+    <Compile Include="Products\Animals\Sheep.cs" />
+    <Compile Include="Products\Seeds\Potato.cs" />
+    <Compile Include="Products\Seeds\Rice.cs" />
+    <Compile Include="Products\Seeds\Tomato.cs" />
     <Compile Include="Tiles\Earth.cs" />
     <Compile Include="Buildings\Field.cs" />
     <Compile Include="Map.cs" />
@@ -81,5 +87,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

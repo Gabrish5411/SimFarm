@@ -8,11 +8,11 @@ namespace ConsoleApp.Products
 {
     class Animal : Product
     {
-        private int animalUnits;
-        private float escapeProbability;
-        private float suddendeathProbability;
-        private int unitsdeadRange;
+        protected int animalUnits;
+        protected double escapeProbability;
+        protected double suddendeathProbability;
+        protected int unitsdeadRange;
 
-        Animal chosen_animal = new Animal(); 
+        //Animal chosen_animal = new Animal(); 
     }
 }

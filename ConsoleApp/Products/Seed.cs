@@ -8,12 +8,16 @@ namespace ConsoleApp.Products
 {
     class Seed : Product
     {
-        public int priceVariation;
-        private float wormProbability;
+        
+        private double wormProbability;
         private int wormPenalty;
         private float undergrowthProbability;
         private int undergowthPenalty;
 
+        public void Set_wormProb(double prob)
+        {
+            wormProbability = prob;
+        }
         
     }
 }
