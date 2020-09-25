@@ -14,10 +14,12 @@ namespace ConsoleApp
     {
         public int current_turn;
         private int current_money;
-        public Random randNum = new Random();
-        public Queue thirtyList_tomato;
-        public Queue thirtyList_potato;
-        public Queue thirtyList_rice;
+        public static Random randNum = new Random();
+        private int random;
+        private int change;
+        public Queue<int> thirtyList_tomato;
+        public Queue<int> thirtyList_potato;
+        public Queue<int> thirtyList_rice;
         public Seed tomato;
         public Seed potato;
         public Seed rice;
@@ -26,10 +28,21 @@ namespace ConsoleApp
         {
             current_turn = 1;
             current_money = 50000;
+            thirtyList_tomato = new Queue<int>();
+            thirtyList_potato = new Queue<int>();
+            thirtyList_rice = new Queue<int>();
             tomato = new Tomato();
             potato = new Potato();
             rice = new Rice();
-
+            
+            for (int i = 1; i<30; i++)
+            {
+                Add_Element(thirtyList_tomato, tomato);
+                Add_Element(thirtyList_potato, potato);
+                Add_Element(thirtyList_rice, rice);
+                
+            }
+           
         }
         //******************************************
         public int Current_money
@@ -57,40 +70,42 @@ namespace ConsoleApp
             current_turn += 1;
         }
 
-        private void Update_Seed(Queue seed_list, Seed seed)
+        private void Update_Seed(Queue<int> seed_list, Seed seed)
         {
-            if (seed_list.Count > 30)
-            {
-                Add_Element(seed_list, seed);
-            }
-            else
-            {
-                seed_list.Dequeue();
-                Add_Element(seed_list, seed);
-            }
+            seed_list.Dequeue();
+            Add_Element(seed_list, seed);
+            
         }
-        private void Add_Element(Queue seed_list, Seed seed)
+        private void Add_Element(Queue<int> seed_list, Seed seed)
         {
             if (seed.Get_sellPrice() * 0.5 < seed.Get_price() && seed.Get_price() < seed.Get_sellPrice() * 1.5)
             {
-                int random = randNum.Next(0, 2);
+                random = GetRandomNumber(0, 1);
                 if (random == 0) //decrece el precio de venta
                 {
-                    seed.Change_Price(seed.Get_variation() * -1);
-                    seed_list.Enqueue(seed.Get_sellPrice() + seed.Get_variation() * current_turn);
+                    change = seed.Change_Price(seed.Get_variation(), true);
+                    seed_list.Enqueue(change);
                 }
                 else if (random == 1) //aumenta el precio de venta
                 {
-                    seed.Change_Price(seed.Get_variation());
-                    seed_list.Enqueue(seed.Get_sellPrice() + seed.Get_variation() * current_turn);
+                    change = seed.Change_Price(seed.Get_variation(), true);
+                    seed_list.Enqueue(change);
                 }
             }
             else
             {
-                seed.Change_Price(seed.Get_sellPrice());
-                seed_list.Enqueue(seed.Get_sellPrice() + seed.Get_variation() * current_turn);
+                seed.Reset_Price();
+                seed_list.Enqueue(seed.Get_sellPrice());
             }
 
+        }
+
+        public static int GetRandomNumber(int min, int max)
+        {
+            lock (randNum)
+            {
+                return randNum.Next(min, max);
+            }
         }
     }
 }

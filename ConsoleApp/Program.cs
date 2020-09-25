@@ -693,16 +693,28 @@ namespace ConsoleApp
                                     {
 
                                         Console.WriteLine("The Tomato price history is the following:");
+                                        foreach (int num in game.thirtyList_tomato)
+                                        {
+                                            Console.WriteLine(num);
+                                        }
                                     }
                                     else if (selected_seed_price == 1) //thirtyList_potato
                                     {
 
                                         Console.WriteLine("The Potato price history is the following:");
+                                        foreach (int num in game.thirtyList_potato)
+                                        {
+                                            Console.WriteLine(num);
+                                        }
                                     }
                                     else if (selected_seed_price == 2) //thirtyList_rice
                                     {
 
                                         Console.WriteLine("The Rice price history is the following:");
+                                        foreach (int num in game.thirtyList_rice)
+                                        {
+                                            Console.WriteLine(num);
+                                        }
                                     }
                                 }
                             }
@@ -716,6 +728,7 @@ namespace ConsoleApp
                         Console.WriteLine("Turno pasado...");
                         Console.ReadKey();
                         Console.Clear();
+                        game.UpdateGame();
                         printer.Show(m1.map);
                         break;
                     case 3: //No hay cargar partida asique creo que tampoco hay que guardar (Por ahora sirve para cerrar el juego)

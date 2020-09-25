@@ -154,9 +154,15 @@ namespace ConsoleApp.Products
         {
             return currentPrice;
         }
-        public void Change_Price(int price)
+        public int Change_Price(int price, bool neg = false)
         {
-            currentPrice += price;
+            if (neg) currentPrice -= price;
+            else currentPrice += price;
+            return currentPrice;
+        }
+        public void Reset_Price()
+        {
+            currentPrice = sellPrice;
         }
         public void Set_variation(int vari)
         {

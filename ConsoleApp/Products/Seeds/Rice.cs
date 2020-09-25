@@ -14,7 +14,7 @@ namespace ConsoleApp.Products.Seeds
             this.Set_productName("Rice");
             this.Set_buyPrice(1000);
             this.Set_sellPrice(500);
-            this.Set_variation(50);
+            this.Set_variation(30);
             this.Set_wormProb(0.1);
         }
     }
