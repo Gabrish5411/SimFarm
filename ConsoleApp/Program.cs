@@ -88,7 +88,48 @@ namespace ConsoleApp
                 selected_turn = MenuManager.PrintMenu(turn_options);
                 switch (selected_turn)
                 {
-                    case 0: //No es necesario para esta entrega
+                    case 0: //Administrar granja
+                        List<string> farm_options = new List<string>(new string[] { "Manage Production", "Manage Storage", "Previous Menu" });
+                        int selected_option;
+                        bool finished_2 = false;
+                        while (!finished_2)
+                        {
+                            selected_option = MenuManager.PrintMenu(farm_options);
+                            if (selected_option == 0) //Administrar Produccion
+                            {
+                                List<string> production_options = new List<string>(new string[] { "Supply Water/Food", "Apply Heal", "Get Finished Product" ,"Previous Menu" });
+                                int selected_production;
+                                bool finished_21 = false;
+                                while (!finished_21)
+                                {
+                                    selected_production = MenuManager.PrintMenu(production_options);
+                                    if (selected_production == 0) //Agregar agua o comida
+                                    {
+
+                                    }
+                                    else if (selected_production == 1) // Aplicar cura
+                                    {
+
+                                    }
+                                    else if (selected_production == 2) //Obtener producto terminado
+                                    {
+
+                                    }
+                                    else //Menu Anterior
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (selected_option == 1) //Administrar Almacenamiento
+                            {
+
+                            }
+                            else //Menu anterior
+                            {
+                                break;
+                            }
+                        }
                         break;
                     case 1: //Mercado
                         List<string> shop_options = new List<string>(new string[] { "Building Shop", "Consumable Shop", "Property Shop", "Price History", "Previous Menu" });
@@ -736,7 +777,7 @@ namespace ConsoleApp
                             }
                         }
                         break;
-                    case 2:
+                    case 2: //Pasar Turno
                         Console.WriteLine("Turno pasado...");
                         Console.ReadKey();
                         Console.Clear();
@@ -751,10 +792,6 @@ namespace ConsoleApp
                 
             }
             Console.WriteLine("Fin del juego...");
-            
-            //Con terrain number podemos acceder a que terreno corresponde cada casilla Tile
-            //Console.WriteLine(m1.map[99, 99].Get_terrainNumber());
-
             Console.ReadLine();
         }
 
