@@ -6,7 +6,6 @@ namespace ConsoleApp
     public class Terrain
     {
         private bool bought;
-        private string type;
         private double basePrice;
         public double terrainQuality;
         public double earthNumber;
@@ -29,14 +28,7 @@ namespace ConsoleApp
         {
             return bought;
         }
-        public void Set_type(string tipo)
-        {
-            string type = tipo;
-        }
-        public string Get_type()
-        {
-            return type;
-        }
+        
         public void Set_Building(Building item)
         {
             building = item;

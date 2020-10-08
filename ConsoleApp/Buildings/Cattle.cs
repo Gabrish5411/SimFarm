@@ -28,6 +28,7 @@ namespace ConsoleApp.Buildings
             availableWater = 100;
             ill = false;
             ripeness = 0;
+            Set_type("cttl");
             
         }
 

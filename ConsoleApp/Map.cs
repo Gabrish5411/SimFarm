@@ -315,14 +315,18 @@ namespace ConsoleApp
             Console.WriteLine("Owned terrains and type: ");
             for (int i = 0; i < 100; i++)
             {
-                if (terrains[i].Get_bought() && terrains[i].Get_type() == "fld")   //si el terreno esta comprado y es field
+                if (terrains[i].Get_bought() && terrains[i].Get_Building() != null )   //si el terreno esta comprado y tiene un edificio
                 {
-                    Console.WriteLine(i + 1 + " field");
+                    if (terrains[i].Get_Building().Get_type() == "fld") //Solo se puede verificar el tipo si existe un edificio
+                    {
+                        Console.WriteLine(i + 1 + " field");
+                    }
+                    else if (terrains[i].Get_Building().Get_type() == "cttl") //Solo se puede verificar el tipo si existe un edificio
+                    {
+                        Console.WriteLine(i + 1 + " cattle");
+                    }
                 }
-                else if (terrains[i].Get_bought() && terrains[i].Get_type() == "cttl")  //si el terreno esta comprado y es cattle
-                {
-                    Console.WriteLine(i + 1 + " cattle");
-                }
+                
             }
         }
     }

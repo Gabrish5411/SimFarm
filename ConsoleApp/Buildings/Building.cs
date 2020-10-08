@@ -10,6 +10,7 @@ namespace ConsoleApp.Buildings
     public class Building
     {
         public string name;
+        private string type;
         protected int tNumber;
         public int buyPrice;
         public int sellPrice;
@@ -20,6 +21,13 @@ namespace ConsoleApp.Buildings
         {
             return item;
         }
-        
+        public void Set_type(string tipo)
+        {
+            this.type = tipo;
+        }
+        public string Get_type()
+        {
+            return type;
+        }
     }
 }
