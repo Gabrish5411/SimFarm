@@ -105,6 +105,30 @@ namespace ConsoleApp
                                     selected_production = MenuManager.PrintMenu(production_options);
                                     if (selected_production == 0) //Agregar agua o comida
                                     {
+                                        Console.WriteLine("Select what terrain you want to feed or hydrate");
+                                        m1.Print_Farm_and_type();
+                                        string selected_terrain = Console.ReadLine();
+                                        int sel_terrain = Convert.ToInt32(selected_terrain);
+                                        List<string> feedwater_options = new List<string>(new string[] { "Supply Water", "Supply Food", "Previous Menu"});
+                                        int selected_feedwater;
+                                        bool finished_22 = false;
+                                        while (!finished_22)
+                                        {
+                                            selected_feedwater = MenuManager.PrintMenu(feedwater_options);
+                                            if (selected_feedwater == 0)     //give water
+                                            {
+                                                
+                                            }
+                                            if (selected_feedwater == 1)     //give food
+                                            {
+
+                                            }
+                                            if (selected_feedwater == 2)     //previous
+                                            {
+                                                break;
+                                            }
+                                        }
+
 
                                     }
                                     else if (selected_production == 1) // Aplicar cura
@@ -182,9 +206,6 @@ namespace ConsoleApp
                                                     Console.WriteLine("You don't have enough money to buy a " + building_name );
                                                     break;
                                                 }
-
-                                                
-
 
                                                 if (m1.terrains[sel_terrain - 1].Get_bought())
                                                 {

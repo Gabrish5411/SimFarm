@@ -310,6 +310,20 @@ namespace ConsoleApp
                 }
             }
         }
-        
+        public void Print_Farm_and_type()
+        {
+            Console.WriteLine("Owned terrains and type: ");
+            for (int i = 0; i < 100; i++)
+            {
+                if (terrains[i].Get_bought() && terrains[i].Get_type() == "fld")   //si el terreno esta comprado y es field
+                {
+                    Console.WriteLine(i + 1 + " field");
+                }
+                else if (terrains[i].Get_bought() && terrains[i].Get_type() == "cttl")  //si el terreno esta comprado y es cattle
+                {
+                    Console.WriteLine(i + 1 + " cattle");
+                }
+            }
+        }
     }
 }
