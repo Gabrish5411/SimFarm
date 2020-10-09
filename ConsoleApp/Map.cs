@@ -325,6 +325,10 @@ namespace ConsoleApp
                     {
                         Console.WriteLine(i + 1 + " cattle");
                     }
+                    else if (terrains[i].Get_Building().Get_type() == "strg")
+                    {
+                        Console.WriteLine(i + 1 + " storage");
+                    }
                 }
               
                 
