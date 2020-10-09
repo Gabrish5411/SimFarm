@@ -129,12 +129,6 @@ namespace ConsoleApp
                                                         irrigation.Uses1 -= 1;
                                                         irrigation.Use(field);
                                                         Console.WriteLine("Irrigation applied to terrain number "+ selected_terrain);
-                                                        
-
-
-
-
-
 
                                                     }
                                                     else if (m1.terrains[sel_terrain-1].Get_Building().Get_type() == "cttl")
@@ -146,18 +140,14 @@ namespace ConsoleApp
                                                         animalWater.Use(cattle);
                                                         Console.WriteLine("Animal Water applied to terrain number " + selected_terrain);
 
-
-
                                                     }
                                                 }
 
                                             }
                                             if (selected_feedwater == 1)     //give food
                                             {
-
                                                 if (m1.terrains[sel_terrain - 1].Get_bought() && m1.terrains[sel_terrain - 1].Get_Building() != null)
                                                 {
-
                                                     if (m1.terrains[sel_terrain - 1].Get_Building().Get_type() == "fld")
                                                     {
                                                         Seed seed = new Seed();
@@ -165,7 +155,6 @@ namespace ConsoleApp
                                                         fertilizer.Uses1 -= 1;
                                                         fertilizer.Use(field);
                                                         Console.WriteLine("Fertilizer applied to terrain number " + selected_terrain);
-
 
                                                     }
                                                     else if (m1.terrains[sel_terrain - 1].Get_Building().Get_type() == "cttl")
@@ -179,24 +168,86 @@ namespace ConsoleApp
 
                                                     }
                                                 }
-
-
-
-
                                             }
                                             if (selected_feedwater == 2)     //previous
                                             {
                                                 break;
                                             }
                                         }
-
-
                                     }
                                     else if (selected_production == 1) // Aplicar cura
                                     {
+                                        Console.WriteLine("Select what terrain you want to apply a cure to");
+                                        m1.Print_Farm_and_type();
+                                        Product product = new Product();
+                                        string selected_terrain = Console.ReadLine();
+                                        int sel_terrain = Convert.ToInt32(selected_terrain);
+                                        List<string> cure_options_field = new List<string>(new string[] { "Supply Pesticide", "Supply Herbicide", "Supply Fungicide", "Previous Menu" });
+                                        List<string> cure_options_cattle = new List<string>(new string[] { "Supply Vaccine", "Previous Menu" });
+                                        int selected_cure;
+                                        bool finished_23 = false;
+                                        while (!finished_23)
+                                        {
+                                            if (m1.terrains[sel_terrain - 1].Get_bought() && m1.terrains[sel_terrain - 1].Get_Building() != null)
+                                            {
 
+                                                if (m1.terrains[sel_terrain - 1].Get_Building().Get_type() == "fld")
+                                                {
+                                                    selected_cure = MenuManager.PrintMenu(cure_options_field);
+                                                    if (selected_cure == 0)
+                                                    {
+                                                        Seed seed = new Seed();
+                                                        Field field = new Field(m1.terrains, seed);
+                                                        Random random = new Random();
+                                                        pesticide.Uses1 -= 1;
+                                                        pesticide.Use(field.worms, random);
+                                                        Console.WriteLine("Pesticide applied to terrain number " + selected_terrain);
+                                                    }
+                                                    else if (selected_cure == 1)
+                                                    {
+                                                        Seed seed = new Seed();
+                                                        Field field = new Field(m1.terrains, seed);
+                                                        Random random = new Random();
+                                                        herbicide.Uses1 -= 1;
+                                                        herbicide.Use(field.undergowth, random);
+                                                        Console.WriteLine("Herbicide applied to terrain number " + selected_terrain);
 
+                                                    }
+                                                    else if (selected_cure == 2)
+                                                    {
+                                                        Seed seed = new Seed();
+                                                        Field field = new Field(m1.terrains, seed);
+                                                        Random random = new Random();
+                                                        fungicide.Uses1 -= 1;
+                                                        fungicide.Use(field.ill, random);
+                                                        Console.WriteLine("Fungicide applied to terrain number " + selected_terrain);
 
+                                                    }
+                                                    else if (selected_cure == 3)
+                                                    {
+                                                        break;
+                                                    }
+                                                }
+                                                else if (m1.terrains[sel_terrain - 1].Get_Building().Get_type() == "cttl")
+                                                {
+                                                    selected_cure = MenuManager.PrintMenu(cure_options_cattle);
+                                                    if (selected_cure == 0)
+                                                    {
+                                                        Animal animal = new Animal();
+                                                        Cattle cattle = new Cattle(m1.terrains, animal);
+                                                        Random random = new Random();
+                                                        vaccine.Uses1 -= 1;
+                                                        vaccine.Use(cattle.ill, random);
+                                                        Console.WriteLine("Vaccine applied to terrain number " + selected_terrain);
+                                                    }
+                                                    else if (selected_cure == 1)
+                                                    {
+                                                        break;
+                                                    }
+                                                }
+                                            }
+
+                                        }
                                     }
                                     else if (selected_production == 2) //Obtener producto terminado
                                     {

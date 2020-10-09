@@ -15,9 +15,9 @@ namespace ConsoleApp.Buildings
         public int availableWater;
         protected int ripeness;
         protected float maxRipeness;
-        protected bool ill;
-        protected bool worms;
-        protected bool undergowth;
+        public bool ill;
+        public bool worms;
+        public bool undergowth;
 
         public Field(Terrain[] terrains, Seed seed)
         {

@@ -15,7 +15,7 @@ namespace ConsoleApp.Buildings
         protected int availableWater;
         protected int ripeness;
         protected float maxRipeness;
-        protected bool ill;
+        public bool ill;
         protected int finalUnits;
 
         public Cattle(Terrain[] terrains, Animal animal)
