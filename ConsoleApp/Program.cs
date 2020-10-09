@@ -251,6 +251,21 @@ namespace ConsoleApp
                                     }
                                     else if (selected_production == 2) //Obtener producto terminado
                                     {
+                                        m1.Print_Farm_and_type();
+                                        string selected_terrain = Console.ReadLine();
+                                        int sel_terrain = Convert.ToInt32(selected_terrain);
+                                        bool finished_24 = false;
+                                        while (!finished_24)
+                                        {
+                                            if (m1.terrains[sel_terrain - 1].Get_bought() && m1.terrains[sel_terrain - 1].Get_Building() != null) //agregar que almacentamientos no estan llenos
+                                            {
+                                                //accion de guardar el final product
+                                            }
+                                            else
+                                            {
+                                                //eliminar automaticamente el producto, venderlo al precio del mercado y ganar money
+                                            }
+                                        }
 
                                     }
                                     else //Menu Anterior
@@ -261,7 +276,28 @@ namespace ConsoleApp
                             }
                             else if (selected_option == 1) //Administrar Almacenamiento
                             {
-
+                                Console.WriteLine("Products in storage ");
+                                m1.Print_Farm_and_type();
+                                string selected_terrain = Console.ReadLine();
+                                int sel_terrain = Convert.ToInt32(selected_terrain);
+                                bool finished_25 = false;
+                                while (!finished_25)
+                                {
+                                    if (m1.terrains[sel_terrain - 1].Get_bought() && m1.terrains[sel_terrain - 1].Get_Building() != null)
+                                    {
+                                        if (m1.terrains[sel_terrain - 1].Get_Building().Get_type() == "strg")
+                                        {
+                                            //Resumen productos almacenados
+                                            Console.WriteLine("Select storaged product to sell");
+                                            int select_to_sell = Convert.ToInt32(Console.ReadLine());
+                                            //delete del storage el vendido y aumentar money
+                                        }
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
                             }
                             else //Menu anterior
                             {

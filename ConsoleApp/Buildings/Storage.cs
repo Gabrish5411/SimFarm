@@ -14,6 +14,8 @@ namespace ConsoleApp.Buildings
         {
             this.buyPrice = 10000;
             capacity = 10;
+            Set_type("strg");
+                
         }
 
         public void Update_Storage()
