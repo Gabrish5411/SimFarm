@@ -326,6 +326,7 @@ namespace ConsoleApp
                         Console.WriteLine(i + 1 + " cattle");
                     }
                 }
+              
                 
             }
         }

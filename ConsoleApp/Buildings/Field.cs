@@ -11,8 +11,8 @@ namespace ConsoleApp.Buildings
     {
         protected double productivity;
         public int currentHP;
-        protected int availableFood;
-        protected int availableWater;
+        public int availableFood;
+        public int availableWater;
         protected int ripeness;
         protected float maxRipeness;
         protected bool ill;

@@ -107,6 +107,7 @@ namespace ConsoleApp
                                     {
                                         Console.WriteLine("Select what terrain you want to feed or hydrate");
                                         m1.Print_Farm_and_type();
+                                        Product product = new Product();
                                         string selected_terrain = Console.ReadLine();
                                         int sel_terrain = Convert.ToInt32(selected_terrain);
                                         List<string> feedwater_options = new List<string>(new string[] { "Supply Water", "Supply Food", "Previous Menu"});
@@ -114,13 +115,73 @@ namespace ConsoleApp
                                         bool finished_22 = false;
                                         while (!finished_22)
                                         {
+
                                             selected_feedwater = MenuManager.PrintMenu(feedwater_options);
                                             if (selected_feedwater == 0)     //give water
                                             {
-                                                
+                                                if (m1.terrains[sel_terrain-1].Get_bought() && m1.terrains[sel_terrain-1].Get_Building() != null)
+                                                {
+
+                                                    if (m1.terrains[sel_terrain-1].Get_Building().Get_type() == "fld")
+                                                    {
+                                                        Seed seed = new Seed();
+                                                        Field field = new Field(m1.terrains, seed);
+                                                        irrigation.Uses1 -= 1;
+                                                        irrigation.Use(field);
+                                                        Console.WriteLine("Irrigation applied to terrain number "+ selected_terrain);
+                                                        
+
+
+
+
+
+
+                                                    }
+                                                    else if (m1.terrains[sel_terrain-1].Get_Building().Get_type() == "cttl")
+                                                    {
+
+                                                        Animal animal = new Animal();
+                                                        Cattle cattle = new Cattle(m1.terrains, animal);
+                                                        animalWater.Uses1 -= 1;
+                                                        animalWater.Use(cattle);
+                                                        Console.WriteLine("Animal Water applied to terrain number " + selected_terrain);
+
+
+
+                                                    }
+                                                }
+
                                             }
                                             if (selected_feedwater == 1)     //give food
                                             {
+
+                                                if (m1.terrains[sel_terrain - 1].Get_bought() && m1.terrains[sel_terrain - 1].Get_Building() != null)
+                                                {
+
+                                                    if (m1.terrains[sel_terrain - 1].Get_Building().Get_type() == "fld")
+                                                    {
+                                                        Seed seed = new Seed();
+                                                        Field field = new Field(m1.terrains, seed);
+                                                        fertilizer.Uses1 -= 1;
+                                                        fertilizer.Use(field);
+                                                        Console.WriteLine("Fertilizer applied to terrain number " + selected_terrain);
+
+
+                                                    }
+                                                    else if (m1.terrains[sel_terrain - 1].Get_Building().Get_type() == "cttl")
+                                                    {
+
+                                                        Animal animal = new Animal();
+                                                        Cattle cattle = new Cattle(m1.terrains, animal);
+                                                        animalFood.Uses1 -= 1;
+                                                        animalFood.Use(cattle);
+                                                        Console.WriteLine("Animal Food applied to terrain number " + selected_terrain);
+
+                                                    }
+                                                }
+
+
+
 
                                             }
                                             if (selected_feedwater == 2)     //previous
@@ -133,6 +194,8 @@ namespace ConsoleApp
                                     }
                                     else if (selected_production == 1) // Aplicar cura
                                     {
+
+
 
                                     }
                                     else if (selected_production == 2) //Obtener producto terminado
@@ -307,7 +370,7 @@ namespace ConsoleApp
                                     }
                                     if (selected_building_shop == 1)
                                     {
-                                        List<string> buying_cattle_options = new List<string>(new string[] { "Cow", "Sheep", "Pig", "Previos Menu" });
+                                        List<string> buying_cattle_options = new List<string>(new string[] { "Cow", "Sheep", "Pig", "Previous Menu" });
                                         int selected_cattle;
                                         bool finished_1_0_1 = false;
                                         while (!finished_1_0_1)

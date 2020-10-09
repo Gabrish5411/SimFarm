@@ -9,7 +9,7 @@ namespace ConsoleApp.Consumables
 {
     class Consumable
     {
-        protected int Uses;
+        public int Uses;
         protected int buyPrice;   
         
         public int Uses1
