@@ -117,7 +117,7 @@ namespace ConsoleApp
                                     {
                                         Console.WriteLine("Select what terrain you want to feed or hydrate");
                                         m1.Print_Farm_and_type();
-                                        Product product = new Product();
+                                        //Product product = new Product();
                                         string selected_terrain = Console.ReadLine();
                                         int sel_terrain = Convert.ToInt32(selected_terrain);
                                         List<string> feedwater_options = new List<string>(new string[] { "Supply Water", "Supply Food", "Previous Menu"});
@@ -134,10 +134,10 @@ namespace ConsoleApp
 
                                                     if (m1.terrains[sel_terrain-1].Get_Building().Get_type() == "fld")
                                                     {
-                                                        Seed seed = new Seed();
-                                                        Field field = new Field(m1.terrains, seed);
+                                                        //Seed seed = new Seed();
+                                                        //Field field = new Field(m1.terrains, seed);
                                                         irrigation.Uses1 -= 1;
-                                                        irrigation.Use(field);
+                                                        irrigation.Use((Field)m1.terrains[sel_terrain-1].Get_Building());
                                                         Console.WriteLine("Irrigation applied to terrain number "+ selected_terrain);
 
                                                     }
