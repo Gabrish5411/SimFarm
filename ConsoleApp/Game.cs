@@ -13,6 +13,7 @@ namespace ConsoleApp
 {
     class Game
     {
+        public Map Map;
         public int current_turn;
         private int current_money;
         public static Random randNum = new Random();
