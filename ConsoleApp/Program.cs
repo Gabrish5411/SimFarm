@@ -19,6 +19,8 @@ namespace ConsoleApp
 
         static void Main(string[] args)
         {
+            
+
             Game game1 = new Game();
             Building building;
             string building_name;
@@ -43,10 +45,18 @@ namespace ConsoleApp
             while (true)
             {
                 Console.Clear();
+
+                /*  //Bloque para testear Storage
+                Storage store = new Storage();
+                store.AddProduct(new FinishedProduct("Cows"));
+                store.ReportStorageStatus();
+                */
+
                 Console.WriteLine("SimFarm Menu");
                 selected = MenuManager.PrintMenu(main_options);
                 if (selected == 0)
                 {
+                    
                     Console.Clear();
                     m1 = new Map();
                     printer.Show(m1.map);
@@ -613,7 +623,7 @@ namespace ConsoleApp
                                             {
 
                                                 building_name = "Cattle Storage";
-                                                building = new Storage(m1.terrains);
+                                                building = new Storage();
                                                 Console.WriteLine("The price of " + building_name + " is " + building.buyPrice);
                                                 m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
@@ -651,7 +661,7 @@ namespace ConsoleApp
                                             {
 
                                                 building_name = "Seeds Storage";
-                                                building = new Storage(m1.terrains);
+                                                building = new Storage();
                                                 Console.WriteLine("The price of " + building_name + " is " + building.buyPrice);
                                                 m1.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");

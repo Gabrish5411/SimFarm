@@ -11,17 +11,20 @@ namespace ConsoleApp
     {
         public int productQuality;
 
+        public FinishedProduct(string name)
+        {
+            this.productName = name;
+            this.productQuality = 100;
+        }
+
         public int Get_product_quality()
         {
             return productQuality;
-
         }
 
-        public void Set_product_quality(int value)
+        public void Update_product_quality()
         {
-
-            productQuality = value;
-
+            this.productQuality -= 1;
         }
 
         
