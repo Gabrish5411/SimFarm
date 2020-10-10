@@ -749,11 +749,10 @@ namespace ConsoleApp
                                             {
                                                 if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "fld")
                                                 {
-                                                    if (game.Current_money < game.Map.terrains[sel_terrain - 1].Get_Building().Get_sell())
+                                                    if (game.Current_money > game.Map.terrains[sel_terrain - 1].Get_Building().Get_sell())
                                                     {
                                                         game.Current_money -= game.Map.terrains[sel_terrain - 1].Get_Building().Get_sell();
                                                         game.Map.terrains[sel_terrain - 1].Set_Building(null);
-                                                        game.Map.terrains[sel_terrain - 1].Set_bought(false);
                                                     }
                                                     else
                                                     {
@@ -762,11 +761,10 @@ namespace ConsoleApp
                                                 }
                                                 else if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "cttle")
                                                 {
-                                                    if (game.Current_money < game.Map.terrains[sel_terrain - 1].Get_Building().Get_sell())
+                                                    if (game.Current_money > game.Map.terrains[sel_terrain - 1].Get_Building().Get_sell())
                                                     {
                                                         game.Current_money -= game.Map.terrains[sel_terrain - 1].Get_Building().Get_sell();
                                                         game.Map.terrains[sel_terrain - 1].Set_Building(null);
-                                                        game.Map.terrains[sel_terrain - 1].Set_bought(false);
                                                     }
                                                     else
                                                     {
