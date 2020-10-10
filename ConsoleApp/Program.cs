@@ -92,7 +92,6 @@ namespace ConsoleApp
                             if (selected_option == 0) //Administrar Produccion
                             {
                                 List<string> production_options = new List<string>(new string[] { "Supply Water/Food", "Apply Heal", "Get Finished Products", "Previous Menu" });
-                                //List<string> storage_options = new List<string>(new string[] { "Get Finished Products", "Previous Menu" });
                                 int selected_production;
                                 bool finished_21 = false;
                                 while (!finished_21)
