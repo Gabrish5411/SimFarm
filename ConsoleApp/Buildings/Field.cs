@@ -32,6 +32,7 @@ namespace ConsoleApp.Buildings
             undergowth = false;
             ripeness = 0;
             Set_type("fld");
+            Set_sell(3000);
         }
 
         private void GetAttributes() //Con esta funcion sacamos lo que necesitemos del item (Semilla en este caso)

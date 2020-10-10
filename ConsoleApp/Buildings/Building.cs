@@ -14,6 +14,7 @@ namespace ConsoleApp.Buildings
         protected int tNumber;
         public int buyPrice;
         public int sellPrice;
+        public int value;
         protected Product item;
 
         
@@ -28,6 +29,14 @@ namespace ConsoleApp.Buildings
         public string Get_type()
         {
             return type;
+        }
+        public void Set_sell(int value)
+        {
+            this.value = value;
+        }
+        public int Get_sell()
+        {
+            return value;
         }
     }
 }

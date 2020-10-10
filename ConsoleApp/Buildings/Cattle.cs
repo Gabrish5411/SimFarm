@@ -29,6 +29,7 @@ namespace ConsoleApp.Buildings
             ill = false;
             ripeness = 0;
             Set_type("cttl");
+            Set_sell(3000);
             
         }
 
