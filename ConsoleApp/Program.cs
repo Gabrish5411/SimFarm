@@ -738,7 +738,48 @@ namespace ConsoleApp
                                     else if (selected_building_shop == 3)
                                     {
                                         Console.WriteLine("You can sell/destroy the following buildings:");
-                                        Console.ReadLine();
+                                        game.Map.Print_Farm_and_type();
+                                        string selected_terrain = Console.ReadLine();
+                                        int sel_terrain = Convert.ToInt32(selected_terrain); 
+                                        bool finished_1_0_3 = false;
+
+                                        while (!finished_1_0_3)
+                                        {
+                                            if (game.Map.terrains[sel_terrain - 1].Get_bought() && game.Map.terrains[sel_terrain - 1].Get_Building() != null)
+                                            {
+                                                if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "fld")
+                                                {
+                                                    if (game.Current_money < game.Map.terrains[sel_terrain - 1].Get_Building().Get_sell())
+                                                    {
+                                                        game.Current_money -= game.Map.terrains[sel_terrain - 1].Get_Building().Get_sell();
+                                                        game.Map.terrains[sel_terrain - 1].Set_Building(null);
+                                                        game.Map.terrains[sel_terrain - 1].Set_bought(false);
+                                                    }
+                                                    else
+                                                    {
+                                                        Console.WriteLine("You don't have enough money");
+                                                    }
+                                                }
+                                                else if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "cttle")
+                                                {
+                                                    if (game.Current_money < game.Map.terrains[sel_terrain - 1].Get_Building().Get_sell())
+                                                    {
+                                                        game.Current_money -= game.Map.terrains[sel_terrain - 1].Get_Building().Get_sell();
+                                                        game.Map.terrains[sel_terrain - 1].Set_Building(null);
+                                                        game.Map.terrains[sel_terrain - 1].Set_bought(false);
+                                                    }
+                                                    else
+                                                    {
+                                                        Console.WriteLine("You don't have enough money");
+                                                    }
+                                                }
+                                                else if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "strg")  //FALTA ESTO
+                                                {
+                                                    game.Map.terrains[sel_terrain - 1].Set_bought(false);
+                                                }
+                                            }
+                                            Console.ReadLine();
+                                        }
                                     }
                                     else if (selected_building_shop == 4) //Menu Anterior
                                     {
