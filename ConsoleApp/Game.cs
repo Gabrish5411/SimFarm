@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp.Products.Seeds;
+using ConsoleApp.Consumables;
 
 namespace ConsoleApp
 {
@@ -23,6 +24,14 @@ namespace ConsoleApp
         public Seed tomato;
         public Seed potato;
         public Seed rice;
+        public Fertilizer fertilizer = new Fertilizer();
+        public Irrigation irrigation = new Irrigation();
+        public AnimalFood animalFood = new AnimalFood();
+        public AnimalWater animalWater = new AnimalWater();
+        public Fungicide fungicide = new Fungicide();
+        public Herbicide herbicide = new Herbicide();
+        public Pesticide pesticide = new Pesticide();
+        public Vaccine vaccine = new Vaccine();
 
         public Game()
         {
@@ -106,6 +115,13 @@ namespace ConsoleApp
             {
                 return randNum.Next(min, max);
             }
+        }
+        public void ReportFarm()
+        {
+            Console.WriteLine("Inventory: \nFertilizer uses: "+fertilizer.GetUses()+"\tIrrigation uses: "+irrigation.GetUses());
+            Console.WriteLine("Animal food uses: " + animalFood.GetUses() + "\tAnimal water uses: " + animalWater.GetUses());
+            Console.WriteLine("Fungicide uses: " + fungicide.GetUses() + "\tHerbicide uses: " + herbicide.GetUses());
+            Console.WriteLine("Pesticide uses: " + pesticide.GetUses() + "\tVaccine uses: " + vaccine.GetUses());
         }
     }
 }

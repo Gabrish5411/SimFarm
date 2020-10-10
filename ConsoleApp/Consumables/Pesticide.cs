@@ -14,23 +14,16 @@ namespace ConsoleApp.Consumables
         {
             Uses = 5;
             buyPrice = 5000;
-            Random random = new Random();
         }
 
-        public bool Use(bool worms, Random random)
+        public void Use(Field field, Random random)
         {
+            Uses -= 1;
             this.successProbability = random.Next(0, 11);
             if (this.successProbability >= 5)
             {
-                Uses -= 1;
-                return worms = false;
+                field.worms = false;
             }
-            else
-            {
-                Uses -= 1;
-                return worms = true;
-            }
-
         }
     }
 }

@@ -9,13 +9,26 @@ namespace ConsoleApp.Consumables
 {
     class Consumable
     {
-        public int Uses;
+        protected int Uses;
         protected int buyPrice;   
-        
+        /*
         public int Uses1
         {
             get { return Uses; }
             set { Uses = value; }
+        }
+        */
+        public void AddUse()
+        {
+            this.Uses += 1;
+        }
+        public int GetBuyPrice()
+        {
+            return this.buyPrice;
+        }
+        public int GetUses()
+        {
+            return Uses;
         }
     }
     

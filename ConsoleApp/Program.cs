@@ -19,19 +19,9 @@ namespace ConsoleApp
 
         static void Main(string[] args)
         {
-            
-
-            Game game1 = new Game();
+            Random randNum = new Random();
             Building building;
             string building_name;
-            Fertilizer fertilizer = new Fertilizer();
-            Irrigation irrigation = new Irrigation();
-            AnimalFood animalFood = new AnimalFood();
-            AnimalWater animalWater = new AnimalWater();
-            Fungicide fungicide = new Fungicide();
-            Herbicide herbicide = new Herbicide();
-            Pesticide pesticide = new Pesticide();
-            Vaccine vaccine = new Vaccine();
             MapAdmin printer = new MapAdmin();
             Game game;
             Map m1;
@@ -57,8 +47,9 @@ namespace ConsoleApp
                 if (selected == 0)
                 {
                     
-                    Console.Clear();
+                    
                     m1 = new Map();
+                    //Console.Clear();
                     printer.Show(m1.map);
                     //Console.WriteLine(m1.map[0,99].Get_terrainNumber());
                     Console.WriteLine("¿Accept generated map?");
@@ -95,10 +86,14 @@ namespace ConsoleApp
             bool finished = false;
             while (!finished)
             {
+                Console.Clear();
+                printer.Show(m1.map);
                 selected_turn = MenuManager.PrintMenu(turn_options);
                 switch (selected_turn)
                 {
                     case 0: //Administrar granja
+                        Console.Clear();
+                        game.ReportFarm();
                         List<string> farm_options = new List<string>(new string[] { "Manage Production", "Manage Storage", "Previous Menu" });
                         int selected_option;
                         bool finished_2 = false;
@@ -136,8 +131,7 @@ namespace ConsoleApp
                                                     {
                                                         //Seed seed = new Seed();
                                                         //Field field = new Field(m1.terrains, seed);
-                                                        irrigation.Uses1 -= 1;
-                                                        irrigation.Use((Field)m1.terrains[sel_terrain-1].Get_Building());
+                                                        game.irrigation.Use((Field)m1.terrains[sel_terrain-1].Get_Building());
                                                         Console.WriteLine("Irrigation applied to terrain number "+ selected_terrain);
 
                                                     }
@@ -146,8 +140,7 @@ namespace ConsoleApp
 
                                                         Animal animal = new Animal();
                                                         Cattle cattle = new Cattle(m1.terrains, animal);
-                                                        animalWater.Uses1 -= 1;
-                                                        animalWater.Use(cattle);
+                                                        game.animalWater.Use(cattle);
                                                         Console.WriteLine("Animal Water applied to terrain number " + selected_terrain);
 
                                                     }
@@ -160,20 +153,13 @@ namespace ConsoleApp
                                                 {
                                                     if (m1.terrains[sel_terrain - 1].Get_Building().Get_type() == "fld")
                                                     {
-                                                        Seed seed = new Seed();
-                                                        Field field = new Field(m1.terrains, seed);
-                                                        fertilizer.Uses1 -= 1;
-                                                        fertilizer.Use(field);
+                                                        game.fertilizer.Use((Field)m1.terrains[sel_terrain - 1].Get_Building());
                                                         Console.WriteLine("Fertilizer applied to terrain number " + selected_terrain);
 
                                                     }
                                                     else if (m1.terrains[sel_terrain - 1].Get_Building().Get_type() == "cttl")
                                                     {
-
-                                                        Animal animal = new Animal();
-                                                        Cattle cattle = new Cattle(m1.terrains, animal);
-                                                        animalFood.Uses1 -= 1;
-                                                        animalFood.Use(cattle);
+                                                        game.animalFood.Use((Cattle)m1.terrains[sel_terrain - 1].Get_Building());
                                                         Console.WriteLine("Animal Food applied to terrain number " + selected_terrain);
 
                                                     }
@@ -200,36 +186,25 @@ namespace ConsoleApp
                                         {
                                             if (m1.terrains[sel_terrain - 1].Get_bought() && m1.terrains[sel_terrain - 1].Get_Building() != null)
                                             {
-
                                                 if (m1.terrains[sel_terrain - 1].Get_Building().Get_type() == "fld")
                                                 {
+                                                    Field field = (Field)m1.terrains[sel_terrain - 1].Get_Building();
+                                                    field.ReportFieldStatus();
                                                     selected_cure = MenuManager.PrintMenu(cure_options_field);
                                                     if (selected_cure == 0)
                                                     {
-                                                        Seed seed = new Seed();
-                                                        Field field = new Field(m1.terrains, seed);
-                                                        Random random = new Random();
-                                                        pesticide.Uses1 -= 1;
-                                                        pesticide.Use(field.worms, random);
+                                                        game.pesticide.Use(field, randNum);
                                                         Console.WriteLine("Pesticide applied to terrain number " + selected_terrain);
                                                     }
                                                     else if (selected_cure == 1)
                                                     {
-                                                        Seed seed = new Seed();
-                                                        Field field = new Field(m1.terrains, seed);
-                                                        Random random = new Random();
-                                                        herbicide.Uses1 -= 1;
-                                                        herbicide.Use(field.undergowth, random);
+                                                        game.herbicide.Use(field, randNum);
                                                         Console.WriteLine("Herbicide applied to terrain number " + selected_terrain);
 
                                                     }
                                                     else if (selected_cure == 2)
                                                     {
-                                                        Seed seed = new Seed();
-                                                        Field field = new Field(m1.terrains, seed);
-                                                        Random random = new Random();
-                                                        fungicide.Uses1 -= 1;
-                                                        fungicide.Use(field.ill, random);
+                                                        game.fungicide.Use(field, randNum);
                                                         Console.WriteLine("Fungicide applied to terrain number " + selected_terrain);
 
                                                     }
@@ -240,14 +215,12 @@ namespace ConsoleApp
                                                 }
                                                 else if (m1.terrains[sel_terrain - 1].Get_Building().Get_type() == "cttl")
                                                 {
+                                                    Cattle cattle = (Cattle)m1.terrains[sel_terrain - 1].Get_Building();
+                                                    cattle.ReportCattleStatus();
                                                     selected_cure = MenuManager.PrintMenu(cure_options_cattle);
                                                     if (selected_cure == 0)
                                                     {
-                                                        Animal animal = new Animal();
-                                                        Cattle cattle = new Cattle(m1.terrains, animal);
-                                                        Random random = new Random();
-                                                        vaccine.Uses1 -= 1;
-                                                        vaccine.Use(cattle.ill, random);
+                                                        game.vaccine.Use(cattle, randNum);
                                                         Console.WriteLine("Vaccine applied to terrain number " + selected_terrain);
                                                     }
                                                     else if (selected_cure == 1)
@@ -269,11 +242,86 @@ namespace ConsoleApp
                                         {
                                             if (m1.terrains[sel_terrain - 1].Get_bought() && m1.terrains[sel_terrain - 1].Get_Building() != null) //agregar que almacentamientos no estan llenos
                                             {
-                                                //accion de guardar el final product
+                                                if (m1.terrains[sel_terrain - 1].Get_Building().Get_type() == "fld")
+                                                {
+                                                    Field field = (Field)m1.terrains[sel_terrain - 1].Get_Building();
+                                                    field.ReportFieldStatus();
+                                                    if (field.IsReady()) //Producto esta maduro
+                                                    {
+                                                        string obj_name = field.Get_product().Get_productName();
+                                                        foreach (Terrain terr in m1.terrains)//Buscar un almacen
+                                                        {
+                                                            if (terr.Get_Building() != null) //Donde haya un edificio
+                                                            {
+                                                                if (terr.Get_Building().Get_type() == "strg" && terr.Get_Building().Get_product().Get_productName() == obj_name)
+                                                                {
+                                                                    Storage store = (Storage)terr.Get_Building();
+                                                                    if (!store.IsFull())
+                                                                    {
+                                                                        store.AddProduct(new FinishedProduct(obj_name)); //Agregar el producto al almacen 
+                                                                        Console.WriteLine("The product has been added to a storage.");
+                                                                    }
+                                                                }
+                                                                else if (terr.Get_Building().Get_type() == "strg")
+                                                                {
+                                                                    Storage store = (Storage)terr.Get_Building();
+                                                                    if (store.GetCurrentProduct() == "Empty")//Agregar el producto al almacen vacio
+                                                                    {
+                                                                        store.AddProduct(new FinishedProduct(obj_name));
+                                                                        Console.WriteLine("The product has been added to an empty storage.");
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    else //Producto no esta maduro
+                                                    {
+                                                        Console.WriteLine("The selected field is not ready for harvest");
+                                                    }
+                                                }
+                                                else if (m1.terrains[sel_terrain - 1].Get_Building().Get_type() == "cttl")
+                                                {
+                                                    Cattle cattle = (Cattle)m1.terrains[sel_terrain - 1].Get_Building();
+                                                    cattle.ReportCattleStatus();
+                                                    if (cattle.IsReady()) //Producto esta maduro
+                                                    {
+                                                        string obj_name = cattle.Get_product().Get_productName();
+                                                        foreach (Terrain terr in m1.terrains)//Buscar un almacen
+                                                        {
+                                                            if (terr.Get_Building() != null) //Donde haya un edificio
+                                                            {
+                                                                if (terr.Get_Building().Get_type() == "strg" && terr.Get_Building().Get_product().Get_productName() == obj_name)
+                                                                {
+                                                                    Storage store = (Storage)terr.Get_Building();
+                                                                    if (!store.IsFull())
+                                                                    {
+                                                                        store.AddProduct(new FinishedProduct(obj_name)); //Agregar el producto al almacen 
+                                                                        Console.WriteLine("The product has been added to a storage.");
+                                                                    }
+                                                                }
+                                                                else if (terr.Get_Building().Get_type() == "strg")
+                                                                {
+                                                                    Storage store = (Storage)terr.Get_Building();
+                                                                    if (store.GetCurrentProduct() == "Empty")//Agregar el producto al almacen vacio
+                                                                    {
+                                                                        store.AddProduct(new FinishedProduct(obj_name));
+                                                                        Console.WriteLine("The product has been added to an empty storage.");
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    else //Producto no esta maduro
+                                                    {
+                                                        Console.WriteLine("The selected field is not ready for harvest");
+                                                    }
+
+                                                }
+
                                             }
                                             else
                                             {
-                                                //eliminar automaticamente el producto, venderlo al precio del mercado y ganar money
+                                                Console.WriteLine("Selected building is invalid.");
                                             }
                                         }
 
@@ -297,10 +345,18 @@ namespace ConsoleApp
                                     {
                                         if (m1.terrains[sel_terrain - 1].Get_Building().Get_type() == "strg")
                                         {
-                                            //Resumen productos almacenados
-                                            Console.WriteLine("Select storaged product to sell");
-                                            int select_to_sell = Convert.ToInt32(Console.ReadLine());
-                                            //delete del storage el vendido y aumentar money
+                                            Storage stora = (Storage)m1.terrains[sel_terrain - 1].Get_Building();
+                                            stora.ReportStorageStatus(); //Muestra la informacion del almacen
+                                            List<string> sell_options = new List<string>(new string[] { "Sell Products", "Previous Menu" }); //Da la opcion de vender
+                                            int selected_sell = MenuManager.PrintMenu(sell_options);
+                                            if (selected_sell == 0)
+                                            {
+                                                stora.SellProducts(game);
+                                            }
+                                            else
+                                            {
+                                                break;
+                                            }  
                                         }
                                     }
                                     else
@@ -357,9 +413,9 @@ namespace ConsoleApp
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
 
-                                                if (game1.Current_money >= building.buyPrice + tomato.Get_buyPrice())
+                                                if (game.Current_money >= building.buyPrice + tomato.Get_buyPrice())
                                                 {
-                                                    game1.Current_money -= building.buyPrice + tomato.Get_buyPrice();
+                                                    game.Current_money -= building.buyPrice + tomato.Get_buyPrice();
                                                 }
                                                 else
                                                 {
@@ -392,10 +448,10 @@ namespace ConsoleApp
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
 
-                                                if (game1.Current_money >= building.buyPrice + potato.Get_buyPrice())
+                                                if (game.Current_money >= building.buyPrice + potato.Get_buyPrice())
                                                 {
                                                    
-                                                    game1.Current_money -= building.buyPrice + potato.Get_buyPrice();
+                                                    game.Current_money -= building.buyPrice + potato.Get_buyPrice();
 
 
                                                 }
@@ -433,10 +489,10 @@ namespace ConsoleApp
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
 
-                                                if (game1.Current_money >= building.buyPrice + rice.Get_buyPrice())
+                                                if (game.Current_money >= building.buyPrice + rice.Get_buyPrice())
                                                 {
                                                     
-                                                    game1.Current_money -= building.buyPrice + rice.Get_buyPrice();
+                                                    game.Current_money -= building.buyPrice + rice.Get_buyPrice();
 
                                                 }
                                                 else
@@ -489,10 +545,10 @@ namespace ConsoleApp
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
 
-                                                if (game1.Current_money >= building.buyPrice + cow.Get_buyPrice())
+                                                if (game.Current_money >= building.buyPrice + cow.Get_buyPrice())
                                                 {
 
-                                                    game1.Current_money -= building.buyPrice + cow.Get_buyPrice();
+                                                    game.Current_money -= building.buyPrice + cow.Get_buyPrice();
 
 
                                                 }
@@ -530,10 +586,10 @@ namespace ConsoleApp
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
 
-                                                if (game1.Current_money >= building.buyPrice + sheep.Get_buyPrice())
+                                                if (game.Current_money >= building.buyPrice + sheep.Get_buyPrice())
                                                 {
 
-                                                    game1.Current_money -= building.buyPrice + sheep.Get_buyPrice();
+                                                    game.Current_money -= building.buyPrice + sheep.Get_buyPrice();
 
 
                                                 }
@@ -572,10 +628,10 @@ namespace ConsoleApp
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
 
-                                                if (game1.Current_money >= building.buyPrice + pig.Get_buyPrice())
+                                                if (game.Current_money >= building.buyPrice + pig.Get_buyPrice())
                                                 {
 
-                                                    game1.Current_money -= building.buyPrice + pig.Get_buyPrice();
+                                                    game.Current_money -= building.buyPrice + pig.Get_buyPrice();
 
                                                 }
                                                 else
@@ -630,10 +686,10 @@ namespace ConsoleApp
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
 
-                                                if (game1.Current_money >= 10000)
+                                                if (game.Current_money >= 10000)
                                                 {
 
-                                                    game1.Current_money -= 10000;
+                                                    game.Current_money -= 10000;
 
 
                                                 }
@@ -668,10 +724,10 @@ namespace ConsoleApp
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain);
 
-                                                if (game1.Current_money >= building.buyPrice)
+                                                if (game.Current_money >= building.buyPrice)
                                                 {
 
-                                                    game1.Current_money -= building.buyPrice;
+                                                    game.Current_money -= building.buyPrice;
 
 
                                                 }
@@ -743,10 +799,10 @@ namespace ConsoleApp
                                             }
                                             else if (selected_food == 0)
                                             {
-                                                if (game1.Current_money >= 5000)
+                                                if (game.Current_money >= game.fertilizer.GetBuyPrice())
                                                 {
-                                                    fertilizer.Uses1 += 1;
-                                                    game1.Current_money -= 5000;
+                                                    game.fertilizer.AddUse();
+                                                    game.Current_money -= game.fertilizer.GetBuyPrice();
                                                     Console.WriteLine("Thanks for buying a Fertilizer! Fertilizer uses +1");
                                                     break;
                                                 }
@@ -758,10 +814,10 @@ namespace ConsoleApp
                                             }
                                             else if (selected_food == 1)
                                             {
-                                                if (game1.Current_money >= 5000)
+                                                if (game.Current_money >= game.irrigation.GetBuyPrice())
                                                 {
-                                                    irrigation.Uses1 += 1;
-                                                    game1.Current_money -= 5000;
+                                                    game.irrigation.AddUse();
+                                                    game.Current_money -= game.irrigation.GetBuyPrice();
                                                     Console.WriteLine("Thanks for buying Irrigation! Irrigation uses +1");
                                                     break;
                                                 }
@@ -773,10 +829,10 @@ namespace ConsoleApp
                                             }
                                             else if (selected_food == 2)
                                             {
-                                                if (game1.Current_money >= 5000)
+                                                if (game.Current_money >= game.animalFood.GetBuyPrice())
                                                 {
-                                                    animalFood.Uses1 += 1;
-                                                    game1.Current_money -= 5000;
+                                                    game.animalFood.AddUse();
+                                                    game.Current_money -= game.animalFood.GetBuyPrice();
                                                     Console.WriteLine("Thanks for buying Animal Food! Animal Food uses +1");
                                                     break;
                                                 }
@@ -788,10 +844,10 @@ namespace ConsoleApp
                                             }
                                             else if (selected_food == 3)
                                             {
-                                                if (game1.Current_money >= 5000)
+                                                if (game.Current_money >= game.animalWater.GetBuyPrice())
                                                 {
-                                                    animalWater.Uses1 += 1;
-                                                    game1.Current_money -= 5000;
+                                                    game.animalWater.AddUse();
+                                                    game.Current_money -= game.animalWater.GetBuyPrice();
                                                     Console.WriteLine("Thanks for buying Animal Water! Animal Water uses +1");
                                                     break;
                                                 }
@@ -817,10 +873,10 @@ namespace ConsoleApp
                                             }
                                             else if (selected_medication == 0)
                                             {
-                                                if (game1.Current_money >= 5000)
+                                                if (game.Current_money >= game.fungicide.GetBuyPrice())
                                                 {
-                                                    fungicide.Uses1 += 1;
-                                                    game1.Current_money -= 5000;
+                                                    game.fungicide.AddUse();
+                                                    game.Current_money -= game.fungicide.GetBuyPrice();
                                                     Console.WriteLine("Thanks for buying Fungicide! Fungicide uses +1");
                                                     break;
                                                 }
@@ -832,10 +888,10 @@ namespace ConsoleApp
                                             }
                                             else if (selected_medication == 1)
                                             {
-                                                if (game1.Current_money >= 5000)
+                                                if (game.Current_money >= game.herbicide.GetBuyPrice())
                                                 {
-                                                    herbicide.Uses1 += 1;
-                                                    game1.Current_money -= 5000;
+                                                    game.herbicide.AddUse();
+                                                    game.Current_money -= game.herbicide.GetBuyPrice();
                                                     Console.WriteLine("Thanks for buying Herbicide! Herbicide uses +1");
                                                     break;
                                                 }
@@ -847,10 +903,10 @@ namespace ConsoleApp
                                             }
                                             else if (selected_medication == 2)
                                             {
-                                                if (game1.Current_money >= 5000)
+                                                if (game.Current_money >= game.pesticide.GetBuyPrice())
                                                 {
-                                                    pesticide.Uses1 += 1;
-                                                    game1.Current_money -= 5000;
+                                                    game.pesticide.AddUse();
+                                                    game.Current_money -= game.pesticide.GetBuyPrice();
                                                     Console.WriteLine("Thanks for buying Pesticide! Pesticide uses +1");
                                                     break;
                                                 }
@@ -862,10 +918,10 @@ namespace ConsoleApp
                                             }
                                             else if (selected_medication == 3)
                                             {
-                                                if (game1.Current_money >= 5000)
+                                                if (game.Current_money >= game.vaccine.GetBuyPrice())
                                                 {
-                                                    vaccine.Uses1 += 1;
-                                                    game1.Current_money -= 5000;
+                                                    game.vaccine.AddUse();
+                                                    game.Current_money -= game.vaccine.GetBuyPrice(); 
                                                     Console.WriteLine("Thanks for buying a Vaccine! Vaccine uses +1");
                                                     break;
                                                 }

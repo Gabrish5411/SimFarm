@@ -37,6 +37,21 @@ namespace ConsoleApp.Buildings
             maxRipeness = item.Get_productionTime(); //Ejemplo
         }
 
+        public void ReportCattleStatus()
+        {
+            Console.WriteLine("Field of " + this.item.Get_productName() + "s:");
+            Console.WriteLine("Ripeness: " + this.ripeness);
+            Console.WriteLine("Current health: " + this.currentHP + "/100");
+            Console.WriteLine("Current water: " + this.availableWater + "/100");
+            Console.WriteLine("Current food: " + this.availableFood + "/100");
+            Console.WriteLine("Illness: " + ill);
+            
+        }
+        public bool IsReady()
+        {
+            return ripeness == maxRipeness ? true : false;
+        }
+
         public void GiveFood(int food)
         {
             this.availableFood += food;

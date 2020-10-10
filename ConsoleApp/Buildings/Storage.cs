@@ -29,7 +29,6 @@ namespace ConsoleApp.Buildings
                 int quality = prod.Get_product_quality();
                 prod.Update_product_quality();
             }
-            
         }
         public void Set_finished(FinishedProduct finishedProduct)
         {
@@ -64,6 +63,15 @@ namespace ConsoleApp.Buildings
             currentCapacity = 0;
             int price = (currentCapacity == 0 ? 0 : finished_products[0].Get_sellPrice());
             game.Current_money += price*currentCapacity;
+            this.finished_products.Clear();
+        }
+        public string GetCurrentProduct()
+        {
+            return currentProduct;
+        }
+        public bool IsFull()
+        {
+            return capacity == currentCapacity ? true : false;
         }
     }
 

@@ -47,5 +47,20 @@ namespace ConsoleApp.Buildings
         {
             this.availableWater += water;
         }
+        public void ReportFieldStatus()
+        {
+            Console.WriteLine("Field of "+this.item.Get_productName()+"s:");
+            Console.WriteLine("Ripeness: " + this.ripeness);
+            Console.WriteLine("Current health: " + this.currentHP + "/100");
+            Console.WriteLine("Current water: "+this.availableWater+"/100");
+            Console.WriteLine("Current food: " + this.availableFood + "/100");
+            Console.WriteLine("Illness: " + ill);
+            Console.WriteLine("Worms: " + worms);
+            Console.WriteLine("Undergowth: " + undergowth);
+        }
+        public bool IsReady()
+        {
+            return ripeness == maxRipeness ? true : false;
+        }
     }
 }
