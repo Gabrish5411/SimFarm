@@ -80,151 +80,146 @@ namespace ConsoleApp
                 switch (selected_turn)
                 {
                     case 0: //Administrar granja
-                        Console.Clear();
-                        game.ReportFarm();
+                        
                         List<string> farm_options = new List<string>(new string[] { "Manage Production", "Manage Storage", "Previous Menu" });
                         int selected_option;
                         bool finished_2 = false;
                         while (!finished_2)
                         {
+                            Console.Clear();
+                            game.ReportFarm();
                             selected_option = MenuManager.PrintMenu(farm_options);
                             if (selected_option == 0) //Administrar Produccion
                             {
-                                List<string> production_options = new List<string>(new string[] { "Supply Water/Food", "Apply Heal", "Get Finished Product" ,"Previous Menu" });
+                                List<string> production_options = new List<string>(new string[] { "Supply Water/Food", "Apply Heal", "Get Finished Products", "Previous Menu" });
+                                //List<string> storage_options = new List<string>(new string[] { "Get Finished Products", "Previous Menu" });
                                 int selected_production;
                                 bool finished_21 = false;
                                 while (!finished_21)
                                 {
                                     game.Map.Print_Farm_and_type();
+                                    Console.WriteLine("Select what terrain you want to manage");
                                     string selected_terrain = Console.ReadLine();
                                     int sel_terrain = Convert.ToInt32(selected_terrain);
-                                    selected_production = MenuManager.PrintMenu(production_options);
-                                    if (selected_production == 0) //Agregar agua o comida
+                                    if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "fld" || game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "cttl")
                                     {
-                                        Console.WriteLine("Select what terrain you want to manage");
-                                        List<string> feedwater_options = new List<string>(new string[] { "Supply Water", "Supply Food", "Previous Menu"});
-                                        int selected_feedwater;
-                                        bool finished_22 = false;
-                                        while (!finished_22)
+                                        if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "fld")
                                         {
-                                            selected_feedwater = MenuManager.PrintMenu(feedwater_options);
-                                            if (selected_feedwater == 0)     //give water
-                                            {
-                                                if (game.Map.terrains[sel_terrain-1].Get_bought() && game.Map.terrains[sel_terrain-1].Get_Building() != null)
-                                                {
-
-                                                    if (game.Map.terrains[sel_terrain-1].Get_Building().Get_type() == "fld")
-                                                    {
-                                                        //Seed seed = new Seed();
-                                                        //Field field = new Field(game.Map.terrains, seed);
-                                                        game.irrigation.Use((Field)game.Map.terrains[sel_terrain-1].Get_Building());
-                                                        Console.WriteLine("Irrigation applied to terrain number "+ selected_terrain);
-
-                                                    }
-                                                    else if (game.Map.terrains[sel_terrain-1].Get_Building().Get_type() == "cttl")
-                                                    {
-
-                                                        Animal animal = new Animal();
-                                                        Cattle cattle = new Cattle(game.Map.terrains, animal);
-                                                        game.animalWater.Use(cattle);
-                                                        Console.WriteLine("Animal Water applied to terrain number " + selected_terrain);
-
-                                                    }
-                                                }
-
-                                            }
-                                            if (selected_feedwater == 1)     //give food
+                                            Field field = (Field)game.Map.terrains[sel_terrain - 1].Get_Building();
+                                            field.ReportFieldStatus();
+                                        }
+                                        else
+                                        {
+                                            Cattle cattle = (Cattle)game.Map.terrains[sel_terrain - 1].Get_Building();
+                                            cattle.ReportCattleStatus();
+                                        }
+                                        selected_production = MenuManager.PrintMenu(production_options);
+                                        if (selected_production == 0) //Agregar agua o comida
+                                        {
+                                            List<string> feedwater_options = new List<string>(new string[] { "Supply Water", "Supply Food", "Previous Menu" });
+                                            int selected_feedwater;
+                                            bool finished_22 = false;
+                                            while (!finished_22)
                                             {
                                                 if (game.Map.terrains[sel_terrain - 1].Get_bought() && game.Map.terrains[sel_terrain - 1].Get_Building() != null)
                                                 {
                                                     if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "fld")
                                                     {
-                                                        game.fertilizer.Use((Field)game.Map.terrains[sel_terrain - 1].Get_Building());
-                                                        Console.WriteLine("Fertilizer applied to terrain number " + selected_terrain);
-
+                                                        selected_feedwater = MenuManager.PrintMenu(feedwater_options);
+                                                        if (selected_feedwater == 0)
+                                                        {
+                                                            game.irrigation.Use((Field)game.Map.terrains[sel_terrain - 1].Get_Building());
+                                                            Console.WriteLine("Irrigation applied to terrain number " + selected_terrain);
+                                                        }
+                                                        else if (selected_feedwater == 1)
+                                                        {
+                                                            game.fertilizer.Use((Field)game.Map.terrains[sel_terrain - 1].Get_Building());
+                                                            Console.WriteLine("Fertilizer applied to terrain number " + selected_terrain);
+                                                        }
+                                                        else continue;
                                                     }
                                                     else if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "cttl")
                                                     {
-                                                        game.animalFood.Use((Cattle)game.Map.terrains[sel_terrain - 1].Get_Building());
-                                                        Console.WriteLine("Animal Food applied to terrain number " + selected_terrain);
-
+                                                        selected_feedwater = MenuManager.PrintMenu(feedwater_options);
+                                                        if (selected_feedwater == 0)
+                                                        {
+                                                            game.animalWater.Use((Cattle)game.Map.terrains[sel_terrain - 1].Get_Building());
+                                                            Console.WriteLine("Animal Water applied to terrain number " + selected_terrain);
+                                                        }
+                                                        else if (selected_feedwater == 1)
+                                                        {
+                                                            game.animalFood.Use((Cattle)game.Map.terrains[sel_terrain - 1].Get_Building());
+                                                            Console.WriteLine("Animal Food applied to terrain number " + selected_terrain);
+                                                        }
+                                                        else continue;
                                                     }
                                                 }
-                                            }
-                                            if (selected_feedwater == 2)     //previous
-                                            {
-                                                break;
                                             }
                                         }
-                                    }
-                                    else if (selected_production == 1) // Aplicar cura
-                                    {
-                                        
-                                        List<string> cure_options_field = new List<string>(new string[] { "Supply Pesticide", "Supply Herbicide", "Supply Fungicide", "Previous Menu" });
-                                        List<string> cure_options_cattle = new List<string>(new string[] { "Supply Vaccine", "Previous Menu" });
-                                        int selected_cure;
-                                        bool finished_23 = false;
-                                        while (!finished_23)
+                                        else if (selected_production == 1) // Aplicar cura
                                         {
-                                            if (game.Map.terrains[sel_terrain - 1].Get_bought() && game.Map.terrains[sel_terrain - 1].Get_Building() != null)
+                                            List<string> cure_options_field = new List<string>(new string[] { "Supply Pesticide", "Supply Herbicide", "Supply Fungicide", "Previous Menu" });
+                                            List<string> cure_options_cattle = new List<string>(new string[] { "Supply Vaccine", "Previous Menu" });
+                                            int selected_cure;
+                                            bool finished_23 = false;
+                                            while (!finished_23)
                                             {
-                                                if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "fld")
+                                                if (game.Map.terrains[sel_terrain - 1].Get_bought() && game.Map.terrains[sel_terrain - 1].Get_Building() != null)
                                                 {
-                                                    Field field = (Field)game.Map.terrains[sel_terrain - 1].Get_Building();
-                                                    field.ReportFieldStatus();
-                                                    selected_cure = MenuManager.PrintMenu(cure_options_field);
-                                                    if (selected_cure == 0)
+                                                    if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "fld")
                                                     {
-                                                        game.pesticide.Use(field, randNum);
-                                                        Console.WriteLine("Pesticide applied to terrain number " + selected_terrain);
-                                                    }
-                                                    else if (selected_cure == 1)
-                                                    {
-                                                        game.herbicide.Use(field, randNum);
-                                                        Console.WriteLine("Herbicide applied to terrain number " + selected_terrain);
+                                                        Field field = (Field)game.Map.terrains[sel_terrain - 1].Get_Building();
+                                                        field.ReportFieldStatus();
+                                                        selected_cure = MenuManager.PrintMenu(cure_options_field);
+                                                        if (selected_cure == 0)
+                                                        {
+                                                            game.pesticide.Use(field, randNum);
+                                                            Console.WriteLine("Pesticide applied to terrain number " + selected_terrain);
+                                                        }
+                                                        else if (selected_cure == 1)
+                                                        {
+                                                            game.herbicide.Use(field, randNum);
+                                                            Console.WriteLine("Herbicide applied to terrain number " + selected_terrain);
 
-                                                    }
-                                                    else if (selected_cure == 2)
-                                                    {
-                                                        game.fungicide.Use(field, randNum);
-                                                        Console.WriteLine("Fungicide applied to terrain number " + selected_terrain);
+                                                        }
+                                                        else if (selected_cure == 2)
+                                                        {
+                                                            game.fungicide.Use(field, randNum);
+                                                            Console.WriteLine("Fungicide applied to terrain number " + selected_terrain);
 
+                                                        }
+                                                        else if (selected_cure == 3)
+                                                        {
+                                                            break;
+                                                        }
                                                     }
-                                                    else if (selected_cure == 3)
+                                                    else if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "cttl")
                                                     {
-                                                        break;
+                                                        Cattle cattle = (Cattle)game.Map.terrains[sel_terrain - 1].Get_Building();
+                                                        cattle.ReportCattleStatus();
+                                                        selected_cure = MenuManager.PrintMenu(cure_options_cattle);
+                                                        if (selected_cure == 0)
+                                                        {
+                                                            game.vaccine.Use(cattle, randNum);
+                                                            Console.WriteLine("Vaccine applied to terrain number " + selected_terrain);
+                                                        }
+                                                        else if (selected_cure == 1)
+                                                        {
+                                                            break;
+                                                        }
                                                     }
                                                 }
-                                                else if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "cttl")
-                                                {
-                                                    Cattle cattle = (Cattle)game.Map.terrains[sel_terrain - 1].Get_Building();
-                                                    cattle.ReportCattleStatus();
-                                                    selected_cure = MenuManager.PrintMenu(cure_options_cattle);
-                                                    if (selected_cure == 0)
-                                                    {
-                                                        game.vaccine.Use(cattle, randNum);
-                                                        Console.WriteLine("Vaccine applied to terrain number " + selected_terrain);
-                                                    }
-                                                    else if (selected_cure == 1)
-                                                    {
-                                                        break;
-                                                    }
-                                                }
+
                                             }
-
                                         }
-                                    }
-                                    else if (selected_production == 2) //Obtener producto terminado
-                                    {
-                                        bool finished_24 = false;
-                                        while (!finished_24)
+                                        else if (selected_production == 2)
                                         {
+                                            
                                             if (game.Map.terrains[sel_terrain - 1].Get_bought() && game.Map.terrains[sel_terrain - 1].Get_Building() != null) //agregar que almacentamientos no estan llenos
                                             {
                                                 if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "fld")
                                                 {
                                                     Field field = (Field)game.Map.terrains[sel_terrain - 1].Get_Building();
-                                                    field.ReportFieldStatus();
                                                     if (field.IsReady()) //Producto esta maduro
                                                     {
                                                         string obj_name = field.Get_product().Get_productName();
@@ -239,6 +234,7 @@ namespace ConsoleApp
                                                                     {
                                                                         store.AddProduct(new FinishedProduct(obj_name)); //Agregar el producto al almacen 
                                                                         Console.WriteLine("The product has been added to a storage.");
+                                                                        break;
                                                                     }
                                                                 }
                                                                 else if (terr.Get_Building().Get_type() == "strg")
@@ -248,10 +244,13 @@ namespace ConsoleApp
                                                                     {
                                                                         store.AddProduct(new FinishedProduct(obj_name));
                                                                         Console.WriteLine("The product has been added to an empty storage.");
+                                                                        break;
                                                                     }
                                                                 }
                                                             }
                                                         }
+                                                        break;
+                                                        
                                                     }
                                                     else //Producto no esta maduro
                                                     {
@@ -261,7 +260,6 @@ namespace ConsoleApp
                                                 else if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "cttl")
                                                 {
                                                     Cattle cattle = (Cattle)game.Map.terrains[sel_terrain - 1].Get_Building();
-                                                    cattle.ReportCattleStatus();
                                                     if (cattle.IsReady()) //Producto esta maduro
                                                     {
                                                         string obj_name = cattle.Get_product().Get_productName();
@@ -276,6 +274,7 @@ namespace ConsoleApp
                                                                     {
                                                                         store.AddProduct(new FinishedProduct(obj_name)); //Agregar el producto al almacen 
                                                                         Console.WriteLine("The product has been added to a storage.");
+                                                                        break;
                                                                     }
                                                                 }
                                                                 else if (terr.Get_Building().Get_type() == "strg")
@@ -285,29 +284,30 @@ namespace ConsoleApp
                                                                     {
                                                                         store.AddProduct(new FinishedProduct(obj_name));
                                                                         Console.WriteLine("The product has been added to an empty storage.");
+                                                                        break;
                                                                     }
                                                                 }
                                                             }
                                                         }
+                                                        break;
                                                     }
                                                     else //Producto no esta maduro
                                                     {
                                                         Console.WriteLine("The selected field is not ready for harvest");
+                                                        break;
                                                     }
-
                                                 }
-
                                             }
                                             else
                                             {
                                                 Console.WriteLine("Selected building is invalid.");
                                             }
+                                            
                                         }
-
-                                    }
-                                    else //Menu Anterior
-                                    {
-                                        break;
+                                        else if (selected_production == 3)
+                                        {
+                                            break;
+                                        }
                                     }
                                 }
                             }
