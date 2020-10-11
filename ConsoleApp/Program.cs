@@ -24,7 +24,7 @@ namespace ConsoleApp
             string building_name;
             MapAdmin printer = new MapAdmin();
             Game game;
-            Map map;
+            Map map; 
             //MenuManager menuAd = new MenuManager();
 
             
@@ -771,9 +771,19 @@ namespace ConsoleApp
                                                         Console.WriteLine("You don't have enough money");
                                                     }
                                                 }
-                                                else if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "strg")  //FALTA ESTO
+                                                else if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "strg")  
                                                 {
-                                                    game.Map.terrains[sel_terrain - 1].Set_bought(false);
+                                                    Storage storage = (Storage)game.Map.terrains[sel_terrain - 1].Get_Building();
+                                                    foreach (FinishedProduct prod in storage.GetFinished()) 
+                                                    {
+                                                        int sell;
+                                                        int quality;
+                                                        sell = prod.Get_sellPrice();
+                                                        quality = prod.Get_product_quality();
+                                                        game.Current_money += sell * quality;
+                                                    }
+                                                    game.Current_money += game.Map.terrains[sel_terrain - 1].Get_Building().sellPrice;
+                                                    game.Map.terrains[sel_terrain - 1].Set_Building(null);
                                                 }
                                             }
                                             Console.ReadLine();

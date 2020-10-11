@@ -73,6 +73,10 @@ namespace ConsoleApp.Buildings
         {
             return capacity == currentCapacity ? true : false;
         }
+        public List<FinishedProduct> GetFinished()
+        {
+            return finished_products;
+        }
     }
 
 }
