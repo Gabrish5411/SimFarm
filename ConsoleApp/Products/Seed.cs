@@ -6,18 +6,15 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.Products
 {
-    class Seed : Product
+    abstract class Seed : Product
     {
         
-        private double wormProbability;
-        private int wormPenalty;
-        private float undergrowthProbability;
-        private int undergowthPenalty;
+        protected float wormProbability;
+        protected int wormPenalty;
+        protected float undergrowthProbability;
+        protected int undergowthPenalty;
 
-        public void Set_wormProb(double prob)
-        {
-            wormProbability = prob;
-        }
+        
         
     }
 }

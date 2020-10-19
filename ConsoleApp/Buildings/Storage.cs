@@ -22,7 +22,7 @@ namespace ConsoleApp.Buildings
             Set_type("strg");
         }
 
-        public void Update_Storage()
+        public override void Update()
         {
             foreach (FinishedProduct prod in finished_products)
             {
@@ -35,7 +35,7 @@ namespace ConsoleApp.Buildings
             //this.finished_product = finishedProduct;
         }
 
-        public void ReportStorageStatus()
+        public override void Report()
         {
             Console.WriteLine("Product: "+this.currentProduct);
             Console.WriteLine("Capacity: "+this.currentCapacity+"/"+capacity);

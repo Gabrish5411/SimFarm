@@ -33,30 +33,19 @@ namespace ConsoleApp.Products
         {
             return productName;
         }
-        public void Set_productName(string name)
-        {
-            productName = name;
-        }
+        
 
         public int Get_buyPrice()
         {
             return buyPrice;
         }
 
-        public void Set_buyPrice(int value)
-        {
-            buyPrice = value;
-        }
 
         public int Get_sellPrice()
         {
             return sellPrice;
         }
 
-        public void Set_sellPrice(int value)
-        {
-            sellPrice = value;
-        }
 
         public int Get_foodConsumption()
         {
@@ -163,10 +152,6 @@ namespace ConsoleApp.Products
         public void Reset_Price()
         {
             currentPrice = sellPrice;
-        }
-        public void Set_variation(int vari)
-        {
-            priceVariation = vari;
         }
         public int Get_variation()
         {

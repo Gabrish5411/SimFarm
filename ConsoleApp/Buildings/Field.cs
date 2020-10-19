@@ -35,11 +35,6 @@ namespace ConsoleApp.Buildings
             Set_sell(3000);
         }
 
-        private void GetAttributes() //Con esta funcion sacamos lo que necesitemos del item (Semilla en este caso)
-        {
-            maxRipeness = item.Get_productionTime(); //Ejemplo
-        }
-
         public void GiveFood(int food)
         {
             this.availableFood += food;
@@ -48,7 +43,7 @@ namespace ConsoleApp.Buildings
         {
             this.availableWater += water;
         }
-        public void ReportFieldStatus()
+        public override void Report()
         {
             Console.WriteLine("Field of "+this.item.Get_productName()+"s:");
             Console.WriteLine("Ripeness: " + this.ripeness);
@@ -58,6 +53,10 @@ namespace ConsoleApp.Buildings
             Console.WriteLine("Illness: " + ill);
             Console.WriteLine("Worms: " + worms);
             Console.WriteLine("Undergowth: " + undergowth);
+        }
+        public override void Update()
+        {
+            
         }
         public bool IsReady()
         {

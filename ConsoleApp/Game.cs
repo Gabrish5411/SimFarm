@@ -12,6 +12,7 @@ using ConsoleApp.Buildings;
 
 namespace ConsoleApp
 {
+    [Serializable]
     class Game
     {
         public Map Map;
@@ -38,7 +39,7 @@ namespace ConsoleApp
         public Game()
         {
             current_turn = 1;
-            current_money = 50000;
+            current_money = 50000000;
             thirtyList_tomato = new Queue<int>();
             thirtyList_potato = new Queue<int>();
             thirtyList_rice = new Queue<int>();

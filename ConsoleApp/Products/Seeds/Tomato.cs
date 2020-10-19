@@ -12,11 +12,14 @@ namespace ConsoleApp.Products.Seeds
         public Tomato()
         {
             this.currentPrice = this.sellPrice;
-            this.Set_productName("Tomato");
-            this.Set_buyPrice(1000);
-            this.Set_sellPrice(500);
-            this.Set_variation(40);
-            this.Set_wormProb(0.1);
+            this.productName = "Tomato";
+            this.buyPrice = 1000;
+            this.sellPrice = 500;
+            this.priceVariation = 40;
+            this.wormProbability = 0.1F;
+            this.wormPenalty = 1;
+            this.undergrowthProbability = 0.3F;
+            this.undergowthPenalty = 1;
         }
     }
 }

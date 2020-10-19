@@ -61,6 +61,8 @@
     <Compile Include="Consumables\Vaccine.cs" />
     <Compile Include="FinishedProduct.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="Interfaces\IReport.cs" />
+    <Compile Include="Interfaces\IUpdate.cs" />
     <Compile Include="MenuManager.cs" />
     <Compile Include="Products\Animal.cs" />
     <Compile Include="Buildings\Building.cs" />

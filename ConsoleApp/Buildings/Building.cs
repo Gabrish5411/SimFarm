@@ -7,7 +7,7 @@ using ConsoleApp.Products;
 
 namespace ConsoleApp.Buildings
 {
-    public class Building
+    public abstract class Building
     {
         public string name;
         private string type;
@@ -38,5 +38,7 @@ namespace ConsoleApp.Buildings
         {
             return value;
         }
+        public abstract void Update();
+        public abstract void Report();
     }
 }

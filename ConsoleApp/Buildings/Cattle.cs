@@ -33,12 +33,8 @@ namespace ConsoleApp.Buildings
             
         }
 
-        private void GetAttributes() //Con esta funcion sacamos lo que necesitemos del item (Animal en este caso)
-        {
-            maxRipeness = item.Get_productionTime(); //Ejemplo
-        }
 
-        public void ReportCattleStatus()
+        public override void Report()
         {
             Console.WriteLine("Field of " + this.item.Get_productName() + "s:");
             Console.WriteLine("Ripeness: " + this.ripeness);

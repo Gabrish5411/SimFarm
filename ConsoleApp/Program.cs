@@ -102,16 +102,7 @@ namespace ConsoleApp
                                     int sel_terrain = Convert.ToInt32(selected_terrain);
                                     if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "fld" || game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "cttl")
                                     {
-                                        if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "fld")
-                                        {
-                                            Field field = (Field)game.Map.terrains[sel_terrain - 1].Get_Building();
-                                            field.ReportFieldStatus();
-                                        }
-                                        else
-                                        {
-                                            Cattle cattle = (Cattle)game.Map.terrains[sel_terrain - 1].Get_Building();
-                                            cattle.ReportCattleStatus();
-                                        }
+                                        game.Map.terrains[sel_terrain - 1].Get_Building().Report();
                                         selected_production = MenuManager.PrintMenu(production_options);
                                         if (selected_production == 0) //Agregar agua o comida
                                         {
@@ -168,7 +159,7 @@ namespace ConsoleApp
                                                     if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "fld")
                                                     {
                                                         Field field = (Field)game.Map.terrains[sel_terrain - 1].Get_Building();
-                                                        field.ReportFieldStatus();
+                                                        field.Report();
                                                         selected_cure = MenuManager.PrintMenu(cure_options_field);
                                                         if (selected_cure == 0)
                                                         {
@@ -195,7 +186,7 @@ namespace ConsoleApp
                                                     else if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "cttl")
                                                     {
                                                         Cattle cattle = (Cattle)game.Map.terrains[sel_terrain - 1].Get_Building();
-                                                        cattle.ReportCattleStatus();
+                                                        cattle.Report();
                                                         selected_cure = MenuManager.PrintMenu(cure_options_cattle);
                                                         if (selected_cure == 0)
                                                         {
@@ -324,7 +315,7 @@ namespace ConsoleApp
                                         if (game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "strg")
                                         {
                                             Storage stora = (Storage)game.Map.terrains[sel_terrain - 1].Get_Building();
-                                            stora.ReportStorageStatus(); //Muestra la informacion del almacen
+                                            stora.Report(); //Muestra la informacion del almacen
                                             List<string> sell_options = new List<string>(new string[] { "Sell Products", "Previous Menu" }); //Da la opcion de vender
                                             int selected_sell = MenuManager.PrintMenu(sell_options);
                                             if (selected_sell == 0)
