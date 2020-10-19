@@ -8,7 +8,7 @@ using ConsoleApp.Tiles;
 
 namespace ConsoleApp
 {
-    public class MapAdmin
+    public class Printer
     {
         //Para cambiar colores:
         private ConsoleColor colorAgua = ConsoleColor.Blue;

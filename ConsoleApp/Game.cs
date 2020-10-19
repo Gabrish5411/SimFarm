@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp.Products.Seeds;
-using ConsoleApp.Consumables;
 using ConsoleApp.Buildings;
 
 namespace ConsoleApp
@@ -17,67 +16,39 @@ namespace ConsoleApp
     {
         public Map Map;
         public int current_turn;
-        private int current_money;
         public static Random randNum = new Random();
         private int random;
         private int change;
         public Queue<int> thirtyList_tomato;
         public Queue<int> thirtyList_potato;
         public Queue<int> thirtyList_rice;
-        public Seed tomato;
-        public Seed potato;
-        public Seed rice;
-        public Fertilizer fertilizer = new Fertilizer();
-        public Irrigation irrigation = new Irrigation();
-        public AnimalFood animalFood = new AnimalFood();
-        public AnimalWater animalWater = new AnimalWater();
-        public Fungicide fungicide = new Fungicide();
-        public Herbicide herbicide = new Herbicide();
-        public Pesticide pesticide = new Pesticide();
-        public Vaccine vaccine = new Vaccine();
+        private Player player;
 
         public Game()
         {
             current_turn = 1;
-            current_money = 50000000;
             thirtyList_tomato = new Queue<int>();
             thirtyList_potato = new Queue<int>();
             thirtyList_rice = new Queue<int>();
-            tomato = new Tomato();
-            potato = new Potato();
-            rice = new Rice();
             
             for (int i = 1; i<30; i++)
             {
-                Add_Element(thirtyList_tomato, tomato);
-                Add_Element(thirtyList_potato, potato);
-                Add_Element(thirtyList_rice, rice);
-                
+                Add_Element(thirtyList_tomato, player.tomato);
+                Add_Element(thirtyList_potato, player.potato);
+                Add_Element(thirtyList_rice, player.rice);
             }
            
         }
-        //******************************************
-        public int Current_money
+        public Player GetPlayer()
         {
-            get { return current_money; }
-            set { current_money = value; }
+            return this.player;
         }
-        //******************************************
-        /*
-        public int Price()//Aca la idea es que se establezcan los precios y que vaya cambiando segun el codigo de abajo
-        {
-            Product product = new Product();
-            product.Set_sellPrice(randNum.Next(1000,4000)); // puse 3000 como ejemplo, hay que definir como vamos a establecer los precios de los productos
-            return product.Get_sellPrice();
-
-        }
-        */
 
         public void UpdateGame() //Aqui actualizamos las listas de precios.
         {
-            Update_Seed(thirtyList_tomato, tomato);
-            Update_Seed(thirtyList_potato, potato);
-            Update_Seed(thirtyList_rice, rice);
+            Update_Seed(thirtyList_tomato, player.tomato);
+            Update_Seed(thirtyList_potato, player.potato);
+            Update_Seed(thirtyList_rice, player.rice);
 
             current_turn += 1;
         }
@@ -119,12 +90,6 @@ namespace ConsoleApp
                 return randNum.Next(min, max);
             }
         }
-        public void ReportFarm()
-        {
-            Console.WriteLine("Inventory: \nFertilizer uses: "+fertilizer.GetUses()+"\tIrrigation uses: "+irrigation.GetUses());
-            Console.WriteLine("Animal food uses: " + animalFood.GetUses() + "\tAnimal water uses: " + animalWater.GetUses());
-            Console.WriteLine("Fungicide uses: " + fungicide.GetUses() + "\tHerbicide uses: " + herbicide.GetUses());
-            Console.WriteLine("Pesticide uses: " + pesticide.GetUses() + "\tVaccine uses: " + vaccine.GetUses());
-        }
+
     }
 }
