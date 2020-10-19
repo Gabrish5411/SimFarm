@@ -32,6 +32,13 @@ namespace ConsoleApp.Buildings
             Set_sell(3000);
             
         }
+        public override void Update()
+        {
+            Animal animal = (Animal)item;
+            ripeness = (ripeness < 10 ? ripeness + 1 : 10);
+            availableFood -= 5;
+            availableWater -= 5;
+        }
 
 
         public override void Report()

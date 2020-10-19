@@ -24,10 +24,7 @@ namespace ConsoleApp.Products
         protected int diseasePenalty;
         private Random randNum = new Random(); //creado para generar probabilidad de enfermedad de manera aleatoria
 
-        public Product()
-        {
-            currentPrice = buyPrice;
-        }
+        
 
         public string Get_productName()
         {

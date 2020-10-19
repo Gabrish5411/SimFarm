@@ -16,6 +16,7 @@ namespace ConsoleApp.Consumables
         }
         public void Use(Field field)   //AVAILABLE FOOD DE FIELD
         {
+            Uses -= 1;
             field.GiveFood(20); //Supuesto de que aumenta el alimento en 20
         }
     }

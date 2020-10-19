@@ -16,7 +16,9 @@ namespace ConsoleApp.Consumables
         }
         public void Use(Field field) //AVAILABLE WATER DE FIELD
         {
+            Uses -= 1;
             field.GiveWater(20);
+
         }
         
     }

@@ -56,7 +56,10 @@ namespace ConsoleApp.Buildings
         }
         public override void Update()
         {
-            
+            Seed seed = (Seed)item;
+            ripeness = (ripeness < 10 ? ripeness + 1 : 10);
+            availableFood -= 5;
+            availableWater -= 5;
         }
         public bool IsReady()
         {

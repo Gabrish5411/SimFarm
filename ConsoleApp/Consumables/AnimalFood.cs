@@ -16,6 +16,7 @@ namespace ConsoleApp.Consumables
         }
         public void Use(Cattle cattle)   //AVAILABLE FOOD DE CATTLE
         {
+            Uses -= 1;
             cattle.GiveFood(20);
         }
     }

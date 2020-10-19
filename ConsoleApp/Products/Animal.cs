@@ -9,10 +9,17 @@ namespace ConsoleApp.Products
     class Animal : Product
     {
         protected int animalUnits;
-        protected double escapeProbability;
-        protected double suddendeathProbability;
+        protected float escapeProbability;
+        protected float suddendeathProbability;
         protected int unitsdeadRange;
 
-        //Animal chosen_animal = new Animal(); 
+        protected void Set(string name, int animalUnits, int buyPrice, float escapeProbability, float suddendeathProbability)
+        {
+            this.productName = name;
+            this.animalUnits = animalUnits;
+            this.buyPrice = buyPrice;
+            this.escapeProbability = escapeProbability;
+            this.suddendeathProbability = suddendeathProbability;
+        }
     }
 }

@@ -10,11 +10,7 @@ namespace ConsoleApp.Products.Animals
     {
         public Pig()
         {
-            this.productName = "Pig";
-            this.buyPrice = 1000;
-            this.animalUnits = 20;
-            this.escapeProbability = 0.2;
-            this.suddendeathProbability = 0.1;
+            Set("Pig", 20, 2000, 0.2F, 0.1F);
         }
     }
 }

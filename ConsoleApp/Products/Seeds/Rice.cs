@@ -10,15 +10,8 @@ namespace ConsoleApp.Products.Seeds
     {
         public Rice()
         {
-            this.currentPrice = this.sellPrice;
-            this.productName = "Rice";
-            this.buyPrice = 1000;
-            this.sellPrice = 500;
-            this.priceVariation = 40;
-            this.wormProbability = 0.1F;
-            this.wormPenalty = 1;
-            this.undergrowthProbability = 0.3F;
-            this.undergowthPenalty = 1;
+            //buyPrice, sellPrice, priceVariation, wProb, wPen, uProb, uPen
+            Set("Rice", 1000, 500, 40, 0.1F, 1, 0.3F, 1);
         }
     }
 }
