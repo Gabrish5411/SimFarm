@@ -13,7 +13,7 @@ namespace ConsoleApp
         //Para cambiar colores:
         private ConsoleColor colorAgua = ConsoleColor.Blue;
         private ConsoleColor colorTierra = ConsoleColor.DarkGreen;
-        
+
         public void Show(Tile[,] map)
         {
             int i = 0;
@@ -31,7 +31,7 @@ namespace ConsoleApp
                 }
                 else if (casilla.Get_tileName() == "G")
                 {
-                    
+
                     if (casilla.Get_farmable())
                     {
                         Console.BackgroundColor = colorTierra;
@@ -54,7 +54,7 @@ namespace ConsoleApp
                 //Console.Write(map[k, l].quality);
             }
             Console.WriteLine("");
-            
+
             Console.BackgroundColor = ConsoleColor.Black;
         }
     }

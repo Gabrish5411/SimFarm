@@ -39,7 +39,7 @@ namespace ConsoleApp
             set { current_money = value; }
         }
 
-        public void ReportInventory ()
+        public void ReportInventory()
         {
             Console.WriteLine("Inventory: \nFertilizer uses: " + fertilizer.GetUses() + "\tIrrigation uses: " + irrigation.GetUses());
             Console.WriteLine("Animal food uses: " + animalFood.GetUses() + "\tAnimal water uses: " + animalWater.GetUses());
