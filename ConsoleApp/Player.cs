@@ -25,7 +25,7 @@ namespace ConsoleApp
         public Pesticide pesticide = new Pesticide();
         public Vaccine vaccine = new Vaccine();
 
-        Player()
+        public Player()
         {
             current_money = 50000000;
             tomato = new Tomato();

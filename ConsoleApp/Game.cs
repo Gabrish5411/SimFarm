@@ -26,6 +26,7 @@ namespace ConsoleApp
 
         public Game()
         {
+            player = new Player();
             current_turn = 1;
             thirtyList_tomato = new Queue<int>();
             thirtyList_potato = new Queue<int>();

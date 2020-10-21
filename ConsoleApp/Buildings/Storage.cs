@@ -62,7 +62,7 @@ namespace ConsoleApp.Buildings
             currentProduct = "Empty";
             currentCapacity = 0;
             int price = (currentCapacity == 0 ? 0 : finished_products[0].Get_sellPrice());
-            game.Current_money += price*currentCapacity;
+            game.GetPlayer().Current_money += price*currentCapacity;
             this.finished_products.Clear();
         }
         public string GetCurrentProduct()
