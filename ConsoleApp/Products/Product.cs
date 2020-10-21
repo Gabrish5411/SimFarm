@@ -22,6 +22,10 @@ namespace ConsoleApp.Products
         protected float productionTime;
         protected float diseaseProbability;
         protected int diseasePenalty;
+        protected float undergrowthProbability;
+        protected int undergrowthPenalty;
+        protected float wormsProbability;
+        protected int wormsPenalty;
         private Random randNum = new Random(); //creado para generar probabilidad de enfermedad de manera aleatoria
 
         
@@ -118,12 +122,12 @@ namespace ConsoleApp.Products
 
         public float Get_diseaseProbability()
         {
-            return productionTime;
+            return diseaseProbability;                  
         }
 
-        public void Set_diseaseProbability(float value)
+        public void Set_diseaseProbability(int value)
         {
-            productionTime = value;
+            diseasePenalty = value;
         }
 
         public int Get_diseasePenalty()
@@ -134,6 +138,26 @@ namespace ConsoleApp.Products
         public void Set_diseasePenalty(int value)
         {
             diseasePenalty = value;
+        }
+
+        public float Get_undergrowthProbability()
+        {
+            return undergrowthProbability;
+        }
+
+        public void Set_undergrowthProbability(float value)
+        {
+            undergrowthProbability = value;
+        }
+
+        public float Get_wormsProbability()
+        {
+            return wormsProbability;
+        }
+
+        public void Set_wormsProbability(float value)
+        {
+            wormsProbability = value;
         }
 
         public int Get_price()

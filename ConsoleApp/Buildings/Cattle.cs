@@ -17,7 +17,7 @@ namespace ConsoleApp.Buildings
         protected float maxRipeness;
         public bool ill;
         protected int finalUnits;
-
+        private Building building;
         public Cattle(Terrain[] terrains, Animal animal)
         {
             this.buyPrice = 15000;
@@ -36,8 +36,11 @@ namespace ConsoleApp.Buildings
         {
             Animal animal = (Animal)item;
             ripeness = (ripeness < 10 ? ripeness + 1 : 10);
-            availableFood -= 5;
-            availableWater -= 5;
+            currentHP = (availableWater < building.Get_product().Get_minWater() ? currentHP - 5 : currentHP);
+            currentHP = (availableFood < building.Get_product().Get_minFood() ? currentHP - 5 : currentHP);
+            currentHP = (ill ? currentHP - 5 : currentHP);
+            availableFood -= building.Get_product().Get_foodConsumption();
+            availableWater -= building.Get_product().Get_waterConsumption();
         }
 
 

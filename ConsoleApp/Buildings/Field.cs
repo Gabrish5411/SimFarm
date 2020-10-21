@@ -18,7 +18,7 @@ namespace ConsoleApp.Buildings
         public bool ill;
         public bool worms;
         public bool undergowth;
-
+        private Building building;
         public Field(Terrain[] terrains, Seed seed)
         {
             this.buyPrice = 20000;
@@ -58,8 +58,16 @@ namespace ConsoleApp.Buildings
         {
             Seed seed = (Seed)item;
             ripeness = (ripeness < 10 ? ripeness + 1 : 10);
-            availableFood -= 5;
-            availableWater -= 5;
+            currentHP = (availableWater < building.Get_product().Get_minWater() ? currentHP - 5 : currentHP);
+            currentHP = (availableFood < building.Get_product().Get_minFood() ? currentHP - 5 : currentHP);
+            currentHP = (ill ? currentHP - 5 : currentHP);
+            Random random = new Random();
+            double rand = random.NextDouble();
+            undergowth = (rand <= building.Get_product().Get_undergrowthProbability() ? true : false);
+            ill = (rand <= building.Get_product().Get_diseaseProbability() ? true : false);
+            worms = (rand <= building.Get_product().Get_wormsProbability() ? true : false);
+            availableFood -= building.Get_product().Get_foodConsumption();
+            availableWater -= building.Get_product().Get_waterConsumption();
         }
         public bool IsReady()
         {
