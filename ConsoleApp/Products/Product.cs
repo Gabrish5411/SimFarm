@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ConsoleApp.Products
 {
+    [Serializable]
     public class Product
     {
         protected string productName;

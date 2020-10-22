@@ -10,6 +10,10 @@ using ConsoleApp.Tiles;
 using ConsoleApp.Products.Seeds;
 using ConsoleApp.Products.Animals;
 using System.Net.Http.Headers;
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace ConsoleApp
 {
@@ -24,10 +28,10 @@ namespace ConsoleApp
             string building_name;
             Printer printer = new Printer();
             Game game;
-            Map map; 
+            Map map;
             //MenuManager menuAd = new MenuManager();
 
-            
+
             List<string> main_options = new List<string>(new string[] { "New Game", "Load Game" });
             List<string> yes_no = new List<string>(new string[] { "Yes", "No" });
             int selected, selected2;
@@ -77,6 +81,7 @@ namespace ConsoleApp
                 Console.Clear();
                 printer.Show(game.Map.map);
                 selected_turn = MenuManager.PrintMenu(turn_options);
+                string xmlFilePath = null;
                 switch (selected_turn)
                 {
                     case 0: //Administrar granja
@@ -1039,6 +1044,11 @@ namespace ConsoleApp
                         game.UpdateGame();
                         break;
                     case 3: //No hay cargar partida asique creo que tampoco hay que guardar (Por ahora sirve para cerrar el juego)
+
+                        XmlSerialize(game, xmlFilePath);
+
+
+
                         finished = true;
                         break;
 
@@ -1050,6 +1060,32 @@ namespace ConsoleApp
         }
 
 
-        
+        //XML Serialization
+
+        public static void XmlSerialize<T>(T anyobject, string xmlFilePath)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(anyobject.GetType());
+
+            using (StreamWriter writer = new StreamWriter(xmlFilePath))
+            {
+                xmlSerializer.Serialize(writer, anyobject);
+            }
+        }
+
+        // XML Deserialization //falta probarlo
+
+        public T XmlDeserialize<T>(string filepath) where T : class
+        {
+            System.Xml.Serialization.XmlSerializer deser = new System.Xml.Serialization.XmlSerializer(typeof(T));
+
+            using (StreamReader ser = new StreamReader(filepath))
+            {
+                return (T)deser.Deserialize(ser);
+            }
+        }
+
+
+
     }
 }
+
