@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp.Products.Seeds;
 using ConsoleApp.Buildings;
+using System.Security.Cryptography;
 
 namespace ConsoleApp
 {
@@ -23,6 +24,9 @@ namespace ConsoleApp
         public Queue<int> thirtyList_potato;
         public Queue<int> thirtyList_rice;
         private Player player;
+        private Field field;
+        private Cattle cattle;
+        private Storage storage;
 
         public Game()
         {
@@ -50,6 +54,10 @@ namespace ConsoleApp
             Update_Seed(thirtyList_tomato, player.tomato);
             Update_Seed(thirtyList_potato, player.potato);
             Update_Seed(thirtyList_rice, player.rice);
+
+            field.Update();
+            cattle.Update();
+            storage.Update();
 
             current_turn += 1;
         }
