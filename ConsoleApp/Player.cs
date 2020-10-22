@@ -35,9 +35,6 @@ namespace ConsoleApp
             rice = new Rice();
 
 
-
-
-
         }
         public int Current_money
         {
