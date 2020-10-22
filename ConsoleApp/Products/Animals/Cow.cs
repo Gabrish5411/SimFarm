@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.Products.Animals
 {
+    [Serializable]
     class Cow : Animal
     {
         public Cow()

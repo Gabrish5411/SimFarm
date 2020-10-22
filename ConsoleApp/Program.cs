@@ -10,10 +10,9 @@ using ConsoleApp.Tiles;
 using ConsoleApp.Products.Seeds;
 using ConsoleApp.Products.Animals;
 using System.Net.Http.Headers;
-using System.Xml;
-using System.Xml.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-using System.Runtime.CompilerServices;
+
 
 namespace ConsoleApp
 {
@@ -26,6 +25,7 @@ namespace ConsoleApp
             Random randNum = new Random();
             Building building;
             string building_name;
+            string filePath = "data.save";
             Printer printer = new Printer();
             Game game;
             Map map;
@@ -65,10 +65,15 @@ namespace ConsoleApp
                         continue;
                     }
                 }
-                else
+                else //cargar partida
                 {
-                    Console.WriteLine("Loading not yet implemented...");
-                    Console.ReadLine();
+
+                    DataSerializer dataSerializer = new DataSerializer();
+                    game = null;
+                    game = dataSerializer.BinaryDeserializer(filePath) as Game;
+                    Console.WriteLine("Last save loaded");
+                    break;
+                    
 
                 }
             }
@@ -81,7 +86,6 @@ namespace ConsoleApp
                 Console.Clear();
                 printer.Show(game.Map.map);
                 selected_turn = MenuManager.PrintMenu(turn_options);
-                string xmlFilePath = null;
                 switch (selected_turn)
                 {
                     case 0: //Administrar granja
@@ -1045,8 +1049,9 @@ namespace ConsoleApp
                         break;
                     case 3: //No hay cargar partida asique creo que tampoco hay que guardar (Por ahora sirve para cerrar el juego)
 
-                        XmlSerialize(game, xmlFilePath);
 
+                        DataSerializer dataSerializer = new DataSerializer();
+                        dataSerializer.BinarySerializer(game, filePath);
 
 
                         finished = true;
@@ -1060,32 +1065,43 @@ namespace ConsoleApp
         }
 
 
-        //XML Serialization
+        //Binary Serialization
 
-        public static void XmlSerialize<T>(T anyobject, string xmlFilePath)
+        class DataSerializer
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(anyobject.GetType());
-
-            using (StreamWriter writer = new StreamWriter(xmlFilePath))
+         
+            public void  BinarySerializer(object data, string filePath)
             {
-                xmlSerializer.Serialize(writer, anyobject);
+                FileStream fileStream;
+                BinaryFormatter bf = new BinaryFormatter();
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
+
+                fileStream = File.Create(filePath);
+                bf.Serialize(fileStream, data);
+                fileStream.Close();
+
+            }
+
+            public object BinaryDeserializer(string filePath)
+            {
+                object obj = null;
+
+                FileStream fileStream;
+                BinaryFormatter bf = new BinaryFormatter();
+                if (File.Exists(filePath))
+                {
+                    fileStream = File.OpenRead(filePath);
+                    obj = bf.Deserialize(fileStream);
+                    fileStream.Close();
+
+                }
+
+                return obj;
             }
         }
-
-        // XML Deserialization //falta probarlo
-
-        public T XmlDeserialize<T>(string filepath) where T : class
-        {
-            System.Xml.Serialization.XmlSerializer deser = new System.Xml.Serialization.XmlSerializer(typeof(T));
-
-            using (StreamReader ser = new StreamReader(filepath))
-            {
-                return (T)deser.Deserialize(ser);
-            }
-        }
-
-
-
     }
 }
 

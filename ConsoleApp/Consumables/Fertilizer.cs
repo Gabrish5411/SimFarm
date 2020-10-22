@@ -7,7 +7,9 @@ using ConsoleApp.Buildings;
 
 namespace ConsoleApp.Consumables
 {
-    class Fertilizer : Consumable
+
+    [Serializable]
+    public class Fertilizer : Consumable
     {
         public Fertilizer()
         {

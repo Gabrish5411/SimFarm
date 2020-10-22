@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.Products
 {
-    abstract class Seed : Product
+    [Serializable]
+    public abstract class Seed : Product
     {
         
         private float wormProbability;

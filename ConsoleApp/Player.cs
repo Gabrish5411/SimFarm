@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 using ConsoleApp.Products;
 using ConsoleApp.Consumables;
 using ConsoleApp.Products.Seeds;
-using System.Xml;
-using System.Xml.Serialization;
-using System.IO;
+
 
 
 namespace ConsoleApp
 {
-    class Player
+    [Serializable]
+    public class Player
     {
         public Seed tomato;
         public Seed potato;
@@ -52,37 +51,6 @@ namespace ConsoleApp
             Console.WriteLine("Animal food uses: " + animalFood.GetUses() + "\tAnimal water uses: " + animalWater.GetUses());
             Console.WriteLine("Fungicide uses: " + fungicide.GetUses() + "\tHerbicide uses: " + herbicide.GetUses());
             Console.WriteLine("Pesticide uses: " + pesticide.GetUses() + "\tVaccine uses: " + vaccine.GetUses());
-        }
-
-
-
-
-        //XNL Serialization
-        public void XmlSerialize(Type dataType, object data, string filePath)
-        {
-            XmlSerializer xmlSerializer = new XmlSerializer(dataType);
-            if (File.Exists(filePath))
-            {
-                File.Delete(filePath);
-            }
-            TextWriter writer = new StreamWriter(filePath);
-            xmlSerializer.Serialize(writer, data);
-            writer.Close();
-        }
-
-        public object XmlDeserialize(Type dataType, string filePath)
-        {
-            object obj = null;
-
-            XmlSerializer xmlSerializer = new XmlSerializer(dataType);
-            if (File.Exists(filePath))
-            {
-                TextReader textReader = new StreamReader(filePath);
-                obj = xmlSerializer.Deserialize(textReader);
-                textReader.Close();
-            }
-
-            return obj;
         }
     }
 }

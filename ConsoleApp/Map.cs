@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 namespace ConsoleApp
 {
-    class Map 
+    [Serializable]
+    public class Map 
     {
         public Terrain[] terrains = new Terrain[100];
         public Tile[,] map = new Tile[100, 100];

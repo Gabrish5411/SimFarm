@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.Tiles
 {
+    [Serializable]
     class Water : Tile
     {
         public Water()

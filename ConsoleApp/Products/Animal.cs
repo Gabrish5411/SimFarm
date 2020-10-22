@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.Products
 {
-    class Animal : Product
+    [Serializable]
+    public class Animal : Product
     {
         protected int animalUnits;
         protected float escapeProbability;

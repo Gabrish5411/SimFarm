@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.Buildings
 {
-    class Storage : Building
+    [Serializable]
+    public class Storage : Building
     {
         protected int capacity;
         protected int currentCapacity;

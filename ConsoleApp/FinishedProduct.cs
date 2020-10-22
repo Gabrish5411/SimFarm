@@ -7,7 +7,7 @@ using ConsoleApp.Products;
 
 namespace ConsoleApp
 {
-    class FinishedProduct : Product
+    public class FinishedProduct : Product
     {
         public int productQuality;
 

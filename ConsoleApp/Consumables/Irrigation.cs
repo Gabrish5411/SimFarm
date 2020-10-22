@@ -7,7 +7,8 @@ using ConsoleApp.Buildings;
 
 namespace ConsoleApp.Consumables
 {
-    class Irrigation : Consumable
+    [Serializable]
+    public class Irrigation : Consumable
     {
         public Irrigation()
         {

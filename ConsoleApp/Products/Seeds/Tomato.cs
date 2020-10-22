@@ -7,6 +7,7 @@ using ConsoleApp.Products;
 
 namespace ConsoleApp.Products.Seeds
 {
+    [Serializable]
     class Tomato : Seed
     {
         public Tomato()

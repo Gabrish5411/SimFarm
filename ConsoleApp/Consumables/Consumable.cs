@@ -7,7 +7,8 @@ using ConsoleApp.Buildings;
 
 namespace ConsoleApp.Consumables
 {
-    class Consumable
+    [Serializable]
+    public class Consumable
     {
         protected int Uses;
         protected int buyPrice;   

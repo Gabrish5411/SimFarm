@@ -7,6 +7,7 @@ using ConsoleApp.Products;
 
 namespace ConsoleApp.Buildings
 {
+    [Serializable]
     public abstract class Building
     {
         public string name;

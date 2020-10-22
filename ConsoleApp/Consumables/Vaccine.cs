@@ -7,7 +7,8 @@ using ConsoleApp.Buildings;
 
 namespace ConsoleApp.Consumables
 {
-    class Vaccine : Consumable
+    [Serializable]
+    public class Vaccine : Consumable
     {
         public Vaccine()
         {

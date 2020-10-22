@@ -7,7 +7,8 @@ using ConsoleApp.Products;
 
 namespace ConsoleApp.Buildings
 {
-     class Cattle : Building
+    [Serializable]
+     public class Cattle : Building
     {
         protected double productivity;
         public int currentHP;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.Tiles
 {
+    [Serializable]
     class Earth : Tile
     {
         public Earth(Random randNum)

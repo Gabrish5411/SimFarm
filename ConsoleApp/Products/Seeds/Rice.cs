@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.Products.Seeds
 {
+    [Serializable]
     class Rice : Seed
     {
         public Rice()

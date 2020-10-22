@@ -7,7 +7,8 @@ using ConsoleApp.Buildings;
 
 namespace ConsoleApp.Consumables
 {
-    class AnimalFood : Consumable
+    [Serializable]
+    public class AnimalFood : Consumable
     {
         public AnimalFood()
         {

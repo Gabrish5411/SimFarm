@@ -3,6 +3,7 @@ using System.Collections;
 using ConsoleApp.Buildings;
 namespace ConsoleApp
 {
+    [Serializable]
     public class Terrain
     {
         private bool bought;

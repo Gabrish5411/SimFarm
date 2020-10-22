@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using ConsoleApp.Products;
 
 namespace ConsoleApp.Buildings
-{
-    class Field : Building
+{ 
+    [Serializable]
+    public class Field : Building
     {
         protected double productivity;
         public int currentHP;

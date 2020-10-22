@@ -13,7 +13,7 @@ using System.Security.Cryptography;
 namespace ConsoleApp
 {
     [Serializable]
-    class Game
+    public class Game
     {
         public Map Map;
         public int current_turn;

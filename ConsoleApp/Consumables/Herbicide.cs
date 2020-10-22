@@ -7,7 +7,8 @@ using ConsoleApp.Buildings;
 
 namespace ConsoleApp.Consumables
 {
-    class Herbicide : Consumable
+    [Serializable]
+    public class Herbicide : Consumable
     {
         private int successProbability;
         public Herbicide()

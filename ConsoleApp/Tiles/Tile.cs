@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ConsoleApp.Tiles
 {
+    [Serializable]
     public class Tile
     {
 
