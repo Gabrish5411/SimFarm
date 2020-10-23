@@ -385,15 +385,15 @@ namespace ConsoleApp
                                                 building_name = "Tomato Field";
                                                 Tomato tomato = new Tomato();
                                                 building = new Field(game.Map.terrains, tomato);
-                                                Console.WriteLine("The price of a " + building_name + " is " + building.buyPrice + tomato.Get_buyPrice());
+                                                Console.WriteLine("The price of a " + building_name + " is " + tomato.Get_buyPrice());
                                                 game.Map.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain) - 1;
 
-                                                if (game.GetPlayer().Current_money >= building.buyPrice + tomato.Get_buyPrice())
+                                                if (game.GetPlayer().Current_money >=  tomato.Get_buyPrice())
                                                 {
-                                                    game.GetPlayer().Current_money -= building.buyPrice + tomato.Get_buyPrice();
+                                                    game.GetPlayer().Current_money -=  tomato.Get_buyPrice();
                                                 }
                                                 else
                                                 {
@@ -429,16 +429,16 @@ namespace ConsoleApp
                                                 building_name = "Potato Field";
                                                 Potato potato = new Potato();
                                                 building = new Field(game.Map.terrains, potato);
-                                                Console.WriteLine("The price of a " + building_name + " is " + building.buyPrice + potato.Get_buyPrice());
+                                                Console.WriteLine("The price of a " + building_name + " is "  + potato.Get_buyPrice());
                                                 game.Map.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain) - 1;
 
-                                                if (game.GetPlayer().Current_money >= building.buyPrice + potato.Get_buyPrice())
+                                                if (game.GetPlayer().Current_money >=  potato.Get_buyPrice())
                                                 {
                                                    
-                                                    game.GetPlayer().Current_money -= building.buyPrice + potato.Get_buyPrice();
+                                                    game.GetPlayer().Current_money -=  potato.Get_buyPrice();
 
 
                                                 }
@@ -482,16 +482,16 @@ namespace ConsoleApp
                                                 building_name = "Rice Field";
                                                 Rice rice = new Rice();
                                                 building = new Field(game.Map.terrains, rice);
-                                                Console.WriteLine("The price of a " + building_name + " is " + building.buyPrice + rice.Get_buyPrice());
+                                                Console.WriteLine("The price of a " + building_name + " is " + rice.Get_buyPrice());
                                                 game.Map.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain) - 1;
 
-                                                if (game.GetPlayer().Current_money >= building.buyPrice + rice.Get_buyPrice())
+                                                if (game.GetPlayer().Current_money >= rice.Get_buyPrice())
                                                 {
                                                     
-                                                    game.GetPlayer().Current_money -= building.buyPrice + rice.Get_buyPrice();
+                                                    game.GetPlayer().Current_money -= rice.Get_buyPrice();
 
                                                 }
                                                 else
@@ -547,16 +547,16 @@ namespace ConsoleApp
                                                 building_name = "Cow Cattle";
                                                 Cow cow = new Cow();
                                                 building = new Cattle(game.Map.terrains, cow);
-                                                Console.WriteLine("The price of a " + building_name + " is " + building.buyPrice + cow.Get_buyPrice());
+                                                Console.WriteLine("The price of a " + building_name + " is " + cow.Get_buyPrice());
                                                 game.Map.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain) - 1;
 
-                                                if (game.GetPlayer().Current_money >= building.buyPrice + cow.Get_buyPrice())
+                                                if (game.GetPlayer().Current_money >=  cow.Get_buyPrice())
                                                 {
 
-                                                    game.GetPlayer().Current_money -= building.buyPrice + cow.Get_buyPrice();
+                                                    game.GetPlayer().Current_money -=  cow.Get_buyPrice();
 
 
                                                 }
@@ -597,16 +597,16 @@ namespace ConsoleApp
                                                 building_name = "Sheep Cattle";
                                                 Sheep sheep = new Sheep();
                                                 building = new Cattle(game.Map.terrains, sheep);
-                                                Console.WriteLine("The price of a " + building_name + " is " + building.buyPrice + sheep.Get_buyPrice());
+                                                Console.WriteLine("The price of a " + building_name + " is " + sheep.Get_buyPrice());
                                                 game.Map.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain) - 1;
 
-                                                if (game.GetPlayer().Current_money >= building.buyPrice + sheep.Get_buyPrice())
+                                                if (game.GetPlayer().Current_money >= sheep.Get_buyPrice())
                                                 {
 
-                                                    game.GetPlayer().Current_money -= building.buyPrice + sheep.Get_buyPrice();
+                                                    game.GetPlayer().Current_money -= sheep.Get_buyPrice();
 
 
                                                 }
@@ -648,16 +648,16 @@ namespace ConsoleApp
                                                 building_name = "Pig Cattle";
                                                 Pig pig = new Pig();
                                                 building = new Cattle(game.Map.terrains, pig);
-                                                Console.WriteLine("The price of " + building_name + " is " + building.buyPrice + pig.Get_buyPrice());
+                                                Console.WriteLine("The price of " + building_name + " is " + pig.Get_buyPrice());
                                                 game.Map.Print_Farm();
                                                 Console.WriteLine("Select a terrain in which it will be built: ");
                                                 string selected_terrain = Console.ReadLine();
                                                 int sel_terrain = Convert.ToInt32(selected_terrain) - 1;
 
-                                                if (game.GetPlayer().Current_money >= building.buyPrice + pig.Get_buyPrice())
+                                                if (game.GetPlayer().Current_money >= pig.Get_buyPrice())
                                                 {
 
-                                                    game.GetPlayer().Current_money -= building.buyPrice + pig.Get_buyPrice();
+                                                    game.GetPlayer().Current_money -= pig.Get_buyPrice();
 
                                                 }
                                                 else
