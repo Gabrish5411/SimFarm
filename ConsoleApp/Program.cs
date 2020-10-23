@@ -811,7 +811,7 @@ namespace ConsoleApp
                                         }
 
                                     }
-                                    else if (selected_building_shop == 3)
+                                    else if (selected_building_shop == 3) //Vender Edificio
                                     {
                                         Console.WriteLine("You can sell/destroy the following buildings:");
                                         game.Map.Print_Farm_and_type();
@@ -821,14 +821,22 @@ namespace ConsoleApp
 
                                         while (!finished_1_0_3)
                                         {
+                                            
                                             if (game.Map.terrains[sel_terrain].Get_bought() && game.Map.terrains[sel_terrain].Get_Building() != null)
                                             {
+                                                
                                                 if (game.Map.terrains[sel_terrain].Get_Building().Get_type() == "fld")
                                                 {
                                                     if (game.GetPlayer().Current_money > game.Map.terrains[sel_terrain].Get_Building().Get_sell())
                                                     {
                                                         game.GetPlayer().Current_money -= game.Map.terrains[sel_terrain].Get_Building().Get_sell();
                                                         game.Map.terrains[sel_terrain].Set_Building(null);
+                                                        Console.WriteLine("Field sold succesfully.");
+                                                        foreach (Tile tile in game.Map.map)
+                                                        {
+                                                            if (tile.Get_terrainNumber() == sel_terrain + 1) tile.Set_tile_Name("G");
+                                                        }
+                                                        break;
                                                     }
                                                     else
                                                     {
@@ -837,12 +845,18 @@ namespace ConsoleApp
                                                         Console.ReadLine();
                                                     }
                                                 }
-                                                else if (game.Map.terrains[sel_terrain].Get_Building().Get_type() == "cttle")
+                                                else if (game.Map.terrains[sel_terrain].Get_Building().Get_type() == "cttl")
                                                 {
                                                     if (game.GetPlayer().Current_money > game.Map.terrains[sel_terrain].Get_Building().Get_sell())
                                                     {
                                                         game.GetPlayer().Current_money -= game.Map.terrains[sel_terrain].Get_Building().Get_sell();
                                                         game.Map.terrains[sel_terrain].Set_Building(null);
+                                                        Console.WriteLine("Cattle sold succesfully.");
+                                                        foreach (Tile tile in game.Map.map)
+                                                        {
+                                                            if (tile.Get_terrainNumber() == sel_terrain + 1) tile.Set_tile_Name("G");
+                                                        }
+                                                        break;
                                                     }
                                                     else
                                                     {
@@ -864,9 +878,10 @@ namespace ConsoleApp
                                                     }
                                                     game.GetPlayer().Current_money += game.Map.terrains[sel_terrain].Get_Building().sellPrice;
                                                     game.Map.terrains[sel_terrain].Set_Building(null);
+                                                    break;
                                                 }
                                             }
-                                            Console.ReadLine();
+                                            break;
                                         }
                                     }
                                     else if (selected_building_shop == 4) //Menu Anterior
