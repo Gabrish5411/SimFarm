@@ -19,7 +19,6 @@ namespace ConsoleApp.Buildings
         public bool ill;
         public bool worms;
         public bool undergowth;
-        private Building building;
         public Field(Terrain[] terrains, Seed seed)
         {
             this.buyPrice = 20000;
@@ -46,7 +45,7 @@ namespace ConsoleApp.Buildings
         }
         public override void Report()
         {
-            Console.WriteLine("Field of "+this.item.Get_productName()+"s:");
+            Console.WriteLine("\nField of "+this.item.Get_productName()+"s:");
             Console.WriteLine("Ripeness: " + this.ripeness);
             Console.WriteLine("Current health: " + this.currentHP + "/100");
             Console.WriteLine("Current water: "+this.availableWater+"/100");
@@ -57,18 +56,17 @@ namespace ConsoleApp.Buildings
         }
         public override void Update()
         {
+            ripeness = ripeness < 10 ? ripeness + 1 : 10;
+            currentHP = availableFood < item.Get_minFood() ? currentHP - 5 : currentHP;
+            currentHP = ill ? currentHP - 5 : currentHP;
             Seed seed = (Seed)item;
-            ripeness = (ripeness < 10 ? ripeness + 1 : 10);
-            currentHP = (availableWater < building.Get_product().Get_minWater() ? currentHP - 5 : currentHP);
-            currentHP = (availableFood < building.Get_product().Get_minFood() ? currentHP - 5 : currentHP);
-            currentHP = (ill ? currentHP - 5 : currentHP);
             Random random = new Random();
             double rand = random.NextDouble();
-            undergowth = (rand <= building.Get_product().Get_undergrowthProbability() ? true : false);
-            ill = (rand <= building.Get_product().Get_diseaseProbability() ? true : false);
-            worms = (rand <= building.Get_product().Get_wormsProbability() ? true : false);
-            availableFood -= building.Get_product().Get_foodConsumption();
-            availableWater -= building.Get_product().Get_waterConsumption();
+            if (!undergowth) undergowth = (rand <= seed.Get_undergrowthProbability() ? true : false);
+            if (!worms) worms = rand <= seed.Get_wormsProbability() ? true : false;
+            if (!ill) ill = rand <= item.Get_diseaseProbability() ? true : false;
+            availableFood -= item.Get_foodConsumption();
+            availableWater -= item.Get_waterConsumption();
         }
         public bool IsReady()
         {

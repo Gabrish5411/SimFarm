@@ -67,14 +67,12 @@ namespace ConsoleApp
                 }
                 else //cargar partida
                 {
-
                     DataSerializer dataSerializer = new DataSerializer();
                     //game = null;
                     game = dataSerializer.BinaryDeserializer(filePath) as Game;
                     Console.WriteLine("Last save loaded");
+                    Console.ReadKey();
                     break;
-                    
-
                 }
             }
 
@@ -98,7 +96,7 @@ namespace ConsoleApp
                             Console.Clear();
                             game.GetPlayer().ReportInventory();
                             selected_option = MenuManager.PrintMenu(farm_options);
-                            if (selected_option == 0) //Administrar Produccion
+                            if (selected_option == 0)           //Administrar Produccion
                             {
                                 List<string> production_options = new List<string>(new string[] { "Supply Water/Food", "Apply Heal", "Get Finished Products", "Previous Menu" });
                                 int selected_production;
@@ -109,7 +107,7 @@ namespace ConsoleApp
                                     Console.WriteLine("Select what terrain you want to manage");
                                     string selected_terrain = Console.ReadLine();
                                     int sel_terrain = Convert.ToInt32(selected_terrain) - 1;
-                                    if (game.Map.terrains[sel_terrain].Get_Building().Get_type() == "fld" || game.Map.terrains[sel_terrain - 1].Get_Building().Get_type() == "cttl")
+                                    if (game.Map.terrains[sel_terrain].Get_Building().Get_type() == "fld" || game.Map.terrains[sel_terrain].Get_Building().Get_type() == "cttl")
                                     {
                                         game.Map.terrains[sel_terrain].Get_Building().Report();
                                         selected_production = MenuManager.PrintMenu(production_options);
@@ -399,13 +397,18 @@ namespace ConsoleApp
                                                 }
                                                 else
                                                 {
-                                                    Console.WriteLine("You don't have enough money to buy a " + building_name );
+                                                    Console.WriteLine("You don't have enough money to buy a " + building_name ); 
+                                                    Console.Write("Press enter to continue...");
+                                                    Console.ReadLine();
                                                     break;
                                                 }
 
                                                 if (game.Map.terrains[sel_terrain].Get_bought())
                                                 {
-
+                                                    foreach (Tile tile in game.Map.map)
+                                                    {
+                                                        if (tile.Get_terrainNumber() == (sel_terrain + 1)) tile.Set_tile_Name("Field");
+                                                    }
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
                                                     game.Map.terrains[sel_terrain].Set_Building(building);
                                                     Console.WriteLine("Thanks for buying a " + building_name);
@@ -415,6 +418,8 @@ namespace ConsoleApp
                                                 else
                                                 {
                                                     Console.WriteLine("The selected terrain is invalid.");
+                                                    Console.Write("Press enter to continue...");
+                                                    Console.ReadLine();
                                                 }
 
                                             }
@@ -453,6 +458,10 @@ namespace ConsoleApp
 
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
                                                     game.Map.terrains[sel_terrain].Set_Building(building);
+                                                    foreach (Tile tile in game.Map.map)
+                                                    {
+                                                        if (tile.Get_terrainNumber() == (sel_terrain + 1)) tile.Set_tile_Name("Field");
+                                                    }
                                                     Console.WriteLine("Thanks for buying a " + building_name);
                                                     Console.Write("Press enter to continue...");
                                                     Console.ReadLine();
@@ -461,6 +470,8 @@ namespace ConsoleApp
                                                 else
                                                 {
                                                     Console.WriteLine("The selected terrain is invalid.");
+                                                    Console.Write("Press enter to continue...");
+                                                    Console.ReadLine();
                                                 }
 
                                             }
@@ -495,7 +506,10 @@ namespace ConsoleApp
 
                                                 if (game.Map.terrains[sel_terrain].Get_bought())
                                                 {
-
+                                                    foreach (Tile tile in game.Map.map)
+                                                    {
+                                                        if (tile.Get_terrainNumber() == (sel_terrain + 1)) tile.Set_tile_Name("Field");
+                                                    }
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
                                                     game.Map.terrains[sel_terrain].Set_Building(building);
                                                     Console.WriteLine("Thanks for buying a " + building_name);
@@ -558,7 +572,10 @@ namespace ConsoleApp
 
                                                 if (game.Map.terrains[sel_terrain].Get_bought())
                                                 {
-
+                                                    foreach (Tile tile in game.Map.map)
+                                                    {
+                                                        if (tile.Get_terrainNumber() == (sel_terrain + 1)) tile.Set_tile_Name("Cattle");
+                                                    }
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
                                                     game.Map.terrains[sel_terrain].Set_Building(building);
                                                     Console.WriteLine("Thanks for buying " + building_name);
@@ -605,7 +622,10 @@ namespace ConsoleApp
 
                                                 if (game.Map.terrains[sel_terrain].Get_bought())
                                                 {
-
+                                                    foreach (Tile tile in game.Map.map)
+                                                    {
+                                                        if (tile.Get_terrainNumber() == (sel_terrain + 1)) tile.Set_tile_Name("Cattle");
+                                                    }
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
                                                     game.Map.terrains[sel_terrain].Set_Building(building);
                                                     Console.WriteLine("Thanks for buying  " + building_name);
@@ -652,9 +672,12 @@ namespace ConsoleApp
 
                                                 if (game.Map.terrains[sel_terrain].Get_bought())
                                                 {
-
+                                                    foreach (Tile tile in game.Map.map)
+                                                    {
+                                                        if (tile.Get_terrainNumber() == (sel_terrain + 1)) tile.Set_tile_Name("Cattle");
+                                                    }
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
-                                                    
+
                                                     game.Map.terrains[sel_terrain].Set_Building(building);
                                                     Console.WriteLine(game.Map.terrains[sel_terrain].Get_Building().Get_product().Get_productName());
                                                     Console.WriteLine("Thanks for buying a " + building_name);
@@ -717,6 +740,10 @@ namespace ConsoleApp
 
                                                 if (game.Map.terrains[sel_terrain].Get_bought())
                                                 {
+                                                    foreach (Tile tile in game.Map.map)
+                                                    {
+                                                        if (tile.Get_terrainNumber() == (sel_terrain + 1)) tile.Set_tile_Name("Storage");
+                                                    }
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
                                                     game.Map.terrains[sel_terrain].Set_Building(building);
                                                     Console.WriteLine("Thanks for buying " + building_name);
@@ -761,7 +788,10 @@ namespace ConsoleApp
 
                                                 if (game.Map.terrains[sel_terrain].Get_bought())
                                                 {
-
+                                                    foreach (Tile tile in game.Map.map)
+                                                    {
+                                                        if (tile.Get_terrainNumber() == (sel_terrain + 1)) tile.Set_tile_Name("Storage");
+                                                    }
                                                     //Se crea el edificio y el producto asociado en el terreno seleccionado
                                                     game.Map.terrains[sel_terrain].Set_Building(building);
                                                     Console.WriteLine("Thanks for buying  " + building_name);

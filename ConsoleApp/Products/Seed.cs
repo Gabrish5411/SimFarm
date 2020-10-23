@@ -10,10 +10,10 @@ namespace ConsoleApp.Products
     public abstract class Seed : Product
     {
         
-        private float wormProbability;
-        private int wormPenalty;
-        private float undergrowthProbability;
-        private int undergrowthPenalty;
+        protected float wormProbability;
+        protected int wormPenalty;
+        protected float undergrowthProbability;
+        protected int undergrowthPenalty;
 
         protected void Set(string name, int buyPrice, int sellPrice, int priceVariation, 
             float wormProbability, int wormPenalty, float undergrowthProbability, int undergrowthPenalty)
@@ -28,7 +28,16 @@ namespace ConsoleApp.Products
             this.undergrowthProbability = undergrowthProbability;
             this.undergrowthPenalty = undergrowthPenalty;
         }
-        
-        
+        public float Get_undergrowthProbability()
+        {
+            return undergrowthProbability;
+        }
+        public float Get_wormsProbability()
+        {
+            return wormProbability;
+        }
+
+
+
     }
 }

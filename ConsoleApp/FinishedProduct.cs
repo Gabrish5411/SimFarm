@@ -7,6 +7,7 @@ using ConsoleApp.Products;
 
 namespace ConsoleApp
 {
+    [Serializable]
     public class FinishedProduct : Product
     {
         public int productQuality;

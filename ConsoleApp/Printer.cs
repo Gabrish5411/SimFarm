@@ -11,11 +11,16 @@ namespace ConsoleApp
     public class Printer
     {
         //Para cambiar colores:
-        private ConsoleColor colorAgua = ConsoleColor.Blue;
-        private ConsoleColor colorTierra = ConsoleColor.DarkGreen;
+        private readonly ConsoleColor colorAgua = ConsoleColor.Blue;
+        private readonly ConsoleColor colorTierra = ConsoleColor.DarkGreen;
+        private readonly ConsoleColor colorGranja = ConsoleColor.Green;
+        private readonly ConsoleColor colorField = ConsoleColor.DarkMagenta;
+        private readonly ConsoleColor colorCattle = ConsoleColor.DarkYellow;
+        private readonly ConsoleColor colorStorage = ConsoleColor.DarkGray;
 
         public void Show(Tile[,] map)
         {
+            
             int i = 0;
             foreach (Tile casilla in map)
             {
@@ -31,23 +36,61 @@ namespace ConsoleApp
                 }
                 else if (casilla.Get_tileName() == "G")
                 {
-
                     if (casilla.Get_farmable())
                     {
-                        Console.BackgroundColor = colorTierra;
-                        Console.Write("G");
+                        Console.BackgroundColor = colorGranja;
+                        Console.Write(" ");
                     }
                     else
                     {
                         Console.BackgroundColor = colorAgua;
-                        Console.Write("G");
+                        Console.Write("~");
                     }
 
+                }
+                else if (casilla.Get_tileName() == "Field")
+                {
+                    if (casilla.Get_farmable())
+                    {
+                        Console.BackgroundColor = colorField;
+                        Console.Write(" ");
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = colorAgua;
+                        Console.Write("~");
+                    }
+                }
+                else if (casilla.Get_tileName() == "Cattle")
+                {
+                    if (casilla.Get_farmable())
+                    {
+                        Console.BackgroundColor = colorCattle;
+                        Console.Write(" ");
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = colorAgua;
+                        Console.Write("~");
+                    }
+                }
+                else if (casilla.Get_tileName() == "Storage")
+                {
+                    if (casilla.Get_farmable())
+                    {
+                        Console.BackgroundColor = colorStorage;
+                        Console.Write(" ");
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = colorAgua;
+                        Console.Write("~");
+                    }
                 }
                 else if (casilla.Get_tileName() == "L" | casilla.Get_tileName() == "R")
                 {
                     Console.BackgroundColor = colorAgua;
-                    Console.Write(" ");
+                    Console.Write("~");
 
                 }
                 i++;

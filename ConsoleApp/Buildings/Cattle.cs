@@ -18,7 +18,6 @@ namespace ConsoleApp.Buildings
         protected float maxRipeness;
         public bool ill;
         protected int finalUnits;
-        private Building building;
         public Cattle(Terrain[] terrains, Animal animal)
         {
             this.buyPrice = 15000;
@@ -35,19 +34,18 @@ namespace ConsoleApp.Buildings
         }
         public override void Update()
         {
-            Animal animal = (Animal)item;
             ripeness = (ripeness < 10 ? ripeness + 1 : 10);
-            currentHP = (availableWater < building.Get_product().Get_minWater() ? currentHP - 5 : currentHP);
-            currentHP = (availableFood < building.Get_product().Get_minFood() ? currentHP - 5 : currentHP);
+            currentHP = (availableWater < item.Get_minWater() ? currentHP - 5 : currentHP);
+            currentHP = (availableFood < item.Get_minFood() ? currentHP - 5 : currentHP);
             currentHP = (ill ? currentHP - 5 : currentHP);
-            availableFood -= building.Get_product().Get_foodConsumption();
-            availableWater -= building.Get_product().Get_waterConsumption();
+            availableFood -= item.Get_foodConsumption();
+            availableWater -= item.Get_waterConsumption();
         }
 
 
         public override void Report()
         {
-            Console.WriteLine("Field of " + this.item.Get_productName() + "s:");
+            Console.WriteLine("\nField of " + this.item.Get_productName() + "s:");
             Console.WriteLine("Ripeness: " + this.ripeness);
             Console.WriteLine("Current health: " + this.currentHP + "/100");
             Console.WriteLine("Current water: " + this.availableWater + "/100");

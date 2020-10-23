@@ -27,7 +27,7 @@ namespace ConsoleApp.Buildings
         {
             foreach (FinishedProduct prod in finished_products)
             {
-                int quality = prod.Get_product_quality();
+                //int quality = prod.Get_product_quality();
                 prod.Update_product_quality();
             }
         }

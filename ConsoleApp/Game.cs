@@ -54,7 +54,7 @@ namespace ConsoleApp
 
             foreach (Terrain terrain in Map.terrains)
             {
-                terrain.Get_Building().Update();
+                if (terrain.Get_Building() != null) terrain.Get_Building().Update();
             }
 
             current_turn += 1;
