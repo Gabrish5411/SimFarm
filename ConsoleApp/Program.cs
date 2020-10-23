@@ -878,6 +878,11 @@ namespace ConsoleApp
                                                     }
                                                     game.GetPlayer().Current_money += game.Map.terrains[sel_terrain].Get_Building().sellPrice;
                                                     game.Map.terrains[sel_terrain].Set_Building(null);
+                                                    Console.WriteLine("Storage sold succesfully.");
+                                                    foreach (Tile tile in game.Map.map)
+                                                    {
+                                                        if (tile.Get_terrainNumber() == sel_terrain + 1) tile.Set_tile_Name("G");
+                                                    }
                                                     break;
                                                 }
                                             }
