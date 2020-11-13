@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsoleApp.Products;
+using WindowsFormsApp1.Products;
 
 namespace WindowsFormsApp1.Products.Seeds
 {

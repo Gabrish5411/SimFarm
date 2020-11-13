@@ -7,12 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.CustomEventArgs;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        Game game; //Esta linea no deberia ir para evitar dependencia 
+        //(Al igual que las lineas que usan game en este Form1.cs)
+        //Pero como aun nose como poner el mapa por ahora dejemoslo asi
+
+
         Panel[] panels;
+        public delegate Game NewGameEventHandler(object source, NewGameArgs args);
+        public event NewGameEventHandler NewGameButtonClicked;
 
         public void ShowPanel(Panel panel)
         {
@@ -23,12 +31,22 @@ namespace WindowsFormsApp1
             }
         }
 
+
         public Form1()
         {
             InitializeComponent();
             panels = new Panel[] { Title, NewGame, Game,
                 AdminGranja, AdminProd, Market, BuildingMarket };
-            Game game = new Game();
+        }
+        
+        public void OnNewGameButtonClicked(int option)
+        {
+            if (NewGameButtonClicked != null)
+            {
+                game = NewGameButtonClicked(this, new NewGameArgs() { gameoption = option });
+                GameMapLabel.Text = Convert.ToString(game.current_turn); //Reemplazar esta linea para mostrar el mapa de alguna forma
+            }
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -48,26 +66,25 @@ namespace WindowsFormsApp1
 
         private void NewGameDefaultButton_Click(object sender, EventArgs e)
         {
-            
-            //game.map = new Map(0);
+            OnNewGameButtonClicked(0);
             ShowPanel(Game);
         }
 
         private void NewGameRiverButton_Click(object sender, EventArgs e)
         {
-            //game.map = new Map(1);
+            OnNewGameButtonClicked(1);
             ShowPanel(Game);
         }
 
         private void NewGameLakeButton_Click(object sender, EventArgs e)
         {
-            //game.map = new Map(2);
+            OnNewGameButtonClicked(2);
             ShowPanel(Game);
         }
 
         private void NewGameBothButton_Click(object sender, EventArgs e)
         {
-            //game.map = new Map(3);
+            OnNewGameButtonClicked(3);
             ShowPanel(Game);
         }
 
@@ -103,6 +120,14 @@ namespace WindowsFormsApp1
 
         private void bt_AdminGranja_Click(object sender, EventArgs e)
         {
+            FertilizerLabel2.Text = Convert.ToString(game.GetPlayer().fertilizer.GetUses());
+            IrrigationLabel2.Text = Convert.ToString(game.GetPlayer().irrigation.GetUses());
+            AnimalFoodLabel2.Text = Convert.ToString(game.GetPlayer().animalFood.GetUses());
+            AnimalWaterLabel2.Text = Convert.ToString(game.GetPlayer().animalWater.GetUses());
+            FungicideLabel2.Text = Convert.ToString(game.GetPlayer().fungicide.GetUses());
+            HerbicideLabel2.Text = Convert.ToString(game.GetPlayer().herbicide.GetUses());
+            PesticideLabel2.Text = Convert.ToString(game.GetPlayer().pesticide.GetUses());
+            VaccineLabel2.Text = Convert.ToString(game.GetPlayer().vaccine.GetUses());
             ShowPanel(AdminGranja);
             //CurrentMoneyLabel2.Text = map.currentmoney;
         }
@@ -154,6 +179,14 @@ namespace WindowsFormsApp1
 
         private void bt_back_AdminProd_Click(object sender, EventArgs e)
         {
+            FertilizerLabel2.Text = Convert.ToString(game.GetPlayer().fertilizer.GetUses());
+            IrrigationLabel2.Text = Convert.ToString(game.GetPlayer().irrigation.GetUses());
+            AnimalFoodLabel2.Text = Convert.ToString(game.GetPlayer().animalFood.GetUses());
+            AnimalWaterLabel2.Text = Convert.ToString(game.GetPlayer().animalWater.GetUses());
+            FungicideLabel2.Text = Convert.ToString(game.GetPlayer().fungicide.GetUses());
+            HerbicideLabel2.Text = Convert.ToString(game.GetPlayer().herbicide.GetUses());
+            PesticideLabel2.Text = Convert.ToString(game.GetPlayer().pesticide.GetUses());
+            VaccineLabel2.Text = Convert.ToString(game.GetPlayer().vaccine.GetUses());
             ShowPanel(AdminGranja);
         }
     }

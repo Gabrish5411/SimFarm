@@ -46,7 +46,25 @@
             this.bt_AdminGranja = new System.Windows.Forms.Button();
             this.lb_selectopt_MO = new System.Windows.Forms.Label();
             this.GameMap = new System.Windows.Forms.Panel();
+            this.GameMapLabel = new System.Windows.Forms.Label();
             this.AdminGranja = new System.Windows.Forms.Panel();
+            this.VaccineLabel1 = new System.Windows.Forms.Label();
+            this.VaccineLabel2 = new System.Windows.Forms.Label();
+            this.PesticideLabel1 = new System.Windows.Forms.Label();
+            this.PesticideLabel2 = new System.Windows.Forms.Label();
+            this.HerbicideLabel1 = new System.Windows.Forms.Label();
+            this.HerbicideLabel2 = new System.Windows.Forms.Label();
+            this.AnimalWaterLabel1 = new System.Windows.Forms.Label();
+            this.AnimalWaterLabel2 = new System.Windows.Forms.Label();
+            this.IrrigationLabel1 = new System.Windows.Forms.Label();
+            this.IrrigationLabel2 = new System.Windows.Forms.Label();
+            this.FungicideLabel1 = new System.Windows.Forms.Label();
+            this.FungicideLabel2 = new System.Windows.Forms.Label();
+            this.AnimalFoodLabel1 = new System.Windows.Forms.Label();
+            this.AnimalFoodLabel2 = new System.Windows.Forms.Label();
+            this.FertilizerLabel1 = new System.Windows.Forms.Label();
+            this.FertilizerLabel2 = new System.Windows.Forms.Label();
+            this.InventarioLabel1 = new System.Windows.Forms.Label();
             this.bt_back_AdminGranja = new System.Windows.Forms.Button();
             this.bt_AdminAlmac = new System.Windows.Forms.Button();
             this.bt_AdminProd = new System.Windows.Forms.Button();
@@ -71,12 +89,11 @@
             this.bt_BuyCattle = new System.Windows.Forms.Button();
             this.bt_BuyField = new System.Windows.Forms.Button();
             this.lb_selectopt_BMK = new System.Windows.Forms.Label();
-            this.CurrentMoneyLabel1 = new System.Windows.Forms.Label();
-            this.CurrentMoneyLabel2 = new System.Windows.Forms.Label();
             this.Title.SuspendLayout();
             this.NewGame.SuspendLayout();
             this.Game.SuspendLayout();
             this.MainOptions.SuspendLayout();
+            this.GameMap.SuspendLayout();
             this.AdminGranja.SuspendLayout();
             this.AdminProd.SuspendLayout();
             this.Market.SuspendLayout();
@@ -271,15 +288,40 @@
             // 
             // GameMap
             // 
+            this.GameMap.Controls.Add(this.GameMapLabel);
             this.GameMap.Location = new System.Drawing.Point(0, 0);
             this.GameMap.Name = "GameMap";
             this.GameMap.Size = new System.Drawing.Size(264, 340);
             this.GameMap.TabIndex = 0;
             // 
+            // GameMapLabel
+            // 
+            this.GameMapLabel.AutoSize = true;
+            this.GameMapLabel.Location = new System.Drawing.Point(27, 34);
+            this.GameMapLabel.Name = "GameMapLabel";
+            this.GameMapLabel.Size = new System.Drawing.Size(35, 13);
+            this.GameMapLabel.TabIndex = 0;
+            this.GameMapLabel.Text = "label1";
+            // 
             // AdminGranja
             // 
-            this.AdminGranja.Controls.Add(this.CurrentMoneyLabel2);
-            this.AdminGranja.Controls.Add(this.CurrentMoneyLabel1);
+            this.AdminGranja.Controls.Add(this.VaccineLabel1);
+            this.AdminGranja.Controls.Add(this.VaccineLabel2);
+            this.AdminGranja.Controls.Add(this.PesticideLabel1);
+            this.AdminGranja.Controls.Add(this.PesticideLabel2);
+            this.AdminGranja.Controls.Add(this.HerbicideLabel1);
+            this.AdminGranja.Controls.Add(this.HerbicideLabel2);
+            this.AdminGranja.Controls.Add(this.AnimalWaterLabel1);
+            this.AdminGranja.Controls.Add(this.AnimalWaterLabel2);
+            this.AdminGranja.Controls.Add(this.IrrigationLabel1);
+            this.AdminGranja.Controls.Add(this.IrrigationLabel2);
+            this.AdminGranja.Controls.Add(this.FungicideLabel1);
+            this.AdminGranja.Controls.Add(this.FungicideLabel2);
+            this.AdminGranja.Controls.Add(this.AnimalFoodLabel1);
+            this.AdminGranja.Controls.Add(this.AnimalFoodLabel2);
+            this.AdminGranja.Controls.Add(this.FertilizerLabel1);
+            this.AdminGranja.Controls.Add(this.FertilizerLabel2);
+            this.AdminGranja.Controls.Add(this.InventarioLabel1);
             this.AdminGranja.Controls.Add(this.bt_back_AdminGranja);
             this.AdminGranja.Controls.Add(this.bt_AdminAlmac);
             this.AdminGranja.Controls.Add(this.bt_AdminProd);
@@ -289,6 +331,176 @@
             this.AdminGranja.Name = "AdminGranja";
             this.AdminGranja.Size = new System.Drawing.Size(482, 340);
             this.AdminGranja.TabIndex = 2;
+            // 
+            // VaccineLabel1
+            // 
+            this.VaccineLabel1.AutoSize = true;
+            this.VaccineLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.VaccineLabel1.Location = new System.Drawing.Point(250, 147);
+            this.VaccineLabel1.Name = "VaccineLabel1";
+            this.VaccineLabel1.Size = new System.Drawing.Size(108, 20);
+            this.VaccineLabel1.TabIndex = 20;
+            this.VaccineLabel1.Text = "Vaccine uses:";
+            // 
+            // VaccineLabel2
+            // 
+            this.VaccineLabel2.AutoSize = true;
+            this.VaccineLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.VaccineLabel2.Location = new System.Drawing.Point(396, 147);
+            this.VaccineLabel2.Name = "VaccineLabel2";
+            this.VaccineLabel2.Size = new System.Drawing.Size(31, 20);
+            this.VaccineLabel2.TabIndex = 19;
+            this.VaccineLabel2.Text = "PH";
+            // 
+            // PesticideLabel1
+            // 
+            this.PesticideLabel1.AutoSize = true;
+            this.PesticideLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.PesticideLabel1.Location = new System.Drawing.Point(26, 146);
+            this.PesticideLabel1.Name = "PesticideLabel1";
+            this.PesticideLabel1.Size = new System.Drawing.Size(115, 20);
+            this.PesticideLabel1.TabIndex = 18;
+            this.PesticideLabel1.Text = "Pesticide uses:";
+            // 
+            // PesticideLabel2
+            // 
+            this.PesticideLabel2.AutoSize = true;
+            this.PesticideLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.PesticideLabel2.Location = new System.Drawing.Point(172, 146);
+            this.PesticideLabel2.Name = "PesticideLabel2";
+            this.PesticideLabel2.Size = new System.Drawing.Size(31, 20);
+            this.PesticideLabel2.TabIndex = 17;
+            this.PesticideLabel2.Text = "PH";
+            // 
+            // HerbicideLabel1
+            // 
+            this.HerbicideLabel1.AutoSize = true;
+            this.HerbicideLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.HerbicideLabel1.Location = new System.Drawing.Point(250, 117);
+            this.HerbicideLabel1.Name = "HerbicideLabel1";
+            this.HerbicideLabel1.Size = new System.Drawing.Size(118, 20);
+            this.HerbicideLabel1.TabIndex = 16;
+            this.HerbicideLabel1.Text = "Herbicide uses:";
+            // 
+            // HerbicideLabel2
+            // 
+            this.HerbicideLabel2.AutoSize = true;
+            this.HerbicideLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.HerbicideLabel2.Location = new System.Drawing.Point(396, 117);
+            this.HerbicideLabel2.Name = "HerbicideLabel2";
+            this.HerbicideLabel2.Size = new System.Drawing.Size(31, 20);
+            this.HerbicideLabel2.TabIndex = 15;
+            this.HerbicideLabel2.Text = "PH";
+            // 
+            // AnimalWaterLabel1
+            // 
+            this.AnimalWaterLabel1.AutoSize = true;
+            this.AnimalWaterLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.AnimalWaterLabel1.Location = new System.Drawing.Point(250, 89);
+            this.AnimalWaterLabel1.Name = "AnimalWaterLabel1";
+            this.AnimalWaterLabel1.Size = new System.Drawing.Size(146, 20);
+            this.AnimalWaterLabel1.TabIndex = 14;
+            this.AnimalWaterLabel1.Text = "Animal Water uses:";
+            // 
+            // AnimalWaterLabel2
+            // 
+            this.AnimalWaterLabel2.AutoSize = true;
+            this.AnimalWaterLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.AnimalWaterLabel2.Location = new System.Drawing.Point(396, 89);
+            this.AnimalWaterLabel2.Name = "AnimalWaterLabel2";
+            this.AnimalWaterLabel2.Size = new System.Drawing.Size(31, 20);
+            this.AnimalWaterLabel2.TabIndex = 13;
+            this.AnimalWaterLabel2.Text = "PH";
+            // 
+            // IrrigationLabel1
+            // 
+            this.IrrigationLabel1.AutoSize = true;
+            this.IrrigationLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.IrrigationLabel1.Location = new System.Drawing.Point(250, 62);
+            this.IrrigationLabel1.Name = "IrrigationLabel1";
+            this.IrrigationLabel1.Size = new System.Drawing.Size(113, 20);
+            this.IrrigationLabel1.TabIndex = 12;
+            this.IrrigationLabel1.Text = "Irrigation uses:";
+            // 
+            // IrrigationLabel2
+            // 
+            this.IrrigationLabel2.AutoSize = true;
+            this.IrrigationLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.IrrigationLabel2.Location = new System.Drawing.Point(396, 62);
+            this.IrrigationLabel2.Name = "IrrigationLabel2";
+            this.IrrigationLabel2.Size = new System.Drawing.Size(31, 20);
+            this.IrrigationLabel2.TabIndex = 11;
+            this.IrrigationLabel2.Text = "PH";
+            // 
+            // FungicideLabel1
+            // 
+            this.FungicideLabel1.AutoSize = true;
+            this.FungicideLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.FungicideLabel1.Location = new System.Drawing.Point(26, 117);
+            this.FungicideLabel1.Name = "FungicideLabel1";
+            this.FungicideLabel1.Size = new System.Drawing.Size(120, 20);
+            this.FungicideLabel1.TabIndex = 10;
+            this.FungicideLabel1.Text = "Fungicide uses:";
+            // 
+            // FungicideLabel2
+            // 
+            this.FungicideLabel2.AutoSize = true;
+            this.FungicideLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.FungicideLabel2.Location = new System.Drawing.Point(172, 117);
+            this.FungicideLabel2.Name = "FungicideLabel2";
+            this.FungicideLabel2.Size = new System.Drawing.Size(31, 20);
+            this.FungicideLabel2.TabIndex = 9;
+            this.FungicideLabel2.Text = "PH";
+            // 
+            // AnimalFoodLabel1
+            // 
+            this.AnimalFoodLabel1.AutoSize = true;
+            this.AnimalFoodLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.AnimalFoodLabel1.Location = new System.Drawing.Point(26, 89);
+            this.AnimalFoodLabel1.Name = "AnimalFoodLabel1";
+            this.AnimalFoodLabel1.Size = new System.Drawing.Size(140, 20);
+            this.AnimalFoodLabel1.TabIndex = 8;
+            this.AnimalFoodLabel1.Text = "Animal Food uses:";
+            // 
+            // AnimalFoodLabel2
+            // 
+            this.AnimalFoodLabel2.AutoSize = true;
+            this.AnimalFoodLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.AnimalFoodLabel2.Location = new System.Drawing.Point(172, 89);
+            this.AnimalFoodLabel2.Name = "AnimalFoodLabel2";
+            this.AnimalFoodLabel2.Size = new System.Drawing.Size(31, 20);
+            this.AnimalFoodLabel2.TabIndex = 7;
+            this.AnimalFoodLabel2.Text = "PH";
+            // 
+            // FertilizerLabel1
+            // 
+            this.FertilizerLabel1.AutoSize = true;
+            this.FertilizerLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.FertilizerLabel1.Location = new System.Drawing.Point(26, 62);
+            this.FertilizerLabel1.Name = "FertilizerLabel1";
+            this.FertilizerLabel1.Size = new System.Drawing.Size(111, 20);
+            this.FertilizerLabel1.TabIndex = 6;
+            this.FertilizerLabel1.Text = "Fertilizer uses:";
+            // 
+            // FertilizerLabel2
+            // 
+            this.FertilizerLabel2.AutoSize = true;
+            this.FertilizerLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.FertilizerLabel2.Location = new System.Drawing.Point(172, 62);
+            this.FertilizerLabel2.Name = "FertilizerLabel2";
+            this.FertilizerLabel2.Size = new System.Drawing.Size(31, 20);
+            this.FertilizerLabel2.TabIndex = 5;
+            this.FertilizerLabel2.Text = "PH";
+            // 
+            // InventarioLabel1
+            // 
+            this.InventarioLabel1.AutoSize = true;
+            this.InventarioLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.InventarioLabel1.Location = new System.Drawing.Point(55, 23);
+            this.InventarioLabel1.Name = "InventarioLabel1";
+            this.InventarioLabel1.Size = new System.Drawing.Size(91, 24);
+            this.InventarioLabel1.TabIndex = 4;
+            this.InventarioLabel1.Text = "Inventory:";
             // 
             // bt_back_AdminGranja
             // 
@@ -303,7 +515,7 @@
             // 
             // bt_AdminAlmac
             // 
-            this.bt_AdminAlmac.Location = new System.Drawing.Point(295, 150);
+            this.bt_AdminAlmac.Location = new System.Drawing.Point(301, 231);
             this.bt_AdminAlmac.Margin = new System.Windows.Forms.Padding(2);
             this.bt_AdminAlmac.Name = "bt_AdminAlmac";
             this.bt_AdminAlmac.Size = new System.Drawing.Size(98, 35);
@@ -314,7 +526,7 @@
             // 
             // bt_AdminProd
             // 
-            this.bt_AdminProd.Location = new System.Drawing.Point(91, 150);
+            this.bt_AdminProd.Location = new System.Drawing.Point(84, 231);
             this.bt_AdminProd.Margin = new System.Windows.Forms.Padding(2);
             this.bt_AdminProd.Name = "bt_AdminProd";
             this.bt_AdminProd.Size = new System.Drawing.Size(98, 35);
@@ -327,7 +539,7 @@
             // 
             this.lb_selectopt_AG.AutoSize = true;
             this.lb_selectopt_AG.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lb_selectopt_AG.Location = new System.Drawing.Point(147, 114);
+            this.lb_selectopt_AG.Location = new System.Drawing.Point(144, 200);
             this.lb_selectopt_AG.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_selectopt_AG.Name = "lb_selectopt_AG";
             this.lb_selectopt_AG.Size = new System.Drawing.Size(173, 20);
@@ -344,7 +556,7 @@
             this.AdminProd.Location = new System.Drawing.Point(0, 0);
             this.AdminProd.Margin = new System.Windows.Forms.Padding(2);
             this.AdminProd.Name = "AdminProd";
-            this.AdminProd.Size = new System.Drawing.Size(212, 340);
+            this.AdminProd.Size = new System.Drawing.Size(482, 340);
             this.AdminProd.TabIndex = 2;
             // 
             // bt_back_AdminProd
@@ -360,7 +572,7 @@
             // 
             // bt_ObtainFinished
             // 
-            this.bt_ObtainFinished.Location = new System.Drawing.Point(32, 228);
+            this.bt_ObtainFinished.Location = new System.Drawing.Point(321, 187);
             this.bt_ObtainFinished.Margin = new System.Windows.Forms.Padding(2);
             this.bt_ObtainFinished.Name = "bt_ObtainFinished";
             this.bt_ObtainFinished.Size = new System.Drawing.Size(106, 37);
@@ -370,7 +582,7 @@
             // 
             // bt_ApplyHeal
             // 
-            this.bt_ApplyHeal.Location = new System.Drawing.Point(32, 167);
+            this.bt_ApplyHeal.Location = new System.Drawing.Point(184, 186);
             this.bt_ApplyHeal.Margin = new System.Windows.Forms.Padding(2);
             this.bt_ApplyHeal.Name = "bt_ApplyHeal";
             this.bt_ApplyHeal.Size = new System.Drawing.Size(106, 37);
@@ -380,7 +592,7 @@
             // 
             // bt_AddWorF
             // 
-            this.bt_AddWorF.Location = new System.Drawing.Point(32, 112);
+            this.bt_AddWorF.Location = new System.Drawing.Point(45, 185);
             this.bt_AddWorF.Margin = new System.Windows.Forms.Padding(2);
             this.bt_AddWorF.Name = "bt_AddWorF";
             this.bt_AddWorF.Size = new System.Drawing.Size(106, 37);
@@ -392,7 +604,7 @@
             // 
             this.lb_selectopt_AP.AutoSize = true;
             this.lb_selectopt_AP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lb_selectopt_AP.Location = new System.Drawing.Point(9, 56);
+            this.lb_selectopt_AP.Location = new System.Drawing.Point(147, 146);
             this.lb_selectopt_AP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_selectopt_AP.Name = "lb_selectopt_AP";
             this.lb_selectopt_AP.Size = new System.Drawing.Size(173, 20);
@@ -552,36 +764,16 @@
             this.lb_selectopt_BMK.TabIndex = 0;
             this.lb_selectopt_BMK.Text = "Seleccione una opción:";
             // 
-            // CurrentMoneyLabel1
-            // 
-            this.CurrentMoneyLabel1.AutoSize = true;
-            this.CurrentMoneyLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.CurrentMoneyLabel1.Location = new System.Drawing.Point(123, 76);
-            this.CurrentMoneyLabel1.Name = "CurrentMoneyLabel1";
-            this.CurrentMoneyLabel1.Size = new System.Drawing.Size(138, 20);
-            this.CurrentMoneyLabel1.TabIndex = 4;
-            this.CurrentMoneyLabel1.Text = "Dinero Disponible:";
-            // 
-            // CurrentMoneyLabel2
-            // 
-            this.CurrentMoneyLabel2.AutoSize = true;
-            this.CurrentMoneyLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.CurrentMoneyLabel2.Location = new System.Drawing.Point(267, 76);
-            this.CurrentMoneyLabel2.Name = "CurrentMoneyLabel2";
-            this.CurrentMoneyLabel2.Size = new System.Drawing.Size(139, 20);
-            this.CurrentMoneyLabel2.TabIndex = 5;
-            this.CurrentMoneyLabel2.Text = "MoneyPlaceholder";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 340);
+            this.Controls.Add(this.Title);
             this.Controls.Add(this.Game);
             this.Controls.Add(this.AdminGranja);
-            this.Controls.Add(this.Title);
-            this.Controls.Add(this.NewGame);
             this.Controls.Add(this.AdminProd);
+            this.Controls.Add(this.NewGame);
             this.Controls.Add(this.BuildingMarket);
             this.Controls.Add(this.Market);
             this.Name = "Form1";
@@ -593,6 +785,8 @@
             this.Game.ResumeLayout(false);
             this.MainOptions.ResumeLayout(false);
             this.MainOptions.PerformLayout();
+            this.GameMap.ResumeLayout(false);
+            this.GameMap.PerformLayout();
             this.AdminGranja.ResumeLayout(false);
             this.AdminGranja.PerformLayout();
             this.AdminProd.ResumeLayout(false);
@@ -650,8 +844,24 @@
         private System.Windows.Forms.Button bt_back_AdminProd;
         private System.Windows.Forms.Button bt_back_Market;
         private System.Windows.Forms.Button bt_back_BuildingMarket;
-        private System.Windows.Forms.Label CurrentMoneyLabel2;
-        private System.Windows.Forms.Label CurrentMoneyLabel1;
+        private System.Windows.Forms.Label FertilizerLabel2;
+        private System.Windows.Forms.Label InventarioLabel1;
+        private System.Windows.Forms.Label GameMapLabel;
+        private System.Windows.Forms.Label HerbicideLabel1;
+        private System.Windows.Forms.Label HerbicideLabel2;
+        private System.Windows.Forms.Label AnimalWaterLabel1;
+        private System.Windows.Forms.Label AnimalWaterLabel2;
+        private System.Windows.Forms.Label IrrigationLabel1;
+        private System.Windows.Forms.Label IrrigationLabel2;
+        private System.Windows.Forms.Label FungicideLabel1;
+        private System.Windows.Forms.Label FungicideLabel2;
+        private System.Windows.Forms.Label AnimalFoodLabel1;
+        private System.Windows.Forms.Label AnimalFoodLabel2;
+        private System.Windows.Forms.Label FertilizerLabel1;
+        private System.Windows.Forms.Label VaccineLabel1;
+        private System.Windows.Forms.Label VaccineLabel2;
+        private System.Windows.Forms.Label PesticideLabel1;
+        private System.Windows.Forms.Label PesticideLabel2;
     }
 }
 

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.CustomEventArgs
 {
-    class MapArgs : EventArgs
+    public class NewGameArgs : EventArgs
     {
-        public Map map { get; set; }
+        public int gameoption { get; set; }
     }
 }
