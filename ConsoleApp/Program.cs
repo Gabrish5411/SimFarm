@@ -1191,10 +1191,19 @@ namespace ConsoleApp
 
                         DataSerializer dataSerializer = new DataSerializer();
                         dataSerializer.BinarySerializer(game, filePath);
-
-
-                        finished = true;
-                        break;
+                        Console.WriteLine("Game successfuly saved");
+                        Console.WriteLine("Continue game? (y/n) ");
+                        string continue_game = Convert.ToString(Console.ReadLine());
+                        if (continue_game == "n")
+                        {
+                            finished = true;
+                            break;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            break;
+                        }
 
                 }
                 
