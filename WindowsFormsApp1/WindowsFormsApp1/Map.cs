@@ -8,7 +8,7 @@ using WindowsFormsApp1.Tiles;
 namespace WindowsFormsApp1
 {
     [Serializable]
-    class Map
+    public class Map
     {
         public Terrain[] terrains = new Terrain[100];
         public Tile[,] map = new Tile[100, 100];

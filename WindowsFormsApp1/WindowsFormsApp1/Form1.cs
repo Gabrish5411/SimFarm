@@ -12,11 +12,23 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        
+        Panel[] panels;
+
+        public void ShowPanel(Panel panel)
+        {
+            foreach (Panel elem in panels)
+            {
+                if (elem == panel) elem.Show();
+                else elem.Hide();
+            }
+        }
 
         public Form1()
         {
             InitializeComponent();
+            panels = new Panel[] { Title, NewGame, Game,
+                AdminGranja, AdminProd, Market, BuildingMarket };
+            Game game = new Game();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -26,34 +38,37 @@ namespace WindowsFormsApp1
 
         private void TitleNewGameButton_Click(object sender, EventArgs e)
         {
-            Title.Hide();
-            NewGame.Show();
+            ShowPanel(NewGame);
         }
 
         private void NewGameBackButton_Click(object sender, EventArgs e)
         {
-            NewGame.Hide();
-            Title.Show();
+            ShowPanel(Title);
         }
 
         private void NewGameDefaultButton_Click(object sender, EventArgs e)
         {
-            Map map = new Map(0);
+            
+            //game.map = new Map(0);
+            ShowPanel(Game);
         }
 
         private void NewGameRiverButton_Click(object sender, EventArgs e)
         {
-            Map map = new Map(1);
+            //game.map = new Map(1);
+            ShowPanel(Game);
         }
 
         private void NewGameLakeButton_Click(object sender, EventArgs e)
         {
-            Map map = new Map(2);
+            //game.map = new Map(2);
+            ShowPanel(Game);
         }
 
         private void NewGameBothButton_Click(object sender, EventArgs e)
         {
-            Map map = new Map(3);
+            //game.map = new Map(3);
+            ShowPanel(Game);
         }
 
         private void MapLabel_Click(object sender, EventArgs e)
@@ -88,14 +103,13 @@ namespace WindowsFormsApp1
 
         private void bt_AdminGranja_Click(object sender, EventArgs e)
         {
-            MainOptions.Hide();
-            AdminGranja.Show();
+            ShowPanel(AdminGranja);
+            //CurrentMoneyLabel2.Text = map.currentmoney;
         }
 
         private void bt_IrMercado_Click(object sender, EventArgs e)
         {
-            MainOptions.Hide();
-            Market.Show();
+            ShowPanel(Market);
         }
 
         private void bt_PassTurn_Click(object sender, EventArgs e)
@@ -110,14 +124,12 @@ namespace WindowsFormsApp1
 
         private void bt_back_AdminGranja_Click(object sender, EventArgs e)
         {
-            AdminGranja.Hide();
-            MainOptions.Show();
+            ShowPanel(Game);
         }
 
         private void bt_AdminProd_Click(object sender, EventArgs e)
         {
-            AdminGranja.Hide();
-            AdminProd.Show();
+            ShowPanel(AdminProd);
         }
 
         private void bt_AdminAlmac_Click(object sender, EventArgs e)
@@ -127,26 +139,22 @@ namespace WindowsFormsApp1
 
         private void bt_back_Market_Click(object sender, EventArgs e)
         {
-            Market.Hide();
-            MainOptions.Show();
+            ShowPanel(Game);
         }
 
         private void bt_BuildingMarket_Click(object sender, EventArgs e)
         {
-            Market.Hide();
-            BuildingMarket.Show();
+            ShowPanel(BuildingMarket);
         }
 
         private void bt_back_BuildingMarket_Click(object sender, EventArgs e)
         {
-            BuildingMarket.Hide();
-            Market.Show();
+            ShowPanel(Market);
         }
 
         private void bt_back_AdminProd_Click(object sender, EventArgs e)
         {
-            AdminProd.Hide();
-            AdminGranja.Show();
+            ShowPanel(AdminGranja);
         }
     }
 }
