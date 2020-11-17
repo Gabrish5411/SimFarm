@@ -225,10 +225,10 @@
             this.MainOptions.Controls.Add(this.bt_IrMercado);
             this.MainOptions.Controls.Add(this.bt_AdminGranja);
             this.MainOptions.Controls.Add(this.lb_selectopt_MO);
-            this.MainOptions.Location = new System.Drawing.Point(269, 2);
+            this.MainOptions.Location = new System.Drawing.Point(295, 2);
             this.MainOptions.Margin = new System.Windows.Forms.Padding(2);
             this.MainOptions.Name = "MainOptions";
-            this.MainOptions.Size = new System.Drawing.Size(213, 349);
+            this.MainOptions.Size = new System.Drawing.Size(187, 349);
             this.MainOptions.TabIndex = 3;
             // 
             // bt_GrabarPartida
@@ -279,7 +279,7 @@
             // 
             this.lb_selectopt_MO.AutoSize = true;
             this.lb_selectopt_MO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lb_selectopt_MO.Location = new System.Drawing.Point(28, 56);
+            this.lb_selectopt_MO.Location = new System.Drawing.Point(3, 57);
             this.lb_selectopt_MO.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_selectopt_MO.Name = "lb_selectopt_MO";
             this.lb_selectopt_MO.Size = new System.Drawing.Size(173, 20);
@@ -291,16 +291,16 @@
             this.GameMap.Controls.Add(this.GameMapRichText);
             this.GameMap.Location = new System.Drawing.Point(0, 0);
             this.GameMap.Name = "GameMap";
-            this.GameMap.Size = new System.Drawing.Size(264, 340);
+            this.GameMap.Size = new System.Drawing.Size(290, 340);
             this.GameMap.TabIndex = 0;
             // 
             // GameMapRichText
             // 
             this.GameMapRichText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.GameMapRichText.Font = new System.Drawing.Font("Microsoft Sans Serif", 2.5F);
-            this.GameMapRichText.Location = new System.Drawing.Point(6, 23);
+            this.GameMapRichText.Font = new System.Drawing.Font("Microsoft Sans Serif", 1.85F);
+            this.GameMapRichText.Location = new System.Drawing.Point(45, 66);
             this.GameMapRichText.Name = "GameMapRichText";
-            this.GameMapRichText.Size = new System.Drawing.Size(258, 274);
+            this.GameMapRichText.Size = new System.Drawing.Size(206, 206);
             this.GameMapRichText.TabIndex = 0;
             this.GameMapRichText.Text = "";
             // 

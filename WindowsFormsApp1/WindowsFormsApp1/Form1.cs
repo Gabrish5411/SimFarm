@@ -33,6 +33,32 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void PrintMap(string map)
+        {
+            foreach (char elem in map)
+            {
+                if (elem == 'A')
+                {
+                    GameMapRichText.SelectionBackColor = Color.Blue;
+                    GameMapRichText.SelectedText = "  ";
+                }
+                else if (elem == 'T')
+                {
+                    GameMapRichText.SelectionBackColor = Color.Green;
+                    GameMapRichText.SelectedText = "  ";
+                }
+                else if (elem == 'G')
+                {
+                    GameMapRichText.SelectionBackColor = Color.LightGreen;
+                    GameMapRichText.SelectedText = "  ";
+                }
+                else 
+                {
+                    GameMapRichText.SelectedText = Environment.NewLine;
+                }
+            }
+        }
+
 
         public Form1()
         {
@@ -47,7 +73,7 @@ namespace WindowsFormsApp1
             {
                 PrintMapArgs args = NewGameButtonClicked(this, new NewGameArgs() { gameoption = option });
                 string result = PrintMapRequest(this, args);
-                GameMapRichText.Text = result;
+                PrintMap(result);
             }
             
         }
