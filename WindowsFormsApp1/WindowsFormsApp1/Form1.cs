@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.CustomEventArgs;
@@ -33,7 +34,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void PrintMap(string map)
+        public virtual void PrintMap(string map)
         {
             foreach (char elem in map)
             {
@@ -64,16 +65,21 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             panels = new Panel[] { Title, NewGame, Game,
-                AdminGranja, AdminProd, Market, BuildingMarket };
+                AdminGranja, AdminProd, Market, BuildingMarket};
         }
         
-        public void OnNewGameButtonClicked(int option)
+        public async virtual void OnNewGameButtonClicked(int option)
         {
             if (NewGameButtonClicked != null)
             {
                 PrintMapArgs args = NewGameButtonClicked(this, new NewGameArgs() { gameoption = option });
                 string result = PrintMapRequest(this, args);
-                PrintMap(result);
+                Task task = new Task(() => PrintMap(result));
+                GameMapRichText.Hide();
+                task.Start();
+                await task;
+                GameMapRichText.Show();
+                LoadingMapLabel.Hide();
             }
             
         }
@@ -93,28 +99,55 @@ namespace WindowsFormsApp1
             ShowPanel(Title);
         }
 
-        private void NewGameDefaultButton_Click(object sender, EventArgs e)
+        private async void NewGameDefaultButton_Click(object sender, EventArgs e)
         {
+            Task task = new Task(() => {
+                ShowPanel(Game);
+                LoadingMapLabel.Show();
+            });
+            task.Start();
+            await task;
             OnNewGameButtonClicked(0);
-            ShowPanel(Game);
+            //LoadingMapLabel.Hide();
+            
         }
 
-        private void NewGameRiverButton_Click(object sender, EventArgs e)
+        
+        private async void NewGameRiverButton_Click(object sender, EventArgs e)
         {
+            Task task = new Task(() => {
+                ShowPanel(Game);
+                LoadingMapLabel.Show();
+            });
+            task.Start();
+            await task;
             OnNewGameButtonClicked(1);
-            ShowPanel(Game);
+            //LoadingMapLabel.Hide();
         }
 
-        private void NewGameLakeButton_Click(object sender, EventArgs e)
+        private async void NewGameLakeButton_Click(object sender, EventArgs e)
         {
+            
+            Task task = new Task(() => {
+                LoadingMapLabel.Show();
+                ShowPanel(Game);
+                });
+            task.Start();
+            await task;
             OnNewGameButtonClicked(2);
-            ShowPanel(Game);
+            //LoadingMapLabel.Hide();
         }
 
-        private void NewGameBothButton_Click(object sender, EventArgs e)
+        private async void NewGameBothButton_Click(object sender, EventArgs e)
         {
+            Task task = new Task(() => {
+                LoadingMapLabel.Show();
+                ShowPanel(Game);
+            });
+            task.Start();
+            await task;
             OnNewGameButtonClicked(3);
-            ShowPanel(Game);
+            //LoadingMapLabel.Hide();
         }
 
         private void MapLabel_Click(object sender, EventArgs e)

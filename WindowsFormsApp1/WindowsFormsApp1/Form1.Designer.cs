@@ -89,6 +89,7 @@
             this.bt_BuyCattle = new System.Windows.Forms.Button();
             this.bt_BuyField = new System.Windows.Forms.Button();
             this.lb_selectopt_BMK = new System.Windows.Forms.Label();
+            this.LoadingMapLabel = new System.Windows.Forms.Label();
             this.Title.SuspendLayout();
             this.NewGame.SuspendLayout();
             this.Game.SuspendLayout();
@@ -288,6 +289,7 @@
             // 
             // GameMap
             // 
+            this.GameMap.Controls.Add(this.LoadingMapLabel);
             this.GameMap.Controls.Add(this.GameMapRichText);
             this.GameMap.Location = new System.Drawing.Point(0, 0);
             this.GameMap.Name = "GameMap";
@@ -298,7 +300,7 @@
             // 
             this.GameMapRichText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.GameMapRichText.Font = new System.Drawing.Font("Microsoft Sans Serif", 1.85F);
-            this.GameMapRichText.Location = new System.Drawing.Point(45, 66);
+            this.GameMapRichText.Location = new System.Drawing.Point(45, 62);
             this.GameMapRichText.Name = "GameMapRichText";
             this.GameMapRichText.Size = new System.Drawing.Size(206, 206);
             this.GameMapRichText.TabIndex = 0;
@@ -330,7 +332,7 @@
             this.AdminGranja.Location = new System.Drawing.Point(0, 0);
             this.AdminGranja.Margin = new System.Windows.Forms.Padding(2);
             this.AdminGranja.Name = "AdminGranja";
-            this.AdminGranja.Size = new System.Drawing.Size(482, 340);
+            this.AdminGranja.Size = new System.Drawing.Size(453, 320);
             this.AdminGranja.TabIndex = 2;
             // 
             // VaccineLabel1
@@ -765,6 +767,16 @@
             this.lb_selectopt_BMK.TabIndex = 0;
             this.lb_selectopt_BMK.Text = "Seleccione una opción:";
             // 
+            // LoadingMapLabel
+            // 
+            this.LoadingMapLabel.AutoSize = true;
+            this.LoadingMapLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.LoadingMapLabel.Location = new System.Drawing.Point(101, 152);
+            this.LoadingMapLabel.Name = "LoadingMapLabel";
+            this.LoadingMapLabel.Size = new System.Drawing.Size(97, 25);
+            this.LoadingMapLabel.TabIndex = 1;
+            this.LoadingMapLabel.Text = "Loading...";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -772,9 +784,9 @@
             this.ClientSize = new System.Drawing.Size(482, 340);
             this.Controls.Add(this.Title);
             this.Controls.Add(this.Game);
+            this.Controls.Add(this.NewGame);
             this.Controls.Add(this.AdminGranja);
             this.Controls.Add(this.AdminProd);
-            this.Controls.Add(this.NewGame);
             this.Controls.Add(this.BuildingMarket);
             this.Controls.Add(this.Market);
             this.Name = "Form1";
@@ -787,6 +799,7 @@
             this.MainOptions.ResumeLayout(false);
             this.MainOptions.PerformLayout();
             this.GameMap.ResumeLayout(false);
+            this.GameMap.PerformLayout();
             this.AdminGranja.ResumeLayout(false);
             this.AdminGranja.PerformLayout();
             this.AdminProd.ResumeLayout(false);
@@ -862,6 +875,7 @@
         private System.Windows.Forms.Label PesticideLabel1;
         private System.Windows.Forms.Label PesticideLabel2;
         private System.Windows.Forms.RichTextBox GameMapRichText;
+        private System.Windows.Forms.Label LoadingMapLabel;
     }
 }
 
