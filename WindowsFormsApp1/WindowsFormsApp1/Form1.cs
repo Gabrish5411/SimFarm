@@ -13,14 +13,16 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        Game game; //Esta linea no deberia ir para evitar dependencia 
-        //(Al igual que las lineas que usan game en este Form1.cs)
-        //Pero como aun nose como poner el mapa por ahora dejemoslo asi
-
+        
 
         Panel[] panels;
-        public delegate Game NewGameEventHandler(object source, NewGameArgs args);
+        public delegate PrintMapArgs NewGameEventHandler(object source, NewGameArgs args);
         public event NewGameEventHandler NewGameButtonClicked;
+
+        
+
+        public delegate string PrintMapEventHandler(object source, PrintMapArgs args);
+        public event PrintMapEventHandler PrintMapRequest;
 
         public void ShowPanel(Panel panel)
         {
@@ -43,8 +45,9 @@ namespace WindowsFormsApp1
         {
             if (NewGameButtonClicked != null)
             {
-                game = NewGameButtonClicked(this, new NewGameArgs() { gameoption = option });
-                GameMapLabel.Text = Convert.ToString(game.current_turn); //Reemplazar esta linea para mostrar el mapa de alguna forma
+                PrintMapArgs args = NewGameButtonClicked(this, new NewGameArgs() { gameoption = option });
+                string result = PrintMapRequest(this, args);
+                GameMapRichText.Text = result;
             }
             
         }
@@ -120,6 +123,7 @@ namespace WindowsFormsApp1
 
         private void bt_AdminGranja_Click(object sender, EventArgs e)
         {
+            /*
             FertilizerLabel2.Text = Convert.ToString(game.GetPlayer().fertilizer.GetUses());
             IrrigationLabel2.Text = Convert.ToString(game.GetPlayer().irrigation.GetUses());
             AnimalFoodLabel2.Text = Convert.ToString(game.GetPlayer().animalFood.GetUses());
@@ -130,6 +134,7 @@ namespace WindowsFormsApp1
             VaccineLabel2.Text = Convert.ToString(game.GetPlayer().vaccine.GetUses());
             ShowPanel(AdminGranja);
             //CurrentMoneyLabel2.Text = map.currentmoney;
+            */
         }
 
         private void bt_IrMercado_Click(object sender, EventArgs e)
@@ -179,6 +184,7 @@ namespace WindowsFormsApp1
 
         private void bt_back_AdminProd_Click(object sender, EventArgs e)
         {
+            /*
             FertilizerLabel2.Text = Convert.ToString(game.GetPlayer().fertilizer.GetUses());
             IrrigationLabel2.Text = Convert.ToString(game.GetPlayer().irrigation.GetUses());
             AnimalFoodLabel2.Text = Convert.ToString(game.GetPlayer().animalFood.GetUses());
@@ -188,6 +194,7 @@ namespace WindowsFormsApp1
             PesticideLabel2.Text = Convert.ToString(game.GetPlayer().pesticide.GetUses());
             VaccineLabel2.Text = Convert.ToString(game.GetPlayer().vaccine.GetUses());
             ShowPanel(AdminGranja);
+            */
         }
     }
 }

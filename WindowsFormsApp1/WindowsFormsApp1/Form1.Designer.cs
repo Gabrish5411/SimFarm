@@ -46,7 +46,7 @@
             this.bt_AdminGranja = new System.Windows.Forms.Button();
             this.lb_selectopt_MO = new System.Windows.Forms.Label();
             this.GameMap = new System.Windows.Forms.Panel();
-            this.GameMapLabel = new System.Windows.Forms.Label();
+            this.GameMapRichText = new System.Windows.Forms.RichTextBox();
             this.AdminGranja = new System.Windows.Forms.Panel();
             this.VaccineLabel1 = new System.Windows.Forms.Label();
             this.VaccineLabel2 = new System.Windows.Forms.Label();
@@ -288,20 +288,21 @@
             // 
             // GameMap
             // 
-            this.GameMap.Controls.Add(this.GameMapLabel);
+            this.GameMap.Controls.Add(this.GameMapRichText);
             this.GameMap.Location = new System.Drawing.Point(0, 0);
             this.GameMap.Name = "GameMap";
             this.GameMap.Size = new System.Drawing.Size(264, 340);
             this.GameMap.TabIndex = 0;
             // 
-            // GameMapLabel
+            // GameMapRichText
             // 
-            this.GameMapLabel.AutoSize = true;
-            this.GameMapLabel.Location = new System.Drawing.Point(27, 34);
-            this.GameMapLabel.Name = "GameMapLabel";
-            this.GameMapLabel.Size = new System.Drawing.Size(35, 13);
-            this.GameMapLabel.TabIndex = 0;
-            this.GameMapLabel.Text = "label1";
+            this.GameMapRichText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.GameMapRichText.Font = new System.Drawing.Font("Microsoft Sans Serif", 2.5F);
+            this.GameMapRichText.Location = new System.Drawing.Point(6, 23);
+            this.GameMapRichText.Name = "GameMapRichText";
+            this.GameMapRichText.Size = new System.Drawing.Size(258, 274);
+            this.GameMapRichText.TabIndex = 0;
+            this.GameMapRichText.Text = "";
             // 
             // AdminGranja
             // 
@@ -786,7 +787,6 @@
             this.MainOptions.ResumeLayout(false);
             this.MainOptions.PerformLayout();
             this.GameMap.ResumeLayout(false);
-            this.GameMap.PerformLayout();
             this.AdminGranja.ResumeLayout(false);
             this.AdminGranja.PerformLayout();
             this.AdminProd.ResumeLayout(false);
@@ -846,7 +846,6 @@
         private System.Windows.Forms.Button bt_back_BuildingMarket;
         private System.Windows.Forms.Label FertilizerLabel2;
         private System.Windows.Forms.Label InventarioLabel1;
-        private System.Windows.Forms.Label GameMapLabel;
         private System.Windows.Forms.Label HerbicideLabel1;
         private System.Windows.Forms.Label HerbicideLabel2;
         private System.Windows.Forms.Label AnimalWaterLabel1;
@@ -862,6 +861,7 @@
         private System.Windows.Forms.Label VaccineLabel2;
         private System.Windows.Forms.Label PesticideLabel1;
         private System.Windows.Forms.Label PesticideLabel2;
+        private System.Windows.Forms.RichTextBox GameMapRichText;
     }
 }
 
