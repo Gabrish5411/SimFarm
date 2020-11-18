@@ -60,17 +60,15 @@ namespace WindowsFormsApp1
                 }
             }
         }
-        public async void OnNewGameButtonClicked(int option)
+        public void OnNewGameButtonClicked(int option)
         {
             if (NewGameButtonClicked != null)
             {
                 this.data = NewGameButtonClicked(this, new NewGameArgs() { gameoption = option });
                 string result = PrintMapRequest(this, data);
 
-                Task task = new Task(() => PrintMap(result));
+                PrintMap(result);
                 GameMapRichText.Hide();
-                task.Start();
-                await task;
                 GameMapRichText.Show();
                 LoadingMapLabel.Hide();
             }
@@ -122,48 +120,34 @@ namespace WindowsFormsApp1
             ShowPanel(Title);
         }
 
-        private async void NewGameDefaultButton_Click(object sender, EventArgs e)
+        private void NewGameDefaultButton_Click(object sender, EventArgs e)
         {
-            Task task = new Task(() => {
-                ShowPanel(Game);
-                LoadingMapLabel.Show();
-            });
-            task.Start();
-            await task;
+            
+            ShowPanel(Game);
+            LoadingMapLabel.Show();
+            
             OnNewGameButtonClicked(0);
         }
 
         
-        private async void NewGameRiverButton_Click(object sender, EventArgs e)
+        private void NewGameRiverButton_Click(object sender, EventArgs e)
         {
-            Task task = new Task(() => {
-                ShowPanel(Game);
-                LoadingMapLabel.Show();
-            });
-            task.Start();
-            await task;
+            ShowPanel(Game);
+            LoadingMapLabel.Show();
             OnNewGameButtonClicked(1);
         }
 
-        private async void NewGameLakeButton_Click(object sender, EventArgs e)
+        private void NewGameLakeButton_Click(object sender, EventArgs e)
         {
-            Task task = new Task(() => {
-                LoadingMapLabel.Show();
-                ShowPanel(Game);
-                });
-            task.Start();
-            await task;
+            ShowPanel(Game);
+            LoadingMapLabel.Show();
             OnNewGameButtonClicked(2);
         }
 
-        private async void NewGameBothButton_Click(object sender, EventArgs e)
+        private void NewGameBothButton_Click(object sender, EventArgs e)
         {
-            Task task = new Task(() => {
-                LoadingMapLabel.Show();
-                ShowPanel(Game);
-            });
-            task.Start();
-            await task;
+            ShowPanel(Game);
+            LoadingMapLabel.Show();
             OnNewGameButtonClicked(3);
         }
 
