@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Form1 view = new Form1();
+
             MapController.initializer(view);
             Application.Run(view);
         }

@@ -771,11 +771,11 @@
             // 
             this.LoadingMapLabel.AutoSize = true;
             this.LoadingMapLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.LoadingMapLabel.Location = new System.Drawing.Point(101, 152);
+            this.LoadingMapLabel.Location = new System.Drawing.Point(79, 152);
             this.LoadingMapLabel.Name = "LoadingMapLabel";
-            this.LoadingMapLabel.Size = new System.Drawing.Size(97, 25);
+            this.LoadingMapLabel.Size = new System.Drawing.Size(141, 25);
             this.LoadingMapLabel.TabIndex = 1;
-            this.LoadingMapLabel.Text = "Loading...";
+            this.LoadingMapLabel.Text = "Loading Map...";
             // 
             // Form1
             // 
@@ -783,10 +783,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 340);
             this.Controls.Add(this.Title);
+            this.Controls.Add(this.AdminProd);
             this.Controls.Add(this.Game);
             this.Controls.Add(this.NewGame);
             this.Controls.Add(this.AdminGranja);
-            this.Controls.Add(this.AdminProd);
             this.Controls.Add(this.BuildingMarket);
             this.Controls.Add(this.Market);
             this.Name = "Form1";

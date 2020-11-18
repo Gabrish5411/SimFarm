@@ -14,15 +14,16 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        
-
         Panel[] panels;
-        public delegate PrintMapArgs NewGameEventHandler(object source, NewGameArgs args);
+        DataArgs data;
+
+        public delegate DataArgs NewGameEventHandler(object source, NewGameArgs args);
         public event NewGameEventHandler NewGameButtonClicked;
 
-        
+        public delegate string[] PrintInventoryEventHandler(object source, DataArgs data);
+        public event PrintInventoryEventHandler PrintInventoryRequest;
 
-        public delegate string PrintMapEventHandler(object source, PrintMapArgs args);
+        public delegate string PrintMapEventHandler(object source, DataArgs args);
         public event PrintMapEventHandler PrintMapRequest;
 
         public void ShowPanel(Panel panel)
@@ -34,7 +35,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        public virtual void PrintMap(string map)
+        public void PrintMap(string map)
         {
             foreach (char elem in map)
             {
@@ -59,21 +60,13 @@ namespace WindowsFormsApp1
                 }
             }
         }
-
-
-        public Form1()
-        {
-            InitializeComponent();
-            panels = new Panel[] { Title, NewGame, Game,
-                AdminGranja, AdminProd, Market, BuildingMarket};
-        }
-        
-        public async virtual void OnNewGameButtonClicked(int option)
+        public async void OnNewGameButtonClicked(int option)
         {
             if (NewGameButtonClicked != null)
             {
-                PrintMapArgs args = NewGameButtonClicked(this, new NewGameArgs() { gameoption = option });
-                string result = PrintMapRequest(this, args);
+                this.data = NewGameButtonClicked(this, new NewGameArgs() { gameoption = option });
+                string result = PrintMapRequest(this, data);
+
                 Task task = new Task(() => PrintMap(result));
                 GameMapRichText.Hide();
                 task.Start();
@@ -81,8 +74,38 @@ namespace WindowsFormsApp1
                 GameMapRichText.Show();
                 LoadingMapLabel.Hide();
             }
-            
         }
+        public void OnAskForInventory()
+        {
+            if(PrintInventoryRequest != null)
+            {
+                string[] result = PrintInventoryRequest(this, this.data);
+                FertilizerLabel2.Text = result[0];
+                IrrigationLabel2.Text = result[1];
+                AnimalFoodLabel2.Text = result[2];
+                AnimalWaterLabel2.Text = result[3];
+                FungicideLabel2.Text = result[4];
+                HerbicideLabel2.Text = result[5];
+                PesticideLabel2.Text = result[6];
+                VaccineLabel2.Text = result[7];
+                
+                
+            //CurrentMoneyLabel2.Text = map.currentmoney;
+            
+
+            }
+        }
+
+        //-----------------------------------------------------------
+        public Form1()
+        {
+            InitializeComponent();
+            panels = new Panel[] { Title, NewGame, Game,
+                AdminGranja, AdminProd, Market, BuildingMarket};
+        }
+        
+
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -108,8 +131,6 @@ namespace WindowsFormsApp1
             task.Start();
             await task;
             OnNewGameButtonClicked(0);
-            //LoadingMapLabel.Hide();
-            
         }
 
         
@@ -122,12 +143,10 @@ namespace WindowsFormsApp1
             task.Start();
             await task;
             OnNewGameButtonClicked(1);
-            //LoadingMapLabel.Hide();
         }
 
         private async void NewGameLakeButton_Click(object sender, EventArgs e)
         {
-            
             Task task = new Task(() => {
                 LoadingMapLabel.Show();
                 ShowPanel(Game);
@@ -135,7 +154,6 @@ namespace WindowsFormsApp1
             task.Start();
             await task;
             OnNewGameButtonClicked(2);
-            //LoadingMapLabel.Hide();
         }
 
         private async void NewGameBothButton_Click(object sender, EventArgs e)
@@ -147,7 +165,6 @@ namespace WindowsFormsApp1
             task.Start();
             await task;
             OnNewGameButtonClicked(3);
-            //LoadingMapLabel.Hide();
         }
 
         private void MapLabel_Click(object sender, EventArgs e)
@@ -182,18 +199,8 @@ namespace WindowsFormsApp1
 
         private void bt_AdminGranja_Click(object sender, EventArgs e)
         {
-            /*
-            FertilizerLabel2.Text = Convert.ToString(game.GetPlayer().fertilizer.GetUses());
-            IrrigationLabel2.Text = Convert.ToString(game.GetPlayer().irrigation.GetUses());
-            AnimalFoodLabel2.Text = Convert.ToString(game.GetPlayer().animalFood.GetUses());
-            AnimalWaterLabel2.Text = Convert.ToString(game.GetPlayer().animalWater.GetUses());
-            FungicideLabel2.Text = Convert.ToString(game.GetPlayer().fungicide.GetUses());
-            HerbicideLabel2.Text = Convert.ToString(game.GetPlayer().herbicide.GetUses());
-            PesticideLabel2.Text = Convert.ToString(game.GetPlayer().pesticide.GetUses());
-            VaccineLabel2.Text = Convert.ToString(game.GetPlayer().vaccine.GetUses());
+            OnAskForInventory();
             ShowPanel(AdminGranja);
-            //CurrentMoneyLabel2.Text = map.currentmoney;
-            */
         }
 
         private void bt_IrMercado_Click(object sender, EventArgs e)
@@ -243,17 +250,8 @@ namespace WindowsFormsApp1
 
         private void bt_back_AdminProd_Click(object sender, EventArgs e)
         {
-            /*
-            FertilizerLabel2.Text = Convert.ToString(game.GetPlayer().fertilizer.GetUses());
-            IrrigationLabel2.Text = Convert.ToString(game.GetPlayer().irrigation.GetUses());
-            AnimalFoodLabel2.Text = Convert.ToString(game.GetPlayer().animalFood.GetUses());
-            AnimalWaterLabel2.Text = Convert.ToString(game.GetPlayer().animalWater.GetUses());
-            FungicideLabel2.Text = Convert.ToString(game.GetPlayer().fungicide.GetUses());
-            HerbicideLabel2.Text = Convert.ToString(game.GetPlayer().herbicide.GetUses());
-            PesticideLabel2.Text = Convert.ToString(game.GetPlayer().pesticide.GetUses());
-            VaccineLabel2.Text = Convert.ToString(game.GetPlayer().vaccine.GetUses());
+            OnAskForInventory();
             ShowPanel(AdminGranja);
-            */
         }
     }
 }

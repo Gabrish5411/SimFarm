@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.CustomEventArgs
 {
-    public class PrintMapArgs : EventArgs
+    public class DataArgs : EventArgs
     {
         public Game game { get; set; }
     }

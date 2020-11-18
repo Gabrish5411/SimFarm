@@ -14,7 +14,7 @@ namespace WindowsFormsApp1.Controllers
         static Form1 view;
 
 
-        private static string OnAskForMap(object sender, PrintMapArgs e)
+        private static string OnAskForMap(object sender, DataArgs e)
         {
             string result = "";
             int i = 0;
@@ -57,11 +57,11 @@ namespace WindowsFormsApp1.Controllers
         }
 
 
-        private static PrintMapArgs OnNewGameButtonClicked(object sender, NewGameArgs e)
+        private static DataArgs OnNewGameButtonClicked(object sender, NewGameArgs e)
         {
             Game game = new Game();
             game.Map = new Map(e.gameoption);
-            return new PrintMapArgs() { game = game};
+            return new DataArgs() { game = game};
         }
 
 
@@ -70,8 +70,23 @@ namespace WindowsFormsApp1.Controllers
             MapController.view = view as Form1;
             MapController.view.NewGameButtonClicked += OnNewGameButtonClicked;
             MapController.view.PrintMapRequest += OnAskForMap;
+            MapController.view.PrintInventoryRequest += OnAskForInventory;
         }
 
+        public static string[] OnAskForInventory(object sender, DataArgs data)
+        {
+            string[] result = new string[8];
+            result[0] = Convert.ToString(data.game.GetPlayer().fertilizer.GetUses());
+            result[1] = Convert.ToString(data.game.GetPlayer().irrigation.GetUses());
+            result[2] = Convert.ToString(data.game.GetPlayer().animalFood.GetUses());
+            result[3] = Convert.ToString(data.game.GetPlayer().animalWater.GetUses());
+            result[4] = Convert.ToString(data.game.GetPlayer().fungicide.GetUses());
+            result[5] = Convert.ToString(data.game.GetPlayer().herbicide.GetUses());
+            result[6] = Convert.ToString(data.game.GetPlayer().pesticide.GetUses());
+            result[7] = Convert.ToString(data.game.GetPlayer().vaccine.GetUses());
+
+            return result;
+        }
 
     }
 }
