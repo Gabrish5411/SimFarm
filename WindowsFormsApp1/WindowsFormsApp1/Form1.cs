@@ -161,11 +161,6 @@ namespace WindowsFormsApp1
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void MainOptions_Paint(object sender, PaintEventArgs e)
         {
 
@@ -236,6 +231,46 @@ namespace WindowsFormsApp1
         {
             OnAskForInventory();
             ShowPanel(AdminGranja);
+        }
+
+        private void SelectFollowingSeeds_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bt_SeedRecords_click(object sender, EventArgs e)
+        {
+            ShowPanel(HistoricPrices);
+        }
+
+        private void bt_back_SeedRecords_Click(object sender, EventArgs e)
+        {
+            ShowPanel(Market);
+        }
+
+        private void bt_SelectNewMap_Click(object sender, EventArgs e)
+        {
+            ShowPanel(NewGame);//Falta arreglar que se borre el mapa anteriormente elegido
+        }
+
+        private void bt_back_to_Market_panel_from_Consumables_Click(object sender, EventArgs e)
+        {
+            ShowPanel(Market);
+        }
+
+        private void bt_ConsumableMarket_Click(object sender, EventArgs e)
+        {
+            ShowPanel(ConsumableMarket);
+        }
+
+        private void bt_back_to_Market_panel_fromProperty_click(object sender, EventArgs e)
+        {
+            ShowPanel(Market);
         }
     }
 }

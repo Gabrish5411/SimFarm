@@ -46,6 +46,7 @@
             this.bt_AdminGranja = new System.Windows.Forms.Button();
             this.lb_selectopt_MO = new System.Windows.Forms.Label();
             this.GameMap = new System.Windows.Forms.Panel();
+            this.LoadingMapLabel = new System.Windows.Forms.Label();
             this.GameMapRichText = new System.Windows.Forms.RichTextBox();
             this.AdminGranja = new System.Windows.Forms.Panel();
             this.VaccineLabel1 = new System.Windows.Forms.Label();
@@ -89,7 +90,25 @@
             this.bt_BuyCattle = new System.Windows.Forms.Button();
             this.bt_BuyField = new System.Windows.Forms.Button();
             this.lb_selectopt_BMK = new System.Windows.Forms.Label();
-            this.LoadingMapLabel = new System.Windows.Forms.Label();
+            this.HistoricPrices = new System.Windows.Forms.Panel();
+            this.HistoricPriceTomato = new System.Windows.Forms.Button();
+            this.HistoricPricePotato = new System.Windows.Forms.Button();
+            this.HistoricPriceRice = new System.Windows.Forms.Button();
+            this.SelectSeedForHistoricPrice = new System.Windows.Forms.Label();
+            this.bt_back_SeedRecords = new System.Windows.Forms.Button();
+            this.bt_SelectNewMap = new System.Windows.Forms.Button();
+            this.PropertyMarket = new System.Windows.Forms.Panel();
+            this.bt_back_to_Market_panel_fromProperty = new System.Windows.Forms.Button();
+            this.lb_select_building_type = new System.Windows.Forms.Label();
+            this.bt_field_buy = new System.Windows.Forms.Button();
+            this.bt_cattle_buy = new System.Windows.Forms.Button();
+            this.bt_storage_buy = new System.Windows.Forms.Button();
+            this.bt_selldestroy_building = new System.Windows.Forms.Button();
+            this.ConsumableMarket = new System.Windows.Forms.Panel();
+            this.bt_back_to_Market_panel_fromConsumables = new System.Windows.Forms.Button();
+            this.lb_select_consumable_type = new System.Windows.Forms.Label();
+            this.bt_food_buy = new System.Windows.Forms.Button();
+            this.bt_medicine_buy = new System.Windows.Forms.Button();
             this.Title.SuspendLayout();
             this.NewGame.SuspendLayout();
             this.Game.SuspendLayout();
@@ -99,6 +118,9 @@
             this.AdminProd.SuspendLayout();
             this.Market.SuspendLayout();
             this.BuildingMarket.SuspendLayout();
+            this.HistoricPrices.SuspendLayout();
+            this.PropertyMarket.SuspendLayout();
+            this.ConsumableMarket.SuspendLayout();
             this.SuspendLayout();
             // 
             // Title
@@ -221,6 +243,7 @@
             // 
             // MainOptions
             // 
+            this.MainOptions.Controls.Add(this.bt_SelectNewMap);
             this.MainOptions.Controls.Add(this.bt_GrabarPartida);
             this.MainOptions.Controls.Add(this.bt_PassTurn);
             this.MainOptions.Controls.Add(this.bt_IrMercado);
@@ -234,7 +257,7 @@
             // 
             // bt_GrabarPartida
             // 
-            this.bt_GrabarPartida.Location = new System.Drawing.Point(32, 259);
+            this.bt_GrabarPartida.Location = new System.Drawing.Point(32, 214);
             this.bt_GrabarPartida.Margin = new System.Windows.Forms.Padding(2);
             this.bt_GrabarPartida.Name = "bt_GrabarPartida";
             this.bt_GrabarPartida.Size = new System.Drawing.Size(126, 37);
@@ -245,7 +268,7 @@
             // 
             // bt_PassTurn
             // 
-            this.bt_PassTurn.Location = new System.Drawing.Point(32, 210);
+            this.bt_PassTurn.Location = new System.Drawing.Point(32, 173);
             this.bt_PassTurn.Margin = new System.Windows.Forms.Padding(2);
             this.bt_PassTurn.Name = "bt_PassTurn";
             this.bt_PassTurn.Size = new System.Drawing.Size(126, 37);
@@ -256,7 +279,7 @@
             // 
             // bt_IrMercado
             // 
-            this.bt_IrMercado.Location = new System.Drawing.Point(32, 159);
+            this.bt_IrMercado.Location = new System.Drawing.Point(32, 130);
             this.bt_IrMercado.Margin = new System.Windows.Forms.Padding(2);
             this.bt_IrMercado.Name = "bt_IrMercado";
             this.bt_IrMercado.Size = new System.Drawing.Size(126, 37);
@@ -267,7 +290,7 @@
             // 
             // bt_AdminGranja
             // 
-            this.bt_AdminGranja.Location = new System.Drawing.Point(32, 112);
+            this.bt_AdminGranja.Location = new System.Drawing.Point(32, 87);
             this.bt_AdminGranja.Margin = new System.Windows.Forms.Padding(2);
             this.bt_AdminGranja.Name = "bt_AdminGranja";
             this.bt_AdminGranja.Size = new System.Drawing.Size(126, 37);
@@ -295,6 +318,16 @@
             this.GameMap.Name = "GameMap";
             this.GameMap.Size = new System.Drawing.Size(290, 340);
             this.GameMap.TabIndex = 0;
+            // 
+            // LoadingMapLabel
+            // 
+            this.LoadingMapLabel.AutoSize = true;
+            this.LoadingMapLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.LoadingMapLabel.Location = new System.Drawing.Point(79, 152);
+            this.LoadingMapLabel.Name = "LoadingMapLabel";
+            this.LoadingMapLabel.Size = new System.Drawing.Size(141, 25);
+            this.LoadingMapLabel.TabIndex = 1;
+            this.LoadingMapLabel.Text = "Loading Map...";
             // 
             // GameMapRichText
             // 
@@ -648,6 +681,7 @@
             this.bt_SeedRecords.TabIndex = 4;
             this.bt_SeedRecords.Text = "Revisar precios históricos por Semilla";
             this.bt_SeedRecords.UseVisualStyleBackColor = true;
+            this.bt_SeedRecords.Click += new System.EventHandler(this.bt_SeedRecords_click);
             // 
             // bt_PropertyMarket
             // 
@@ -668,6 +702,7 @@
             this.bt_ConsumableMarket.TabIndex = 2;
             this.bt_ConsumableMarket.Text = "Mercado de Consumibles";
             this.bt_ConsumableMarket.UseVisualStyleBackColor = true;
+            this.bt_ConsumableMarket.Click += new System.EventHandler(this.bt_ConsumableMarket_Click);
             // 
             // bt_BuildingMarket
             // 
@@ -767,15 +802,195 @@
             this.lb_selectopt_BMK.TabIndex = 0;
             this.lb_selectopt_BMK.Text = "Seleccione una opción:";
             // 
-            // LoadingMapLabel
+            // HistoricPrices
             // 
-            this.LoadingMapLabel.AutoSize = true;
-            this.LoadingMapLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.LoadingMapLabel.Location = new System.Drawing.Point(79, 152);
-            this.LoadingMapLabel.Name = "LoadingMapLabel";
-            this.LoadingMapLabel.Size = new System.Drawing.Size(141, 25);
-            this.LoadingMapLabel.TabIndex = 1;
-            this.LoadingMapLabel.Text = "Loading Map...";
+            this.HistoricPrices.Controls.Add(this.bt_back_SeedRecords);
+            this.HistoricPrices.Controls.Add(this.SelectSeedForHistoricPrice);
+            this.HistoricPrices.Controls.Add(this.HistoricPriceRice);
+            this.HistoricPrices.Controls.Add(this.HistoricPriceTomato);
+            this.HistoricPrices.Controls.Add(this.HistoricPricePotato);
+            this.HistoricPrices.Location = new System.Drawing.Point(0, 0);
+            this.HistoricPrices.Name = "HistoricPrices";
+            this.HistoricPrices.Size = new System.Drawing.Size(251, 340);
+            this.HistoricPrices.TabIndex = 4;
+            // 
+            // HistoricPriceTomato
+            // 
+            this.HistoricPriceTomato.Location = new System.Drawing.Point(20, 111);
+            this.HistoricPriceTomato.Name = "HistoricPriceTomato";
+            this.HistoricPriceTomato.Size = new System.Drawing.Size(75, 23);
+            this.HistoricPriceTomato.TabIndex = 0;
+            this.HistoricPriceTomato.Text = "Tomate";
+            this.HistoricPriceTomato.UseVisualStyleBackColor = true;
+            // 
+            // HistoricPricePotato
+            // 
+            this.HistoricPricePotato.Location = new System.Drawing.Point(20, 146);
+            this.HistoricPricePotato.Name = "HistoricPricePotato";
+            this.HistoricPricePotato.Size = new System.Drawing.Size(75, 23);
+            this.HistoricPricePotato.TabIndex = 1;
+            this.HistoricPricePotato.Text = "Papas";
+            this.HistoricPricePotato.UseVisualStyleBackColor = true;
+            // 
+            // HistoricPriceRice
+            // 
+            this.HistoricPriceRice.Location = new System.Drawing.Point(20, 182);
+            this.HistoricPriceRice.Name = "HistoricPriceRice";
+            this.HistoricPriceRice.Size = new System.Drawing.Size(75, 23);
+            this.HistoricPriceRice.TabIndex = 2;
+            this.HistoricPriceRice.Text = "Arroz";
+            this.HistoricPriceRice.UseVisualStyleBackColor = true;
+            // 
+            // SelectSeedForHistoricPrice
+            // 
+            this.SelectSeedForHistoricPrice.AutoSize = true;
+            this.SelectSeedForHistoricPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.3F);
+            this.SelectSeedForHistoricPrice.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.SelectSeedForHistoricPrice.Location = new System.Drawing.Point(10, 45);
+            this.SelectSeedForHistoricPrice.Name = "SelectSeedForHistoricPrice";
+            this.SelectSeedForHistoricPrice.Size = new System.Drawing.Size(208, 48);
+            this.SelectSeedForHistoricPrice.TabIndex = 4;
+            this.SelectSeedForHistoricPrice.Text = "Selecciona una de las siguientes \r\nsemillas para saber \r\nsu precio histórico:\r\n";
+            this.SelectSeedForHistoricPrice.Click += new System.EventHandler(this.label1_Click_2);
+            // 
+            // bt_back_SeedRecords
+            // 
+            this.bt_back_SeedRecords.Location = new System.Drawing.Point(11, 11);
+            this.bt_back_SeedRecords.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_back_SeedRecords.Name = "bt_back_SeedRecords";
+            this.bt_back_SeedRecords.Size = new System.Drawing.Size(48, 24);
+            this.bt_back_SeedRecords.TabIndex = 6;
+            this.bt_back_SeedRecords.Text = "back";
+            this.bt_back_SeedRecords.UseVisualStyleBackColor = true;
+            this.bt_back_SeedRecords.Click += new System.EventHandler(this.bt_back_SeedRecords_Click);
+            // 
+            // bt_SelectNewMap
+            // 
+            this.bt_SelectNewMap.Location = new System.Drawing.Point(32, 256);
+            this.bt_SelectNewMap.Name = "bt_SelectNewMap";
+            this.bt_SelectNewMap.Size = new System.Drawing.Size(126, 44);
+            this.bt_SelectNewMap.TabIndex = 5;
+            this.bt_SelectNewMap.Text = "Seleccionar un nuevo Mapa";
+            this.bt_SelectNewMap.UseVisualStyleBackColor = true;
+            this.bt_SelectNewMap.Click += new System.EventHandler(this.bt_SelectNewMap_Click);
+            // 
+            // PropertyMarket
+            // 
+            this.PropertyMarket.Controls.Add(this.bt_selldestroy_building);
+            this.PropertyMarket.Controls.Add(this.bt_storage_buy);
+            this.PropertyMarket.Controls.Add(this.bt_cattle_buy);
+            this.PropertyMarket.Controls.Add(this.bt_field_buy);
+            this.PropertyMarket.Controls.Add(this.lb_select_building_type);
+            this.PropertyMarket.Controls.Add(this.bt_back_to_Market_panel_fromProperty);
+            this.PropertyMarket.Location = new System.Drawing.Point(0, 0);
+            this.PropertyMarket.Name = "PropertyMarket";
+            this.PropertyMarket.Size = new System.Drawing.Size(203, 340);
+            this.PropertyMarket.TabIndex = 7;
+            // 
+            // bt_back_to_Market_panel_fromProperty
+            // 
+            this.bt_back_to_Market_panel_fromProperty.Location = new System.Drawing.Point(14, 11);
+            this.bt_back_to_Market_panel_fromProperty.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_back_to_Market_panel_fromProperty.Name = "bt_back_to_Market_panel_fromProperty";
+            this.bt_back_to_Market_panel_fromProperty.Size = new System.Drawing.Size(48, 24);
+            this.bt_back_to_Market_panel_fromProperty.TabIndex = 7;
+            this.bt_back_to_Market_panel_fromProperty.Text = "back";
+            this.bt_back_to_Market_panel_fromProperty.UseVisualStyleBackColor = true;
+            this.bt_back_to_Market_panel_fromProperty.Click += new System.EventHandler(this.bt_back_to_Market_panel_fromProperty_click);
+            // 
+            // lb_select_building_type
+            // 
+            this.lb_select_building_type.AutoSize = true;
+            this.lb_select_building_type.Location = new System.Drawing.Point(17, 54);
+            this.lb_select_building_type.Name = "lb_select_building_type";
+            this.lb_select_building_type.Size = new System.Drawing.Size(106, 39);
+            this.lb_select_building_type.TabIndex = 8;
+            this.lb_select_building_type.Text = "Selecciona el tipo de\r\nedificio que deseas\r\nconstruir";
+            // 
+            // bt_field_buy
+            // 
+            this.bt_field_buy.Location = new System.Drawing.Point(20, 111);
+            this.bt_field_buy.Name = "bt_field_buy";
+            this.bt_field_buy.Size = new System.Drawing.Size(110, 23);
+            this.bt_field_buy.TabIndex = 9;
+            this.bt_field_buy.Text = "Comprar Plantación";
+            this.bt_field_buy.UseVisualStyleBackColor = true;
+            // 
+            // bt_cattle_buy
+            // 
+            this.bt_cattle_buy.Location = new System.Drawing.Point(20, 146);
+            this.bt_cattle_buy.Name = "bt_cattle_buy";
+            this.bt_cattle_buy.Size = new System.Drawing.Size(110, 23);
+            this.bt_cattle_buy.TabIndex = 10;
+            this.bt_cattle_buy.Text = "Comprar Ganado";
+            this.bt_cattle_buy.UseVisualStyleBackColor = true;
+            // 
+            // bt_storage_buy
+            // 
+            this.bt_storage_buy.Location = new System.Drawing.Point(20, 181);
+            this.bt_storage_buy.Name = "bt_storage_buy";
+            this.bt_storage_buy.Size = new System.Drawing.Size(110, 39);
+            this.bt_storage_buy.TabIndex = 11;
+            this.bt_storage_buy.Text = "Comprar Almacenamiento";
+            this.bt_storage_buy.UseVisualStyleBackColor = true;
+            // 
+            // bt_selldestroy_building
+            // 
+            this.bt_selldestroy_building.Location = new System.Drawing.Point(20, 231);
+            this.bt_selldestroy_building.Name = "bt_selldestroy_building";
+            this.bt_selldestroy_building.Size = new System.Drawing.Size(110, 35);
+            this.bt_selldestroy_building.TabIndex = 12;
+            this.bt_selldestroy_building.Text = "Vender/Destruir Edificio";
+            this.bt_selldestroy_building.UseVisualStyleBackColor = true;
+            // 
+            // ConsumableMarket
+            // 
+            this.ConsumableMarket.Controls.Add(this.bt_medicine_buy);
+            this.ConsumableMarket.Controls.Add(this.bt_food_buy);
+            this.ConsumableMarket.Controls.Add(this.lb_select_consumable_type);
+            this.ConsumableMarket.Controls.Add(this.bt_back_to_Market_panel_fromConsumables);
+            this.ConsumableMarket.Location = new System.Drawing.Point(0, 0);
+            this.ConsumableMarket.Name = "ConsumableMarket";
+            this.ConsumableMarket.Size = new System.Drawing.Size(213, 340);
+            this.ConsumableMarket.TabIndex = 2;
+            // 
+            // bt_back_to_Market_panel_fromConsumables
+            // 
+            this.bt_back_to_Market_panel_fromConsumables.Location = new System.Drawing.Point(11, 3);
+            this.bt_back_to_Market_panel_fromConsumables.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_back_to_Market_panel_fromConsumables.Name = "bt_back_to_Market_panel_fromConsumables";
+            this.bt_back_to_Market_panel_fromConsumables.Size = new System.Drawing.Size(48, 24);
+            this.bt_back_to_Market_panel_fromConsumables.TabIndex = 8;
+            this.bt_back_to_Market_panel_fromConsumables.Text = "back";
+            this.bt_back_to_Market_panel_fromConsumables.UseVisualStyleBackColor = true;
+            this.bt_back_to_Market_panel_fromConsumables.Click += new System.EventHandler(this.bt_back_to_Market_panel_from_Consumables_Click);
+            // 
+            // lb_select_consumable_type
+            // 
+            this.lb_select_consumable_type.AutoSize = true;
+            this.lb_select_consumable_type.Location = new System.Drawing.Point(12, 43);
+            this.lb_select_consumable_type.Name = "lb_select_consumable_type";
+            this.lb_select_consumable_type.Size = new System.Drawing.Size(103, 39);
+            this.lb_select_consumable_type.TabIndex = 9;
+            this.lb_select_consumable_type.Text = "Selecciona el tipo\r\nde consumible \r\nque deseas comprar";
+            // 
+            // bt_food_buy
+            // 
+            this.bt_food_buy.Location = new System.Drawing.Point(13, 132);
+            this.bt_food_buy.Name = "bt_food_buy";
+            this.bt_food_buy.Size = new System.Drawing.Size(102, 23);
+            this.bt_food_buy.TabIndex = 10;
+            this.bt_food_buy.Text = "Comprar Alimento";
+            this.bt_food_buy.UseVisualStyleBackColor = true;
+            // 
+            // bt_medicine_buy
+            // 
+            this.bt_medicine_buy.Location = new System.Drawing.Point(15, 176);
+            this.bt_medicine_buy.Name = "bt_medicine_buy";
+            this.bt_medicine_buy.Size = new System.Drawing.Size(100, 23);
+            this.bt_medicine_buy.TabIndex = 11;
+            this.bt_medicine_buy.Text = "Comprar Medicina";
+            this.bt_medicine_buy.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -783,12 +998,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 340);
             this.Controls.Add(this.Title);
-            this.Controls.Add(this.AdminProd);
             this.Controls.Add(this.Game);
+            this.Controls.Add(this.AdminProd);
             this.Controls.Add(this.NewGame);
             this.Controls.Add(this.AdminGranja);
             this.Controls.Add(this.BuildingMarket);
             this.Controls.Add(this.Market);
+            this.Controls.Add(this.PropertyMarket);
+            this.Controls.Add(this.ConsumableMarket);
+            this.Controls.Add(this.HistoricPrices);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Title.ResumeLayout(false);
@@ -808,6 +1026,12 @@
             this.Market.PerformLayout();
             this.BuildingMarket.ResumeLayout(false);
             this.BuildingMarket.PerformLayout();
+            this.HistoricPrices.ResumeLayout(false);
+            this.HistoricPrices.PerformLayout();
+            this.PropertyMarket.ResumeLayout(false);
+            this.PropertyMarket.PerformLayout();
+            this.ConsumableMarket.ResumeLayout(false);
+            this.ConsumableMarket.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -876,6 +1100,25 @@
         private System.Windows.Forms.Label PesticideLabel2;
         private System.Windows.Forms.RichTextBox GameMapRichText;
         private System.Windows.Forms.Label LoadingMapLabel;
+        private System.Windows.Forms.Panel HistoricPrices;
+        private System.Windows.Forms.Button HistoricPriceRice;
+        private System.Windows.Forms.Button HistoricPriceTomato;
+        private System.Windows.Forms.Button HistoricPricePotato;
+        private System.Windows.Forms.Label SelectSeedForHistoricPrice;
+        private System.Windows.Forms.Button bt_back_SeedRecords;
+        private System.Windows.Forms.Button bt_SelectNewMap;
+        private System.Windows.Forms.Panel PropertyMarket;
+        private System.Windows.Forms.Button bt_back_to_Market_panel_fromProperty;
+        private System.Windows.Forms.Button bt_selldestroy_building;
+        private System.Windows.Forms.Button bt_storage_buy;
+        private System.Windows.Forms.Button bt_cattle_buy;
+        private System.Windows.Forms.Button bt_field_buy;
+        private System.Windows.Forms.Label lb_select_building_type;
+        private System.Windows.Forms.Panel ConsumableMarket;
+        private System.Windows.Forms.Button bt_back_to_Market_panel_fromConsumables;
+        private System.Windows.Forms.Button bt_medicine_buy;
+        private System.Windows.Forms.Button bt_food_buy;
+        private System.Windows.Forms.Label lb_select_consumable_type;
     }
 }
 
