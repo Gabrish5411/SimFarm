@@ -99,7 +99,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             panels = new Panel[] { Title, NewGame, Game,
-                AdminGranja, AdminProd, Market, BuildingMarket};
+                AdminGranja, AdminProd, Market, BuildingMarket, PropertyMarket,ConsumableMarket,FoodMarket,MedicineMarket};
         }
         
 
@@ -287,20 +287,9 @@ namespace WindowsFormsApp1
         {
 
         }
-
-        private void bt_food_buy_Click(object sender, EventArgs e)
-        {
-            ShowPanel(FoodMarket);
-        }
-
         private void button1_Click_2(object sender, EventArgs e)
         {
             ShowPanel(ConsumableMarket);
-        }
-
-        private void bt_medicine_buy_Click(object sender, EventArgs e)
-        {
-            ShowPanel(MedicineMarket);
         }
 
         private void button1_Click_3(object sender, EventArgs e)
@@ -308,9 +297,19 @@ namespace WindowsFormsApp1
             ShowPanel(FoodMarket);
         }
 
-        private void bt_buy_medicine_Click(object sender, EventArgs e)
+        private void bt_BuyFood_Click(object sender, EventArgs e)
+        {
+            ShowPanel(FoodMarket);
+        }
+
+        private void bt_BuyMedicine_Click(object sender, EventArgs e)
         {
             ShowPanel(MedicineMarket);
+        }
+
+        private void bt_back_ConsumableMarket_Click(object sender, EventArgs e)
+        {
+            ShowPanel(Market);
         }
     }
 }
