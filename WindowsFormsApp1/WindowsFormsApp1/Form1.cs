@@ -272,5 +272,45 @@ namespace WindowsFormsApp1
         {
             ShowPanel(Market);
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            ShowPanel(ConsumableMarket);
+        }
+
+        private void label1_Click_3(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Title_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void bt_food_buy_Click(object sender, EventArgs e)
+        {
+            ShowPanel(FoodMarket);
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            ShowPanel(ConsumableMarket);
+        }
+
+        private void bt_medicine_buy_Click(object sender, EventArgs e)
+        {
+            ShowPanel(MedicineMarket);
+        }
+
+        private void button1_Click_3(object sender, EventArgs e)
+        {
+            ShowPanel(FoodMarket);
+        }
+
+        private void bt_buy_medicine_Click(object sender, EventArgs e)
+        {
+            ShowPanel(MedicineMarket);
+        }
     }
 }
