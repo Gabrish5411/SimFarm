@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using WindowsFormsApp1.CustomEventArgs;
 using WindowsFormsApp1.Tiles;
 
+
 namespace WindowsFormsApp1.Controllers
 {
     public static class MapController
@@ -71,6 +72,7 @@ namespace WindowsFormsApp1.Controllers
             MapController.view.NewGameButtonClicked += OnNewGameButtonClicked;
             MapController.view.PrintMapRequest += OnAskForMap;
             MapController.view.PrintInventoryRequest += OnAskForInventory;
+            MapController.view.AddingOne += OnBuy;
         }
 
         public static string[] OnAskForInventory(object sender, DataArgs data)
@@ -87,6 +89,41 @@ namespace WindowsFormsApp1.Controllers
 
             return result;
         }
+        public static void OnBuy(object sender, DataArgs data, string ConsName)
+        {
+            if (ConsName == "fertilizer")
+            { 
+                data.game.GetPlayer().fertilizer.AddUse();
+            }
+            else if (ConsName == "irrigation")
+            {
+                data.game.GetPlayer().irrigation.AddUse();
+            }
+            else if (ConsName == "animalFood")
+            {
+                data.game.GetPlayer().animalFood.AddUse();
+            }
+            else if (ConsName == "animalWater")
+            {
+                data.game.GetPlayer().animalWater.AddUse();
+            }
+            else if (ConsName == "fungicide")
+            {
+                data.game.GetPlayer().fungicide.AddUse();
+            }
+            else if (ConsName == "herbicide")
+            {
+                data.game.GetPlayer().herbicide.AddUse();
+            }
+            else if (ConsName == "pesticide")
+            {
+                data.game.GetPlayer().pesticide.AddUse();
+            }
+            else if (ConsName == "vaccine")
+            {
+                data.game.GetPlayer().vaccine.AddUse();
+            }
 
+        }
     }
 }

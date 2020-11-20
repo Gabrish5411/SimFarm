@@ -26,6 +26,9 @@ namespace WindowsFormsApp1
         public delegate string PrintMapEventHandler(object source, DataArgs args);
         public event PrintMapEventHandler PrintMapRequest;
 
+        public delegate void AddOneEventHandler(object source, DataArgs data, string ConsName);
+        public event AddOneEventHandler AddingOne;
+
         public void ShowPanel(Panel panel)
         {
             foreach (Panel elem in panels)
@@ -93,13 +96,17 @@ namespace WindowsFormsApp1
 
             }
         }
+        public void OnAddingOne(string ConsName)
+        {
+            AddingOne(this, this.data, ConsName);
+        }
 
         //-----------------------------------------------------------
         public Form1()
         {
             InitializeComponent();
             panels = new Panel[] { Title, NewGame, Game,
-                AdminGranja, AdminProd, Market, BuildingMarket, PropertyMarket,ConsumableMarket,FoodMarket,MedicineMarket};
+                AdminGranja, AdminProd, Market, BuildingMarket, PropertyMarket, ConsumableMarket, FoodMarket, MedicineMarket};
         }
         
 
@@ -310,6 +317,46 @@ namespace WindowsFormsApp1
         private void bt_back_ConsumableMarket_Click(object sender, EventArgs e)
         {
             ShowPanel(Market);
+        }
+
+        private void bt_BuyFertilizer_Click(object sender, EventArgs e)
+        {
+            OnAddingOne("fertilizer");
+        }
+
+        private void bt_BuyIrrigation_Click(object sender, EventArgs e)
+        {
+            OnAddingOne("irrigation");
+        }
+
+        private void bt_BuyAnimalFood_Click(object sender, EventArgs e)
+        {
+            OnAddingOne("animalFood");
+        }
+
+        private void bt_BuyAnimalWater_Click(object sender, EventArgs e)
+        {
+            OnAddingOne("animalWater");
+        }
+
+        private void bt_BuyHerbicide_Click(object sender, EventArgs e)
+        {
+            OnAddingOne("herbicide");
+        }
+
+        private void bt_BuyPesticide_Click(object sender, EventArgs e)
+        {
+            OnAddingOne("pesticide");
+        }
+
+        private void bt_BuyFungicide_Click(object sender, EventArgs e)
+        {
+            OnAddingOne("fungicide");
+        }
+
+        private void bt_BuyVaccine_Click(object sender, EventArgs e)
+        {
+            OnAddingOne("vaccine");
         }
     }
 }
