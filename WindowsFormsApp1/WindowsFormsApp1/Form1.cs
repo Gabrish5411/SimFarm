@@ -262,6 +262,7 @@ namespace WindowsFormsApp1
 
         private void bt_SelectNewMap_Click(object sender, EventArgs e)
         {
+            GameMapRichText.Clear();
             ShowPanel(NewGame);//Falta arreglar que se borre el mapa anteriormente elegido
         }
 
