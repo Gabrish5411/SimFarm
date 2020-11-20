@@ -91,38 +91,47 @@ namespace WindowsFormsApp1.Controllers
         }
         public static void OnBuy(object sender, DataArgs data, string ConsName)
         {
-            if (ConsName == "fertilizer")
+            if (ConsName == "fertilizer" && data.game.GetPlayer().Current_money > data.game.GetPlayer().fertilizer.GetBuyPrice())
             { 
                 data.game.GetPlayer().fertilizer.AddUse();
+                data.game.GetPlayer().Current_money -= data.game.GetPlayer().fertilizer.GetBuyPrice();
             }
-            else if (ConsName == "irrigation")
+            else if (ConsName == "irrigation" && data.game.GetPlayer().Current_money > data.game.GetPlayer().irrigation.GetBuyPrice())
             {
                 data.game.GetPlayer().irrigation.AddUse();
+                data.game.GetPlayer().Current_money -= data.game.GetPlayer().irrigation.GetBuyPrice();
             }
-            else if (ConsName == "animalFood")
+            else if (ConsName == "animalFood" && data.game.GetPlayer().Current_money > data.game.GetPlayer().animalFood.GetBuyPrice())
             {
                 data.game.GetPlayer().animalFood.AddUse();
+                data.game.GetPlayer().Current_money -= data.game.GetPlayer().animalFood.GetBuyPrice();
             }
-            else if (ConsName == "animalWater")
+            else if (ConsName == "animalWater" && data.game.GetPlayer().Current_money > data.game.GetPlayer().animalWater.GetBuyPrice())
             {
                 data.game.GetPlayer().animalWater.AddUse();
+                data.game.GetPlayer().Current_money -= data.game.GetPlayer().animalWater.GetBuyPrice();
             }
-            else if (ConsName == "fungicide")
+            else if (ConsName == "fungicide" && data.game.GetPlayer().Current_money > data.game.GetPlayer().fungicide.GetBuyPrice())
             {
                 data.game.GetPlayer().fungicide.AddUse();
+                data.game.GetPlayer().Current_money -= data.game.GetPlayer().fungicide.GetBuyPrice();
             }
-            else if (ConsName == "herbicide")
+            else if (ConsName == "herbicide" && data.game.GetPlayer().Current_money > data.game.GetPlayer().herbicide.GetBuyPrice())
             {
                 data.game.GetPlayer().herbicide.AddUse();
+                data.game.GetPlayer().Current_money -= data.game.GetPlayer().herbicide.GetBuyPrice();
             }
-            else if (ConsName == "pesticide")
+            else if (ConsName == "pesticide" && data.game.GetPlayer().Current_money > data.game.GetPlayer().pesticide.GetBuyPrice())
             {
                 data.game.GetPlayer().pesticide.AddUse();
+                data.game.GetPlayer().Current_money -= data.game.GetPlayer().pesticide.GetBuyPrice();
             }
-            else if (ConsName == "vaccine")
+            else if (ConsName == "vaccine" && data.game.GetPlayer().Current_money > data.game.GetPlayer().vaccine.GetBuyPrice())
             {
                 data.game.GetPlayer().vaccine.AddUse();
+                data.game.GetPlayer().Current_money -= data.game.GetPlayer().vaccine.GetBuyPrice();
             }
+            else {MessageBox.Show("No tienes suficiente dinero...", "¡Hay un problema!");}
 
         }
     }

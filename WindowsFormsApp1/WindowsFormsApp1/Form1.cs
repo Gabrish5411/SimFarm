@@ -97,8 +97,8 @@ namespace WindowsFormsApp1
             }
         }
         public void OnAddingOne(string ConsName)
-        {
-            AddingOne(this, this.data, ConsName);
+        { 
+                AddingOne(this, this.data, ConsName);
         }
 
         //-----------------------------------------------------------
