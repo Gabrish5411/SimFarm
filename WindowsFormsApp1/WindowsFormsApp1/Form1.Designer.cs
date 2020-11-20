@@ -119,10 +119,10 @@
             this.bt_BuyHerbicide = new System.Windows.Forms.Button();
             this.bt_back_MedicineMarket = new System.Windows.Forms.Button();
             this.ConsumableMarket = new System.Windows.Forms.Panel();
-            this.bt_back_ConsumableMarket = new System.Windows.Forms.Button();
-            this.bt_BuyFood = new System.Windows.Forms.Button();
-            this.bt_BuyMedicine = new System.Windows.Forms.Button();
             this.lb_ConsumableType = new System.Windows.Forms.Label();
+            this.bt_BuyMedicine = new System.Windows.Forms.Button();
+            this.bt_BuyFood = new System.Windows.Forms.Button();
+            this.bt_back_ConsumableMarket = new System.Windows.Forms.Button();
             this.Title.SuspendLayout();
             this.NewGame.SuspendLayout();
             this.Game.SuspendLayout();
@@ -1040,6 +1040,7 @@
             this.bt_BuyAnimalWater.TabIndex = 3;
             this.bt_BuyAnimalWater.Text = "Buy Animal Water";
             this.bt_BuyAnimalWater.UseVisualStyleBackColor = true;
+            this.bt_BuyAnimalWater.Click += new System.EventHandler(this.bt_BuyAnimalWater_Click);
             // 
             // bt_BuyAnimalFood
             // 
@@ -1049,6 +1050,7 @@
             this.bt_BuyAnimalFood.TabIndex = 2;
             this.bt_BuyAnimalFood.Text = "Buy Animal Food";
             this.bt_BuyAnimalFood.UseVisualStyleBackColor = true;
+            this.bt_BuyAnimalFood.Click += new System.EventHandler(this.bt_BuyAnimalFood_Click);
             // 
             // bt_BuyIrrigation
             // 
@@ -1058,6 +1060,7 @@
             this.bt_BuyIrrigation.TabIndex = 1;
             this.bt_BuyIrrigation.Text = "Buy Irrigation";
             this.bt_BuyIrrigation.UseVisualStyleBackColor = true;
+            this.bt_BuyIrrigation.Click += new System.EventHandler(this.bt_BuyIrrigation_Click);
             // 
             // bt_BuyFertilizer
             // 
@@ -1067,6 +1070,7 @@
             this.bt_BuyFertilizer.TabIndex = 0;
             this.bt_BuyFertilizer.Text = "Buy Fertilizer";
             this.bt_BuyFertilizer.UseVisualStyleBackColor = true;
+            this.bt_BuyFertilizer.Click += new System.EventHandler(this.bt_BuyFertilizer_Click);
             // 
             // MedicineMarket
             // 
@@ -1099,6 +1103,7 @@
             this.bt_BuyVaccine.TabIndex = 4;
             this.bt_BuyVaccine.Text = "Buy Vaccine";
             this.bt_BuyVaccine.UseVisualStyleBackColor = true;
+            this.bt_BuyVaccine.Click += new System.EventHandler(this.bt_BuyVaccine_Click);
             // 
             // bt_BuyFungicide
             // 
@@ -1108,6 +1113,7 @@
             this.bt_BuyFungicide.TabIndex = 3;
             this.bt_BuyFungicide.Text = "Buy Fungicide";
             this.bt_BuyFungicide.UseVisualStyleBackColor = true;
+            this.bt_BuyFungicide.Click += new System.EventHandler(this.bt_BuyFungicide_Click);
             // 
             // bt_BuyPesticide
             // 
@@ -1117,6 +1123,7 @@
             this.bt_BuyPesticide.TabIndex = 2;
             this.bt_BuyPesticide.Text = "Buy Pesticide";
             this.bt_BuyPesticide.UseVisualStyleBackColor = true;
+            this.bt_BuyPesticide.Click += new System.EventHandler(this.bt_BuyPesticide_Click);
             // 
             // bt_BuyHerbicide
             // 
@@ -1126,6 +1133,7 @@
             this.bt_BuyHerbicide.TabIndex = 1;
             this.bt_BuyHerbicide.Text = "Buy Herbicide";
             this.bt_BuyHerbicide.UseVisualStyleBackColor = true;
+            this.bt_BuyHerbicide.Click += new System.EventHandler(this.bt_BuyHerbicide_Click);
             // 
             // bt_back_MedicineMarket
             // 
@@ -1148,25 +1156,15 @@
             this.ConsumableMarket.Size = new System.Drawing.Size(285, 418);
             this.ConsumableMarket.TabIndex = 2;
             // 
-            // bt_back_ConsumableMarket
+            // lb_ConsumableType
             // 
-            this.bt_back_ConsumableMarket.Location = new System.Drawing.Point(4, 7);
-            this.bt_back_ConsumableMarket.Name = "bt_back_ConsumableMarket";
-            this.bt_back_ConsumableMarket.Size = new System.Drawing.Size(59, 23);
-            this.bt_back_ConsumableMarket.TabIndex = 0;
-            this.bt_back_ConsumableMarket.Text = "back";
-            this.bt_back_ConsumableMarket.UseVisualStyleBackColor = true;
-            this.bt_back_ConsumableMarket.Click += new System.EventHandler(this.bt_back_ConsumableMarket_Click);
-            // 
-            // bt_BuyFood
-            // 
-            this.bt_BuyFood.Location = new System.Drawing.Point(78, 172);
-            this.bt_BuyFood.Name = "bt_BuyFood";
-            this.bt_BuyFood.Size = new System.Drawing.Size(107, 53);
-            this.bt_BuyFood.TabIndex = 1;
-            this.bt_BuyFood.Text = "Buy Food";
-            this.bt_BuyFood.UseVisualStyleBackColor = true;
-            this.bt_BuyFood.Click += new System.EventHandler(this.bt_BuyFood_Click);
+            this.lb_ConsumableType.AutoSize = true;
+            this.lb_ConsumableType.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.lb_ConsumableType.Location = new System.Drawing.Point(18, 74);
+            this.lb_ConsumableType.Name = "lb_ConsumableType";
+            this.lb_ConsumableType.Size = new System.Drawing.Size(255, 48);
+            this.lb_ConsumableType.TabIndex = 3;
+            this.lb_ConsumableType.Text = "Select the type of \r\nconsumable you want to buy:";
             // 
             // bt_BuyMedicine
             // 
@@ -1178,15 +1176,25 @@
             this.bt_BuyMedicine.UseVisualStyleBackColor = true;
             this.bt_BuyMedicine.Click += new System.EventHandler(this.bt_BuyMedicine_Click);
             // 
-            // lb_ConsumableType
+            // bt_BuyFood
             // 
-            this.lb_ConsumableType.AutoSize = true;
-            this.lb_ConsumableType.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lb_ConsumableType.Location = new System.Drawing.Point(18, 74);
-            this.lb_ConsumableType.Name = "lb_ConsumableType";
-            this.lb_ConsumableType.Size = new System.Drawing.Size(255, 48);
-            this.lb_ConsumableType.TabIndex = 3;
-            this.lb_ConsumableType.Text = "Select the type of \r\nconsumable you want to buy:";
+            this.bt_BuyFood.Location = new System.Drawing.Point(78, 172);
+            this.bt_BuyFood.Name = "bt_BuyFood";
+            this.bt_BuyFood.Size = new System.Drawing.Size(107, 53);
+            this.bt_BuyFood.TabIndex = 1;
+            this.bt_BuyFood.Text = "Buy Food";
+            this.bt_BuyFood.UseVisualStyleBackColor = true;
+            this.bt_BuyFood.Click += new System.EventHandler(this.bt_BuyFood_Click);
+            // 
+            // bt_back_ConsumableMarket
+            // 
+            this.bt_back_ConsumableMarket.Location = new System.Drawing.Point(4, 7);
+            this.bt_back_ConsumableMarket.Name = "bt_back_ConsumableMarket";
+            this.bt_back_ConsumableMarket.Size = new System.Drawing.Size(59, 23);
+            this.bt_back_ConsumableMarket.TabIndex = 0;
+            this.bt_back_ConsumableMarket.Text = "back";
+            this.bt_back_ConsumableMarket.UseVisualStyleBackColor = true;
+            this.bt_back_ConsumableMarket.Click += new System.EventHandler(this.bt_back_ConsumableMarket_Click);
             // 
             // Form1
             // 
@@ -1201,9 +1209,9 @@
             this.Controls.Add(this.Market);
             this.Controls.Add(this.PropertyMarket);
             this.Controls.Add(this.BuildingMarket);
+            this.Controls.Add(this.ConsumableMarket);
             this.Controls.Add(this.FoodMarket);
             this.Controls.Add(this.MedicineMarket);
-            this.Controls.Add(this.ConsumableMarket);
             this.Controls.Add(this.HistoricPrices);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
