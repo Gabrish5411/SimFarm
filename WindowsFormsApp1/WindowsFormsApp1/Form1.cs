@@ -14,8 +14,11 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        ClickingMapForm clickingForm;
         Panel[] panels;
+        Panel[] gamepanels;
         DataArgs data;
+        private Point lastpos;
 
         public delegate DataArgs NewGameEventHandler(object source, NewGameArgs args);
         public event NewGameEventHandler NewGameButtonClicked;
@@ -32,9 +35,32 @@ namespace WindowsFormsApp1
         public delegate string[] PrintHistoricEventHandler(object source, DataArgs data);
         public event PrintHistoricEventHandler PrintHistoric;
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            lastpos = this.Location;
+            
+        }
+        protected override void OnLocationChanged(EventArgs e)
+        {
+            base.OnLocationChanged(e);
+            clickingForm.Location = new Point(clickingForm.Location.X + this.Left -lastpos.X,
+                clickingForm.Location.Y + this.Top -lastpos.Y);
+            
+            lastpos = this.Location;
+        }
         public void ShowPanel(Panel panel)
         {
             foreach (Panel elem in panels)
+            {
+                if (elem == panel) elem.Show();
+                else elem.Hide();
+            }
+        }
+
+        public void ShowGame(Panel panel)
+        {
+            foreach (Panel elem in gamepanels)
             {
                 if (elem == panel) elem.Show();
                 else elem.Hide();
@@ -115,13 +141,16 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             panels = new Panel[] { Title, NewGame, Game,
-                AdminGranja, AdminProd, Market, BuildingMarket, 
-                PropertyMarket, ConsumableMarket, FoodMarket, MedicineMarket, HistoricPrices};
+                AdminGranja, AdminProd, Market, BuildingMarket, PropertyMarket, 
+                ConsumableMarket, FoodMarket, MedicineMarket, HistoricPrices};
+            gamepanels = new Panel[] { MainOptions, PropertyPanel };
+            clickingForm = new ClickingMapForm();
+            clickingForm.TopMost = true;
+            
         }
         
 
-
-
+        
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -141,15 +170,18 @@ namespace WindowsFormsApp1
         {
             
             ShowPanel(Game);
+            ShowGame(MainOptions);
             LoadingMapLabel.Show();
             
             OnNewGameButtonClicked(0);
+            clickingForm.Show();
         }
 
         
         private void NewGameRiverButton_Click(object sender, EventArgs e)
         {
             ShowPanel(Game);
+            ShowGame(MainOptions);
             LoadingMapLabel.Show();
             OnNewGameButtonClicked(1);
         }
@@ -157,6 +189,7 @@ namespace WindowsFormsApp1
         private void NewGameLakeButton_Click(object sender, EventArgs e)
         {
             ShowPanel(Game);
+            ShowGame(MainOptions);
             LoadingMapLabel.Show();
             OnNewGameButtonClicked(2);
         }
@@ -164,6 +197,7 @@ namespace WindowsFormsApp1
         private void NewGameBothButton_Click(object sender, EventArgs e)
         {
             ShowPanel(Game);
+            ShowGame(MainOptions);
             LoadingMapLabel.Show();
             OnNewGameButtonClicked(3);
         }
@@ -197,6 +231,7 @@ namespace WindowsFormsApp1
         {
             OnAskForInventory();
             ShowPanel(AdminGranja);
+            clickingForm.Hide();
         }
 
         private void bt_IrMercado_Click(object sender, EventArgs e)
@@ -217,6 +252,8 @@ namespace WindowsFormsApp1
         private void bt_back_AdminGranja_Click(object sender, EventArgs e)
         {
             ShowPanel(Game);
+            ShowGame(MainOptions);
+            clickingForm.Show();
         }
 
         private void bt_AdminProd_Click(object sender, EventArgs e)
@@ -232,6 +269,7 @@ namespace WindowsFormsApp1
         private void bt_back_Market_Click(object sender, EventArgs e)
         {
             ShowPanel(Game);
+            ShowGame(MainOptions);
         }
 
         private void bt_BuildingMarket_Click(object sender, EventArgs e)
@@ -384,5 +422,13 @@ namespace WindowsFormsApp1
         {
             OnHistoric(2);
         }
+
+        private void bt_PropertyMarket_Click(object sender, EventArgs e)
+        {
+            ShowPanel(Game);
+            ShowGame(PropertyPanel);
+        }
+
+        
     }
 }

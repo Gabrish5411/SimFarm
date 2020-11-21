@@ -50,6 +50,12 @@
     <Compile Include="Buildings\Cattle.cs" />
     <Compile Include="Buildings\Field.cs" />
     <Compile Include="Buildings\Storage.cs" />
+    <Compile Include="ClickingMapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClickingMapForm.Designer.cs">
+      <DependentUpon>ClickingMapForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Consumables\AnimalFood.cs" />
     <Compile Include="Consumables\AnimalWater.cs" />
     <Compile Include="Consumables\Consumable.cs" />
@@ -87,6 +93,9 @@
     <Compile Include="Tiles\Earth.cs" />
     <Compile Include="Tiles\Tile.cs" />
     <Compile Include="Tiles\Water.cs" />
+    <EmbeddedResource Include="ClickingMapForm.resx">
+      <DependentUpon>ClickingMapForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
