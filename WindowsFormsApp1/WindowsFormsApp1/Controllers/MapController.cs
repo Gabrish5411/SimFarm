@@ -73,6 +73,7 @@ namespace WindowsFormsApp1.Controllers
             MapController.view.PrintMapRequest += OnAskForMap;
             MapController.view.PrintInventoryRequest += OnAskForInventory;
             MapController.view.AddingOne += OnBuy;
+            MapController.view.PrintHistoric += OnHistoric;
         }
 
         public static string[] OnAskForInventory(object sender, DataArgs data)
@@ -132,7 +133,15 @@ namespace WindowsFormsApp1.Controllers
                 data.game.GetPlayer().Current_money -= data.game.GetPlayer().vaccine.GetBuyPrice();
             }
             else {MessageBox.Show("No tienes suficiente dinero...", "¡Hay un problema!");}
+        }
+        public static string[] OnHistoric(object sender, DataArgs data)
+        {
+            string[] result = new string[2];
+            result[0] = Convert.ToString(data.game.thirtyList_tomato);
+            result[1] = Convert.ToString(data.game.thirtyList_potato);
+            result[2] = Convert.ToString(data.game.thirtyList_rice);
 
+            return result;
         }
     }
 }

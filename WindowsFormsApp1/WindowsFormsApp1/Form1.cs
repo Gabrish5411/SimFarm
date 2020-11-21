@@ -29,6 +29,9 @@ namespace WindowsFormsApp1
         public delegate void AddOneEventHandler(object source, DataArgs data, string ConsName);
         public event AddOneEventHandler AddingOne;
 
+        public delegate string[] PrintHistoricEventHandler(object source, DataArgs data);
+        public event PrintHistoricEventHandler PrintHistoric;
+
         public void ShowPanel(Panel panel)
         {
             foreach (Panel elem in panels)
@@ -99,6 +102,12 @@ namespace WindowsFormsApp1
         public void OnAddingOne(string ConsName)
         { 
                 AddingOne(this, this.data, ConsName);
+        }
+
+        public void OnHistoric(int option)
+        {
+            string[] result = PrintHistoric(this, this.data);
+            lb_AllHistoric.Text = result[option]; //0:tomates  1:papas    2:arroz
         }
 
         //-----------------------------------------------------------
@@ -358,6 +367,21 @@ namespace WindowsFormsApp1
         private void bt_BuyVaccine_Click(object sender, EventArgs e)
         {
             OnAddingOne("vaccine");
+        }
+
+        private void HistoricPriceTomato_Click(object sender, EventArgs e)
+        {
+            OnHistoric(0);
+        }
+
+        private void HistoricPricePotato_Click(object sender, EventArgs e)
+        {
+            OnHistoric(1);
+        }
+
+        private void HistoricPriceRice_Click(object sender, EventArgs e)
+        {
+            OnHistoric(2);
         }
     }
 }
