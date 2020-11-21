@@ -123,6 +123,7 @@
             this.bt_BuyMedicine = new System.Windows.Forms.Button();
             this.bt_BuyFood = new System.Windows.Forms.Button();
             this.bt_back_ConsumableMarket = new System.Windows.Forms.Button();
+            this.lb_AllHistoric = new System.Windows.Forms.Label();
             this.Title.SuspendLayout();
             this.NewGame.SuspendLayout();
             this.Game.SuspendLayout();
@@ -858,6 +859,7 @@
             // 
             // HistoricPrices
             // 
+            this.HistoricPrices.Controls.Add(this.lb_AllHistoric);
             this.HistoricPrices.Controls.Add(this.bt_back_SeedRecords);
             this.HistoricPrices.Controls.Add(this.SelectSeedForHistoricPrice);
             this.HistoricPrices.Controls.Add(this.HistoricPriceRice);
@@ -902,6 +904,7 @@
             this.HistoricPriceRice.TabIndex = 2;
             this.HistoricPriceRice.Text = "Arroz";
             this.HistoricPriceRice.UseVisualStyleBackColor = true;
+            this.HistoricPriceRice.Click += new System.EventHandler(this.HistoricPriceRice_Click);
             // 
             // HistoricPriceTomato
             // 
@@ -912,6 +915,7 @@
             this.HistoricPriceTomato.TabIndex = 0;
             this.HistoricPriceTomato.Text = "Tomate";
             this.HistoricPriceTomato.UseVisualStyleBackColor = true;
+            this.HistoricPriceTomato.Click += new System.EventHandler(this.HistoricPriceTomato_Click);
             // 
             // HistoricPricePotato
             // 
@@ -922,6 +926,7 @@
             this.HistoricPricePotato.TabIndex = 1;
             this.HistoricPricePotato.Text = "Papas";
             this.HistoricPricePotato.UseVisualStyleBackColor = true;
+            this.HistoricPricePotato.Click += new System.EventHandler(this.HistoricPricePotato_Click);
             // 
             // PropertyMarket
             // 
@@ -1196,6 +1201,14 @@
             this.bt_back_ConsumableMarket.UseVisualStyleBackColor = true;
             this.bt_back_ConsumableMarket.Click += new System.EventHandler(this.bt_back_ConsumableMarket_Click);
             // 
+            // lb_AllHistoric
+            // 
+            this.lb_AllHistoric.AutoSize = true;
+            this.lb_AllHistoric.Location = new System.Drawing.Point(23, 294);
+            this.lb_AllHistoric.Name = "lb_AllHistoric";
+            this.lb_AllHistoric.Size = new System.Drawing.Size(0, 17);
+            this.lb_AllHistoric.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1344,6 +1357,7 @@
         private System.Windows.Forms.Button bt_BuyFood;
         private System.Windows.Forms.Button bt_back_ConsumableMarket;
         private System.Windows.Forms.Label lb_ConsumableType;
+        private System.Windows.Forms.Label lb_AllHistoric;
     }
 }
 
