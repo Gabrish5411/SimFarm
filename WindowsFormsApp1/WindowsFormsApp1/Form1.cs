@@ -115,7 +115,8 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             panels = new Panel[] { Title, NewGame, Game,
-                AdminGranja, AdminProd, Market, BuildingMarket, PropertyMarket, ConsumableMarket, FoodMarket, MedicineMarket};
+                AdminGranja, AdminProd, Market, BuildingMarket, 
+                PropertyMarket, ConsumableMarket, FoodMarket, MedicineMarket, HistoricPrices};
         }
         
 
