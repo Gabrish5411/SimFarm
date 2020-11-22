@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
         ClickingMapForm clickingForm;
         Panel[] panels;
         Panel[] gamepanels;
+        
         DataArgs data;
         private Point lastpos;
 
@@ -45,7 +46,7 @@ namespace WindowsFormsApp1
         {
             base.OnLocationChanged(e);
             clickingForm.Location = new Point(clickingForm.Location.X + this.Left -lastpos.X,
-                clickingForm.Location.Y + this.Top -lastpos.Y);
+                clickingForm.Location.Y + this.Top - lastpos.Y);
             
             lastpos = this.Location;
         }
@@ -64,6 +65,25 @@ namespace WindowsFormsApp1
             {
                 if (elem == panel) elem.Show();
                 else elem.Hide();
+            }
+        }
+
+        private void TerrainSelectionItems(string option)
+        {
+            if (option.ToLower() == "show")
+            {
+                SelectedTerrainLabel1.Show();
+                SelectedTerrainLabel2.Show();
+                clickingForm.Show();
+                TerrainGetButton.Show();
+
+            }
+            else
+            {
+                SelectedTerrainLabel1.Hide();
+                SelectedTerrainLabel2.Hide();
+                clickingForm.Hide();
+                TerrainGetButton.Hide();
             }
         }
 
@@ -143,7 +163,11 @@ namespace WindowsFormsApp1
             panels = new Panel[] { Title, NewGame, Game,
                 AdminGranja, AdminProd, Market, BuildingMarket, PropertyMarket, 
                 ConsumableMarket, FoodMarket, MedicineMarket, HistoricPrices};
-            gamepanels = new Panel[] { MainOptions, PropertyPanel, VerifyMap };
+            gamepanels = new Panel[] { MainOptions, PropertyPanel, VerifyMap, BuyFarmPanel,
+                BuyCattlePanel};
+            
+
+
             clickingForm = new ClickingMapForm();
             clickingForm.TopMost = true;
             
@@ -172,9 +196,7 @@ namespace WindowsFormsApp1
             ShowPanel(Game);
             ShowGame(VerifyMap);
             LoadingMapLabel.Show();
-            
             OnNewGameButtonClicked(0);
-            clickingForm.Show();
         }
 
         
@@ -231,7 +253,6 @@ namespace WindowsFormsApp1
         {
             OnAskForInventory();
             ShowPanel(AdminGranja);
-            clickingForm.Hide();
         }
 
         private void bt_IrMercado_Click(object sender, EventArgs e)
@@ -253,7 +274,6 @@ namespace WindowsFormsApp1
         {
             ShowPanel(Game);
             ShowGame(MainOptions);
-            clickingForm.Show();
         }
 
         private void bt_AdminProd_Click(object sender, EventArgs e)
@@ -427,6 +447,7 @@ namespace WindowsFormsApp1
         {
             ShowPanel(Game);
             ShowGame(PropertyPanel);
+            TerrainSelectionItems("Show");
         }
 
         private void bt_AcceptMap_Click(object sender, EventArgs e)
@@ -434,5 +455,41 @@ namespace WindowsFormsApp1
             ShowGame(MainOptions);
         }
 
+        private void TerrainGetButton_Click(object sender, EventArgs e)
+        {
+            SelectedTerrainLabel2.Text = ClickingMapForm.terrain;
+        }
+
+        private void PropertyBackButton_Click(object sender, EventArgs e)
+        {
+            ShowPanel(Market);
+            TerrainSelectionItems("");
+        }
+
+        private void bt_BuyField_Click(object sender, EventArgs e)
+        {
+            ShowPanel(Game);
+            ShowGame(BuyFarmPanel);
+            TerrainSelectionItems("Show");
+        }
+
+        private void BuyFarmBackButton_Click(object sender, EventArgs e)
+        {
+            ShowPanel(Market);
+            TerrainSelectionItems("");
+        }
+
+        private void bt_BuyCattle_Click(object sender, EventArgs e)
+        {
+            ShowPanel(Game);
+            ShowGame(BuyCattlePanel);
+            TerrainSelectionItems("Show");
+        }
+
+        private void BuyCattleBackButton_Click(object sender, EventArgs e)
+        {
+            ShowPanel(Market);
+            TerrainSelectionItems("");
+        }
     }
 }
