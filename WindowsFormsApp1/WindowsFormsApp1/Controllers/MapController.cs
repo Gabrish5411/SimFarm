@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.CustomEventArgs;
 using WindowsFormsApp1.Tiles;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 
 namespace WindowsFormsApp1.Controllers
@@ -74,6 +76,8 @@ namespace WindowsFormsApp1.Controllers
             MapController.view.PrintInventoryRequest += OnAskForInventory;
             MapController.view.AddingOne += OnBuy;
             MapController.view.PrintHistoric += OnHistoric;
+            MapController.view.SavingGame += OnSaveGame;
+            MapController.view.LoadingGame += OnLoadGame;
         }
 
         public static string[] OnAskForInventory(object sender, DataArgs data)
@@ -143,5 +147,35 @@ namespace WindowsFormsApp1.Controllers
 
             return result;
         }
+        public static void OnSaveGame(object sender, DataArgs data)
+        {
+            FileStream fileStream;
+            BinaryFormatter bf = new BinaryFormatter();
+            if (File.Exists("data.save"))
+            {
+                File.Delete("data.save");
+            }
+
+            fileStream = File.Create("data.save");
+            bf.Serialize(fileStream, data);
+            fileStream.Close();
+        }
+        public static object OnLoadGame(object sender, EventArgs e)
+        {
+            object obj = null;
+
+            FileStream fileStream;
+            BinaryFormatter bf = new BinaryFormatter();
+            if (File.Exists("data.save"))
+            {
+                fileStream = File.OpenRead("data.save");
+                obj = bf.Deserialize(fileStream);
+                fileStream.Close();
+
+            }
+
+            return obj;
+        }
     }
 }
+

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.CustomEventArgs
 {
+    [Serializable]
     public class DataArgs : EventArgs
     {
         public Game game { get; set; }
