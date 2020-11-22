@@ -9,6 +9,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.CustomEventArgs;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
@@ -36,6 +38,11 @@ namespace WindowsFormsApp1
         public delegate string[] PrintHistoricEventHandler(object source, DataArgs data);
         public event PrintHistoricEventHandler PrintHistoric;
 
+        public delegate void OnSaveGameEventHandler(object source, DataArgs data);
+        public event OnSaveGameEventHandler SavingGame;
+
+        public delegate object OnLoadGameEventHandler(object source, EventArgs e);
+        public event OnLoadGameEventHandler LoadingGame;
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -156,6 +163,16 @@ namespace WindowsFormsApp1
             lb_AllHistoric.Text = result[option]; //0:tomates  1:papas    2:arroz
         }
 
+        public void OnSaveGame()
+        {
+            SavingGame(this, this.data);
+        }
+        public void OnLoadGame()
+        {
+            data = LoadingGame(this, new EventArgs()) as DataArgs;
+            
+        }
+
         //-----------------------------------------------------------
         public Form1()
         {
@@ -267,6 +284,8 @@ namespace WindowsFormsApp1
 
         private void bt_GrabarPartida_Click(object sender, EventArgs e)
         {
+            OnSaveGame();
+            MessageBox.Show("¡Tu partida se ha guardado con exito!", "Mensaje");
 
         }
 
@@ -490,6 +509,17 @@ namespace WindowsFormsApp1
         {
             ShowPanel(Market);
             TerrainSelectionItems("");
+        }
+
+        private void LoadGameButton_Click(object sender, EventArgs e)
+        {
+            OnLoadGame();
+            ShowPanel(Game);
+            string result = PrintMapRequest(this, data);
+            PrintMap(result);
+            GameMapRichText.Hide();
+            GameMapRichText.Show();
+            LoadingMapLabel.Hide();
         }
     }
 }
