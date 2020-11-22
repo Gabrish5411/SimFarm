@@ -143,7 +143,7 @@ namespace WindowsFormsApp1
             panels = new Panel[] { Title, NewGame, Game,
                 AdminGranja, AdminProd, Market, BuildingMarket, PropertyMarket, 
                 ConsumableMarket, FoodMarket, MedicineMarket, HistoricPrices};
-            gamepanels = new Panel[] { MainOptions, PropertyPanel };
+            gamepanels = new Panel[] { MainOptions, PropertyPanel, VerifyMap };
             clickingForm = new ClickingMapForm();
             clickingForm.TopMost = true;
             
@@ -170,7 +170,7 @@ namespace WindowsFormsApp1
         {
             
             ShowPanel(Game);
-            ShowGame(MainOptions);
+            ShowGame(VerifyMap);
             LoadingMapLabel.Show();
             
             OnNewGameButtonClicked(0);
@@ -181,7 +181,7 @@ namespace WindowsFormsApp1
         private void NewGameRiverButton_Click(object sender, EventArgs e)
         {
             ShowPanel(Game);
-            ShowGame(MainOptions);
+            ShowGame(VerifyMap);
             LoadingMapLabel.Show();
             OnNewGameButtonClicked(1);
         }
@@ -189,7 +189,7 @@ namespace WindowsFormsApp1
         private void NewGameLakeButton_Click(object sender, EventArgs e)
         {
             ShowPanel(Game);
-            ShowGame(MainOptions);
+            ShowGame(VerifyMap);
             LoadingMapLabel.Show();
             OnNewGameButtonClicked(2);
         }
@@ -197,7 +197,7 @@ namespace WindowsFormsApp1
         private void NewGameBothButton_Click(object sender, EventArgs e)
         {
             ShowPanel(Game);
-            ShowGame(MainOptions);
+            ShowGame(VerifyMap);
             LoadingMapLabel.Show();
             OnNewGameButtonClicked(3);
         }
@@ -311,7 +311,7 @@ namespace WindowsFormsApp1
         private void bt_SelectNewMap_Click(object sender, EventArgs e)
         {
             GameMapRichText.Clear();
-            ShowPanel(NewGame);//Falta arreglar que se borre el mapa anteriormente elegido
+            ShowPanel(NewGame);
         }
 
         private void bt_back_to_Market_panel_from_Consumables_Click(object sender, EventArgs e)
@@ -429,6 +429,10 @@ namespace WindowsFormsApp1
             ShowGame(PropertyPanel);
         }
 
-        
+        private void bt_AcceptMap_Click(object sender, EventArgs e)
+        {
+            ShowGame(MainOptions);
+        }
+
     }
 }
