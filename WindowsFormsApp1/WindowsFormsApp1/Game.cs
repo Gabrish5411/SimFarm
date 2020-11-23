@@ -69,7 +69,7 @@ namespace WindowsFormsApp1
         {
             if (seed.Get_sellPrice() * 0.5 < seed.Get_price() && seed.Get_price() < seed.Get_sellPrice() * 1.5)
             {
-                random = GetRandomNumber(0, 1);
+                random = GetRandomNumber(0, 2);
                 if (random == 0) //decrece el precio de venta
                 {
                     change = seed.Change_Price(seed.Get_variation(), true);
@@ -77,7 +77,7 @@ namespace WindowsFormsApp1
                 }
                 else if (random == 1) //aumenta el precio de venta
                 {
-                    change = seed.Change_Price(seed.Get_variation(), true);
+                    change = seed.Change_Price(seed.Get_variation(), false);
                     seed_list.Enqueue(change);
                 }
             }

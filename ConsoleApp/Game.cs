@@ -70,7 +70,7 @@ namespace ConsoleApp
         {
             if (seed.Get_sellPrice() * 0.5 < seed.Get_price() && seed.Get_price() < seed.Get_sellPrice() * 1.5)
             {
-                random = GetRandomNumber(0, 1);
+                random = randNum.Next(0, 2);
                 if (random == 0) //decrece el precio de venta
                 {
                     change = seed.Change_Price(seed.Get_variation(), true);
