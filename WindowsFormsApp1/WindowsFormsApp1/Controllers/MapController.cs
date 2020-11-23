@@ -179,14 +179,14 @@ namespace WindowsFormsApp1.Controllers
             return obj;
         }
 
-        public static void OnBuyTerrain(object sender, DataArgs data, int selection)
+        public static void OnBuyTerrain(object sender, DataArgs data, int selection, string tileType)
         {
  
             foreach (Tile casilla in data.game.Map.map)
             {
                 if (casilla.Get_terrainNumber() == selection)
                 {
-                    casilla.Set_tile_Name("Cattle");
+                    casilla.Set_tile_Name(tileType);
                 }
 
 

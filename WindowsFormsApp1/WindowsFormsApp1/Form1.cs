@@ -44,7 +44,7 @@ namespace WindowsFormsApp1
         public delegate object OnLoadGameEventHandler(object source, EventArgs e);
         public event OnLoadGameEventHandler LoadingGame;
 
-        public delegate void OnBuyTerrainEventHandler(object source, DataArgs data, int selection);
+        public delegate void OnBuyTerrainEventHandler(object source, DataArgs data, int selection, string tileType);
         public event OnBuyTerrainEventHandler BuyTerrain;
 
 
@@ -120,7 +120,17 @@ namespace WindowsFormsApp1
                 }
                 else if (elem == 'C') 
                 {
-                    GameMapRichText.SelectionBackColor = Color.Gold;
+                    GameMapRichText.SelectionBackColor = Color.SaddleBrown;
+                    GameMapRichText.SelectedText = "  ";
+                }
+                else if (elem == 'F')
+                {
+                    GameMapRichText.SelectionBackColor = Color.Orchid;
+                    GameMapRichText.SelectedText = "  ";
+                }
+                else if (elem == 'S')
+                {
+                    GameMapRichText.SelectionBackColor = Color.DarkGray;
                     GameMapRichText.SelectedText = "  ";
                 }
                 else 
@@ -183,9 +193,9 @@ namespace WindowsFormsApp1
             
         }
 
-        public void OnBuyTerrain(int selection)
+        public void OnBuyTerrain(int selection, string tileType)
         {
-            BuyTerrain(this, this.data, selection);
+            BuyTerrain(this, this.data, selection, tileType);
         }
 
         //-----------------------------------------------------------
@@ -526,6 +536,19 @@ namespace WindowsFormsApp1
             TerrainSelectionItems("");
         }
 
+        private void BuyStorageBackButton_Click(object sender, EventArgs e)
+        {
+            ShowPanel(Market);
+            TerrainSelectionItems("");
+        }
+
+        private void bt_BuyStorage_Click(object sender, EventArgs e)
+        {
+            ShowPanel(Game);
+            ShowGame(BuyStorage);
+            TerrainSelectionItems("Show");
+        }
+
         private void LoadGameButton_Click(object sender, EventArgs e)
         {
             OnLoadGame();
@@ -539,12 +562,43 @@ namespace WindowsFormsApp1
 
         private void BuyCattleButton_Click(object sender, EventArgs e)
         {
-            int selection = Convert.ToInt32(ClickingMapForm.terrain);
-            OnBuyTerrain(selection);
+            int selection = Convert.ToInt32(ClickingMapForm.terrain)-1;
+            string tileType = "Cattle";
+            OnBuyTerrain(selection, tileType);
             GameMapRichText.Clear();
             string result = PrintMapRequest(this, data);
             PrintMap(result);
+        }
 
+        private void BuyFarmButton_Click(object sender, EventArgs e)
+        {
+            int selection = Convert.ToInt32(ClickingMapForm.terrain);
+            string tileType = "Field";
+            OnBuyTerrain(selection, tileType);
+            GameMapRichText.Clear();
+            string result = PrintMapRequest(this, data);
+            PrintMap(result);
+        }
+
+        
+        private void BuyStorageButton_Click(object sender, EventArgs e)
+        {
+            int selection = Convert.ToInt32(ClickingMapForm.terrain);
+            string tileType = "Storage";
+            OnBuyTerrain(selection, tileType);
+            GameMapRichText.Clear();
+            string result = PrintMapRequest(this, data);
+            PrintMap(result);
+        }
+
+        private void BuyTerrainButton_Click(object sender, EventArgs e)
+        {
+            int selection = Convert.ToInt32(ClickingMapForm.terrain);
+            string tileType = "G";
+            OnBuyTerrain(selection, tileType);
+            GameMapRichText.Clear();
+            string result = PrintMapRequest(this, data);
+            PrintMap(result);
         }
     }
 }
