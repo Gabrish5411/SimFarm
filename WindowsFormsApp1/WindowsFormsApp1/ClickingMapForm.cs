@@ -20,9 +20,9 @@ namespace WindowsFormsApp1
 
         private void MapButton_Click(object sender, EventArgs e)
         {
-            int x = (int)Math.Floor((Cursor.Position.X - this.Left) / 20.5)+1;
-            int y = (int)Math.Floor((Cursor.Position.Y - this.Top) / 20.5);
-            terrain = Convert.ToString(10*y+x);
+            int x = (int)Math.Floor((Cursor.Position.X - this.Left) / 20.5);
+            int y = (int)Math.Floor((Cursor.Position.Y - this.Top) / 20.5)+1;
+            terrain = Convert.ToString(y+x*10);
         }
     }
 }
