@@ -562,7 +562,7 @@ namespace WindowsFormsApp1
 
         private void BuyCattleButton_Click(object sender, EventArgs e)
         {
-            int selection = Convert.ToInt32(ClickingMapForm.terrain)-1;
+            int selection = Convert.ToInt32(ClickingMapForm.terrain);
             string tileType = "Cattle";
             OnBuyTerrain(selection, tileType);
             GameMapRichText.Clear();
