@@ -43,6 +43,11 @@ namespace WindowsFormsApp1
 
         public delegate object OnLoadGameEventHandler(object source, EventArgs e);
         public event OnLoadGameEventHandler LoadingGame;
+
+        public delegate void OnBuyTerrainEventHandler(object source, DataArgs data, int selection);
+        public event OnBuyTerrainEventHandler BuyTerrain;
+
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -113,6 +118,11 @@ namespace WindowsFormsApp1
                     GameMapRichText.SelectionBackColor = Color.LightGreen;
                     GameMapRichText.SelectedText = "  ";
                 }
+                else if (elem == 'C') 
+                {
+                    GameMapRichText.SelectionBackColor = Color.Gold;
+                    GameMapRichText.SelectedText = "  ";
+                }
                 else 
                 {
                     GameMapRichText.SelectedText = Environment.NewLine;
@@ -171,6 +181,11 @@ namespace WindowsFormsApp1
         {
             data = LoadingGame(this, new EventArgs()) as DataArgs;
             
+        }
+
+        public void OnBuyTerrain(int selection)
+        {
+            BuyTerrain(this, this.data, selection);
         }
 
         //-----------------------------------------------------------
@@ -520,6 +535,16 @@ namespace WindowsFormsApp1
             GameMapRichText.Hide();
             GameMapRichText.Show();
             LoadingMapLabel.Hide();
+        }
+
+        private void BuyCattleButton_Click(object sender, EventArgs e)
+        {
+            int selection = Convert.ToInt32(ClickingMapForm.terrain);
+            OnBuyTerrain(selection);
+            GameMapRichText.Clear();
+            string result = PrintMapRequest(this, data);
+            PrintMap(result);
+
         }
     }
 }

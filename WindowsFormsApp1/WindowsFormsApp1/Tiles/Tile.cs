@@ -13,7 +13,7 @@ namespace WindowsFormsApp1.Tiles
         private int quality;
         private bool farmable;
         private string tileName;
-        private int terrainNumber;
+        public int terrainNumber;
 
 
         public string Get_tileName()

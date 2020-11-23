@@ -78,6 +78,8 @@ namespace WindowsFormsApp1.Controllers
             MapController.view.PrintHistoric += OnHistoric;
             MapController.view.SavingGame += OnSaveGame;
             MapController.view.LoadingGame += OnLoadGame;
+            MapController.view.BuyTerrain += OnBuyTerrain;
+
         }
 
         public static string[] OnAskForInventory(object sender, DataArgs data)
@@ -176,6 +178,26 @@ namespace WindowsFormsApp1.Controllers
 
             return obj;
         }
+
+        public static void OnBuyTerrain(object sender, DataArgs data, int selection)
+        {
+ 
+            foreach (Tile casilla in data.game.Map.map)
+            {
+                if (casilla.Get_terrainNumber() == selection)
+                {
+                    casilla.Set_tile_Name("Cattle");
+                }
+
+
+                
+            }
+            
+
+            
+
+        }
+
     }
 }
 
