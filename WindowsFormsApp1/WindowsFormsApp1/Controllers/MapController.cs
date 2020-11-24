@@ -184,11 +184,39 @@ namespace WindowsFormsApp1.Controllers
  
             foreach (Tile casilla in data.game.Map.map)
             {
+                
+                
                 if (casilla.Get_terrainNumber() == selection)
                 {
-                    casilla.Set_tile_Name(tileType);
-                }
+                    if (casilla.Get_tileName() == "G")
+                    {
 
+                        casilla.Set_tile_Name(tileType);
+
+                    }
+                    else if (casilla.Get_tileName() != "G" && tileType == "G")
+                    {
+                        casilla.Set_tile_Name(tileType);
+
+                    }
+                   // else if (casilla.Get_tileName() == "G" && tileType == "G")
+                    //{
+                      //  MessageBox.Show("Este terreno no es parte de tu granja, debes comprarlo para construir una edificacion aqui", "Hay un error!");
+                        //break;
+
+                    //}
+
+
+                    else
+                    {
+                        MessageBox.Show("Este terreno no es parte de tu granja, debes comprarlo para construir una edificacion aqui", "Hay un error!");
+                        break;
+
+                    }
+
+                }
+                
+                
 
                 
             }
