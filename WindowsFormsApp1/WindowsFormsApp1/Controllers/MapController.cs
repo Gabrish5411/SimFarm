@@ -182,31 +182,30 @@ namespace WindowsFormsApp1.Controllers
         public static void OnBuyTerrain(object sender, DataArgs data, int selection, string tileType)
         {
  
+
             foreach (Tile casilla in data.game.Map.map)
             {
                 
                 
                 if (casilla.Get_terrainNumber() == selection)
                 {
-                    if (casilla.Get_tileName() == "G")
+                    if (casilla.Get_tileName() == "G" && tileType != "G" && data.game.Map.terrains[casilla.Get_terrainNumber() -1].Get_bought() == true) //condicion para comprar edificacion en granja
                     {
 
                         casilla.Set_tile_Name(tileType);
 
                     }
-                    else if (casilla.Get_tileName() != "G" && tileType == "G")
+                    else if (casilla.Get_tileName() != "G" && tileType == "G" && data.game.Map.terrains[casilla.Get_terrainNumber() - 1].Get_bought() == false) //condicion para comprar terrenos y convertirlos a granja
                     {
                         casilla.Set_tile_Name(tileType);
 
                     }
-                   // else if (casilla.Get_tileName() == "G" && tileType == "G")
-                    //{
-                      //  MessageBox.Show("Este terreno no es parte de tu granja, debes comprarlo para construir una edificacion aqui", "Hay un error!");
-                        //break;
+                    else if ((casilla.Get_tileName() == "G" || casilla.Get_tileName() == "F" || casilla.Get_tileName() == "C" || casilla.Get_tileName() == "S") && (tileType == "G" || tileType == "F" || tileType == "C" || tileType == "S")) //condicion intentar comprar terreno ya comprado
+                    {
+                        MessageBox.Show("Este terreno ya es parte de tu granja!", "Hay un error!");
+                        break;
 
-                    //}
-
-
+                    }
                     else
                     {
                         MessageBox.Show("Este terreno no es parte de tu granja, debes comprarlo para construir una edificacion aqui", "Hay un error!");
