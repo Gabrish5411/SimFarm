@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Buildings;
 using WindowsFormsApp1.CustomEventArgs;
 
 namespace WindowsFormsApp1.Controllers
@@ -17,6 +18,7 @@ namespace WindowsFormsApp1.Controllers
             GameController.view = view as MainForm;
             GameController.view.PrintInventoryRequest += OnAskForInventory;
             GameController.view.PrintHistoric += OnHistoric;
+            GameController.view.ApplyStuff += OnApplyStuff;
         }
 
         public static string[] OnAskForInventory(object sender, DataArgs data)
@@ -41,6 +43,75 @@ namespace WindowsFormsApp1.Controllers
             result[2] = String.Join(", ", data.game.thirtyList_rice);
 
             return result;
+        }
+        public static void OnApplyStuff(object sender, DataArgs data, string stuff, string option, int selection)
+        {
+            if (stuff == "WoF") 
+            {
+                if (data.game.Map.terrains[selection].Get_Building().name == "Cattle")
+                {
+                    switch (option)
+                        {
+                        case "Comida":
+                            data.game.GetPlayer().animalFood.Use((Cattle)data.game.Map.terrains[selection].Get_Building());
+                            break;
+                        case "Agua":
+                            data.game.GetPlayer().animalWater.Use((Cattle)data.game.Map.terrains[selection].Get_Building());
+                            break;
+                        default:
+                            MessageBox.Show("Seleccion invalida", "Error");
+                            break;
+                    }
+                }
+                else if (data.game.Map.terrains[selection].Get_Building().name == "Field")
+                {
+                    switch (option)
+                    {
+                        case "Fertilizante":
+                            data.game.GetPlayer().fertilizer.Use((Field)data.game.Map.terrains[selection].Get_Building());
+                            break;
+                        case "Riego":
+                            data.game.GetPlayer().irrigation.Use((Field)data.game.Map.terrains[selection].Get_Building());
+                            break;
+                        default:
+                            MessageBox.Show("Seleccion invalida", "Error");
+                            break;
+                    }
+                }
+            }
+            else if (stuff == "Meds")
+            {
+                if (data.game.Map.terrains[selection].Get_Building().name == "Cattle")
+                {
+                    switch (option)
+                    {
+                        case "Vacuna":
+                            data.game.GetPlayer().vaccine.Use((Cattle)data.game.Map.terrains[selection].Get_Building());
+                            break;
+                        default:
+                            MessageBox.Show("Seleccion invalida", "Error");
+                            break;
+                    }
+                }
+                else if (data.game.Map.terrains[selection].Get_Building().name == "Field")
+                {
+                    switch (option)
+                    {
+                        case "Herbicida":
+                            data.game.GetPlayer().herbicide.Use((Field)data.game.Map.terrains[selection].Get_Building());
+                            break;
+                        case "Pesticida":
+                            data.game.GetPlayer().pesticide.Use((Field)data.game.Map.terrains[selection].Get_Building());
+                            break;
+                        case "Fungicida":
+                            data.game.GetPlayer().fungicide.Use((Field)data.game.Map.terrains[selection].Get_Building());
+                            break;
+                        default:
+                            MessageBox.Show("Seleccion invalida", "Error");
+                            break;
+                    }
+                }
+            }
         }
     }
 }

@@ -20,6 +20,7 @@ namespace WindowsFormsApp1.Buildings
         protected int finalUnits;
         public Cattle(Terrain[] terrains, Animal animal)
         {
+            name = "Cattle";
             this.buyPrice = 15000;
             this.item = animal;
             this.productivity = terrains[tNumber].earthNumber / 100;
