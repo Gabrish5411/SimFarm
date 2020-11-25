@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
 
         public Player()
         {
-            current_money = 50000000;
+            current_money = 50000;
             tomato = new Tomato();
             potato = new Potato();
             rice = new Rice();

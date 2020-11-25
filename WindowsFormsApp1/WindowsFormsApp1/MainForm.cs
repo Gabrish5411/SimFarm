@@ -61,6 +61,9 @@ namespace WindowsFormsApp1
         public delegate List<string> OnAskForBuildingEventHandler(object source, DataArgs data, int selection);
         public event OnAskForBuildingEventHandler AskForBuilding;
 
+        public delegate void OnApplyStuffEventHandler(object source, DataArgs data, string stuff, string option, int selection);
+        public event OnApplyStuffEventHandler ApplyStuff;
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -731,6 +734,23 @@ namespace WindowsFormsApp1
         private void AdminStorageBackButton_Click(object sender, EventArgs e)
         {
             ShowPanel(AdminGranja);
+        }
+
+        private void bt_AddWorF_Click(object sender, EventArgs e)
+        {
+            string option = combo_ApplyWoF.SelectedText;
+            ApplyStuff(this, data, "WoF", option, Convert.ToInt32(ClickingMapForm.terrain) - 1); //ARREGLAR EL ULTIMO PARAMETRO
+        }
+
+        private void bt_ApplyHeal_Click(object sender, EventArgs e)
+        {
+            string option = combo_ApplyMedicine.SelectedText;
+            ApplyStuff(this, data, "Meds", option, Convert.ToInt32(ClickingMapForm.terrain) - 1);  //ARREGLAR EL ULTIMO PARAMETRO
+        }
+
+        private void bt_ObtainFinished_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

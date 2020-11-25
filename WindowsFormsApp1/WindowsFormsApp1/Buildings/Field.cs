@@ -21,6 +21,7 @@ namespace WindowsFormsApp1.Buildings
         public bool undergowth;
         public Field(Terrain[] terrains, Seed seed)
         {
+            name = "Field";
             this.buyPrice = 20000;
             this.item = seed;
             this.productivity = terrains[tNumber].earthNumber / 100;
