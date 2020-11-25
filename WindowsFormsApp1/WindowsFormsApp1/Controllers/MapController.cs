@@ -139,6 +139,7 @@ namespace WindowsFormsApp1.Controllers
                 data.game.GetPlayer().Current_money -= data.game.GetPlayer().vaccine.GetBuyPrice();
             }
             else {MessageBox.Show("No tienes suficiente dinero...", "¡Hay un problema!");}
+
         }
         public static string[] OnHistoric(object sender, DataArgs data)
         {
@@ -212,17 +213,8 @@ namespace WindowsFormsApp1.Controllers
                         break;
 
                     }
-
                 }
-                
-                
-
-                
             }
-            
-
-            
-
         }
 
     }

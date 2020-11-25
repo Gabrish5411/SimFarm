@@ -19,7 +19,9 @@ namespace WindowsFormsApp1
         ClickingMapForm clickingForm;
         Panel[] panels;
         Panel[] gamepanels;
-        
+
+        FieldArgs field;
+        BuildingArgs building;
         DataArgs data;
         private Point lastpos;
 
@@ -174,7 +176,8 @@ namespace WindowsFormsApp1
         }
         public void OnAddingOne(string ConsName)
         { 
-                AddingOne(this, this.data, ConsName);
+            AddingOne(this, this.data, ConsName);
+            lb_Wallet_num.Text = Convert.ToString(data.game.GetPlayer().Current_money);
         }
 
         public void OnHistoric(int option)
@@ -196,6 +199,7 @@ namespace WindowsFormsApp1
         public void OnBuyTerrain(int selection, string tileType)
         {
             BuyTerrain(this, this.data, selection, tileType);
+            lb_Wallet_num.Text = Convert.ToString(data.game.GetPlayer().Current_money);
         }
 
         //-----------------------------------------------------------
@@ -212,7 +216,7 @@ namespace WindowsFormsApp1
 
             clickingForm = new ClickingMapForm();
             clickingForm.TopMost = true;
-            
+
         }
         
 
@@ -304,7 +308,8 @@ namespace WindowsFormsApp1
 
         private void bt_PassTurn_Click(object sender, EventArgs e)
         {
-
+            data.game.UpdateGame();
+            lb_turn_num.Text = Convert.ToString(data.game.current_turn);
         }
 
         private void bt_GrabarPartida_Click(object sender, EventArgs e)
