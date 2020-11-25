@@ -8,7 +8,10 @@ using WindowsFormsApp1.CustomEventArgs;
 using WindowsFormsApp1.Tiles;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-
+using WindowsFormsApp1.Buildings;
+using WindowsFormsApp1.Products;
+using WindowsFormsApp1.Products.Seeds;
+using WindowsFormsApp1.Products.Animals;
 
 namespace WindowsFormsApp1.Controllers
 {
@@ -79,6 +82,10 @@ namespace WindowsFormsApp1.Controllers
             MapController.view.SavingGame += OnSaveGame;
             MapController.view.LoadingGame += OnLoadGame;
             MapController.view.BuyTerrain += OnBuyTerrain;
+            MapController.view.BuyFarm += OnBuyFarm;
+            MapController.view.BuyCattle += OnBuyCattle;
+            MapController.view.BuyStorage += OnBuyStorage;
+
 
         }
 
@@ -174,27 +181,18 @@ namespace WindowsFormsApp1.Controllers
                 fileStream = File.OpenRead("data.save");
                 obj = bf.Deserialize(fileStream);
                 fileStream.Close();
-
             }
-
             return obj;
         }
-
-        public static void OnBuyTerrain(object sender, DataArgs data, int selection, string tileType)
+        private static void SetTileNames(DataArgs data, int selection, string tileType)
         {
- 
-
             foreach (Tile casilla in data.game.Map.map)
             {
-                
-                
                 if (casilla.Get_terrainNumber() == selection)
                 {
-                    if (casilla.Get_tileName() == "G" && tileType != "G" && data.game.Map.terrains[casilla.Get_terrainNumber() -1].Get_bought() == true) //condicion para comprar edificacion en granja
+                    if (casilla.Get_tileName() == "G" && tileType != "G" && data.game.Map.terrains[casilla.Get_terrainNumber() - 1].Get_bought() == true) //condicion para comprar edificacion en granja
                     {
-
                         casilla.Set_tile_Name(tileType);
-
                     }
                     else if (casilla.Get_tileName() != "G" && tileType == "G" && data.game.Map.terrains[casilla.Get_terrainNumber() - 1].Get_bought() == false) //condicion para comprar terrenos y convertirlos a granja
                     {
@@ -205,16 +203,93 @@ namespace WindowsFormsApp1.Controllers
                     {
                         MessageBox.Show("Este terreno ya es parte de tu granja!", "Hay un error!");
                         break;
-
                     }
-                    else
-                    {
-                        MessageBox.Show("Este terreno no es parte de tu granja, debes comprarlo para construir una edificacion aqui", "Hay un error!");
-                        break;
-
-                    }
+                    
                 }
             }
+        }
+
+        public static bool OnBuyTerrain(object sender, DataArgs data, int selection, string tileType)
+        {
+            if (data.game.Map.terrains[selection - 1].Get_bought())
+            {
+                MessageBox.Show("Este terreno ya es parte de tu granja!", "Hay un error!");
+                return false;
+            }
+            data.game.Map.terrains[selection - 1].Set_bought(true);
+            SetTileNames(data, selection, tileType);
+            return true;
+        }
+
+        public static bool OnBuyFarm(object sender, DataArgs data, int selection, string buildingType, string tileType)
+        {
+            if (!data.game.Map.terrains[selection - 1].Get_bought())
+            {
+                MessageBox.Show("Este terreno no es parte de tu granja, debes comprarlo para construir una edificacion aqui", "Hay un error!");
+                return false;
+            }
+            Seed seed;
+            switch (buildingType)
+            {
+                case "Tomato":
+                    seed = new Tomato();
+                    break;
+                case "Potato":
+                    seed = new Potato();
+                    break;
+                case "Rice":
+                    seed = new Rice();
+                    break;
+                default:
+                    seed = new Tomato();
+                    break;
+            }
+            Field field = new Field(data.game.Map.terrains, seed);
+            data.game.Map.terrains[selection - 1].Set_Building(field);
+            SetTileNames(data, selection, tileType);
+            return true;
+        }
+
+        public static bool OnBuyCattle(object sender, DataArgs data, int selection, string buildingType, string tileType)
+        {
+            if (!data.game.Map.terrains[selection - 1].Get_bought())
+            {
+                MessageBox.Show("Este terreno no es parte de tu granja, debes comprarlo para construir una edificacion aqui", "Hay un error!");
+                return false;
+            }
+            Animal animal;
+            switch (buildingType)
+            {
+                case "Cow":
+                    animal = new Cow();
+                    break;
+                case "Pig":
+                    animal = new Pig();
+                    break;
+                case "Sheep":
+                    animal = new Sheep();
+                    break;
+                default:
+                    animal = new Sheep();
+                    break;
+            }
+            Cattle cattle = new Cattle(data.game.Map.terrains, animal);
+            data.game.Map.terrains[selection - 1].Set_Building(cattle);
+            SetTileNames(data, selection, tileType);
+            return true;
+        }
+
+        public static bool OnBuyStorage(object sender, DataArgs data, int selection, string tileType)
+        {
+            if (!data.game.Map.terrains[selection - 1].Get_bought())
+            {
+                MessageBox.Show("Este terreno no es parte de tu granja, debes comprarlo para construir una edificacion aqui", "Hay un error!");
+                return false;
+            }
+            data.game.Map.terrains[selection - 1].Set_Building(new Storage());
+            SetTileNames(data, selection, tileType);
+            return true;
+
         }
 
     }

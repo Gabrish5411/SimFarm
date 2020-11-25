@@ -46,9 +46,17 @@ namespace WindowsFormsApp1
         public delegate object OnLoadGameEventHandler(object source, EventArgs e);
         public event OnLoadGameEventHandler LoadingGame;
 
-        public delegate void OnBuyTerrainEventHandler(object source, DataArgs data, int selection, string tileType);
+        public delegate bool OnBuyTerrainEventHandler(object source, DataArgs data, int selection, string tileType);
         public event OnBuyTerrainEventHandler BuyTerrain;
 
+        public delegate bool OnBuyFarmEventHandler(object source, DataArgs data, int selection, string buildingType, string tileType);
+        public event OnBuyFarmEventHandler BuyFarm;
+
+        public delegate bool OnBuyCattleEventHandler(object source, DataArgs data, int selection, string buildingType, string tileType);
+        public event OnBuyCattleEventHandler BuyCattle;
+
+        public delegate bool OnBuyStorageEventHandler(object source, DataArgs data, int selection, string tileType);
+        public event OnBuyStorageEventHandler BuyStorage;
 
         protected override void OnLoad(EventArgs e)
         {
@@ -196,10 +204,11 @@ namespace WindowsFormsApp1
             
         }
 
-        public void OnBuyTerrain(int selection, string tileType)
+        public bool OnBuyTerrain(int selection, string tileType)
         {
-            BuyTerrain(this, this.data, selection, tileType);
+            bool ok = BuyTerrain(this, this.data, selection, tileType);
             lb_Wallet_num.Text = Convert.ToString(data.game.GetPlayer().Current_money);
+            return ok;
         }
 
         //-----------------------------------------------------------
@@ -210,21 +219,11 @@ namespace WindowsFormsApp1
                 AdminGranja, AdminProd, Market, BuildingMarket, PropertyMarket, 
                 ConsumableMarket, FoodMarket, MedicineMarket, HistoricPrices};
             gamepanels = new Panel[] { MainOptions, PropertyPanel, VerifyMap, BuyFarmPanel,
-                BuyCattlePanel};
-            
-
-
+                BuyCattlePanel, BuyStoragePanel};
             clickingForm = new ClickingMapForm();
             clickingForm.TopMost = true;
-
         }
         
-
-        
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void TitleNewGameButton_Click(object sender, EventArgs e)
         {
@@ -550,7 +549,7 @@ namespace WindowsFormsApp1
         private void bt_BuyStorage_Click(object sender, EventArgs e)
         {
             ShowPanel(Game);
-            ShowGame(BuyStorage);
+            ShowGame(BuyStoragePanel);
             TerrainSelectionItems("Show");
         }
 
@@ -558,6 +557,7 @@ namespace WindowsFormsApp1
         {
             OnLoadGame();
             ShowPanel(Game);
+            ShowGame(MainOptions);
             string result = PrintMapRequest(this, data);
             PrintMap(result);
             GameMapRichText.Hide();
@@ -569,41 +569,66 @@ namespace WindowsFormsApp1
         {
             int selection = Convert.ToInt32(ClickingMapForm.terrain);
             string tileType = "Cattle";
-            OnBuyTerrain(selection, tileType);
-            GameMapRichText.Clear();
-            string result = PrintMapRequest(this, data);
-            PrintMap(result);
+            string option = comboBoxCattle.SelectedText;
+            bool ok = BuyCattle(this, data, selection, option, tileType);
+            if (ok)
+            {
+                GameMapRichText.Clear();
+                string result = PrintMapRequest(this, data);
+                PrintMap(result);
+                ShowGame(MainOptions);
+                TerrainSelectionItems("");
+            }
+            
         }
 
         private void BuyFarmButton_Click(object sender, EventArgs e)
         {
             int selection = Convert.ToInt32(ClickingMapForm.terrain);
             string tileType = "Field";
-            OnBuyTerrain(selection, tileType);
-            GameMapRichText.Clear();
-            string result = PrintMapRequest(this, data);
-            PrintMap(result);
+            string buildingOption = comboBoxFarm.SelectedText;
+            bool ok = BuyFarm(this, data, selection, buildingOption, tileType);
+            if (ok)
+            {
+                GameMapRichText.Clear();
+                string result = PrintMapRequest(this, data);
+                PrintMap(result);
+                ShowGame(MainOptions);
+                TerrainSelectionItems("");
+            }
+            
         }
 
-        
         private void BuyStorageButton_Click(object sender, EventArgs e)
         {
             int selection = Convert.ToInt32(ClickingMapForm.terrain);
             string tileType = "Storage";
-            OnBuyTerrain(selection, tileType);
-            GameMapRichText.Clear();
-            string result = PrintMapRequest(this, data);
-            PrintMap(result);
+            bool ok = BuyStorage(this, data, selection, tileType);
+            if (ok)
+            {
+                GameMapRichText.Clear();
+                string result = PrintMapRequest(this, data);
+                PrintMap(result);
+                ShowGame(MainOptions);
+                TerrainSelectionItems("");
+            }
+            
         }
 
         private void BuyTerrainButton_Click(object sender, EventArgs e)
         {
             int selection = Convert.ToInt32(ClickingMapForm.terrain);
             string tileType = "G";
-            OnBuyTerrain(selection, tileType);
-            GameMapRichText.Clear();
-            string result = PrintMapRequest(this, data);
-            PrintMap(result);
+            bool ok = OnBuyTerrain(selection, tileType);
+            if (ok)
+            {
+                GameMapRichText.Clear();
+                string result = PrintMapRequest(this, data);
+                PrintMap(result);
+                ShowGame(MainOptions);
+                TerrainSelectionItems("");
+            }
+            
         }
     }
 }
