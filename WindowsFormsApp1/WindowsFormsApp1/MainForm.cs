@@ -14,7 +14,7 @@ using System.IO;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         ClickingMapForm clickingForm;
         Panel[] panels;
@@ -58,10 +58,14 @@ namespace WindowsFormsApp1
         public delegate bool OnBuyStorageEventHandler(object source, DataArgs data, int selection, string tileType);
         public event OnBuyStorageEventHandler BuyStorage;
 
+        public delegate List<string> OnAskForBuildingEventHandler(object source, DataArgs data, int selection);
+        public event OnAskForBuildingEventHandler AskForBuilding;
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             lastpos = this.Location;
+            ShowPanel(Title);
             
         }
         protected override void OnLocationChanged(EventArgs e)
@@ -94,6 +98,8 @@ namespace WindowsFormsApp1
         {
             if (option.ToLower() == "show")
             {
+                ClickingMapForm.terrain = "";
+                SelectedTerrainLabel2.Text = "Ninguno";
                 SelectedTerrainLabel1.Show();
                 SelectedTerrainLabel2.Show();
                 clickingForm.Show();
@@ -212,14 +218,14 @@ namespace WindowsFormsApp1
         }
 
         //-----------------------------------------------------------
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             panels = new Panel[] { Title, NewGame, Game,
-                AdminGranja, AdminProd, Market, BuildingMarket, PropertyMarket, 
+                AdminGranja, AdminProd, AdminAlmacen, Market, BuildingMarket, PropertyMarket, 
                 ConsumableMarket, FoodMarket, MedicineMarket, HistoricPrices};
             gamepanels = new Panel[] { MainOptions, PropertyPanel, VerifyMap, BuyFarmPanel,
-                BuyCattlePanel, BuyStoragePanel};
+                BuyCattlePanel, BuyStoragePanel, SelectProductionBuildingPanel, SelectStoragePanel};
             clickingForm = new ClickingMapForm();
             clickingForm.TopMost = true;
         }
@@ -326,12 +332,16 @@ namespace WindowsFormsApp1
 
         private void bt_AdminProd_Click(object sender, EventArgs e)
         {
-            ShowPanel(AdminProd);
+            ShowPanel(Game);
+            ShowGame(SelectProductionBuildingPanel);
+            TerrainSelectionItems("Show");
         }
 
         private void bt_AdminAlmac_Click(object sender, EventArgs e)
         {
-
+            ShowPanel(Game);
+            ShowGame(SelectStoragePanel);
+            TerrainSelectionItems("Show");
         }
 
         private void bt_back_Market_Click(object sender, EventArgs e)
@@ -558,7 +568,7 @@ namespace WindowsFormsApp1
             OnLoadGame();
             ShowPanel(Game);
             ShowGame(MainOptions);
-            string result = PrintMapRequest(this, data);
+            string result = PrintMapRequest(sender, data);
             PrintMap(result);
             GameMapRichText.Hide();
             GameMapRichText.Show();
@@ -570,7 +580,7 @@ namespace WindowsFormsApp1
             int selection = Convert.ToInt32(ClickingMapForm.terrain);
             string tileType = "Cattle";
             string option = comboBoxCattle.SelectedText;
-            bool ok = BuyCattle(this, data, selection, option, tileType);
+            bool ok = BuyCattle(sender, data, selection, option, tileType);
             if (ok)
             {
                 GameMapRichText.Clear();
@@ -587,7 +597,7 @@ namespace WindowsFormsApp1
             int selection = Convert.ToInt32(ClickingMapForm.terrain);
             string tileType = "Field";
             string buildingOption = comboBoxFarm.SelectedText;
-            bool ok = BuyFarm(this, data, selection, buildingOption, tileType);
+            bool ok = BuyFarm(sender, data, selection, buildingOption, tileType);
             if (ok)
             {
                 GameMapRichText.Clear();
@@ -603,7 +613,7 @@ namespace WindowsFormsApp1
         {
             int selection = Convert.ToInt32(ClickingMapForm.terrain);
             string tileType = "Storage";
-            bool ok = BuyStorage(this, data, selection, tileType);
+            bool ok = BuyStorage(sender, data, selection, tileType);
             if (ok)
             {
                 GameMapRichText.Clear();
@@ -629,6 +639,98 @@ namespace WindowsFormsApp1
                 TerrainSelectionItems("");
             }
             
+        }
+
+        private void SelectProductionBuildingBackButton_Click(object sender, EventArgs e)
+        {
+            ShowPanel(AdminGranja);
+            TerrainSelectionItems("");
+        }
+
+        private void Select_Click(object sender, EventArgs e)
+        {
+            if (!data.game.Map.terrains[Convert.ToInt32(ClickingMapForm.terrain) - 1].Get_bought())
+            {
+                MessageBox.Show("Este terreno no es parte de tu granja", "Hay un error!");
+            }
+            else if (data.game.Map.terrains[Convert.ToInt32(ClickingMapForm.terrain) - 1].Get_Building() != null)
+            {
+                if (data.game.Map.terrains[Convert.ToInt32(ClickingMapForm.terrain) - 1].Get_Building().Get_type() != "strg")
+                {
+                    TerrainSelectionItems("");
+                    List<string> list = AskForBuilding(this, data, Convert.ToInt32(ClickingMapForm.terrain));
+                    if (list[0][0] == 'P')
+                    {
+                        WormsLabel1.Show();
+                        UndergrowthLabel1.Show();
+                        WormsLabel1.Text = list[6];
+                        UndergrowthLabel1.Text = list[7];
+                    }
+                    else if (list[0][0] == 'G')
+                    {
+                        WormsLabel1.Hide();
+                        UndergrowthLabel1.Hide();
+                    }
+                    BuildingTypeLabel1.Text = list[0];
+                    RipenessLabel1.Text = list[1];
+                    HealthLabel1.Text = list[2];
+                    WaterLabel1.Text = list[3];
+                    FoodLabel1.Text = list[4];
+                    IllnessLabel1.Text = list[5];
+
+                    ShowPanel(AdminProd);
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Por favor seleccione un terreno que tenga plantación o ganado", "Hay un error!");
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Este terreno no tiene ningún edificio", "Hay un error!");
+            }
+            
+        }
+
+        private void SelectStorageBackButton_Click(object sender, EventArgs e)
+        {
+            ShowPanel(AdminGranja);
+            TerrainSelectionItems("");
+        }
+
+        private void SelectStorageButton_Click(object sender, EventArgs e)
+        {
+            if (!data.game.Map.terrains[Convert.ToInt32(ClickingMapForm.terrain) - 1].Get_bought())
+            {
+                MessageBox.Show("Este terreno no es parte de tu granja", "Hay un error!");
+            }
+            else if (data.game.Map.terrains[Convert.ToInt32(ClickingMapForm.terrain) - 1].Get_Building() != null)
+            {
+                if (data.game.Map.terrains[Convert.ToInt32(ClickingMapForm.terrain) - 1].Get_Building().Get_type() == "strg")
+                {
+                    TerrainSelectionItems("");
+                    List<string> list = AskForBuilding(this, data, Convert.ToInt32(ClickingMapForm.terrain));
+                    SelectedStorageLabel1.Text = list[0];
+                    SelectedStorageLabel2.Text = list[1];
+                    ShowPanel(AdminAlmacen);
+                }
+                else
+                {
+                    MessageBox.Show("Por favor seleccione un terreno que tenga un almacen", "Hay un error!");
+                }
+            
+            }
+            else
+            {
+                MessageBox.Show("Este terreno no tiene ningún edificio", "Hay un error!");
+            }
+        }
+
+        private void AdminStorageBackButton_Click(object sender, EventArgs e)
+        {
+            ShowPanel(AdminGranja);
         }
     }
 }

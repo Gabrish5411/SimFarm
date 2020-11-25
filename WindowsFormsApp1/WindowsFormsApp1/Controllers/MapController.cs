@@ -6,18 +6,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.CustomEventArgs;
 using WindowsFormsApp1.Tiles;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
-using WindowsFormsApp1.Buildings;
-using WindowsFormsApp1.Products;
-using WindowsFormsApp1.Products.Seeds;
-using WindowsFormsApp1.Products.Animals;
 
 namespace WindowsFormsApp1.Controllers
 {
     public static class MapController
     {
-        static Form1 view;
+        static MainForm view;
 
 
         private static string OnAskForMap(object sender, DataArgs e)
@@ -73,223 +67,20 @@ namespace WindowsFormsApp1.Controllers
 
         public static void initializer(Form view)
         {
-            MapController.view = view as Form1;
+            MapController.view = view as MainForm;
             MapController.view.NewGameButtonClicked += OnNewGameButtonClicked;
             MapController.view.PrintMapRequest += OnAskForMap;
-            MapController.view.PrintInventoryRequest += OnAskForInventory;
-            MapController.view.AddingOne += OnBuy;
-            MapController.view.PrintHistoric += OnHistoric;
-            MapController.view.SavingGame += OnSaveGame;
-            MapController.view.LoadingGame += OnLoadGame;
-            MapController.view.BuyTerrain += OnBuyTerrain;
-            MapController.view.BuyFarm += OnBuyFarm;
-            MapController.view.BuyCattle += OnBuyCattle;
-            MapController.view.BuyStorage += OnBuyStorage;
-
+            MapController.view.AskForBuilding += OnAskForBuilding;
 
         }
 
-        public static string[] OnAskForInventory(object sender, DataArgs data)
+        
+        
+
+        public static List<string> OnAskForBuilding(object sender, DataArgs data, int selection)
         {
-            string[] result = new string[8];
-            result[0] = Convert.ToString(data.game.GetPlayer().fertilizer.GetUses());
-            result[1] = Convert.ToString(data.game.GetPlayer().irrigation.GetUses());
-            result[2] = Convert.ToString(data.game.GetPlayer().animalFood.GetUses());
-            result[3] = Convert.ToString(data.game.GetPlayer().animalWater.GetUses());
-            result[4] = Convert.ToString(data.game.GetPlayer().fungicide.GetUses());
-            result[5] = Convert.ToString(data.game.GetPlayer().herbicide.GetUses());
-            result[6] = Convert.ToString(data.game.GetPlayer().pesticide.GetUses());
-            result[7] = Convert.ToString(data.game.GetPlayer().vaccine.GetUses());
-
-            return result;
-        }
-        public static void OnBuy(object sender, DataArgs data, string ConsName)
-        {
-            if (ConsName == "fertilizer" && data.game.GetPlayer().Current_money > data.game.GetPlayer().fertilizer.GetBuyPrice())
-            { 
-                data.game.GetPlayer().fertilizer.AddUse();
-                data.game.GetPlayer().Current_money -= data.game.GetPlayer().fertilizer.GetBuyPrice();
-            }
-            else if (ConsName == "irrigation" && data.game.GetPlayer().Current_money > data.game.GetPlayer().irrigation.GetBuyPrice())
-            {
-                data.game.GetPlayer().irrigation.AddUse();
-                data.game.GetPlayer().Current_money -= data.game.GetPlayer().irrigation.GetBuyPrice();
-            }
-            else if (ConsName == "animalFood" && data.game.GetPlayer().Current_money > data.game.GetPlayer().animalFood.GetBuyPrice())
-            {
-                data.game.GetPlayer().animalFood.AddUse();
-                data.game.GetPlayer().Current_money -= data.game.GetPlayer().animalFood.GetBuyPrice();
-            }
-            else if (ConsName == "animalWater" && data.game.GetPlayer().Current_money > data.game.GetPlayer().animalWater.GetBuyPrice())
-            {
-                data.game.GetPlayer().animalWater.AddUse();
-                data.game.GetPlayer().Current_money -= data.game.GetPlayer().animalWater.GetBuyPrice();
-            }
-            else if (ConsName == "fungicide" && data.game.GetPlayer().Current_money > data.game.GetPlayer().fungicide.GetBuyPrice())
-            {
-                data.game.GetPlayer().fungicide.AddUse();
-                data.game.GetPlayer().Current_money -= data.game.GetPlayer().fungicide.GetBuyPrice();
-            }
-            else if (ConsName == "herbicide" && data.game.GetPlayer().Current_money > data.game.GetPlayer().herbicide.GetBuyPrice())
-            {
-                data.game.GetPlayer().herbicide.AddUse();
-                data.game.GetPlayer().Current_money -= data.game.GetPlayer().herbicide.GetBuyPrice();
-            }
-            else if (ConsName == "pesticide" && data.game.GetPlayer().Current_money > data.game.GetPlayer().pesticide.GetBuyPrice())
-            {
-                data.game.GetPlayer().pesticide.AddUse();
-                data.game.GetPlayer().Current_money -= data.game.GetPlayer().pesticide.GetBuyPrice();
-            }
-            else if (ConsName == "vaccine" && data.game.GetPlayer().Current_money > data.game.GetPlayer().vaccine.GetBuyPrice())
-            {
-                data.game.GetPlayer().vaccine.AddUse();
-                data.game.GetPlayer().Current_money -= data.game.GetPlayer().vaccine.GetBuyPrice();
-            }
-            else {MessageBox.Show("No tienes suficiente dinero...", "¡Hay un problema!");}
-
-        }
-        public static string[] OnHistoric(object sender, DataArgs data)
-        {
-            string[] result = new string[3];
-            result[0] = String.Join(",", data.game.thirtyList_tomato);
-            result[1] = String.Join(",", data.game.thirtyList_potato);
-            result[2] = String.Join(",", data.game.thirtyList_rice);
-
-            return result;
-        }
-        public static void OnSaveGame(object sender, DataArgs data)
-        {
-            FileStream fileStream;
-            BinaryFormatter bf = new BinaryFormatter();
-            if (File.Exists("data.save"))
-            {
-                File.Delete("data.save");
-            }
-
-            fileStream = File.Create("data.save");
-            bf.Serialize(fileStream, data);
-            fileStream.Close();
-        }
-        public static object OnLoadGame(object sender, EventArgs e)
-        {
-            object obj = null;
-
-            FileStream fileStream;
-            BinaryFormatter bf = new BinaryFormatter();
-            if (File.Exists("data.save"))
-            {
-                fileStream = File.OpenRead("data.save");
-                obj = bf.Deserialize(fileStream);
-                fileStream.Close();
-            }
-            return obj;
-        }
-        private static void SetTileNames(DataArgs data, int selection, string tileType)
-        {
-            foreach (Tile casilla in data.game.Map.map)
-            {
-                if (casilla.Get_terrainNumber() == selection)
-                {
-                    if (casilla.Get_tileName() == "G" && tileType != "G" && data.game.Map.terrains[casilla.Get_terrainNumber() - 1].Get_bought() == true) //condicion para comprar edificacion en granja
-                    {
-                        casilla.Set_tile_Name(tileType);
-                    }
-                    else if (casilla.Get_tileName() != "G" && tileType == "G" && data.game.Map.terrains[casilla.Get_terrainNumber() - 1].Get_bought() == false) //condicion para comprar terrenos y convertirlos a granja
-                    {
-                        casilla.Set_tile_Name(tileType);
-
-                    }
-                    else if ((casilla.Get_tileName() == "G" || casilla.Get_tileName() == "F" || casilla.Get_tileName() == "C" || casilla.Get_tileName() == "S") && (tileType == "G" || tileType == "F" || tileType == "C" || tileType == "S")) //condicion intentar comprar terreno ya comprado
-                    {
-                        MessageBox.Show("Este terreno ya es parte de tu granja!", "Hay un error!");
-                        break;
-                    }
-                    
-                }
-            }
-        }
-
-        public static bool OnBuyTerrain(object sender, DataArgs data, int selection, string tileType)
-        {
-            if (data.game.Map.terrains[selection - 1].Get_bought())
-            {
-                MessageBox.Show("Este terreno ya es parte de tu granja!", "Hay un error!");
-                return false;
-            }
-            data.game.Map.terrains[selection - 1].Set_bought(true);
-            SetTileNames(data, selection, tileType);
-            return true;
-        }
-
-        public static bool OnBuyFarm(object sender, DataArgs data, int selection, string buildingType, string tileType)
-        {
-            if (!data.game.Map.terrains[selection - 1].Get_bought())
-            {
-                MessageBox.Show("Este terreno no es parte de tu granja, debes comprarlo para construir una edificacion aqui", "Hay un error!");
-                return false;
-            }
-            Seed seed;
-            switch (buildingType)
-            {
-                case "Tomato":
-                    seed = new Tomato();
-                    break;
-                case "Potato":
-                    seed = new Potato();
-                    break;
-                case "Rice":
-                    seed = new Rice();
-                    break;
-                default:
-                    seed = new Tomato();
-                    break;
-            }
-            Field field = new Field(data.game.Map.terrains, seed);
-            data.game.Map.terrains[selection - 1].Set_Building(field);
-            SetTileNames(data, selection, tileType);
-            return true;
-        }
-
-        public static bool OnBuyCattle(object sender, DataArgs data, int selection, string buildingType, string tileType)
-        {
-            if (!data.game.Map.terrains[selection - 1].Get_bought())
-            {
-                MessageBox.Show("Este terreno no es parte de tu granja, debes comprarlo para construir una edificacion aqui", "Hay un error!");
-                return false;
-            }
-            Animal animal;
-            switch (buildingType)
-            {
-                case "Cow":
-                    animal = new Cow();
-                    break;
-                case "Pig":
-                    animal = new Pig();
-                    break;
-                case "Sheep":
-                    animal = new Sheep();
-                    break;
-                default:
-                    animal = new Sheep();
-                    break;
-            }
-            Cattle cattle = new Cattle(data.game.Map.terrains, animal);
-            data.game.Map.terrains[selection - 1].Set_Building(cattle);
-            SetTileNames(data, selection, tileType);
-            return true;
-        }
-
-        public static bool OnBuyStorage(object sender, DataArgs data, int selection, string tileType)
-        {
-            if (!data.game.Map.terrains[selection - 1].Get_bought())
-            {
-                MessageBox.Show("Este terreno no es parte de tu granja, debes comprarlo para construir una edificacion aqui", "Hay un error!");
-                return false;
-            }
-            data.game.Map.terrains[selection - 1].Set_Building(new Storage());
-            SetTileNames(data, selection, tileType);
-            return true;
-
+            return data.game.Map.terrains[selection - 1].Get_Building().Report();
+            
         }
 
     }

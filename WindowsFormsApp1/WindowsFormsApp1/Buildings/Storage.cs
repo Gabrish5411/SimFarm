@@ -16,7 +16,7 @@ namespace WindowsFormsApp1.Buildings
         public Storage()
         {
             currentCapacity = 0;
-            currentProduct = "Empty";
+            currentProduct = "Vacio";
             capacity = 10;
             finished_products = new List<FinishedProduct>(capacity);
             this.sellPrice = 1000;
@@ -36,10 +36,12 @@ namespace WindowsFormsApp1.Buildings
             //this.finished_product = finishedProduct;
         }
 
-        public override void Report()
+        public override List<string> Report()
         {
-            Console.WriteLine("Product: "+this.currentProduct);
-            Console.WriteLine("Capacity: "+this.currentCapacity+"/"+capacity);
+            List<string> result = new List<string>();
+            result.Add("Producto almacenado: "+this.currentProduct);
+            result.Add("Capacidad: "+this.currentCapacity+"/"+capacity);
+            return result;
         }
 
         public bool AddProduct(FinishedProduct prod)

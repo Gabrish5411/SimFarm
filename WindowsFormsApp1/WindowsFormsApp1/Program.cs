@@ -19,9 +19,13 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form1 view = new Form1();
+            MainForm view = new MainForm();
 
             MapController.initializer(view);
+            GameController.initializer(view);
+            SaveLoadController.initializer(view);
+            ShopController.initializer(view);
+
             Application.Run(view);
         }
     }

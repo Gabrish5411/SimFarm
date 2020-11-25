@@ -40,6 +40,6 @@ namespace WindowsFormsApp1.Buildings
             return value;
         }
         public abstract void Update();
-        public abstract void Report();
+        public abstract List<string> Report();
     }
 }

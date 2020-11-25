@@ -43,16 +43,18 @@ namespace WindowsFormsApp1.Buildings
         }
 
 
-        public override void Report()
+        public override List<string> Report()
         {
-            Console.WriteLine("\nField of " + this.item.Get_productName() + "s:");
-            Console.WriteLine("Ripeness: " + this.ripeness);
-            Console.WriteLine("Current health: " + this.currentHP + "/100");
-            Console.WriteLine("Current water: " + this.availableWater + "/100");
-            Console.WriteLine("Current food: " + this.availableFood + "/100");
-            Console.WriteLine("Illness: " + ill);
-            
+            List<string> result = new List<string>();
+            result.Add("Granja de " + this.item.Get_productName() + "s:");
+            result.Add("Madurez: " + this.ripeness);
+            result.Add("Salud: " + this.currentHP + "/100");
+            result.Add("Agua: " + this.availableWater + "/100");
+            result.Add("Comida: " + this.availableFood + "/100");
+            result.Add("Enfermedad: " + ill);
+            return result;
         }
+
         public bool IsReady()
         {
             return ripeness == maxRipeness ? true : false;

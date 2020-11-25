@@ -43,16 +43,18 @@ namespace WindowsFormsApp1.Buildings
         {
             this.availableWater += water;
         }
-        public override void Report()
+        public override List<string> Report()
         {
-            Console.WriteLine("\nField of "+this.item.Get_productName()+"s:");
-            Console.WriteLine("Ripeness: " + this.ripeness);
-            Console.WriteLine("Current health: " + this.currentHP + "/100");
-            Console.WriteLine("Current water: "+this.availableWater+"/100");
-            Console.WriteLine("Current food: " + this.availableFood + "/100");
-            Console.WriteLine("Illness: " + ill);
-            Console.WriteLine("Worms: " + worms);
-            Console.WriteLine("Undergowth: " + undergowth);
+            List<string> result = new List<string>();
+            result.Add("Plantacion de "+this.item.Get_productName()+"s:");
+            result.Add("Madurez: " + this.ripeness);
+            result.Add("Salud: " + this.currentHP + "/100");
+            result.Add("Agua: "+this.availableWater+"/100");
+            result.Add("Comida: " + this.availableFood + "/100");
+            result.Add("Enfermedad: " + ill);
+            result.Add("Gusanos: " + worms);
+            result.Add("Maleza: " + undergowth);
+            return result;
         }
         public override void Update()
         {
