@@ -40,6 +40,21 @@
             this.NewGameBackButton = new System.Windows.Forms.Button();
             this.NewGamePanelLabel = new System.Windows.Forms.Label();
             this.Game = new System.Windows.Forms.Panel();
+            this.BuyFarmPanel = new System.Windows.Forms.Panel();
+            this.comboBoxFarm = new System.Windows.Forms.ComboBox();
+            this.BuyFarmButton = new System.Windows.Forms.Button();
+            this.BuyFarmBackButton = new System.Windows.Forms.Button();
+            this.BuyFarmTextBox = new System.Windows.Forms.TextBox();
+            this.MainOptions = new System.Windows.Forms.Panel();
+            this.lb_Wallet_num = new System.Windows.Forms.Label();
+            this.lb_Wallet = new System.Windows.Forms.Label();
+            this.lb_turn_num = new System.Windows.Forms.Label();
+            this.lb_turn = new System.Windows.Forms.Label();
+            this.bt_GrabarPartida = new System.Windows.Forms.Button();
+            this.bt_PassTurn = new System.Windows.Forms.Button();
+            this.bt_IrMercado = new System.Windows.Forms.Button();
+            this.bt_AdminGranja = new System.Windows.Forms.Button();
+            this.lb_selectopt_MO = new System.Windows.Forms.Label();
             this.SelectStoragePanel = new System.Windows.Forms.Panel();
             this.SelectStorageButton = new System.Windows.Forms.Button();
             this.SelectStorageBackButton = new System.Windows.Forms.Button();
@@ -48,11 +63,6 @@
             this.SelectProductionBuildingBackButton = new System.Windows.Forms.Button();
             this.Select = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.BuyFarmPanel = new System.Windows.Forms.Panel();
-            this.comboBoxFarm = new System.Windows.Forms.ComboBox();
-            this.BuyFarmButton = new System.Windows.Forms.Button();
-            this.BuyFarmBackButton = new System.Windows.Forms.Button();
-            this.BuyFarmTextBox = new System.Windows.Forms.TextBox();
             this.BuyCattlePanel = new System.Windows.Forms.Panel();
             this.comboBoxCattle = new System.Windows.Forms.ComboBox();
             this.BuyCattleButton = new System.Windows.Forms.Button();
@@ -68,16 +78,6 @@
             this.LoadingMapLabel = new System.Windows.Forms.Label();
             this.SelectedTerrainLabel1 = new System.Windows.Forms.Label();
             this.GameMapRichText = new System.Windows.Forms.RichTextBox();
-            this.MainOptions = new System.Windows.Forms.Panel();
-            this.lb_Wallet_num = new System.Windows.Forms.Label();
-            this.lb_Wallet = new System.Windows.Forms.Label();
-            this.lb_turn_num = new System.Windows.Forms.Label();
-            this.lb_turn = new System.Windows.Forms.Label();
-            this.bt_GrabarPartida = new System.Windows.Forms.Button();
-            this.bt_PassTurn = new System.Windows.Forms.Button();
-            this.bt_IrMercado = new System.Windows.Forms.Button();
-            this.bt_AdminGranja = new System.Windows.Forms.Button();
-            this.lb_selectopt_MO = new System.Windows.Forms.Label();
             this.VerifyMap = new System.Windows.Forms.Panel();
             this.bt_AcceptMap = new System.Windows.Forms.Button();
             this.lb_MapConfirm = new System.Windows.Forms.Label();
@@ -109,6 +109,13 @@
             this.bt_AdminProd = new System.Windows.Forms.Button();
             this.lb_selectopt_AG = new System.Windows.Forms.Label();
             this.AdminProd = new System.Windows.Forms.Panel();
+            this.UndergrowthLabel1 = new System.Windows.Forms.Label();
+            this.WormsLabel1 = new System.Windows.Forms.Label();
+            this.IllnessLabel1 = new System.Windows.Forms.Label();
+            this.FoodLabel1 = new System.Windows.Forms.Label();
+            this.WaterLabel1 = new System.Windows.Forms.Label();
+            this.HealthLabel1 = new System.Windows.Forms.Label();
+            this.RipenessLabel1 = new System.Windows.Forms.Label();
             this.BuildingTypeLabel1 = new System.Windows.Forms.Label();
             this.bt_back_AdminProd = new System.Windows.Forms.Button();
             this.bt_ObtainFinished = new System.Windows.Forms.Button();
@@ -130,7 +137,6 @@
             this.bt_BuyField = new System.Windows.Forms.Button();
             this.lb_selectopt_BMK = new System.Windows.Forms.Label();
             this.HistoricPrices = new System.Windows.Forms.Panel();
-            this.lb_AllHistoric = new System.Windows.Forms.Label();
             this.bt_back_SeedRecords = new System.Windows.Forms.Button();
             this.SelectSeedForHistoricPrice = new System.Windows.Forms.Label();
             this.HistoricPriceRice = new System.Windows.Forms.Button();
@@ -166,23 +172,18 @@
             this.AdminStorageBackButton = new System.Windows.Forms.Button();
             this.SelectedStorageLabel2 = new System.Windows.Forms.Label();
             this.SelectedStorageLabel1 = new System.Windows.Forms.Label();
-            this.RipenessLabel1 = new System.Windows.Forms.Label();
-            this.HealthLabel1 = new System.Windows.Forms.Label();
-            this.WaterLabel1 = new System.Windows.Forms.Label();
-            this.FoodLabel1 = new System.Windows.Forms.Label();
-            this.IllnessLabel1 = new System.Windows.Forms.Label();
-            this.WormsLabel1 = new System.Windows.Forms.Label();
-            this.UndergrowthLabel1 = new System.Windows.Forms.Label();
+            this.SellStorageItemsButton = new System.Windows.Forms.Button();
+            this.tB_AllHistoric = new System.Windows.Forms.TextBox();
             this.Title.SuspendLayout();
             this.NewGame.SuspendLayout();
             this.Game.SuspendLayout();
+            this.BuyFarmPanel.SuspendLayout();
+            this.MainOptions.SuspendLayout();
             this.SelectStoragePanel.SuspendLayout();
             this.SelectProductionBuildingPanel.SuspendLayout();
-            this.BuyFarmPanel.SuspendLayout();
             this.BuyCattlePanel.SuspendLayout();
             this.BuyStoragePanel.SuspendLayout();
             this.GameMap.SuspendLayout();
-            this.MainOptions.SuspendLayout();
             this.VerifyMap.SuspendLayout();
             this.PropertyPanel.SuspendLayout();
             this.AdminGranja.SuspendLayout();
@@ -336,6 +337,176 @@
             this.Game.Size = new System.Drawing.Size(482, 340);
             this.Game.TabIndex = 3;
             // 
+            // BuyFarmPanel
+            // 
+            this.BuyFarmPanel.Controls.Add(this.comboBoxFarm);
+            this.BuyFarmPanel.Controls.Add(this.BuyFarmButton);
+            this.BuyFarmPanel.Controls.Add(this.BuyFarmBackButton);
+            this.BuyFarmPanel.Controls.Add(this.BuyFarmTextBox);
+            this.BuyFarmPanel.Location = new System.Drawing.Point(290, 0);
+            this.BuyFarmPanel.Name = "BuyFarmPanel";
+            this.BuyFarmPanel.Size = new System.Drawing.Size(193, 340);
+            this.BuyFarmPanel.TabIndex = 5;
+            // 
+            // comboBoxFarm
+            // 
+            this.comboBoxFarm.FormattingEnabled = true;
+            this.comboBoxFarm.Items.AddRange(new object[] {
+            "Tomato",
+            "Potato",
+            "Rice"});
+            this.comboBoxFarm.Location = new System.Drawing.Point(37, 203);
+            this.comboBoxFarm.Name = "comboBoxFarm";
+            this.comboBoxFarm.Size = new System.Drawing.Size(122, 21);
+            this.comboBoxFarm.TabIndex = 4;
+            this.comboBoxFarm.Text = "Seleccione un tipo";
+            // 
+            // BuyFarmButton
+            // 
+            this.BuyFarmButton.Location = new System.Drawing.Point(61, 245);
+            this.BuyFarmButton.Name = "BuyFarmButton";
+            this.BuyFarmButton.Size = new System.Drawing.Size(75, 23);
+            this.BuyFarmButton.TabIndex = 3;
+            this.BuyFarmButton.Text = "Comprar";
+            this.BuyFarmButton.UseVisualStyleBackColor = true;
+            this.BuyFarmButton.Click += new System.EventHandler(this.BuyFarmButton_Click);
+            // 
+            // BuyFarmBackButton
+            // 
+            this.BuyFarmBackButton.Location = new System.Drawing.Point(149, 0);
+            this.BuyFarmBackButton.Name = "BuyFarmBackButton";
+            this.BuyFarmBackButton.Size = new System.Drawing.Size(51, 23);
+            this.BuyFarmBackButton.TabIndex = 2;
+            this.BuyFarmBackButton.Text = "back";
+            this.BuyFarmBackButton.UseVisualStyleBackColor = true;
+            this.BuyFarmBackButton.Click += new System.EventHandler(this.BuyFarmBackButton_Click);
+            // 
+            // BuyFarmTextBox
+            // 
+            this.BuyFarmTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.BuyFarmTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BuyFarmTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.BuyFarmTextBox.Location = new System.Drawing.Point(25, 103);
+            this.BuyFarmTextBox.Multiline = true;
+            this.BuyFarmTextBox.Name = "BuyFarmTextBox";
+            this.BuyFarmTextBox.Size = new System.Drawing.Size(149, 81);
+            this.BuyFarmTextBox.TabIndex = 1;
+            this.BuyFarmTextBox.Text = "Seleccione el terreno en donde desea construir su plantacion haciendo click en el" +
+    " mapa y luego apretando \"Get\"";
+            this.BuyFarmTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // MainOptions
+            // 
+            this.MainOptions.Controls.Add(this.lb_Wallet_num);
+            this.MainOptions.Controls.Add(this.lb_Wallet);
+            this.MainOptions.Controls.Add(this.lb_turn_num);
+            this.MainOptions.Controls.Add(this.lb_turn);
+            this.MainOptions.Controls.Add(this.bt_GrabarPartida);
+            this.MainOptions.Controls.Add(this.bt_PassTurn);
+            this.MainOptions.Controls.Add(this.bt_IrMercado);
+            this.MainOptions.Controls.Add(this.bt_AdminGranja);
+            this.MainOptions.Controls.Add(this.lb_selectopt_MO);
+            this.MainOptions.Location = new System.Drawing.Point(295, 2);
+            this.MainOptions.Margin = new System.Windows.Forms.Padding(2);
+            this.MainOptions.Name = "MainOptions";
+            this.MainOptions.Size = new System.Drawing.Size(187, 349);
+            this.MainOptions.TabIndex = 3;
+            // 
+            // lb_Wallet_num
+            // 
+            this.lb_Wallet_num.AutoSize = true;
+            this.lb_Wallet_num.Location = new System.Drawing.Point(71, 309);
+            this.lb_Wallet_num.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lb_Wallet_num.Name = "lb_Wallet_num";
+            this.lb_Wallet_num.Size = new System.Drawing.Size(37, 13);
+            this.lb_Wallet_num.TabIndex = 8;
+            this.lb_Wallet_num.Text = "50000";
+            // 
+            // lb_Wallet
+            // 
+            this.lb_Wallet.AutoSize = true;
+            this.lb_Wallet.Location = new System.Drawing.Point(36, 309);
+            this.lb_Wallet.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lb_Wallet.Name = "lb_Wallet";
+            this.lb_Wallet.Size = new System.Drawing.Size(40, 13);
+            this.lb_Wallet.TabIndex = 7;
+            this.lb_Wallet.Text = "Wallet:";
+            // 
+            // lb_turn_num
+            // 
+            this.lb_turn_num.AutoSize = true;
+            this.lb_turn_num.Location = new System.Drawing.Point(64, 289);
+            this.lb_turn_num.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lb_turn_num.Name = "lb_turn_num";
+            this.lb_turn_num.Size = new System.Drawing.Size(13, 13);
+            this.lb_turn_num.TabIndex = 6;
+            this.lb_turn_num.Text = "1";
+            // 
+            // lb_turn
+            // 
+            this.lb_turn.AutoSize = true;
+            this.lb_turn.Location = new System.Drawing.Point(34, 289);
+            this.lb_turn.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lb_turn.Name = "lb_turn";
+            this.lb_turn.Size = new System.Drawing.Size(32, 13);
+            this.lb_turn.TabIndex = 5;
+            this.lb_turn.Text = "Turn:";
+            // 
+            // bt_GrabarPartida
+            // 
+            this.bt_GrabarPartida.Location = new System.Drawing.Point(32, 214);
+            this.bt_GrabarPartida.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_GrabarPartida.Name = "bt_GrabarPartida";
+            this.bt_GrabarPartida.Size = new System.Drawing.Size(126, 37);
+            this.bt_GrabarPartida.TabIndex = 4;
+            this.bt_GrabarPartida.Text = "Grabar la Partida";
+            this.bt_GrabarPartida.UseVisualStyleBackColor = true;
+            this.bt_GrabarPartida.Click += new System.EventHandler(this.bt_GrabarPartida_Click);
+            // 
+            // bt_PassTurn
+            // 
+            this.bt_PassTurn.Location = new System.Drawing.Point(32, 173);
+            this.bt_PassTurn.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_PassTurn.Name = "bt_PassTurn";
+            this.bt_PassTurn.Size = new System.Drawing.Size(126, 37);
+            this.bt_PassTurn.TabIndex = 3;
+            this.bt_PassTurn.Text = "Pasar de Turno";
+            this.bt_PassTurn.UseVisualStyleBackColor = true;
+            this.bt_PassTurn.Click += new System.EventHandler(this.bt_PassTurn_Click);
+            // 
+            // bt_IrMercado
+            // 
+            this.bt_IrMercado.Location = new System.Drawing.Point(32, 130);
+            this.bt_IrMercado.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_IrMercado.Name = "bt_IrMercado";
+            this.bt_IrMercado.Size = new System.Drawing.Size(126, 37);
+            this.bt_IrMercado.TabIndex = 2;
+            this.bt_IrMercado.Text = "Ir al Mercado";
+            this.bt_IrMercado.UseVisualStyleBackColor = true;
+            this.bt_IrMercado.Click += new System.EventHandler(this.bt_IrMercado_Click);
+            // 
+            // bt_AdminGranja
+            // 
+            this.bt_AdminGranja.Location = new System.Drawing.Point(32, 87);
+            this.bt_AdminGranja.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_AdminGranja.Name = "bt_AdminGranja";
+            this.bt_AdminGranja.Size = new System.Drawing.Size(126, 37);
+            this.bt_AdminGranja.TabIndex = 1;
+            this.bt_AdminGranja.Text = "Administrar Granja";
+            this.bt_AdminGranja.UseVisualStyleBackColor = true;
+            this.bt_AdminGranja.Click += new System.EventHandler(this.bt_AdminGranja_Click);
+            // 
+            // lb_selectopt_MO
+            // 
+            this.lb_selectopt_MO.AutoSize = true;
+            this.lb_selectopt_MO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lb_selectopt_MO.Location = new System.Drawing.Point(3, 57);
+            this.lb_selectopt_MO.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lb_selectopt_MO.Name = "lb_selectopt_MO";
+            this.lb_selectopt_MO.Size = new System.Drawing.Size(173, 20);
+            this.lb_selectopt_MO.TabIndex = 0;
+            this.lb_selectopt_MO.Text = "Selecciona una opción:";
+            // 
             // SelectStoragePanel
             // 
             this.SelectStoragePanel.Controls.Add(this.SelectStorageButton);
@@ -421,64 +592,6 @@
             this.textBox2.TabIndex = 3;
             this.textBox2.Text = "Seleccione un ganado o plantación que quiera administrar y presione \"Get\"";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // BuyFarmPanel
-            // 
-            this.BuyFarmPanel.Controls.Add(this.comboBoxFarm);
-            this.BuyFarmPanel.Controls.Add(this.BuyFarmButton);
-            this.BuyFarmPanel.Controls.Add(this.BuyFarmBackButton);
-            this.BuyFarmPanel.Controls.Add(this.BuyFarmTextBox);
-            this.BuyFarmPanel.Location = new System.Drawing.Point(290, 0);
-            this.BuyFarmPanel.Name = "BuyFarmPanel";
-            this.BuyFarmPanel.Size = new System.Drawing.Size(193, 340);
-            this.BuyFarmPanel.TabIndex = 5;
-            // 
-            // comboBoxFarm
-            // 
-            this.comboBoxFarm.FormattingEnabled = true;
-            this.comboBoxFarm.Items.AddRange(new object[] {
-            "Tomato",
-            "Potato",
-            "Rice"});
-            this.comboBoxFarm.Location = new System.Drawing.Point(37, 203);
-            this.comboBoxFarm.Name = "comboBoxFarm";
-            this.comboBoxFarm.Size = new System.Drawing.Size(122, 21);
-            this.comboBoxFarm.TabIndex = 4;
-            this.comboBoxFarm.Text = "Seleccione un tipo";
-            // 
-            // BuyFarmButton
-            // 
-            this.BuyFarmButton.Location = new System.Drawing.Point(61, 245);
-            this.BuyFarmButton.Name = "BuyFarmButton";
-            this.BuyFarmButton.Size = new System.Drawing.Size(75, 23);
-            this.BuyFarmButton.TabIndex = 3;
-            this.BuyFarmButton.Text = "Comprar";
-            this.BuyFarmButton.UseVisualStyleBackColor = true;
-            this.BuyFarmButton.Click += new System.EventHandler(this.BuyFarmButton_Click);
-            // 
-            // BuyFarmBackButton
-            // 
-            this.BuyFarmBackButton.Location = new System.Drawing.Point(149, 0);
-            this.BuyFarmBackButton.Name = "BuyFarmBackButton";
-            this.BuyFarmBackButton.Size = new System.Drawing.Size(51, 23);
-            this.BuyFarmBackButton.TabIndex = 2;
-            this.BuyFarmBackButton.Text = "back";
-            this.BuyFarmBackButton.UseVisualStyleBackColor = true;
-            this.BuyFarmBackButton.Click += new System.EventHandler(this.BuyFarmBackButton_Click);
-            // 
-            // BuyFarmTextBox
-            // 
-            this.BuyFarmTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.BuyFarmTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BuyFarmTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.BuyFarmTextBox.Location = new System.Drawing.Point(25, 103);
-            this.BuyFarmTextBox.Multiline = true;
-            this.BuyFarmTextBox.Name = "BuyFarmTextBox";
-            this.BuyFarmTextBox.Size = new System.Drawing.Size(149, 81);
-            this.BuyFarmTextBox.TabIndex = 1;
-            this.BuyFarmTextBox.Text = "Seleccione el terreno en donde desea construir su plantacion haciendo click en el" +
-    " mapa y luego apretando \"Get\"";
-            this.BuyFarmTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // BuyCattlePanel
             // 
@@ -648,118 +761,6 @@
             this.GameMapRichText.Size = new System.Drawing.Size(206, 206);
             this.GameMapRichText.TabIndex = 0;
             this.GameMapRichText.Text = "";
-            // 
-            // MainOptions
-            // 
-            this.MainOptions.Controls.Add(this.lb_Wallet_num);
-            this.MainOptions.Controls.Add(this.lb_Wallet);
-            this.MainOptions.Controls.Add(this.lb_turn_num);
-            this.MainOptions.Controls.Add(this.lb_turn);
-            this.MainOptions.Controls.Add(this.bt_GrabarPartida);
-            this.MainOptions.Controls.Add(this.bt_PassTurn);
-            this.MainOptions.Controls.Add(this.bt_IrMercado);
-            this.MainOptions.Controls.Add(this.bt_AdminGranja);
-            this.MainOptions.Controls.Add(this.lb_selectopt_MO);
-            this.MainOptions.Location = new System.Drawing.Point(295, 2);
-            this.MainOptions.Margin = new System.Windows.Forms.Padding(2);
-            this.MainOptions.Name = "MainOptions";
-            this.MainOptions.Size = new System.Drawing.Size(187, 349);
-            this.MainOptions.TabIndex = 3;
-            // 
-            // lb_Wallet_num
-            // 
-            this.lb_Wallet_num.AutoSize = true;
-            this.lb_Wallet_num.Location = new System.Drawing.Point(71, 309);
-            this.lb_Wallet_num.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lb_Wallet_num.Name = "lb_Wallet_num";
-            this.lb_Wallet_num.Size = new System.Drawing.Size(37, 13);
-            this.lb_Wallet_num.TabIndex = 8;
-            this.lb_Wallet_num.Text = "50000";
-            // 
-            // lb_Wallet
-            // 
-            this.lb_Wallet.AutoSize = true;
-            this.lb_Wallet.Location = new System.Drawing.Point(36, 309);
-            this.lb_Wallet.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lb_Wallet.Name = "lb_Wallet";
-            this.lb_Wallet.Size = new System.Drawing.Size(40, 13);
-            this.lb_Wallet.TabIndex = 7;
-            this.lb_Wallet.Text = "Wallet:";
-            // 
-            // lb_turn_num
-            // 
-            this.lb_turn_num.AutoSize = true;
-            this.lb_turn_num.Location = new System.Drawing.Point(64, 289);
-            this.lb_turn_num.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lb_turn_num.Name = "lb_turn_num";
-            this.lb_turn_num.Size = new System.Drawing.Size(13, 13);
-            this.lb_turn_num.TabIndex = 6;
-            this.lb_turn_num.Text = "1";
-            // 
-            // lb_turn
-            // 
-            this.lb_turn.AutoSize = true;
-            this.lb_turn.Location = new System.Drawing.Point(34, 289);
-            this.lb_turn.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lb_turn.Name = "lb_turn";
-            this.lb_turn.Size = new System.Drawing.Size(32, 13);
-            this.lb_turn.TabIndex = 5;
-            this.lb_turn.Text = "Turn:";
-            // 
-            // bt_GrabarPartida
-            // 
-            this.bt_GrabarPartida.Location = new System.Drawing.Point(32, 214);
-            this.bt_GrabarPartida.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_GrabarPartida.Name = "bt_GrabarPartida";
-            this.bt_GrabarPartida.Size = new System.Drawing.Size(126, 37);
-            this.bt_GrabarPartida.TabIndex = 4;
-            this.bt_GrabarPartida.Text = "Grabar la Partida";
-            this.bt_GrabarPartida.UseVisualStyleBackColor = true;
-            this.bt_GrabarPartida.Click += new System.EventHandler(this.bt_GrabarPartida_Click);
-            // 
-            // bt_PassTurn
-            // 
-            this.bt_PassTurn.Location = new System.Drawing.Point(32, 173);
-            this.bt_PassTurn.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_PassTurn.Name = "bt_PassTurn";
-            this.bt_PassTurn.Size = new System.Drawing.Size(126, 37);
-            this.bt_PassTurn.TabIndex = 3;
-            this.bt_PassTurn.Text = "Pasar de Turno";
-            this.bt_PassTurn.UseVisualStyleBackColor = true;
-            this.bt_PassTurn.Click += new System.EventHandler(this.bt_PassTurn_Click);
-            // 
-            // bt_IrMercado
-            // 
-            this.bt_IrMercado.Location = new System.Drawing.Point(32, 130);
-            this.bt_IrMercado.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_IrMercado.Name = "bt_IrMercado";
-            this.bt_IrMercado.Size = new System.Drawing.Size(126, 37);
-            this.bt_IrMercado.TabIndex = 2;
-            this.bt_IrMercado.Text = "Ir al Mercado";
-            this.bt_IrMercado.UseVisualStyleBackColor = true;
-            this.bt_IrMercado.Click += new System.EventHandler(this.bt_IrMercado_Click);
-            // 
-            // bt_AdminGranja
-            // 
-            this.bt_AdminGranja.Location = new System.Drawing.Point(32, 87);
-            this.bt_AdminGranja.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_AdminGranja.Name = "bt_AdminGranja";
-            this.bt_AdminGranja.Size = new System.Drawing.Size(126, 37);
-            this.bt_AdminGranja.TabIndex = 1;
-            this.bt_AdminGranja.Text = "Administrar Granja";
-            this.bt_AdminGranja.UseVisualStyleBackColor = true;
-            this.bt_AdminGranja.Click += new System.EventHandler(this.bt_AdminGranja_Click);
-            // 
-            // lb_selectopt_MO
-            // 
-            this.lb_selectopt_MO.AutoSize = true;
-            this.lb_selectopt_MO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lb_selectopt_MO.Location = new System.Drawing.Point(3, 57);
-            this.lb_selectopt_MO.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lb_selectopt_MO.Name = "lb_selectopt_MO";
-            this.lb_selectopt_MO.Size = new System.Drawing.Size(173, 20);
-            this.lb_selectopt_MO.TabIndex = 0;
-            this.lb_selectopt_MO.Text = "Selecciona una opción:";
             // 
             // VerifyMap
             // 
@@ -1112,6 +1113,76 @@
             this.AdminProd.Size = new System.Drawing.Size(482, 340);
             this.AdminProd.TabIndex = 2;
             // 
+            // UndergrowthLabel1
+            // 
+            this.UndergrowthLabel1.AutoSize = true;
+            this.UndergrowthLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.UndergrowthLabel1.Location = new System.Drawing.Point(57, 200);
+            this.UndergrowthLabel1.Name = "UndergrowthLabel1";
+            this.UndergrowthLabel1.Size = new System.Drawing.Size(64, 20);
+            this.UndergrowthLabel1.TabIndex = 21;
+            this.UndergrowthLabel1.Text = "Maleza:";
+            // 
+            // WormsLabel1
+            // 
+            this.WormsLabel1.AutoSize = true;
+            this.WormsLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.WormsLabel1.Location = new System.Drawing.Point(254, 159);
+            this.WormsLabel1.Name = "WormsLabel1";
+            this.WormsLabel1.Size = new System.Drawing.Size(78, 20);
+            this.WormsLabel1.TabIndex = 19;
+            this.WormsLabel1.Text = "Gusanos:";
+            // 
+            // IllnessLabel1
+            // 
+            this.IllnessLabel1.AutoSize = true;
+            this.IllnessLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.IllnessLabel1.Location = new System.Drawing.Point(59, 159);
+            this.IllnessLabel1.Name = "IllnessLabel1";
+            this.IllnessLabel1.Size = new System.Drawing.Size(101, 20);
+            this.IllnessLabel1.TabIndex = 17;
+            this.IllnessLabel1.Text = "Enfermedad:";
+            // 
+            // FoodLabel1
+            // 
+            this.FoodLabel1.AutoSize = true;
+            this.FoodLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.FoodLabel1.Location = new System.Drawing.Point(257, 117);
+            this.FoodLabel1.Name = "FoodLabel1";
+            this.FoodLabel1.Size = new System.Drawing.Size(67, 20);
+            this.FoodLabel1.TabIndex = 15;
+            this.FoodLabel1.Text = "Comida:";
+            // 
+            // WaterLabel1
+            // 
+            this.WaterLabel1.AutoSize = true;
+            this.WaterLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.WaterLabel1.Location = new System.Drawing.Point(57, 118);
+            this.WaterLabel1.Name = "WaterLabel1";
+            this.WaterLabel1.Size = new System.Drawing.Size(51, 20);
+            this.WaterLabel1.TabIndex = 13;
+            this.WaterLabel1.Text = "Agua:";
+            // 
+            // HealthLabel1
+            // 
+            this.HealthLabel1.AutoSize = true;
+            this.HealthLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.HealthLabel1.Location = new System.Drawing.Point(254, 80);
+            this.HealthLabel1.Name = "HealthLabel1";
+            this.HealthLabel1.Size = new System.Drawing.Size(54, 20);
+            this.HealthLabel1.TabIndex = 11;
+            this.HealthLabel1.Text = "Salud:";
+            // 
+            // RipenessLabel1
+            // 
+            this.RipenessLabel1.AutoSize = true;
+            this.RipenessLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.RipenessLabel1.Location = new System.Drawing.Point(55, 80);
+            this.RipenessLabel1.Name = "RipenessLabel1";
+            this.RipenessLabel1.Size = new System.Drawing.Size(75, 20);
+            this.RipenessLabel1.TabIndex = 9;
+            this.RipenessLabel1.Text = "Madurez:";
+            // 
             // BuildingTypeLabel1
             // 
             this.BuildingTypeLabel1.AutoSize = true;
@@ -1335,7 +1406,7 @@
             // 
             // HistoricPrices
             // 
-            this.HistoricPrices.Controls.Add(this.lb_AllHistoric);
+            this.HistoricPrices.Controls.Add(this.tB_AllHistoric);
             this.HistoricPrices.Controls.Add(this.bt_back_SeedRecords);
             this.HistoricPrices.Controls.Add(this.SelectSeedForHistoricPrice);
             this.HistoricPrices.Controls.Add(this.HistoricPriceRice);
@@ -1343,17 +1414,8 @@
             this.HistoricPrices.Controls.Add(this.HistoricPricePotato);
             this.HistoricPrices.Location = new System.Drawing.Point(0, 0);
             this.HistoricPrices.Name = "HistoricPrices";
-            this.HistoricPrices.Size = new System.Drawing.Size(251, 340);
+            this.HistoricPrices.Size = new System.Drawing.Size(483, 340);
             this.HistoricPrices.TabIndex = 4;
-            // 
-            // lb_AllHistoric
-            // 
-            this.lb_AllHistoric.AutoSize = true;
-            this.lb_AllHistoric.Location = new System.Drawing.Point(17, 239);
-            this.lb_AllHistoric.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lb_AllHistoric.Name = "lb_AllHistoric";
-            this.lb_AllHistoric.Size = new System.Drawing.Size(0, 13);
-            this.lb_AllHistoric.TabIndex = 7;
             // 
             // bt_back_SeedRecords
             // 
@@ -1380,7 +1442,7 @@
             // 
             // HistoricPriceRice
             // 
-            this.HistoricPriceRice.Location = new System.Drawing.Point(20, 182);
+            this.HistoricPriceRice.Location = new System.Drawing.Point(352, 111);
             this.HistoricPriceRice.Name = "HistoricPriceRice";
             this.HistoricPriceRice.Size = new System.Drawing.Size(75, 23);
             this.HistoricPriceRice.TabIndex = 2;
@@ -1400,7 +1462,7 @@
             // 
             // HistoricPricePotato
             // 
-            this.HistoricPricePotato.Location = new System.Drawing.Point(20, 146);
+            this.HistoricPricePotato.Location = new System.Drawing.Point(195, 111);
             this.HistoricPricePotato.Name = "HistoricPricePotato";
             this.HistoricPricePotato.Size = new System.Drawing.Size(75, 23);
             this.HistoricPricePotato.TabIndex = 1;
@@ -1696,6 +1758,7 @@
             // 
             // AdminAlmacen
             // 
+            this.AdminAlmacen.Controls.Add(this.SellStorageItemsButton);
             this.AdminAlmacen.Controls.Add(this.AdminStorageBackButton);
             this.AdminAlmacen.Controls.Add(this.SelectedStorageLabel2);
             this.AdminAlmacen.Controls.Add(this.SelectedStorageLabel1);
@@ -1734,91 +1797,43 @@
             this.SelectedStorageLabel1.TabIndex = 0;
             this.SelectedStorageLabel1.Text = "Contenido del almacen:";
             // 
-            // RipenessLabel1
+            // SellStorageItemsButton
             // 
-            this.RipenessLabel1.AutoSize = true;
-            this.RipenessLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.RipenessLabel1.Location = new System.Drawing.Point(55, 80);
-            this.RipenessLabel1.Name = "RipenessLabel1";
-            this.RipenessLabel1.Size = new System.Drawing.Size(75, 20);
-            this.RipenessLabel1.TabIndex = 9;
-            this.RipenessLabel1.Text = "Madurez:";
+            this.SellStorageItemsButton.Location = new System.Drawing.Point(93, 165);
+            this.SellStorageItemsButton.Name = "SellStorageItemsButton";
+            this.SellStorageItemsButton.Size = new System.Drawing.Size(118, 23);
+            this.SellStorageItemsButton.TabIndex = 3;
+            this.SellStorageItemsButton.Text = "Vender productos";
+            this.SellStorageItemsButton.UseVisualStyleBackColor = true;
             // 
-            // HealthLabel1
+            // tB_AllHistoric
             // 
-            this.HealthLabel1.AutoSize = true;
-            this.HealthLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.HealthLabel1.Location = new System.Drawing.Point(254, 80);
-            this.HealthLabel1.Name = "HealthLabel1";
-            this.HealthLabel1.Size = new System.Drawing.Size(54, 20);
-            this.HealthLabel1.TabIndex = 11;
-            this.HealthLabel1.Text = "Salud:";
-            // 
-            // WaterLabel1
-            // 
-            this.WaterLabel1.AutoSize = true;
-            this.WaterLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.WaterLabel1.Location = new System.Drawing.Point(57, 118);
-            this.WaterLabel1.Name = "WaterLabel1";
-            this.WaterLabel1.Size = new System.Drawing.Size(51, 20);
-            this.WaterLabel1.TabIndex = 13;
-            this.WaterLabel1.Text = "Agua:";
-            // 
-            // FoodLabel1
-            // 
-            this.FoodLabel1.AutoSize = true;
-            this.FoodLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.FoodLabel1.Location = new System.Drawing.Point(257, 117);
-            this.FoodLabel1.Name = "FoodLabel1";
-            this.FoodLabel1.Size = new System.Drawing.Size(67, 20);
-            this.FoodLabel1.TabIndex = 15;
-            this.FoodLabel1.Text = "Comida:";
-            // 
-            // IllnessLabel1
-            // 
-            this.IllnessLabel1.AutoSize = true;
-            this.IllnessLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.IllnessLabel1.Location = new System.Drawing.Point(59, 159);
-            this.IllnessLabel1.Name = "IllnessLabel1";
-            this.IllnessLabel1.Size = new System.Drawing.Size(101, 20);
-            this.IllnessLabel1.TabIndex = 17;
-            this.IllnessLabel1.Text = "Enfermedad:";
-            // 
-            // WormsLabel1
-            // 
-            this.WormsLabel1.AutoSize = true;
-            this.WormsLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.WormsLabel1.Location = new System.Drawing.Point(254, 159);
-            this.WormsLabel1.Name = "WormsLabel1";
-            this.WormsLabel1.Size = new System.Drawing.Size(78, 20);
-            this.WormsLabel1.TabIndex = 19;
-            this.WormsLabel1.Text = "Gusanos:";
-            // 
-            // UndergrowthLabel1
-            // 
-            this.UndergrowthLabel1.AutoSize = true;
-            this.UndergrowthLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.UndergrowthLabel1.Location = new System.Drawing.Point(57, 200);
-            this.UndergrowthLabel1.Name = "UndergrowthLabel1";
-            this.UndergrowthLabel1.Size = new System.Drawing.Size(64, 20);
-            this.UndergrowthLabel1.TabIndex = 21;
-            this.UndergrowthLabel1.Text = "Maleza:";
+            this.tB_AllHistoric.BackColor = System.Drawing.SystemColors.Control;
+            this.tB_AllHistoric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tB_AllHistoric.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.tB_AllHistoric.Location = new System.Drawing.Point(107, 194);
+            this.tB_AllHistoric.Multiline = true;
+            this.tB_AllHistoric.Name = "tB_AllHistoric";
+            this.tB_AllHistoric.ReadOnly = true;
+            this.tB_AllHistoric.Size = new System.Drawing.Size(261, 82);
+            this.tB_AllHistoric.TabIndex = 8;
+            this.tB_AllHistoric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 340);
+            this.Controls.Add(this.HistoricPrices);
+            this.Controls.Add(this.AdminAlmacen);
             this.Controls.Add(this.Game);
             this.Controls.Add(this.Title);
-            this.Controls.Add(this.AdminAlmacen);
             this.Controls.Add(this.AdminProd);
             this.Controls.Add(this.AdminGranja);
             this.Controls.Add(this.BuildingMarket);
             this.Controls.Add(this.Market);
             this.Controls.Add(this.NewGame);
             this.Controls.Add(this.PropertyMarket);
-            this.Controls.Add(this.HistoricPrices);
             this.Controls.Add(this.ConsumableMarket);
             this.Controls.Add(this.FoodMarket);
             this.Controls.Add(this.MedicineMarket);
@@ -1829,20 +1844,20 @@
             this.NewGame.ResumeLayout(false);
             this.NewGame.PerformLayout();
             this.Game.ResumeLayout(false);
+            this.BuyFarmPanel.ResumeLayout(false);
+            this.BuyFarmPanel.PerformLayout();
+            this.MainOptions.ResumeLayout(false);
+            this.MainOptions.PerformLayout();
             this.SelectStoragePanel.ResumeLayout(false);
             this.SelectStoragePanel.PerformLayout();
             this.SelectProductionBuildingPanel.ResumeLayout(false);
             this.SelectProductionBuildingPanel.PerformLayout();
-            this.BuyFarmPanel.ResumeLayout(false);
-            this.BuyFarmPanel.PerformLayout();
             this.BuyCattlePanel.ResumeLayout(false);
             this.BuyCattlePanel.PerformLayout();
             this.BuyStoragePanel.ResumeLayout(false);
             this.BuyStoragePanel.PerformLayout();
             this.GameMap.ResumeLayout(false);
             this.GameMap.PerformLayout();
-            this.MainOptions.ResumeLayout(false);
-            this.MainOptions.PerformLayout();
             this.VerifyMap.ResumeLayout(false);
             this.VerifyMap.PerformLayout();
             this.PropertyPanel.ResumeLayout(false);
@@ -1968,7 +1983,6 @@
         private System.Windows.Forms.Button bt_BuyFood;
         private System.Windows.Forms.Button bt_back_ConsumableMarket;
         private System.Windows.Forms.Label lb_ConsumableType;
-        private System.Windows.Forms.Label lb_AllHistoric;
         private System.Windows.Forms.Panel PropertyPanel;
         private System.Windows.Forms.Label SelectedTerrainLabel1;
         private System.Windows.Forms.Button LoadGameButton;
@@ -2018,6 +2032,8 @@
         private System.Windows.Forms.Label HealthLabel1;
         private System.Windows.Forms.Label RipenessLabel1;
         private System.Windows.Forms.Label UndergrowthLabel1;
+        private System.Windows.Forms.Button SellStorageItemsButton;
+        private System.Windows.Forms.TextBox tB_AllHistoric;
     }
 }
 

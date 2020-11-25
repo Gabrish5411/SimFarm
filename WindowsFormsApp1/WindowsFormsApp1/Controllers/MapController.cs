@@ -31,8 +31,8 @@ namespace WindowsFormsApp1.Controllers
                 }
                 else if (casilla.Get_tileName() == "G")
                 {
-                    result += "G";
-
+                    if (casilla.Get_farmable()) result += "G";
+                    else result += "A";
                 }
                 else if (casilla.Get_tileName() == "Field")
                 {

@@ -11,7 +11,7 @@ namespace WindowsFormsApp1.Products.Animals
     {
         public Cow()
         {
-            Set("Cow", 20, 2000, 0.2F, 0.1F);
+            Set("Vaca", 20, 2000, 0.2F, 0.1F);
             foodConsumption = 3;
             waterConsumption = 2;
             

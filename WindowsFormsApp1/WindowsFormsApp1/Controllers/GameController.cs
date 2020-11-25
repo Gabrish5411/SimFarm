@@ -36,9 +36,9 @@ namespace WindowsFormsApp1.Controllers
         public static string[] OnHistoric(object sender, DataArgs data)
         {
             string[] result = new string[3];
-            result[0] = String.Join(",", data.game.thirtyList_tomato);
-            result[1] = String.Join(",", data.game.thirtyList_potato);
-            result[2] = String.Join(",", data.game.thirtyList_rice);
+            result[0] = String.Join(", ", data.game.thirtyList_tomato);
+            result[1] = String.Join(", ", data.game.thirtyList_potato);
+            result[2] = String.Join(", ", data.game.thirtyList_rice);
 
             return result;
         }

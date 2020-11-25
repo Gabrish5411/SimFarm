@@ -122,7 +122,7 @@ namespace WindowsFormsApp1
                 if (elem == 'A')
                 {
                     GameMapRichText.SelectionBackColor = Color.Blue;
-                    GameMapRichText.SelectedText = "  ";
+                    GameMapRichText.SelectedText = "~~";
                 }
                 else if (elem == 'T')
                 {
@@ -197,7 +197,7 @@ namespace WindowsFormsApp1
         public void OnHistoric(int option)
         {
             string[] result = PrintHistoric(this, this.data);
-            lb_AllHistoric.Text = result[option]; //0:tomates  1:papas    2:arroz
+            tB_AllHistoric.Text = result[option]; //0:tomates  1:papas    2:arroz
         }
 
         public void OnSaveGame()
