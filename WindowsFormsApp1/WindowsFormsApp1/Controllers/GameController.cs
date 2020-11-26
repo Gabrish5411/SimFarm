@@ -47,32 +47,77 @@ namespace WindowsFormsApp1.Controllers
         }
         public static void OnApplyStuff(object sender, DataArgs data, string stuff, string option, int selection)
         {
-            if (stuff == "WoF") 
+
+            if (stuff == "WoF")
             {
-                if (data.game.Map.terrains[selection - 1].Get_Building().Get_type() == "cttl")
+                if (data.game.Map.terrains[selection].Get_Building().name == "Cattle")
                 {
                     switch (option)
-                        {
+                    {
                         case "Comida":
-                            data.game.GetPlayer().animalFood.Use((Cattle)data.game.Map.terrains[selection - 1].Get_Building());
+                            if (data.game.GetPlayer().animalFood.GetUses() > 0)
+                            {
+                                data.game.GetPlayer().animalFood.Use((Cattle)data.game.Map.terrains[selection].Get_Building());
+                            }
+                            else if (data.game.GetPlayer().animalFood.GetUses() == 0 && data.game.GetPlayer().Current_money > 5000)
+                            {
+                                MessageBox.Show("No tienes usos de tu consumible, si quieres comprar y utilizar uno inmediatamente, presiona el boton pequeño a un lado de Agragar agua o comida", "Informacion");
+                            }
+                            else if (data.game.GetPlayer().animalFood.GetUses() == 0 && data.game.GetPlayer().Current_money < 5000)
+                            {
+                                MessageBox.Show("No tienes suficiente dinero...", "Informacion");
+                            }
                             break;
                         case "Agua":
-                            data.game.GetPlayer().animalWater.Use((Cattle)data.game.Map.terrains[selection - 1].Get_Building());
+                            if (data.game.GetPlayer().animalWater.GetUses() > 0)
+                            {
+                                data.game.GetPlayer().animalWater.Use((Cattle)data.game.Map.terrains[selection].Get_Building());
+                            }
+                            else if (data.game.GetPlayer().animalWater.GetUses() == 0 && data.game.GetPlayer().Current_money > 5000)
+                            {
+                                MessageBox.Show("No tienes usos de tu consumible, si quieres comprar y utilizar uno inmediatamente, presiona el boton pequeño a un lado de Agragar agua o comida", "Informacion");
+                            }
+                            else if (data.game.GetPlayer().animalWater.GetUses() == 0 && data.game.GetPlayer().Current_money < 5000)
+                            {
+                                MessageBox.Show("No tienes suficiente dinero...", "Informacion");
+                            }
                             break;
                         default:
                             MessageBox.Show("Seleccion invalida", "Error");
                             break;
                     }
                 }
-                else if (data.game.Map.terrains[selection - 1].Get_Building().Get_type() == "fld")
+                else if (data.game.Map.terrains[selection].Get_Building().name == "Field")
                 {
                     switch (option)
                     {
                         case "Fertilizante":
-                            data.game.GetPlayer().fertilizer.Use((Field)data.game.Map.terrains[selection - 1].Get_Building());
+                            if (data.game.GetPlayer().fertilizer.GetUses() > 0)
+                            {
+                                data.game.GetPlayer().fertilizer.Use((Field)data.game.Map.terrains[selection].Get_Building());
+                            }
+                            else if (data.game.GetPlayer().fertilizer.GetUses() == 0 && data.game.GetPlayer().Current_money > 5000)
+                            {
+                                MessageBox.Show("No tienes usos de tu consumible, si quieres comprar y utilizar uno inmediatamente, presiona el boton pequeño a un lado de Agragar agua o comida", "Informacion");
+                            }
+                            else if (data.game.GetPlayer().fertilizer.GetUses() == 0 && data.game.GetPlayer().Current_money < 5000)
+                            {
+                                MessageBox.Show("No tienes suficiente dinero...", "Informacion");
+                            }
                             break;
                         case "Riego":
-                            data.game.GetPlayer().irrigation.Use((Field)data.game.Map.terrains[selection - 1].Get_Building());
+                            if (data.game.GetPlayer().irrigation.GetUses() > 0)
+                            {
+                                data.game.GetPlayer().irrigation.Use((Field)data.game.Map.terrains[selection].Get_Building());
+                            }
+                            else if (data.game.GetPlayer().irrigation.GetUses() == 0 && data.game.GetPlayer().Current_money > 5000)
+                            {
+                                MessageBox.Show("No tienes usos de tu consumible, si quieres comprar y utilizar uno inmediatamente, presiona el boton pequeño a un lado de Agragar agua o comida", "Informacion");
+                            }
+                            else if (data.game.GetPlayer().irrigation.GetUses() == 0 && data.game.GetPlayer().Current_money < 5000)
+                            {
+                                MessageBox.Show("No tienes suficiente dinero...", "Informacion");
+                            }
                             break;
                         default:
                             MessageBox.Show("Seleccion invalida", "Error");
@@ -82,16 +127,24 @@ namespace WindowsFormsApp1.Controllers
             }
             else if (stuff == "Meds")
             {
-               // Random random = new Random();
-                
+                Random random = new Random();
                 if (data.game.Map.terrains[selection].Get_Building().name == "Cattle")
                 {
                     switch (option)
                     {
                         case "Vacuna":
-                            //int randNum = random.Next(0, 11);
-                            //data.game.GetPlayer().vaccine.Use((Cattle)data.game.Map.terrains[selection].Get_Building(), randNum);
-                            
+                            if (data.game.GetPlayer().vaccine.GetUses() > 0)
+                            {
+                                data.game.GetPlayer().vaccine.Use((Cattle)data.game.Map.terrains[selection].Get_Building(), random);
+                            }
+                            else if (data.game.GetPlayer().vaccine.GetUses() == 0 && data.game.GetPlayer().Current_money > 5000)
+                            {
+                                MessageBox.Show("No tienes usos de tu consumible, si quieres comprar y utilizar uno inmediatamente, presiona el boton pequeño a un lado de Agragar agua o comida", "Informacion");
+                            }
+                            else if (data.game.GetPlayer().vaccine.GetUses() == 0 && data.game.GetPlayer().Current_money < 5000)
+                            {
+                                MessageBox.Show("No tienes suficiente dinero...", "Informacion");
+                            }
                             break;
                         default:
                             MessageBox.Show("Seleccion invalida", "Error");
@@ -103,13 +156,46 @@ namespace WindowsFormsApp1.Controllers
                     switch (option)
                     {
                         case "Herbicida":
-                           // data.game.GetPlayer().herbicide.Use((Field)data.game.Map.terrains[selection].Get_Building());
+                            if (data.game.GetPlayer().herbicide.GetUses() > 0)
+                            {
+                                data.game.GetPlayer().herbicide.Use((Field)data.game.Map.terrains[selection].Get_Building(), random);
+                            }
+                            else if (data.game.GetPlayer().herbicide.GetUses() == 0 && data.game.GetPlayer().Current_money > 5000)
+                            {
+                                MessageBox.Show("No tienes usos de tu consumible, si quieres comprar y utilizar uno inmediatamente, presiona el boton pequeño a un lado de Agragar agua o comida", "Informacion");
+                            }
+                            else if (data.game.GetPlayer().herbicide.GetUses() == 0 && data.game.GetPlayer().Current_money < 5000)
+                            {
+                                MessageBox.Show("No tienes suficiente dinero...", "Informacion");
+                            }
                             break;
                         case "Pesticida":
-                           // data.game.GetPlayer().pesticide.Use((Field)data.game.Map.terrains[selection].Get_Building());
+                            if (data.game.GetPlayer().pesticide.GetUses() > 0)
+                            {
+                                data.game.GetPlayer().pesticide.Use((Field)data.game.Map.terrains[selection].Get_Building(), random);
+                            }
+                            else if (data.game.GetPlayer().pesticide.GetUses() == 0 && data.game.GetPlayer().Current_money > 5000)
+                            {
+                                MessageBox.Show("No tienes usos de tu consumible, si quieres comprar y utilizar uno inmediatamente, presiona el boton pequeño a un lado de Agragar agua o comida", "Informacion");
+                            }
+                            else if (data.game.GetPlayer().pesticide.GetUses() == 0 && data.game.GetPlayer().Current_money < 5000)
+                            {
+                                MessageBox.Show("No tienes suficiente dinero...", "Informacion");
+                            }
                             break;
                         case "Fungicida":
-                           // data.game.GetPlayer().fungicide.Use((Field)data.game.Map.terrains[selection].Get_Building());
+                            if (data.game.GetPlayer().fungicide.GetUses() > 0)
+                            {
+                                data.game.GetPlayer().fungicide.Use((Field)data.game.Map.terrains[selection].Get_Building(), random);
+                            }
+                            else if (data.game.GetPlayer().fungicide.GetUses() == 0 && data.game.GetPlayer().Current_money > 5000)
+                            {
+                                MessageBox.Show("No tienes usos de tu consumible, si quieres comprar y utilizar uno inmediatamente, presiona el boton pequeño a un lado de Agragar agua o comida", "Informacion");
+                            }
+                            else if (data.game.GetPlayer().fungicide.GetUses() == 0 && data.game.GetPlayer().Current_money < 5000)
+                            {
+                                MessageBox.Show("No tienes suficiente dinero...", "Informacion");
+                            }
                             break;
                         default:
                             MessageBox.Show("Seleccion invalida", "Error");
