@@ -19,6 +19,7 @@ namespace WindowsFormsApp1.Controllers
             GameController.view.PrintInventoryRequest += OnAskForInventory;
             GameController.view.PrintHistoric += OnHistoric;
             GameController.view.ApplyStuff += OnApplyStuff;
+            GameController.view.GetFinishedProduct += OnGetFinishedProduct;
         }
 
         public static string[] OnAskForInventory(object sender, DataArgs data)
@@ -48,30 +49,30 @@ namespace WindowsFormsApp1.Controllers
         {
             if (stuff == "WoF") 
             {
-                if (data.game.Map.terrains[selection].Get_Building().name == "Cattle")
+                if (data.game.Map.terrains[selection - 1].Get_Building().Get_type() == "cttl")
                 {
                     switch (option)
                         {
                         case "Comida":
-                            data.game.GetPlayer().animalFood.Use((Cattle)data.game.Map.terrains[selection].Get_Building());
+                            data.game.GetPlayer().animalFood.Use((Cattle)data.game.Map.terrains[selection - 1].Get_Building());
                             break;
                         case "Agua":
-                            data.game.GetPlayer().animalWater.Use((Cattle)data.game.Map.terrains[selection].Get_Building());
+                            data.game.GetPlayer().animalWater.Use((Cattle)data.game.Map.terrains[selection - 1].Get_Building());
                             break;
                         default:
                             MessageBox.Show("Seleccion invalida", "Error");
                             break;
                     }
                 }
-                else if (data.game.Map.terrains[selection].Get_Building().name == "Field")
+                else if (data.game.Map.terrains[selection - 1].Get_Building().Get_type() == "fld")
                 {
                     switch (option)
                     {
                         case "Fertilizante":
-                            data.game.GetPlayer().fertilizer.Use((Field)data.game.Map.terrains[selection].Get_Building());
+                            data.game.GetPlayer().fertilizer.Use((Field)data.game.Map.terrains[selection - 1].Get_Building());
                             break;
                         case "Riego":
-                            data.game.GetPlayer().irrigation.Use((Field)data.game.Map.terrains[selection].Get_Building());
+                            data.game.GetPlayer().irrigation.Use((Field)data.game.Map.terrains[selection - 1].Get_Building());
                             break;
                         default:
                             MessageBox.Show("Seleccion invalida", "Error");
@@ -81,12 +82,16 @@ namespace WindowsFormsApp1.Controllers
             }
             else if (stuff == "Meds")
             {
+               // Random random = new Random();
+                
                 if (data.game.Map.terrains[selection].Get_Building().name == "Cattle")
                 {
                     switch (option)
                     {
                         case "Vacuna":
-                            data.game.GetPlayer().vaccine.Use((Cattle)data.game.Map.terrains[selection].Get_Building());
+                            //int randNum = random.Next(0, 11);
+                            //data.game.GetPlayer().vaccine.Use((Cattle)data.game.Map.terrains[selection].Get_Building(), randNum);
+                            
                             break;
                         default:
                             MessageBox.Show("Seleccion invalida", "Error");
@@ -98,19 +103,101 @@ namespace WindowsFormsApp1.Controllers
                     switch (option)
                     {
                         case "Herbicida":
-                            data.game.GetPlayer().herbicide.Use((Field)data.game.Map.terrains[selection].Get_Building());
+                           // data.game.GetPlayer().herbicide.Use((Field)data.game.Map.terrains[selection].Get_Building());
                             break;
                         case "Pesticida":
-                            data.game.GetPlayer().pesticide.Use((Field)data.game.Map.terrains[selection].Get_Building());
+                           // data.game.GetPlayer().pesticide.Use((Field)data.game.Map.terrains[selection].Get_Building());
                             break;
                         case "Fungicida":
-                            data.game.GetPlayer().fungicide.Use((Field)data.game.Map.terrains[selection].Get_Building());
+                           // data.game.GetPlayer().fungicide.Use((Field)data.game.Map.terrains[selection].Get_Building());
                             break;
                         default:
                             MessageBox.Show("Seleccion invalida", "Error");
                             break;
                     }
                 }
+            }
+        }
+
+        public static void OnGetFinishedProduct(object sender, DataArgs data, int selection)
+        {
+            
+            if (data.game.Map.terrains[selection - 1].Get_Building().Get_type() == "fld")
+            {
+                Field field = (Field)data.game.Map.terrains[selection - 1].Get_Building();
+                if (field.IsReady())
+                {
+                    string object_name = data.game.Map.terrains[selection - 1].Get_Building().Get_product().Get_productName();
+                    foreach (Terrain terrain in data.game.Map.terrains)
+                    {
+                        if (terrain.Get_Building() != null)
+                        {
+                            if (data.game.Map.terrains[selection - 1].Get_Building().Get_type() == "strg" && data.game.Map.terrains[selection - 1].Get_Building().Get_product().Get_productName() == object_name)
+                            {
+                                Storage store = (Storage)data.game.Map.terrains[selection - 1].Get_Building();
+                                if (!store.IsFull())
+                                {
+                                    store.AddProduct(new FinishedProduct(object_name));
+
+                                }
+                            }
+                            else if (data.game.Map.terrains[selection - 1].Get_Building().Get_type() == "strg")
+                            {
+                                Storage store = (Storage)data.game.Map.terrains[selection - 1].Get_Building();
+                                if (store.GetCurrentProduct() == "Empty")
+                                {
+                                    store.AddProduct(new FinishedProduct(object_name));
+
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El producto no está listo para ser guardado", "Error");
+                    
+                }
+            }
+            else if (data.game.Map.terrains[selection - 1].Get_Building().Get_type() == "cttl")
+            {
+                Cattle cattle = (Cattle)data.game.Map.terrains[selection - 1].Get_Building();
+                if(cattle.IsReady())
+                {
+                    string object_name = data.game.Map.terrains[selection - 1].Get_Building().Get_product().Get_productName();
+                    foreach(Terrain terrain in data.game.Map.terrains)
+                    {
+                        if (terrain.Get_Building() != null)
+                        {
+                            if (data.game.Map.terrains[selection - 1].Get_Building().Get_type() == "strg" && data.game.Map.terrains[selection - 1].Get_Building().Get_product().Get_productName() == object_name)
+                            {
+                                Storage store = (Storage)data.game.Map.terrains[selection - 1].Get_Building();
+                                if (!store.IsFull())
+                                {
+                                    store.AddProduct(new FinishedProduct(object_name));
+
+                                }
+                            }
+                            else if (data.game.Map.terrains[selection - 1].Get_Building().Get_type() == "strg")
+                            {
+                                Storage store = (Storage)data.game.Map.terrains[selection - 1].Get_Building();
+                                if (store.GetCurrentProduct() == "Empty")
+                                {
+                                    store.AddProduct(new FinishedProduct(object_name));
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("El producto no está listo para ser guardado", "Error");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccion invalida", "Error");
             }
         }
     }

@@ -64,6 +64,9 @@ namespace WindowsFormsApp1
         public delegate void OnApplyStuffEventHandler(object source, DataArgs data, string stuff, string option, int selection);
         public event OnApplyStuffEventHandler ApplyStuff;
 
+        public delegate void OnGetFinishedProduct(object source, DataArgs data, int selection);
+        public event OnGetFinishedProduct GetFinishedProduct;
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -738,18 +741,22 @@ namespace WindowsFormsApp1
 
         private void bt_AddWorF_Click(object sender, EventArgs e)
         {
+            int selection = Convert.ToInt32(ClickingMapForm.terrain);
             string option = combo_ApplyWoF.SelectedText;
-            ApplyStuff(this, data, "WoF", option, Convert.ToInt32(ClickingMapForm.terrain) - 1); //ARREGLAR EL ULTIMO PARAMETRO
+            ApplyStuff(this, data, "WoF", option, selection); 
         }
 
         private void bt_ApplyHeal_Click(object sender, EventArgs e)
         {
+            int selection = Convert.ToInt32(ClickingMapForm.terrain);
             string option = combo_ApplyMedicine.SelectedText;
-            ApplyStuff(this, data, "Meds", option, Convert.ToInt32(ClickingMapForm.terrain) - 1);  //ARREGLAR EL ULTIMO PARAMETRO
+            ApplyStuff(this, data, "Meds", option, selection); 
         }
 
         private void bt_ObtainFinished_Click(object sender, EventArgs e)
         {
+            int selection = Convert.ToInt32(ClickingMapForm.terrain);
+            GetFinishedProduct(this, data, selection);
 
         }
     }
