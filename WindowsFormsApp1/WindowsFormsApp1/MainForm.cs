@@ -759,5 +759,29 @@ namespace WindowsFormsApp1
             GetFinishedProduct(this, data, selection);
 
         }
+
+        private void bt_WoF_BuynUse_Click(object sender, EventArgs e)
+        {
+            if (data.game.GetPlayer().Current_money > 5000)
+            {
+                string option = combo_ApplyWoF.SelectedText;
+                OnAddingOne(option.ToLower());
+                ApplyStuff(this, data, "WoF", option, Convert.ToInt32(ClickingMapForm.terrain) - 1);
+                MessageBox.Show("Comprado y Aplicado!", "Informacion");
+            }
+
+        }
+
+        private void bt_Meds_BuynUse_Click(object sender, EventArgs e)
+        {
+            if (data.game.GetPlayer().Current_money > 5000)
+            {
+                string option = combo_ApplyMedicine.SelectedText;
+                OnAddingOne(option.ToLower());
+                ApplyStuff(this, data, "Meds", option, Convert.ToInt32(ClickingMapForm.terrain) - 1);
+                MessageBox.Show("Comprado y Aplicado!", "Informacion");
+            }
+
+        }
     }
 }
