@@ -11,7 +11,7 @@ namespace WindowsFormsApp1.Products.Animals
     {
         public Sheep()
         {
-            Set("Obeja", 20, 2000, 0.2F, 0.1F);
+            Set("Oveja", 20, 2000, 0.2F, 0.1F);
         }
     }
 }

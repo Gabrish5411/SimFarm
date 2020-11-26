@@ -47,7 +47,14 @@ namespace WindowsFormsApp1.Buildings
         public override List<string> Report()
         {
             List<string> result = new List<string>();
-            result.Add("Plantacion de "+this.item.Get_productName()+"s:");
+            if (this.item.Get_productName() == "Arroz")
+            {
+                result.Add("Plantacion de " + this.item.Get_productName() + ":");
+            }
+            else
+            {
+                result.Add("Plantacion de " + this.item.Get_productName() + "s:");
+            }
             result.Add("Madurez: " + this.ripeness);
             result.Add("Salud: " + this.currentHP + "/100");
             result.Add("Agua: "+this.availableWater+"/100");
