@@ -585,7 +585,7 @@ namespace WindowsFormsApp1
         {
             int selection = Convert.ToInt32(ClickingMapForm.terrain);
             string tileType = "Cattle";
-            string option = comboBoxCattle.SelectedText;
+            string option = comboBoxCattle.Text;
             bool ok = BuyCattle(sender, data, selection, option, tileType);
             if (ok)
             {
@@ -602,7 +602,7 @@ namespace WindowsFormsApp1
         {
             int selection = Convert.ToInt32(ClickingMapForm.terrain);
             string tileType = "Field";
-            string buildingOption = comboBoxFarm.SelectedText;
+            string buildingOption = comboBoxFarm.Text;
             bool ok = BuyFarm(sender, data, selection, buildingOption, tileType);
             if (ok)
             {
@@ -742,14 +742,14 @@ namespace WindowsFormsApp1
         private void bt_AddWorF_Click(object sender, EventArgs e)
         {
             int selection = Convert.ToInt32(ClickingMapForm.terrain);
-            string option = combo_ApplyWoF.SelectedText;
+            string option = combo_ApplyWoF.Text;
             ApplyStuff(this, data, "WoF", option, selection); 
         }
 
         private void bt_ApplyHeal_Click(object sender, EventArgs e)
         {
             int selection = Convert.ToInt32(ClickingMapForm.terrain);
-            string option = combo_ApplyMedicine.SelectedText;
+            string option = combo_ApplyMedicine.Text;
             ApplyStuff(this, data, "Meds", option, selection); 
         }
 
@@ -762,11 +762,13 @@ namespace WindowsFormsApp1
 
         private void bt_WoF_BuynUse_Click(object sender, EventArgs e)
         {
+            int selection = Convert.ToInt32(ClickingMapForm.terrain);
+            
             if (data.game.GetPlayer().Current_money > 5000)
             {
-                string option = combo_ApplyWoF.SelectedText;
+                string option = combo_ApplyWoF.Text;
                 OnAddingOne(option.ToLower());
-                ApplyStuff(this, data, "WoF", option, Convert.ToInt32(ClickingMapForm.terrain) - 1);
+                ApplyStuff(this, data, "WoF", option, selection);
                 MessageBox.Show("Comprado y Aplicado!", "Informacion");
             }
 
@@ -776,9 +778,9 @@ namespace WindowsFormsApp1
         {
             if (data.game.GetPlayer().Current_money > 5000)
             {
-                string option = combo_ApplyMedicine.SelectedText;
+                string option = combo_ApplyMedicine.Text;
                 OnAddingOne(option.ToLower());
-                ApplyStuff(this, data, "Meds", option, Convert.ToInt32(ClickingMapForm.terrain) - 1);
+                ApplyStuff(this, data, "Meds", option, Convert.ToInt32(ClickingMapForm.terrain));
                 MessageBox.Show("Comprado y Aplicado!", "Informacion");
             }
 

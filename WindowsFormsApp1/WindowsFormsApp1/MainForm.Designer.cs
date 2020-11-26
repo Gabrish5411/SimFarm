@@ -109,6 +109,8 @@
             this.bt_AdminProd = new System.Windows.Forms.Button();
             this.lb_selectopt_AG = new System.Windows.Forms.Label();
             this.AdminProd = new System.Windows.Forms.Panel();
+            this.bt_Meds_BuynUse = new System.Windows.Forms.Button();
+            this.bt_WoF_BuynUse = new System.Windows.Forms.Button();
             this.combo_ApplyMedicine = new System.Windows.Forms.ComboBox();
             this.combo_ApplyWoF = new System.Windows.Forms.ComboBox();
             this.UndergrowthLabel1 = new System.Windows.Forms.Label();
@@ -176,8 +178,6 @@
             this.AdminStorageBackButton = new System.Windows.Forms.Button();
             this.SelectedStorageLabel2 = new System.Windows.Forms.Label();
             this.SelectedStorageLabel1 = new System.Windows.Forms.Label();
-            this.bt_WoF_BuynUse = new System.Windows.Forms.Button();
-            this.bt_Meds_BuynUse = new System.Windows.Forms.Button();
             this.Title.SuspendLayout();
             this.NewGame.SuspendLayout();
             this.Game.SuspendLayout();
@@ -210,7 +210,7 @@
             this.Title.Controls.Add(this.TitleLabel);
             this.Title.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Title.Location = new System.Drawing.Point(0, 0);
-            this.Title.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Title.Margin = new System.Windows.Forms.Padding(4);
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(643, 418);
             this.Title.TabIndex = 0;
@@ -232,7 +232,7 @@
             // 
             this.TitleNewGameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TitleNewGameButton.Location = new System.Drawing.Point(272, 190);
-            this.TitleNewGameButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TitleNewGameButton.Margin = new System.Windows.Forms.Padding(4);
             this.TitleNewGameButton.Name = "TitleNewGameButton";
             this.TitleNewGameButton.Size = new System.Drawing.Size(129, 33);
             this.TitleNewGameButton.TabIndex = 1;
@@ -263,7 +263,7 @@
             this.NewGame.Controls.Add(this.NewGamePanelLabel);
             this.NewGame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NewGame.Location = new System.Drawing.Point(0, 0);
-            this.NewGame.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NewGame.Margin = new System.Windows.Forms.Padding(4);
             this.NewGame.Name = "NewGame";
             this.NewGame.Size = new System.Drawing.Size(643, 418);
             this.NewGame.TabIndex = 2;
@@ -271,7 +271,7 @@
             // NewGameDefaultButton
             // 
             this.NewGameDefaultButton.Location = new System.Drawing.Point(256, 138);
-            this.NewGameDefaultButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NewGameDefaultButton.Margin = new System.Windows.Forms.Padding(4);
             this.NewGameDefaultButton.Name = "NewGameDefaultButton";
             this.NewGameDefaultButton.Size = new System.Drawing.Size(131, 27);
             this.NewGameDefaultButton.TabIndex = 1;
@@ -282,7 +282,7 @@
             // NewGameBothButton
             // 
             this.NewGameBothButton.Location = new System.Drawing.Point(256, 300);
-            this.NewGameBothButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NewGameBothButton.Margin = new System.Windows.Forms.Padding(4);
             this.NewGameBothButton.Name = "NewGameBothButton";
             this.NewGameBothButton.Size = new System.Drawing.Size(131, 27);
             this.NewGameBothButton.TabIndex = 4;
@@ -293,7 +293,7 @@
             // NewGameLakeButton
             // 
             this.NewGameLakeButton.Location = new System.Drawing.Point(256, 249);
-            this.NewGameLakeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NewGameLakeButton.Margin = new System.Windows.Forms.Padding(4);
             this.NewGameLakeButton.Name = "NewGameLakeButton";
             this.NewGameLakeButton.Size = new System.Drawing.Size(131, 27);
             this.NewGameLakeButton.TabIndex = 3;
@@ -304,7 +304,7 @@
             // NewGameRiverButton
             // 
             this.NewGameRiverButton.Location = new System.Drawing.Point(256, 196);
-            this.NewGameRiverButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NewGameRiverButton.Margin = new System.Windows.Forms.Padding(4);
             this.NewGameRiverButton.Name = "NewGameRiverButton";
             this.NewGameRiverButton.Size = new System.Drawing.Size(131, 27);
             this.NewGameRiverButton.TabIndex = 2;
@@ -315,7 +315,7 @@
             // NewGameBackButton
             // 
             this.NewGameBackButton.Location = new System.Drawing.Point(4, 4);
-            this.NewGameBackButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NewGameBackButton.Margin = new System.Windows.Forms.Padding(4);
             this.NewGameBackButton.Name = "NewGameBackButton";
             this.NewGameBackButton.Size = new System.Drawing.Size(79, 25);
             this.NewGameBackButton.TabIndex = 5;
@@ -347,7 +347,7 @@
             this.Game.Controls.Add(this.PropertyPanel);
             this.Game.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Game.Location = new System.Drawing.Point(0, 0);
-            this.Game.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Game.Margin = new System.Windows.Forms.Padding(4);
             this.Game.Name = "Game";
             this.Game.Size = new System.Drawing.Size(643, 418);
             this.Game.TabIndex = 3;
@@ -359,7 +359,7 @@
             this.BuyFarmPanel.Controls.Add(this.BuyFarmBackButton);
             this.BuyFarmPanel.Controls.Add(this.BuyFarmTextBox);
             this.BuyFarmPanel.Location = new System.Drawing.Point(387, 0);
-            this.BuyFarmPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BuyFarmPanel.Margin = new System.Windows.Forms.Padding(4);
             this.BuyFarmPanel.Name = "BuyFarmPanel";
             this.BuyFarmPanel.Size = new System.Drawing.Size(257, 418);
             this.BuyFarmPanel.TabIndex = 5;
@@ -372,7 +372,7 @@
             "Potato",
             "Rice"});
             this.comboBoxFarm.Location = new System.Drawing.Point(49, 250);
-            this.comboBoxFarm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxFarm.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxFarm.Name = "comboBoxFarm";
             this.comboBoxFarm.Size = new System.Drawing.Size(161, 24);
             this.comboBoxFarm.TabIndex = 4;
@@ -381,7 +381,7 @@
             // BuyFarmButton
             // 
             this.BuyFarmButton.Location = new System.Drawing.Point(81, 302);
-            this.BuyFarmButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BuyFarmButton.Margin = new System.Windows.Forms.Padding(4);
             this.BuyFarmButton.Name = "BuyFarmButton";
             this.BuyFarmButton.Size = new System.Drawing.Size(100, 28);
             this.BuyFarmButton.TabIndex = 3;
@@ -392,7 +392,7 @@
             // BuyFarmBackButton
             // 
             this.BuyFarmBackButton.Location = new System.Drawing.Point(199, 0);
-            this.BuyFarmBackButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BuyFarmBackButton.Margin = new System.Windows.Forms.Padding(4);
             this.BuyFarmBackButton.Name = "BuyFarmBackButton";
             this.BuyFarmBackButton.Size = new System.Drawing.Size(68, 28);
             this.BuyFarmBackButton.TabIndex = 2;
@@ -406,7 +406,7 @@
             this.BuyFarmTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BuyFarmTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.BuyFarmTextBox.Location = new System.Drawing.Point(33, 127);
-            this.BuyFarmTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BuyFarmTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.BuyFarmTextBox.Multiline = true;
             this.BuyFarmTextBox.Name = "BuyFarmTextBox";
             this.BuyFarmTextBox.Size = new System.Drawing.Size(199, 100);
@@ -528,7 +528,7 @@
             this.SelectStoragePanel.Controls.Add(this.SelectStorageBackButton);
             this.SelectStoragePanel.Controls.Add(this.SelectStorageTextBox);
             this.SelectStoragePanel.Location = new System.Drawing.Point(387, 0);
-            this.SelectStoragePanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SelectStoragePanel.Margin = new System.Windows.Forms.Padding(4);
             this.SelectStoragePanel.Name = "SelectStoragePanel";
             this.SelectStoragePanel.Size = new System.Drawing.Size(257, 418);
             this.SelectStoragePanel.TabIndex = 8;
@@ -536,7 +536,7 @@
             // SelectStorageButton
             // 
             this.SelectStorageButton.Location = new System.Drawing.Point(83, 228);
-            this.SelectStorageButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SelectStorageButton.Margin = new System.Windows.Forms.Padding(4);
             this.SelectStorageButton.Name = "SelectStorageButton";
             this.SelectStorageButton.Size = new System.Drawing.Size(92, 28);
             this.SelectStorageButton.TabIndex = 6;
@@ -547,7 +547,7 @@
             // SelectStorageBackButton
             // 
             this.SelectStorageBackButton.Location = new System.Drawing.Point(199, 1);
-            this.SelectStorageBackButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SelectStorageBackButton.Margin = new System.Windows.Forms.Padding(4);
             this.SelectStorageBackButton.Name = "SelectStorageBackButton";
             this.SelectStorageBackButton.Size = new System.Drawing.Size(59, 28);
             this.SelectStorageBackButton.TabIndex = 5;
@@ -561,7 +561,7 @@
             this.SelectStorageTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SelectStorageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.SelectStorageTextBox.Location = new System.Drawing.Point(33, 142);
-            this.SelectStorageTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SelectStorageTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.SelectStorageTextBox.Multiline = true;
             this.SelectStorageTextBox.Name = "SelectStorageTextBox";
             this.SelectStorageTextBox.Size = new System.Drawing.Size(199, 71);
@@ -575,7 +575,7 @@
             this.SelectProductionBuildingPanel.Controls.Add(this.Select);
             this.SelectProductionBuildingPanel.Controls.Add(this.textBox2);
             this.SelectProductionBuildingPanel.Location = new System.Drawing.Point(387, 0);
-            this.SelectProductionBuildingPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SelectProductionBuildingPanel.Margin = new System.Windows.Forms.Padding(4);
             this.SelectProductionBuildingPanel.Name = "SelectProductionBuildingPanel";
             this.SelectProductionBuildingPanel.Size = new System.Drawing.Size(257, 418);
             this.SelectProductionBuildingPanel.TabIndex = 7;
@@ -583,7 +583,7 @@
             // SelectProductionBuildingBackButton
             // 
             this.SelectProductionBuildingBackButton.Location = new System.Drawing.Point(199, 0);
-            this.SelectProductionBuildingBackButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SelectProductionBuildingBackButton.Margin = new System.Windows.Forms.Padding(4);
             this.SelectProductionBuildingBackButton.Name = "SelectProductionBuildingBackButton";
             this.SelectProductionBuildingBackButton.Size = new System.Drawing.Size(59, 25);
             this.SelectProductionBuildingBackButton.TabIndex = 5;
@@ -594,7 +594,7 @@
             // Select
             // 
             this.Select.Location = new System.Drawing.Point(83, 220);
-            this.Select.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Select.Margin = new System.Windows.Forms.Padding(4);
             this.Select.Name = "Select";
             this.Select.Size = new System.Drawing.Size(100, 28);
             this.Select.TabIndex = 4;
@@ -608,7 +608,7 @@
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.textBox2.Location = new System.Drawing.Point(33, 113);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(199, 100);
@@ -623,7 +623,7 @@
             this.BuyCattlePanel.Controls.Add(this.BuyCattleBackButton);
             this.BuyCattlePanel.Controls.Add(this.BuyCattleTextBox);
             this.BuyCattlePanel.Location = new System.Drawing.Point(387, 0);
-            this.BuyCattlePanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BuyCattlePanel.Margin = new System.Windows.Forms.Padding(4);
             this.BuyCattlePanel.Name = "BuyCattlePanel";
             this.BuyCattlePanel.Size = new System.Drawing.Size(256, 418);
             this.BuyCattlePanel.TabIndex = 6;
@@ -636,7 +636,7 @@
             "Cow",
             "Pig"});
             this.comboBoxCattle.Location = new System.Drawing.Point(55, 247);
-            this.comboBoxCattle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxCattle.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxCattle.Name = "comboBoxCattle";
             this.comboBoxCattle.Size = new System.Drawing.Size(161, 24);
             this.comboBoxCattle.TabIndex = 5;
@@ -645,7 +645,7 @@
             // BuyCattleButton
             // 
             this.BuyCattleButton.Location = new System.Drawing.Point(95, 299);
-            this.BuyCattleButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BuyCattleButton.Margin = new System.Windows.Forms.Padding(4);
             this.BuyCattleButton.Name = "BuyCattleButton";
             this.BuyCattleButton.Size = new System.Drawing.Size(80, 28);
             this.BuyCattleButton.TabIndex = 4;
@@ -656,7 +656,7 @@
             // BuyCattleBackButton
             // 
             this.BuyCattleBackButton.Location = new System.Drawing.Point(199, 0);
-            this.BuyCattleBackButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BuyCattleBackButton.Margin = new System.Windows.Forms.Padding(4);
             this.BuyCattleBackButton.Name = "BuyCattleBackButton";
             this.BuyCattleBackButton.Size = new System.Drawing.Size(59, 28);
             this.BuyCattleBackButton.TabIndex = 3;
@@ -670,7 +670,7 @@
             this.BuyCattleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BuyCattleTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.BuyCattleTextBox.Location = new System.Drawing.Point(33, 126);
-            this.BuyCattleTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BuyCattleTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.BuyCattleTextBox.Multiline = true;
             this.BuyCattleTextBox.Name = "BuyCattleTextBox";
             this.BuyCattleTextBox.Size = new System.Drawing.Size(199, 100);
@@ -685,7 +685,7 @@
             this.BuyStoragePanel.Controls.Add(this.BuyStorageTextBox);
             this.BuyStoragePanel.Controls.Add(this.BuyStorageBackButton);
             this.BuyStoragePanel.Location = new System.Drawing.Point(397, 0);
-            this.BuyStoragePanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BuyStoragePanel.Margin = new System.Windows.Forms.Padding(4);
             this.BuyStoragePanel.Name = "BuyStoragePanel";
             this.BuyStoragePanel.Size = new System.Drawing.Size(247, 418);
             this.BuyStoragePanel.TabIndex = 6;
@@ -693,7 +693,7 @@
             // BuyStorageButton
             // 
             this.BuyStorageButton.Location = new System.Drawing.Point(84, 246);
-            this.BuyStorageButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BuyStorageButton.Margin = new System.Windows.Forms.Padding(4);
             this.BuyStorageButton.Name = "BuyStorageButton";
             this.BuyStorageButton.Size = new System.Drawing.Size(80, 28);
             this.BuyStorageButton.TabIndex = 6;
@@ -707,7 +707,7 @@
             this.BuyStorageTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BuyStorageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.BuyStorageTextBox.Location = new System.Drawing.Point(27, 95);
-            this.BuyStorageTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BuyStorageTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.BuyStorageTextBox.Multiline = true;
             this.BuyStorageTextBox.Name = "BuyStorageTextBox";
             this.BuyStorageTextBox.Size = new System.Drawing.Size(199, 100);
@@ -719,7 +719,7 @@
             // BuyStorageBackButton
             // 
             this.BuyStorageBackButton.Location = new System.Drawing.Point(184, 6);
-            this.BuyStorageBackButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BuyStorageBackButton.Margin = new System.Windows.Forms.Padding(4);
             this.BuyStorageBackButton.Name = "BuyStorageBackButton";
             this.BuyStorageBackButton.Size = new System.Drawing.Size(59, 28);
             this.BuyStorageBackButton.TabIndex = 4;
@@ -735,7 +735,7 @@
             this.GameMap.Controls.Add(this.SelectedTerrainLabel1);
             this.GameMap.Controls.Add(this.GameMapRichText);
             this.GameMap.Location = new System.Drawing.Point(0, 0);
-            this.GameMap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GameMap.Margin = new System.Windows.Forms.Padding(4);
             this.GameMap.Name = "GameMap";
             this.GameMap.Size = new System.Drawing.Size(387, 418);
             this.GameMap.TabIndex = 0;
@@ -743,7 +743,7 @@
             // TerrainGetButton
             // 
             this.TerrainGetButton.Location = new System.Drawing.Point(143, 352);
-            this.TerrainGetButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TerrainGetButton.Margin = new System.Windows.Forms.Padding(4);
             this.TerrainGetButton.Name = "TerrainGetButton";
             this.TerrainGetButton.Size = new System.Drawing.Size(100, 28);
             this.TerrainGetButton.TabIndex = 5;
@@ -794,7 +794,7 @@
             this.GameMapRichText.Enabled = false;
             this.GameMapRichText.Font = new System.Drawing.Font("Microsoft Sans Serif", 1.85F);
             this.GameMapRichText.Location = new System.Drawing.Point(60, 76);
-            this.GameMapRichText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GameMapRichText.Margin = new System.Windows.Forms.Padding(4);
             this.GameMapRichText.Name = "GameMapRichText";
             this.GameMapRichText.Size = new System.Drawing.Size(273, 253);
             this.GameMapRichText.TabIndex = 0;
@@ -835,7 +835,7 @@
             // bt_SelectNewMap
             // 
             this.bt_SelectNewMap.Location = new System.Drawing.Point(44, 252);
-            this.bt_SelectNewMap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bt_SelectNewMap.Margin = new System.Windows.Forms.Padding(4);
             this.bt_SelectNewMap.Name = "bt_SelectNewMap";
             this.bt_SelectNewMap.Size = new System.Drawing.Size(168, 54);
             this.bt_SelectNewMap.TabIndex = 5;
@@ -849,7 +849,7 @@
             this.PropertyPanel.Controls.Add(this.BuyTerrainButton);
             this.PropertyPanel.Controls.Add(this.textBox1);
             this.PropertyPanel.Location = new System.Drawing.Point(392, 0);
-            this.PropertyPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PropertyPanel.Margin = new System.Windows.Forms.Padding(4);
             this.PropertyPanel.Name = "PropertyPanel";
             this.PropertyPanel.Size = new System.Drawing.Size(251, 418);
             this.PropertyPanel.TabIndex = 4;
@@ -857,7 +857,7 @@
             // PropertyBackButton
             // 
             this.PropertyBackButton.Location = new System.Drawing.Point(183, 1);
-            this.PropertyBackButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PropertyBackButton.Margin = new System.Windows.Forms.Padding(4);
             this.PropertyBackButton.Name = "PropertyBackButton";
             this.PropertyBackButton.Size = new System.Drawing.Size(69, 28);
             this.PropertyBackButton.TabIndex = 5;
@@ -868,7 +868,7 @@
             // BuyTerrainButton
             // 
             this.BuyTerrainButton.Location = new System.Drawing.Point(77, 252);
-            this.BuyTerrainButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BuyTerrainButton.Margin = new System.Windows.Forms.Padding(4);
             this.BuyTerrainButton.Name = "BuyTerrainButton";
             this.BuyTerrainButton.Size = new System.Drawing.Size(100, 28);
             this.BuyTerrainButton.TabIndex = 1;
@@ -882,7 +882,7 @@
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.textBox1.Location = new System.Drawing.Point(36, 105);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(199, 97);
@@ -1174,6 +1174,24 @@
             this.AdminProd.Name = "AdminProd";
             this.AdminProd.Size = new System.Drawing.Size(643, 418);
             this.AdminProd.TabIndex = 2;
+            // 
+            // bt_Meds_BuynUse
+            // 
+            this.bt_Meds_BuynUse.Location = new System.Drawing.Point(396, 319);
+            this.bt_Meds_BuynUse.Name = "bt_Meds_BuynUse";
+            this.bt_Meds_BuynUse.Size = new System.Drawing.Size(14, 46);
+            this.bt_Meds_BuynUse.TabIndex = 25;
+            this.bt_Meds_BuynUse.UseVisualStyleBackColor = true;
+            this.bt_Meds_BuynUse.Click += new System.EventHandler(this.bt_Meds_BuynUse_Click);
+            // 
+            // bt_WoF_BuynUse
+            // 
+            this.bt_WoF_BuynUse.Location = new System.Drawing.Point(229, 319);
+            this.bt_WoF_BuynUse.Name = "bt_WoF_BuynUse";
+            this.bt_WoF_BuynUse.Size = new System.Drawing.Size(14, 46);
+            this.bt_WoF_BuynUse.TabIndex = 24;
+            this.bt_WoF_BuynUse.UseVisualStyleBackColor = true;
+            this.bt_WoF_BuynUse.Click += new System.EventHandler(this.bt_WoF_BuynUse_Click);
             // 
             // combo_ApplyMedicine
             // 
@@ -1511,7 +1529,7 @@
             this.HistoricPrices.Controls.Add(this.HistoricPriceTomato);
             this.HistoricPrices.Controls.Add(this.HistoricPricePotato);
             this.HistoricPrices.Location = new System.Drawing.Point(0, 0);
-            this.HistoricPrices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HistoricPrices.Margin = new System.Windows.Forms.Padding(4);
             this.HistoricPrices.Name = "HistoricPrices";
             this.HistoricPrices.Size = new System.Drawing.Size(644, 418);
             this.HistoricPrices.TabIndex = 4;
@@ -1522,7 +1540,7 @@
             this.tB_AllHistoric.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tB_AllHistoric.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tB_AllHistoric.Location = new System.Drawing.Point(143, 239);
-            this.tB_AllHistoric.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tB_AllHistoric.Margin = new System.Windows.Forms.Padding(4);
             this.tB_AllHistoric.Multiline = true;
             this.tB_AllHistoric.Name = "tB_AllHistoric";
             this.tB_AllHistoric.ReadOnly = true;
@@ -1557,7 +1575,7 @@
             // HistoricPriceRice
             // 
             this.HistoricPriceRice.Location = new System.Drawing.Point(469, 137);
-            this.HistoricPriceRice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HistoricPriceRice.Margin = new System.Windows.Forms.Padding(4);
             this.HistoricPriceRice.Name = "HistoricPriceRice";
             this.HistoricPriceRice.Size = new System.Drawing.Size(100, 28);
             this.HistoricPriceRice.TabIndex = 2;
@@ -1568,7 +1586,7 @@
             // HistoricPriceTomato
             // 
             this.HistoricPriceTomato.Location = new System.Drawing.Point(27, 137);
-            this.HistoricPriceTomato.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HistoricPriceTomato.Margin = new System.Windows.Forms.Padding(4);
             this.HistoricPriceTomato.Name = "HistoricPriceTomato";
             this.HistoricPriceTomato.Size = new System.Drawing.Size(100, 28);
             this.HistoricPriceTomato.TabIndex = 0;
@@ -1579,7 +1597,7 @@
             // HistoricPricePotato
             // 
             this.HistoricPricePotato.Location = new System.Drawing.Point(260, 137);
-            this.HistoricPricePotato.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HistoricPricePotato.Margin = new System.Windows.Forms.Padding(4);
             this.HistoricPricePotato.Name = "HistoricPricePotato";
             this.HistoricPricePotato.Size = new System.Drawing.Size(100, 28);
             this.HistoricPricePotato.TabIndex = 1;
@@ -1596,7 +1614,7 @@
             this.PropertyMarket.Controls.Add(this.lb_select_building_type);
             this.PropertyMarket.Controls.Add(this.bt_back_to_Market_panel_fromProperty);
             this.PropertyMarket.Location = new System.Drawing.Point(0, 0);
-            this.PropertyMarket.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PropertyMarket.Margin = new System.Windows.Forms.Padding(4);
             this.PropertyMarket.Name = "PropertyMarket";
             this.PropertyMarket.Size = new System.Drawing.Size(271, 418);
             this.PropertyMarket.TabIndex = 7;
@@ -1604,7 +1622,7 @@
             // bt_selldestroy_building
             // 
             this.bt_selldestroy_building.Location = new System.Drawing.Point(27, 284);
-            this.bt_selldestroy_building.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bt_selldestroy_building.Margin = new System.Windows.Forms.Padding(4);
             this.bt_selldestroy_building.Name = "bt_selldestroy_building";
             this.bt_selldestroy_building.Size = new System.Drawing.Size(147, 43);
             this.bt_selldestroy_building.TabIndex = 12;
@@ -1614,7 +1632,7 @@
             // bt_storage_buy
             // 
             this.bt_storage_buy.Location = new System.Drawing.Point(27, 223);
-            this.bt_storage_buy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bt_storage_buy.Margin = new System.Windows.Forms.Padding(4);
             this.bt_storage_buy.Name = "bt_storage_buy";
             this.bt_storage_buy.Size = new System.Drawing.Size(147, 48);
             this.bt_storage_buy.TabIndex = 11;
@@ -1624,7 +1642,7 @@
             // bt_cattle_buy
             // 
             this.bt_cattle_buy.Location = new System.Drawing.Point(27, 180);
-            this.bt_cattle_buy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bt_cattle_buy.Margin = new System.Windows.Forms.Padding(4);
             this.bt_cattle_buy.Name = "bt_cattle_buy";
             this.bt_cattle_buy.Size = new System.Drawing.Size(147, 28);
             this.bt_cattle_buy.TabIndex = 10;
@@ -1634,7 +1652,7 @@
             // bt_field_buy
             // 
             this.bt_field_buy.Location = new System.Drawing.Point(27, 137);
-            this.bt_field_buy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bt_field_buy.Margin = new System.Windows.Forms.Padding(4);
             this.bt_field_buy.Name = "bt_field_buy";
             this.bt_field_buy.Size = new System.Drawing.Size(147, 28);
             this.bt_field_buy.TabIndex = 9;
@@ -1883,7 +1901,7 @@
             this.AdminAlmacen.Controls.Add(this.SelectedStorageLabel2);
             this.AdminAlmacen.Controls.Add(this.SelectedStorageLabel1);
             this.AdminAlmacen.Location = new System.Drawing.Point(0, 0);
-            this.AdminAlmacen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AdminAlmacen.Margin = new System.Windows.Forms.Padding(4);
             this.AdminAlmacen.Name = "AdminAlmacen";
             this.AdminAlmacen.Size = new System.Drawing.Size(643, 418);
             this.AdminAlmacen.TabIndex = 8;
@@ -1891,7 +1909,7 @@
             // SellStorageItemsButton
             // 
             this.SellStorageItemsButton.Location = new System.Drawing.Point(124, 203);
-            this.SellStorageItemsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SellStorageItemsButton.Margin = new System.Windows.Forms.Padding(4);
             this.SellStorageItemsButton.Name = "SellStorageItemsButton";
             this.SellStorageItemsButton.Size = new System.Drawing.Size(157, 28);
             this.SellStorageItemsButton.TabIndex = 3;
@@ -1901,7 +1919,7 @@
             // AdminStorageBackButton
             // 
             this.AdminStorageBackButton.Location = new System.Drawing.Point(0, 0);
-            this.AdminStorageBackButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AdminStorageBackButton.Margin = new System.Windows.Forms.Padding(4);
             this.AdminStorageBackButton.Name = "AdminStorageBackButton";
             this.AdminStorageBackButton.Size = new System.Drawing.Size(63, 28);
             this.AdminStorageBackButton.TabIndex = 2;
@@ -1931,24 +1949,6 @@
             this.SelectedStorageLabel1.TabIndex = 0;
             this.SelectedStorageLabel1.Text = "Contenido del almacen:";
             // 
-            // bt_WoF_BuynUse
-            // 
-            this.bt_WoF_BuynUse.Location = new System.Drawing.Point(229, 319);
-            this.bt_WoF_BuynUse.Name = "bt_WoF_BuynUse";
-            this.bt_WoF_BuynUse.Size = new System.Drawing.Size(14, 46);
-            this.bt_WoF_BuynUse.TabIndex = 24;
-            this.bt_WoF_BuynUse.UseVisualStyleBackColor = true;
-            this.bt_WoF_BuynUse.Click += new System.EventHandler(this.bt_WoF_BuynUse_Click);
-            // 
-            // bt_Meds_BuynUse
-            // 
-            this.bt_Meds_BuynUse.Location = new System.Drawing.Point(396, 319);
-            this.bt_Meds_BuynUse.Name = "bt_Meds_BuynUse";
-            this.bt_Meds_BuynUse.Size = new System.Drawing.Size(14, 46);
-            this.bt_Meds_BuynUse.TabIndex = 25;
-            this.bt_Meds_BuynUse.UseVisualStyleBackColor = true;
-            this.bt_Meds_BuynUse.Click += new System.EventHandler(this.bt_Meds_BuynUse_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1967,7 +1967,7 @@
             this.Controls.Add(this.ConsumableMarket);
             this.Controls.Add(this.FoodMarket);
             this.Controls.Add(this.MedicineMarket);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "SimFarm";
             this.Title.ResumeLayout(false);
