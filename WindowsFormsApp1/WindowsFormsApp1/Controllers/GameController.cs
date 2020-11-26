@@ -47,17 +47,16 @@ namespace WindowsFormsApp1.Controllers
         }
         public static void OnApplyStuff(object sender, DataArgs data, string stuff, string option, int selection)
         {
-
             if (stuff == "WoF")
             {
-                if (data.game.Map.terrains[selection].Get_Building().name == "Cattle")
+                if (data.game.Map.terrains[selection - 1].Get_Building().name == "Cattle")
                 {
                     switch (option)
                     {
                         case "Comida":
                             if (data.game.GetPlayer().animalFood.GetUses() > 0)
                             {
-                                data.game.GetPlayer().animalFood.Use((Cattle)data.game.Map.terrains[selection].Get_Building());
+                                data.game.GetPlayer().animalFood.Use((Cattle)data.game.Map.terrains[selection - 1].Get_Building());
                             }
                             else if (data.game.GetPlayer().animalFood.GetUses() == 0 && data.game.GetPlayer().Current_money > 5000)
                             {
@@ -68,10 +67,11 @@ namespace WindowsFormsApp1.Controllers
                                 MessageBox.Show("No tienes suficiente dinero...", "Informacion");
                             }
                             break;
+
                         case "Agua":
                             if (data.game.GetPlayer().animalWater.GetUses() > 0)
                             {
-                                data.game.GetPlayer().animalWater.Use((Cattle)data.game.Map.terrains[selection].Get_Building());
+                                data.game.GetPlayer().animalWater.Use((Cattle)data.game.Map.terrains[selection - 1].Get_Building());
                             }
                             else if (data.game.GetPlayer().animalWater.GetUses() == 0 && data.game.GetPlayer().Current_money > 5000)
                             {
@@ -87,14 +87,14 @@ namespace WindowsFormsApp1.Controllers
                             break;
                     }
                 }
-                else if (data.game.Map.terrains[selection].Get_Building().name == "Field")
+                else if (data.game.Map.terrains[selection - 1].Get_Building().name == "Field")
                 {
                     switch (option)
                     {
                         case "Fertilizante":
                             if (data.game.GetPlayer().fertilizer.GetUses() > 0)
                             {
-                                data.game.GetPlayer().fertilizer.Use((Field)data.game.Map.terrains[selection].Get_Building());
+                                data.game.GetPlayer().fertilizer.Use((Field)data.game.Map.terrains[selection - 1].Get_Building());
                             }
                             else if (data.game.GetPlayer().fertilizer.GetUses() == 0 && data.game.GetPlayer().Current_money > 5000)
                             {
@@ -108,7 +108,7 @@ namespace WindowsFormsApp1.Controllers
                         case "Riego":
                             if (data.game.GetPlayer().irrigation.GetUses() > 0)
                             {
-                                data.game.GetPlayer().irrigation.Use((Field)data.game.Map.terrains[selection].Get_Building());
+                                data.game.GetPlayer().irrigation.Use((Field)data.game.Map.terrains[selection - 1].Get_Building());
                             }
                             else if (data.game.GetPlayer().irrigation.GetUses() == 0 && data.game.GetPlayer().Current_money > 5000)
                             {
@@ -128,14 +128,14 @@ namespace WindowsFormsApp1.Controllers
             else if (stuff == "Meds")
             {
                 Random random = new Random();
-                if (data.game.Map.terrains[selection].Get_Building().name == "Cattle")
+                if (data.game.Map.terrains[selection - 1].Get_Building().name == "Cattle")
                 {
                     switch (option)
                     {
                         case "Vacuna":
                             if (data.game.GetPlayer().vaccine.GetUses() > 0)
                             {
-                                data.game.GetPlayer().vaccine.Use((Cattle)data.game.Map.terrains[selection].Get_Building(), random);
+                                data.game.GetPlayer().vaccine.Use((Cattle)data.game.Map.terrains[selection - 1].Get_Building(), random);
                             }
                             else if (data.game.GetPlayer().vaccine.GetUses() == 0 && data.game.GetPlayer().Current_money > 5000)
                             {
@@ -151,14 +151,14 @@ namespace WindowsFormsApp1.Controllers
                             break;
                     }
                 }
-                else if (data.game.Map.terrains[selection].Get_Building().name == "Field")
+                else if (data.game.Map.terrains[selection - 1].Get_Building().name == "Field")
                 {
                     switch (option)
                     {
                         case "Herbicida":
                             if (data.game.GetPlayer().herbicide.GetUses() > 0)
                             {
-                                data.game.GetPlayer().herbicide.Use((Field)data.game.Map.terrains[selection].Get_Building(), random);
+                                data.game.GetPlayer().herbicide.Use((Field)data.game.Map.terrains[selection - 1].Get_Building(), random);
                             }
                             else if (data.game.GetPlayer().herbicide.GetUses() == 0 && data.game.GetPlayer().Current_money > 5000)
                             {
@@ -172,7 +172,7 @@ namespace WindowsFormsApp1.Controllers
                         case "Pesticida":
                             if (data.game.GetPlayer().pesticide.GetUses() > 0)
                             {
-                                data.game.GetPlayer().pesticide.Use((Field)data.game.Map.terrains[selection].Get_Building(), random);
+                                data.game.GetPlayer().pesticide.Use((Field)data.game.Map.terrains[selection - 1].Get_Building(), random);
                             }
                             else if (data.game.GetPlayer().pesticide.GetUses() == 0 && data.game.GetPlayer().Current_money > 5000)
                             {
@@ -186,7 +186,7 @@ namespace WindowsFormsApp1.Controllers
                         case "Fungicida":
                             if (data.game.GetPlayer().fungicide.GetUses() > 0)
                             {
-                                data.game.GetPlayer().fungicide.Use((Field)data.game.Map.terrains[selection].Get_Building(), random);
+                                data.game.GetPlayer().fungicide.Use((Field)data.game.Map.terrains[selection - 1].Get_Building(), random);
                             }
                             else if (data.game.GetPlayer().fungicide.GetUses() == 0 && data.game.GetPlayer().Current_money > 5000)
                             {
