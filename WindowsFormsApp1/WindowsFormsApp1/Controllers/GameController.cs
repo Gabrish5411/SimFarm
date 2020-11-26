@@ -20,6 +20,7 @@ namespace WindowsFormsApp1.Controllers
             GameController.view.PrintHistoric += OnHistoric;
             GameController.view.ApplyStuff += OnApplyStuff;
             GameController.view.GetFinishedProduct += OnGetFinishedProduct;
+            GameController.view.GetCheatCode += OnCheatCode;
         }
 
         public static string[] OnAskForInventory(object sender, DataArgs data)
@@ -285,6 +286,36 @@ namespace WindowsFormsApp1.Controllers
             {
                 MessageBox.Show("Seleccion invalida", "Error");
             }
+        }
+        public static void OnCheatCode(object sender, DataArgs data, string code)
+        {
+            
+            if (code == "HESOYAM")
+            {
+                data.game.GetPlayer().Current_money = 99999999;
+                MessageBox.Show("Codigo ingresado correctamente", "Informacion");
+            }
+            else if (code == "FULLCLIP")
+            {
+
+                data.game.GetPlayer().fertilizer.AddUse();
+                data.game.GetPlayer().irrigation.AddUse();
+                data.game.GetPlayer().animalFood.AddUse();
+                data.game.GetPlayer().animalWater.AddUse();
+                data.game.GetPlayer().fungicide.AddUse();
+                data.game.GetPlayer().herbicide.AddUse();
+                data.game.GetPlayer().pesticide.AddUse();
+                data.game.GetPlayer().vaccine.AddUse();
+                MessageBox.Show("Codigo ingresado correctamente", "Informacion");
+            }
+            else
+            {
+                MessageBox.Show("Codigo ingresado NO ES VALIDO", "Informacion");
+            }
+          
+            
+
+
         }
     }
 }

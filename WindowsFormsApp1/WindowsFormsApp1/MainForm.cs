@@ -67,6 +67,9 @@ namespace WindowsFormsApp1
         public delegate void OnGetFinishedProduct(object source, DataArgs data, int selection);
         public event OnGetFinishedProduct GetFinishedProduct;
 
+        public delegate void OnCheatCode(object source, DataArgs data, string code);
+        public event OnCheatCode GetCheatCode;
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -783,6 +786,27 @@ namespace WindowsFormsApp1
                 ApplyStuff(this, data, "Meds", option, Convert.ToInt32(ClickingMapForm.terrain));
                 MessageBox.Show("Comprado y Aplicado!", "Informacion");
             }
+        }
+
+        private void bt_CheatCode_Click(object sender, EventArgs e)
+        {
+            ShowPanel(CheatCode);
+        }
+
+        private void bt_CheatCodeBackButton_Click(object sender, EventArgs e)
+        {
+            ShowPanel(Game);
+        }
+
+        private void bt_CheatCodeResetTextButton_Click(object sender, EventArgs e)
+        {
+            add_cheat_text_RichTextBox.Clear();
+        }
+
+        private void bt_CheatCodeSelectTextButton_Click(object sender, EventArgs e)
+        {
+            string code = add_cheat_text_RichTextBox.Text;
+            GetCheatCode(this, data, code);
 
         }
     }
