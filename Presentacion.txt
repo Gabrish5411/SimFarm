@@ -1,0 +1,39 @@
+Los edificios los hicimos una clase abstracta para poder llamar la funcion
+Update() al recorrer la lista de los terrenos. Ya que cada terreno tiene
+un Building como atributo es posible actualizar el estado de cada Building
+que hay construido (Ya sea ganado, plantacion o almacen) simplemente recorriendo
+la lista de terrenos y llamando la funcion Update en cada edificio.
+Tambien utilizamos la funcion abstracta Report() para poder mostrar en pantalla
+informacion relevante al momento de seleccionar un edificio en Administrar Granja 
+(Como HP/Agua/Comida para ganados y plantaciones y que hay dentro de un almacen).
+Si bien no se realiza en cadena la clase ya estaba como abstract asique decidimos que
+era más comodo implementarlo de esta forma.
+
+
+Si bien era posible hacer esta misma estructura para los consumibles pudiendo
+llamar a la funcion Use() "desde" el abstract consumable la verdad es que para
+nuestro proyecto no es necesario el uso consecutivo de items como agua o vacunas
+pero seria algo a considerar si por ejemplo fuese necesario implementar una
+automatizacion. Si por ejemplo quisieramos implementar una clase Maquina que
+riegue o administre comida a varios terrenos seria conveniente recorrer la lista
+completa de los terrenos (Ubicada dentro de la clase Game) llamando a la funcion
+Use() si cumple con algun requerimiento, ya sea seleccionado por el usuario o 
+simplemente que sea de una clase determinada (La comida de animal solo puede administrarse
+a los ganados).
+(Si el profe llegara a preguntar como pasariamos el consumible a abstract): Como nunca 
+instaciamos una clase consumable (Nunca llamamos al constructor) no habria problema al ponerle
+simplemente abstract a la clase, habria que ponerle abstract a las funciones tambien. Para implementar
+el Use() como abstract habria que colocarle a la funcion Use() ubicada en cada consumible particular 
+la palabra override (Igual a como tenemos en los edificios con Update y Report como hablamos antes)
+y habria que cambiar el atributo Cattle o Field que se le entrega a Building, hay algunos Use que usan
+Random y otros que no asi que habria que pasarselos a todos por mas que no lo ocupen.
+
+
+Hubiese sido posible implementar interfaces por ejemplo para Update() ya que no solo los edificios la 
+utilizan sino tambien los productos terminados (Van perdiendo calidad en cada turno) pero hubieran sido
+la unica clase aparte de los edificios y como ya teniamos estos como abstract creimos que no ganabamos mucho
+implementando una interfaz para agregar solo 1 clase que pueda llamarse con Update asique simplemente definimos una
+funcion especifica de update para el finished product que se llama al momento de realizarse un Update() del almacen
+en el que se encuentra.
+
+
